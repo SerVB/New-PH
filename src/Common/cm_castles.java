@@ -30,11 +30,11 @@ package Common;
 //#include "cm_creatures.cpp"
 
 /**
- * 
+ *
  */
 public class cm_castles {
 
-    // Castle types
+    // Castle types //
     final static int CTLT_CITADEL    = 0;
     final static int CTLT_STRONGHOLD = 1;
     final static int CTLT_TOWER      = 2;
@@ -45,23 +45,22 @@ public class cm_castles {
     final static int CTLT_COUNT      = 7;
     final static int CTLT_INVALID    = 0xFF;
 
-    // Castle dimensions
+    // Castle dimensions //
     final static int CTLS_SMALL  = 1; // Village
     final static int CTLS_MEDIUM = 2; // Town
     final static int CTLS_LARGE  = 3; // City
     final static int CTLS_COUNT  = 4;
 
-    // Castle orientation
+    // Castle orientation //
     final static int CTLO_LEFT  = 0; // Left
     final static int CTLO_RIGHT = 1; // Right
     final static int CTLO_COUNT = 2;
 
-    /*
-     *    Castle constructions
-     */
+    // Castle constructions //
+
     final static int CTLCNST_INVALID = -1;
 
-    // Dwellings = Жилища
+    // Dwellings = Жилища //
     final static int CTLCNST_DWELLINGS = 0;
 
     final static int CTLCNST_DWELL_PEASNHUT    = 0;
@@ -101,7 +100,7 @@ public class cm_castles {
     final static int CTLCNST_DWELL_MAUSOLEUM   = 34;
     final static int CTLCNST_DWELL_LABORATORY  = 35;
 
-    // Common constructions
+    // Common constructions //
     final static int CTLCNST_MAGEGUILDS    = 36;
     final static int CTLCNST_MAGEGUILD_L1  = 36;
     final static int CTLCNST_MAGEGUILD_L2  = 37;
@@ -112,7 +111,7 @@ public class cm_castles {
     final static int CTLCNST_TAVERN        = 42;
     final static int CTLCNST_MARKETPLACE   = 43;
 
-    // Common mines
+    // Common mines //
     final static int CTLCNST_MINES         = 44;
     final static int CTLCNST_TOWNHALL      = 44;
     final static int CTLCNST_CITYHALL      = 45;
@@ -128,7 +127,7 @@ public class cm_castles {
     final static int CTLCNST_LTURRET   = 54;
     final static int CTLCNST_RTURRET   = 55;
 
-    // Dwelling enchancers
+    // Dwelling enchancers //
     final static int CTLCNST_SHOOTINGRANGE     = 56;
     final static int CTLCNST_MESSHALL          = 57;
     final static int CTLCNST_OAKWOOD           = 58;
@@ -136,7 +135,7 @@ public class cm_castles {
     final static int CTLCNST_MINERSGUILD       = 60;
     final static int CTLCNST_UNEARTHEDGRAVES   = 61;
 
-    // Other special constructions
+    // Other special constructions //
     final static int CTLCNST_OBSERVPOST        = 62;
     final static int CTLCNST_FORTIFICATION     = 63;
     final static int CTLCNST_HALLOFVALHALLA    = 64;
@@ -151,9 +150,7 @@ public class cm_castles {
     final static int CTLCNST_COVEROFDARKNESS   = 73;
 
     final static int CTLCNST_COUNT             = 74;
-    /*
-     * Конец зданий замка
-     */
+    // Конец зданий замка //
 
     // Types of castle constructions
     final static int CCT_GENERIC           = 0;
@@ -193,14 +190,14 @@ public class cm_castles {
     final static int CTLSM_SML	= CTLSM_S | CTLSM_M | CTLSM_L;
 
     /**
-     * ???
+     *
      */
     class CTCNSTCAP {
         long	siz;
         long	type;
 
         /**
-         * ???
+         *
          * @param _type
          * @param _siz
          * @return
@@ -224,7 +221,7 @@ public class cm_castles {
     }
 
     /**
-     * ???
+     *
      */
     class CTLCNST_DESC_STRUCT {
         int         type;

@@ -36,7 +36,7 @@ public class lang_eng {
     /**
      * Хранилище английского текста
      */
-    final String[] LANG_DATA_ENG = {
+    public final String[] LANG_DATA_ENG = {
         "",
         "+",
         "-",
@@ -1633,7 +1633,7 @@ public class lang_eng {
         "Always protect your shooters in combat.",
         "Sometimes the best way to avoid defeat is by avoiding combat!",
         "Attack where your enemy is weak.",
-        "It\u2019s better to take all the hard battles with the main hero.",
+        "It's better to take all the hard battles with the main hero.",
         "Try to foresee enemy moves.",
         "When travelling across the desert, seek out an oasis, for it will speed your journey.",
         "There is safety in numbers, especially if those numbers are in the thousands!",
@@ -1655,7 +1655,7 @@ public class lang_eng {
         "A Lich's attack shreds the living while leaving the dead unscathed.",
         "On the battlefield, The Plague strike fear into the hearts of their enemies.",
         "Golems do not have a mind of their own.",
-        "Don\u2019t ever try to cross the moat with a foot unit.",
+        "Don't ever try to cross the moat with a foot unit.",
         "The Armageddon and dragons is a deadly combination.",
         "Thors will strike Dragons with more ferocity than any other enemy.",
         "Many fear the petrifying attack of the Medusa. You should fear more their golden arrows.",

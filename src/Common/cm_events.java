@@ -26,16 +26,14 @@
 package Common;
 
 /**
- * Содержит две целочисленные переменные.
+ *
  */
-public class iPoint {
-    
-    public long x;
-    public long y;
+public class cm_events {
 
-    public iPoint(long x, long y) {
-        this.x = x;
-        this.y = y;
-    }
-
+    /**
+     * Частота событий в днях
+     */
+    public final static long[] EventFreqDays = {
+        0, 1, 2, 3, 4, 5, 6, 7, 14, 21, 28
+    };
 }

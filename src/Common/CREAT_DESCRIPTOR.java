@@ -32,74 +32,103 @@ public class CREAT_DESCRIPTOR {
     /**
      * Unit level (1-6).
      */
-    int         level;
+    int level;
+
     /**
-     * Unit alignment (право или лево в битве, что ли?).
+     * Unit nation.
      */
-    int         nation;
+    int nation;
 
     /**
      * Attack skill.
      */
-    long        attack;
+    long attack;
+
     /**
      * Deffence skill.
      */
-    long        defence;
+    long defence;
+
     /**
      * Unit speed (1-20).
      */
-    int         speed;
+    int speed;
+
     /**
      * Unit size (1 or 2 - used in battle).
      */
-    int         size;
+    int size;
 
     /**
      * Transportation method.
      */
-    int         transType;
+    int transType;
+
     /**
      * 0 -- means no range attack.
      */
-    long        shots;
+    long shots;
+
     /**
      * Hit points (health).
      */
-    long        hits;
+    long hits;
+
     /**
      * Minimum damage.
      */
-    long        damage_min;
+    long damage_min;
+
     /**
      * Maximum damage.
      */
-    long        damage_max;
+    long damage_max;
 
     /**
      * Cost per unit.
      */
     iMineralSet cost;
+
     /**
      * Growth rate.
      */
-    long        growth;
+    long growth;
+
     /**
      * Power index (used for AI).
      */
-    long        pidx;
+    long pidx;
+
     /**
      * Creature perks.
      */
-    int         perks;
+    int perks;
 
+    /**
+     * Конструктор.
+     * @param level Unit level (1-6).
+     * @param nation Unit nation.
+     * @param attack Attack skill.
+     * @param defence Deffence skill.
+     * @param speed Unit speed (1-20).
+     * @param size Unit size (1 or 2 - used in battle).
+     * @param transType Transportation method.
+     * @param shots 0 -- means no range attack.
+     * @param hits Hit points (health).
+     * @param damage_min Minimum damage.
+     * @param damage_max Maximum damage.
+     * @param cost Cost per unit.
+     * @param growth Growth rate.
+     * @param pidx Power index (used for AI).
+     * @param perks Creature perks.
+     */
     public CREAT_DESCRIPTOR(
             int level,
             int nation,
 
             long attack,
             long defence,
-            long speed,
+            int speed,
             int size,
 
             int transType,

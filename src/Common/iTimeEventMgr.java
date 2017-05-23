@@ -25,17 +25,54 @@
 
 package Common;
 
-/**
- * Содержит две целочисленные переменные.
- */
-public class iPoint {
-    
-    public long x;
-    public long y;
+import java.util.ArrayList;
 
-    public iPoint(long x, long y) {
-        this.x = x;
-        this.y = y;
+/**
+ * Time events manager
+ */
+public class iTimeEventMgr {
+
+    /**
+     * Хранилище событий.
+     */
+    private ArrayList<iTimeEvent> m_events = new ArrayList<>();
+
+    /**
+     * Возвращает количество событий.
+     * @return количество событий.
+     */
+    public int EventsCount() {
+        return m_events.size();
     }
 
+    /**
+     * Возвращает событие по индексу.
+     * @param idx индекс.
+     * @return событие.
+     */
+    public iTimeEvent Event(int idx) {
+        return m_events.get(idx);
+    }
+
+    /**
+     * Добавляет событие.
+     * @param event событие для добавления.
+     */
+    public void AddEvent(iTimeEvent event) {
+        m_events.add(event);
+    }
+
+    /**
+     * Удаляет событие по индексу.
+     * @param idx индекс.
+     */
+    public void DeleteEvent(int idx) {
+        m_events.remove(idx);
+    }
+    /**
+     * Удаляет все события.
+     */
+    public void DeleteAll() {
+        m_events.clear();
+    }
 }
