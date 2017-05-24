@@ -27,51 +27,48 @@ package Common;
 import java.util.ArrayList;
 
 /**
- * Time events manager
+ * Treasury variants container
  */
-public class iTimeEventMgr {
+public class iTrVarCtr {
 
-    /**
-     * Хранилище событий.
-     */
-    private ArrayList<iTimeEvent> m_events = new ArrayList<>();
+    private ArrayList<Item> m_items = new ArrayList();
 
-    /**
-     * Возвращает количество событий.
-     * @return количество событий.
-     */
-    public int EventsCount() {
-        return m_events.size();
+    public void AddVariant(long probability) {
+        m_items.add(new Item(probability));
     }
 
-    /**
-     * Возвращает событие по индексу.
-     * @param idx индекс.
-     * @return событие.
-     */
-    public iTimeEvent Event(int idx) {
-        return m_events.get(idx);
+    public Item GetLastVariant() {
+        return m_items.get(m_items.size() - 1);
     }
 
-    /**
-     * Добавляет событие.
-     * @param event событие для добавления.
-     */
-    public void AddEvent(iTimeEvent event) {
-        m_events.add(event);
+    public Item GetVariant(int idx) {
+        return m_items.get(idx);
     }
 
-    /**
-     * Удаляет событие по индексу.
-     * @param idx индекс.
-     */
-    public void DeleteEvent(int idx) {
-        m_events.remove(idx);
+    public int VariantsCount() {
+        return m_items.size();
     }
-    /**
-     * Удаляет все события.
-     */
-    public void DeleteAll() {
-        m_events.clear();
+
+    public void Serialize(iDynamicBuffer dbuff) {
+        int quant = m_items.size();
+        dbuff.Write(quant);
+        for (Item item : m_items) {
+            dbuff.Write((int) item.probability);
+            ::Serialize(dbuff, item.guards);
+            ::Serialize(dbuff, item.rewards);
+        }
+    }
+
+    public void Unserialize(iDynamicBuffer dbuff) {
+        m_items.clear();
+        int quant;
+        quant = (int)dbuff.Read();
+        while (quant-- > 0) {
+            long prob;
+            prob = dbuff.Read();
+            m_items.add(new Item(prob));
+            ::Unserialize(dbuff, m_items.GetLast().guards);
+            ::Unserialize(dbuff, m_items.GetLast().rewards);
+        }
     }
 }

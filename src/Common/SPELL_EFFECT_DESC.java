@@ -11,7 +11,8 @@
  * furnished to do so, subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * all
+ * copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -24,54 +25,65 @@
 
 package Common;
 
-import java.util.ArrayList;
-
 /**
- * Time events manager
+ * spell effect descriptor (4 x 2 = 8 bytes)
  */
-public class iTimeEventMgr {
+public class SPELL_EFFECT_DESC {
 
     /**
-     * Хранилище событий.
+     * Target type
      */
-    private ArrayList<iTimeEvent> m_events = new ArrayList<>();
+    public int tgtType;
 
     /**
-     * Возвращает количество событий.
-     * @return количество событий.
+     * Target mode
      */
-    public int EventsCount() {
-        return m_events.size();
+    public int tgtMode;
+
+    /**
+     * First parameter
+     */
+    public int fparam;
+
+    /**
+     * Second parameter
+     */
+    public long sparam;
+
+    /**
+     * Конструктор без двух параметров.
+     * @param tgtType
+     * @param tgtMode
+     */
+    public SPELL_EFFECT_DESC(int tgtType, int tgtMode) {
+        this.tgtType = tgtType;
+        this.tgtMode = tgtMode;
     }
 
     /**
-     * Возвращает событие по индексу.
-     * @param idx индекс.
-     * @return событие.
+     * Конструктор без одного параметра.
+     * @param tgtType
+     * @param tgtMode
+     * @param fparam
      */
-    public iTimeEvent Event(int idx) {
-        return m_events.get(idx);
+    public SPELL_EFFECT_DESC(int tgtType, int tgtMode, int fparam) {
+        this.tgtType = tgtType;
+        this.tgtMode = tgtMode;
+        this.fparam = fparam;
     }
 
     /**
-     * Добавляет событие.
-     * @param event событие для добавления.
+     * Конструктор.
+     * @param tgtType
+     * @param tgtMode
+     * @param fparam
+     * @param sparam
      */
-    public void AddEvent(iTimeEvent event) {
-        m_events.add(event);
+    public SPELL_EFFECT_DESC(int tgtType, int tgtMode, int fparam, long sparam) {
+        this.tgtType = tgtType;
+        this.tgtMode = tgtMode;
+        this.fparam = fparam;
+        this.sparam = sparam;
     }
 
-    /**
-     * Удаляет событие по индексу.
-     * @param idx индекс.
-     */
-    public void DeleteEvent(int idx) {
-        m_events.remove(idx);
-    }
-    /**
-     * Удаляет все события.
-     */
-    public void DeleteAll() {
-        m_events.clear();
-    }
 }

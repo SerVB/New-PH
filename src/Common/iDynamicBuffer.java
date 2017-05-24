@@ -24,29 +24,50 @@
 
 package Common;
 
-/**
- * Фильтр магических заклинаний
- */
-public class iSpellFilter {
+import java.nio.ByteBuffer;
 
-    public int typeMask;
-    public int levelMask;
-    public int schoolMask;
-    public int reserved;
+/**
+ *
+ */
+public class iDynamicBuffer {
+    /**
+     *
+     */
+    ByteBuffer bb;
 
     /**
-     * Конструктор
-     * @param typeMask
-     * @param levelMask
-     * @param schoolMask
+     * Конструктор.
+     * @param size размер буфера в байтах.
      */
-    public iSpellFilter(
-            int typeMask,
-            int levelMask,
-            int schoolMask
-    ) {
-        this.typeMask   = typeMask;
-        this.levelMask  = levelMask;
-        this.schoolMask = schoolMask;
+    public iDynamicBuffer(int size) {
+        bb = ByteBuffer.allocate(size);
+    }
+
+    /**
+     * Помещает long в буфер.
+     * @param value помещаемый long.
+     */
+    public void Write(long value) {
+        bb.putLong(value);
+    }
+
+//    public void Write(short value) {
+//        bb.putShort(value);
+//    }
+//
+//    public void Write(int value) {
+//        bb.putInt(value);
+//    }
+//
+//    public void Write(long value) {
+//        bb.putLong(value);
+//    }
+
+    /**
+     * Возвращает long из буфера.
+     * @return запрошенный long.
+     */
+    public long Read() {
+        return bb.getLong();
     }
 }

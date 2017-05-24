@@ -25,28 +25,29 @@
 package Common;
 
 /**
- * Фильтр магических заклинаний
+ *
  */
-public class iSpellFilter {
+public class iSpan {
+    long ypos;
+    long begin;
+    long end;
 
-    public int typeMask;
-    public int levelMask;
-    public int schoolMask;
-    public int reserved;
-
-    /**
-     * Конструктор
-     * @param typeMask
-     * @param levelMask
-     * @param schoolMask
-     */
-    public iSpellFilter(
-            int typeMask,
-            int levelMask,
-            int schoolMask
-    ) {
-        this.typeMask   = typeMask;
-        this.levelMask  = levelMask;
-        this.schoolMask = schoolMask;
+    public iSpan(long ypos, long begin, long end) {
+        this.ypos = ypos;
+        this.begin = begin;
+        this.end = end;
     }
+
+    public iSpan(long ypos, long begin) {
+        this(ypos, begin, 0);
+    }
+
+    public iSpan(long ypos) {
+        this(ypos, 0);
+    }
+
+    public iSpan() {
+        this(0L);
+    }
+
 }

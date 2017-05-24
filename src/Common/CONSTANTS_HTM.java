@@ -25,28 +25,13 @@
 package Common;
 
 /**
- * Фильтр магических заклинаний
+ * Бывшие константы HTM_. TODO: Переименовать HTM в понятное название!
  */
-public class iSpellFilter {
-
-    public int typeMask;
-    public int levelMask;
-    public int schoolMask;
-    public int reserved;
-
-    /**
-     * Конструктор
-     * @param typeMask
-     * @param levelMask
-     * @param schoolMask
-     */
-    public iSpellFilter(
-            int typeMask,
-            int levelMask,
-            int schoolMask
-    ) {
-        this.typeMask   = typeMask;
-        this.levelMask  = levelMask;
-        this.schoolMask = schoolMask;
-    }
+public class CONSTANTS_HTM {
+    public final static int KNIGHT      = 0;     // Рыцарь
+    public final static int BARBARIAN   = 1;  // Варвар
+    public final static int WIZARD      = 2;     // Волшебник
+    public final static int WARLOCK     = 3;    // Чернокнижник
+    public final static int SORCERESS   = 4;   // Колдун
+    public final static int NECROMANCER = 5; // Некромант
 }

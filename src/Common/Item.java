@@ -25,28 +25,30 @@
 package Common;
 
 /**
- * Фильтр магических заклинаний
+ *
  */
-public class iSpellFilter {
-
-    public int typeMask;
-    public int levelMask;
-    public int schoolMask;
-    public int reserved;
+public class Item {
 
     /**
-     * Конструктор
-     * @param typeMask
-     * @param levelMask
-     * @param schoolMask
+     *
      */
-    public iSpellFilter(
-            int typeMask,
-            int levelMask,
-            int schoolMask
-    ) {
-        this.typeMask   = typeMask;
-        this.levelMask  = levelMask;
-        this.schoolMask = schoolMask;
+    long        probability;
+
+    /**
+     *
+     */
+    iArmy       guards;
+
+    /**
+     *
+     */
+    iRewardsCtr rewards;
+
+    /**
+     * Конструктор.
+     * @param _probability
+     */
+    public Item(long _probability) {
+        this.probability = _probability;
     }
 }

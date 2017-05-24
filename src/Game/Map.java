@@ -26,6 +26,7 @@ package Game;
 
 //#include "stdafx.h"
 
+import Common.iMineralSet;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,22 +43,21 @@ import java.util.logging.Logger;
 class iMapInfo {
 
     /**
-     * Игровой режим
+     * Игровой режим GameMode
      */
-    enum GameMode {
-        GM_UNDEFINED,   // Неопределенный
-        GM_SPLAYER,     // Single player
-        GM_HOTSEAT      // Hotseat
-    }
+
+    final static int GM_UNDEFINED = 0; // Неопределенный
+    final static int GM_SPLAYER   = 1; // Single player
+    final static int GM_HOTSEAT   = 2; // Hotseat
 
     /**
-     * ???
+     *
      */
     class iPlayerInfo {
         /**
-         * Конструктор
+         * Конструктор.
          */
-        iPlayerInfo(PLAYER_ID pid, PLAYER_TYPE_MASK ptypemask, PLAYER_TYPE ptype, CTL_TYPE ntype) {
+        iPlayerInfo(int pid, PLAYER_TYPE_MASK ptypemask, PLAYER_TYPE ptype, CTL_TYPE ntype) {
             this.m_Id = pid;
             this.m_TypeMask = ptypemask;
             this.m_Type = ptype;
@@ -65,14 +65,14 @@ class iMapInfo {
         }
 
         /**
-         * ???
+         * Минералы.
          */
         iMineralSet m_Minerals;
 
         /**
-         * ???
+         * ID игрока.
          */
-        PLAYER_ID m_Id;
+        int m_Id;
 
         /**
          * ???
@@ -85,7 +85,7 @@ class iMapInfo {
         PLAYER_TYPE m_Type;
 
         /**
-         * ???
+         * Нация.
          */
         CTL_TYPE m_Nation;
 
@@ -108,30 +108,28 @@ class iMapInfo {
     /**
      * Считать инофрмацию карты
      */
-    boolean ReadMapInfo(File pFile) {
+    boolean ReadMapInfo(FileInputStream pFile) {
         try {
-            // Чтец файла
-            FileInputStream in = new FileInputStream(pFile);
 
             long ver; // Версия карты
-            ver = (in.read() << 8) + in.read(); // Считать два байта
+            ver = (pFile.read() << 8) + pFile.read(); // Считать два байта
             if (ver != GMAP_FILE_VERSION)
                 return false;
 
             // Encoding type
-            m_encType = (in.read() << 8) + in.read(); // Считать два байта
+            m_encType = (pFile.read() << 8) + pFile.read(); // Считать два байта
 
             // Save timestamp
-            m_saveTime = (in.read() << 24) + (in.read() << 16) +
-                         (in.read() << 8) + in.read(); // Считать четыре байта
+            m_saveTime = (pFile.read() << 24) + (pFile.read() << 16) +
+                         (pFile.read() << 8) + pFile.read(); // Считать четыре байта
 
             // Random seed
-            m_rseed = (in.read() << 24) + (in.read() << 16) +
-                      (in.read() << 8) + in.read(); // Считать четыре байта
+            m_rseed = (pFile.read() << 24) + (pFile.read() << 16) +
+                      (pFile.read() << 8) + pFile.read(); // Считать четыре байта
 
             // Map size
             long mapSiz;
-            mapSiz = in.read(); // Считать один байт
+            mapSiz = pFile.read(); // Считать один байт
             m_Size = new MAP_SIZE(mapSiz);
 
             // Map name and description (string of text)
@@ -143,32 +141,32 @@ class iMapInfo {
             Unserialize(pFile, m_Author);
 
             // Current date (1 is default value for new game)
-            m_curDay = (in.read() << 24) + (in.read() << 16) +
-                       (in.read() << 8) + in.read(); // Считать четыре байта
+            m_curDay = (pFile.read() << 24) + (pFile.read() << 16) +
+                       (pFile.read() << 8) + pFile.read(); // Считать четыре байта
 
             // Game mode (GM_UNDEFINED for new map)
             int gameMode;
-            gameMode = (in.read() << 8) + in.read(); // Считать два байта
+            gameMode = (pFile.read() << 8) + pFile.read(); // Считать два байта
             m_gameMode = GameMode.values()[gameMode];
 
             // Difficulty level (DFC_UNDEFINED for new game)
             int gameDifLvl;
-            gameDifLvl = in.read(); // Считать один байт
+            gameDifLvl = pFile.read(); // Считать один байт
             m_Difficulty = (DIFFICULTY_LEVEL)gameDifLvl;
 
             // Read Player config
             long pCount;
-            pCount = (in.read() << 8) + in.read(); // Считать два байта
+            pCount = (pFile.read() << 8) + pFile.read(); // Считать два байта
             boolean bHumanDefined = false;
             for (long xx = 0; xx < pCount; ++xx){
                 // Player Id
-                long playerId = in.read(); // Считать один байт
+                long playerId = pFile.read(); // Считать один байт
                 // Nation type
-                long nation = in.read(); // Считать один байт
+                long nation = pFile.read(); // Считать один байт
                 // Player Type Mask
-                long playerTypeMask = in.read(); // Считать один байт
+                long playerTypeMask = pFile.read(); // Считать один байт
                 // Player Type (PT_UNDEFINED for new game)
-                long playerType = in.read(); // Считать один байт
+                long playerType = pFile.read(); // Считать один байт
                 // Create playerInfo descriptor
                 iPlayerInfo playerInfo = new iPlayerInfo(
                                         (PLAYER_ID)playerId,
@@ -184,27 +182,27 @@ class iMapInfo {
                     }
                 }
                 // Player resources (undefined for new game)
-                Unserialize(pFile, playerInfo.m_Minerals);
+                Unserialize(pFilet, playerInfo.m_Minerals);
                 // Current Hero idx (0xFFFF = undefined for new game)
-                playerInfo.m_curHeroId = (in.read() << 8) + in.read(); // Считать два байта
+                playerInfo.m_curHeroId = (pFile.read() << 8) + pFile.read(); // Считать два байта
                 // Current Castle idx (0xFFFF = undefined for new game)
-                playerInfo.m_curCastleIdx = (in.read() << 8) + in.read(); // Считать два байта
+                playerInfo.m_curCastleIdx = (pFile.read() << 8) + pFile.read(); // Считать два байта
                 // Keys state
-                playerInfo.m_keys = in.read(); // Считать один байт
+                playerInfo.m_keys = pFile.read(); // Считать один байт
                 // Insert Player descriptor
                 m_Players.add(playerInfo);
             }
 
             // Current player Id (PID_NEUTRAL = undefined for new game)
-            long curPlayerId = (in.read() << 8) + in.read(); // Считать два байта
+            long curPlayerId = (pFile.read() << 8) + pFile.read(); // Считать два байта
             if(curPlayerId == 0xFFFF)
                 m_curPlayerId = PID_NEUTRAL;
             else
                 m_curPlayerId = (PLAYER_ID)curPlayerId;
 
             // Map metrics
-            long w = (in.read() << 8) + in.read(); // Считать два байта
-            long h = (in.read() << 8) + in.read(); // Считать два байта
+            long w = (pFile.read() << 8) + pFile.read(); // Считать два байта
+            long h = (pFile.read() << 8) + pFile.read(); // Считать два байта
             m_metrics.w = w;
             m_metrics.h = h;
         } catch (FileNotFoundException ex) {
