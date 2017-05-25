@@ -29,24 +29,24 @@ package Common;
  */
 public class iMineralSet {
     /**
-     * Количество различных минералов
+     * Количество различных минералов.
      */
-    private final int NUM_OF_MINERALS = 7;
+    public static final int MINERAL_COUNT = 7;
 
     /**
-     * Массив хранилища
+     * Массив хранилища.
      */
-    public long[] set = new long[NUM_OF_MINERALS];
+    private long[] set = new long[MINERAL_COUNT];
 
     /**
-     * Конструктор
-     * @param _price0 Gold
-     * @param _price1 Ore
-     * @param _price2 Wood
-     * @param _price3 Merc
-     * @param _price4 Gems
-     * @param _price5 Cryst
-     * @param _price6 Sulfur
+     * Конструктор.
+     * @param _price0 Gold.
+     * @param _price1 Ore.
+     * @param _price2 Wood.
+     * @param _price3 Merc (Mercury).
+     * @param _price4 Gems.
+     * @param _price5 Cryst.
+     * @param _price6 Sulfur.
      */
     public iMineralSet(
         long         _price0,
@@ -64,5 +64,23 @@ public class iMineralSet {
         set[4] = _price4;
         set[5] = _price5;
         set[6] = _price6;
+    }
+
+    /**
+     * Возвращает количество минералов заданного ID.
+     * @param id ID минерала.
+     * @return количество минералов.
+     */
+    public long quant(int id) {
+        return set[id];
+    }
+
+    /**
+     * Задает количество минералов заданного ID.
+     * @param id ID минерала.
+     * @param quant количество минералов.
+     */
+    public void setQuant(int id, long quant) {
+        this.set[id] = quant;
     }
 }

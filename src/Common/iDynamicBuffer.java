@@ -51,17 +51,14 @@ public class iDynamicBuffer {
         bb.putLong(value);
     }
 
-//    public void Write(short value) {
-//        bb.putShort(value);
-//    }
-//
-//    public void Write(int value) {
-//        bb.putInt(value);
-//    }
-//
-//    public void Write(long value) {
-//        bb.putLong(value);
-//    }
+    /**
+     * Помещает строку в буфер.
+     * @param str помещаемая строка.
+     */
+    public void Write(String str) {
+        for(char ch : str.toCharArray())
+            bb.putChar(ch);
+    }
 
     /**
      * Возвращает long из буфера.
@@ -69,5 +66,17 @@ public class iDynamicBuffer {
      */
     public long Read() {
         return bb.getLong();
+    }
+
+    /**
+     * Возвращает строку из буфера.
+     * @return запрошенную строку.
+     */
+    public String ReadString() {
+        char ch;
+        String s = "";
+        while((ch = bb.getChar()) != 0)
+            s += ch;
+        return s;
     }
 }
