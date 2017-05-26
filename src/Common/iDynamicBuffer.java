@@ -61,6 +61,24 @@ public class iDynamicBuffer {
     }
 
     /**
+     * Помещает массив символов в буфер.
+     * @param buffer помещаемый массив символов.
+     * @param length длина массива символов.
+     */
+    public void Write(char[] buffer, int length) {
+        Write(buffer);
+    }
+
+    /**
+     * Помещает массив символов в буфер.
+     * @param buffer помещаемый массив символов.
+     */
+    public void Write(char[] buffer) {
+        for(char ch : buffer)
+            bb.putChar(ch);
+    }
+
+    /**
      * Возвращает long из буфера.
      * @return запрошенный long.
      */
@@ -78,5 +96,21 @@ public class iDynamicBuffer {
         while((ch = bb.getChar()) != 0)
             s += ch;
         return s;
+    }
+
+    /**
+     * Возвращает размер буфера.
+     * @return размер.
+     */
+    public int GetSize() {
+        return bb.position();
+    }
+
+    /**
+     * Возвращает содержимое буфера.
+     * @return массив.
+     */
+    public byte[] GetData() {
+        return bb.array();
     }
 }
