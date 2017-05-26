@@ -198,94 +198,101 @@ public class serialize {
     // Secondary Skills
     void Serialize(iDynamicBuffer dbuff, iSecSkills secSkills) {
         dbuff.Write(secSkills.GetSize());
+
         for (int ssid = 0; ssid < secSkills.GetSize(); ++ssid) {
             dbuff.Write(secSkills[ssid].m_skill);
             dbuff.Write(secSkills[ssid].m_level);
         }
     }
 
-    inline void Unserialize(iDynamicBuffer& dbuff, iSecSkills& secSkills)
-    {
-        uint8 sscnt;
-        sint8 ssType, ssLevel;
-        dbuff.Read(sscnt);
-        if (!sscnt) return;
+    void Unserialize(iDynamicBuffer dbuff, iSecSkills secSkills) {
+        // ss = secondary skill
+        int sscnt;
+        int ssType, ssLevel;
+
+        sscnt = (int)dbuff.Read();
+
+        if (sscnt <= 0)
+            return;
+
         secSkills.RemoveAll();
-        for (uint8 ssid=0; ssid<sscnt; ++ssid) {
-            dbuff.Read(ssType);
-            dbuff.Read(ssLevel);
-            secSkills.Add(iSecSkillEntry((SECONDARY_SKILLS)ssType, (SECSKILL_LEVEL)ssLevel));
+
+        for (int ssid = 0; ssid < sscnt; ++ssid) {
+            ssType = (int) dbuff.Read();
+            ssLevel = (int) dbuff.Read();
+            secSkills.Add(new iSecSkillEntry(ssType, ssLevel));
         }
     }
 
 
     // Artifact list
-    inline void Serialize(iDynamicBuffer& dbuff, const iArtifactList& artifacts)
-    {
-        dbuff.Write((uint16)artifacts.Count());
-        for (uint32 artIdx=0; artIdx<artifacts.Count(); ++artIdx) {
-            dbuff.Write((uint16)artifacts.At(artIdx).id);
-            dbuff.Write((sint16)artifacts.At(artIdx).assign);
+    void Serialize(iDynamicBuffer dbuff, iArtifactList artifacts) {
+        dbuff.Write(artifacts.Count());
+
+        for (int artIdx = 0; artIdx < artifacts.Count(); ++artIdx) {
+            dbuff.Write(artifacts.At(artIdx).id);
+            dbuff.Write(artifacts.At(artIdx).assign);
         }
     }
 
-    inline void Unserialize(iDynamicBuffer& dbuff, iArtifactList& artifacts)
-    {
-        uint16 artCnt;
-        dbuff.Read(artCnt);
-        while (artCnt--) {
-            uint16 artId;
-            sint16 assign;
-            dbuff.Read(artId);
-            dbuff.Read(assign);
-            artifacts.Add(artId, (HERO_ART_CELL)assign);
+    void Unserialize(iDynamicBuffer dbuff, iArtifactList artifacts) {
+        long artCnt = dbuff.Read();
+
+        while (artCnt-- > 0) {
+            int artId = (int) dbuff.Read();
+            int assign = (int) dbuff.Read();
+
+            artifacts.Add(artId, assign);
         }
     }
 
     // Spells
-    inline void Serialize(iDynamicBuffer& dbuff, const iSpellList& spells)
-    {
-        dbuff.Write((uint16)spells.GetSize());
-        for (uint32 spIdx=0; spIdx<spells.GetSize(); ++spIdx) dbuff.Write(spells[spIdx]);
+    void Serialize(iDynamicBuffer dbuff, iSpellList spells) {
+        dbuff.Write(spells.GetSize());
+
+        for (int spIdx = 0; spIdx < spells.GetSize(); ++spIdx)
+            dbuff.Write(spells.get(spIdx));
     }
 
-    inline void Unserialize(iDynamicBuffer& dbuff, iSpellList& spells)
-    {
-        uint16 spCnt;
-        dbuff.Read(spCnt);
-        if (!spCnt) return;
+    void Unserialize(iDynamicBuffer dbuff, iSpellList spells) {
+        int spCnt = (int) dbuff.Read();
+
+        if (spCnt <= 0)
+            return;
+
         spells.RemoveAll();
-        while (spCnt--) {
-            uint16 spId;
-            dbuff.Read(spId);
-            if (spId < MSP_COUNT) spells.Add(spId);
+
+        while (spCnt-- > 0) {
+            int spId = (int) dbuff.Read();
+            if (spId < cm_magic.MSP_COUNT)
+                spells.Add(spId);
         }
     }
 
     // Rewards
-    inline void Serialize(iDynamicBuffer& dbuff, const iRewardsCtr& rewards)
-    {
-        uint16 quant = (uint16)rewards.GetSize();
+    void Serialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
+        int quant = rewards.GetSize();
+
         dbuff.Write(quant);
-        for (uint16 xx=0; xx<quant; ++xx) {
-            dbuff.Write((uint8)rewards[xx].m_type);
-            dbuff.Write(rewards[xx].m_fParam);
-            dbuff.Write(rewards[xx].m_sParam);
+
+        for (int xx = 0; xx < quant; ++xx) {
+            dbuff.Write(rewards.get(xx).m_type);
+            dbuff.Write(rewards.get(xx).m_fParam);
+            dbuff.Write(rewards.get(xx).m_sParam);
         }
     }
 
-    inline void Unserialize(iDynamicBuffer& dbuff, iRewardsCtr& rewards)
-    {
+    void Unserialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
         rewards.RemoveAll();
-        uint16 quant;
-        dbuff.Read(quant);
-        while (quant--) {
-            uint8 rtype;
-            dbuff.Read(rtype);
-            sint32 fparam, sparam;
-            dbuff.Read(fparam);
-            dbuff.Read(sparam);
-            rewards.Add(iRewardItem((REWARD_ITEM_TYPE)rtype,fparam,sparam));
+
+        int quant = (int) dbuff.Read();
+        while (quant-- > 0) {
+            int rtype = (int) dbuff.Read();
+
+            long fparam = dbuff.Read();
+            long sparam = dbuff.Read();
+
+            rewards.Add(new iRewardItem(rtype, fparam, sparam));
         }
     }
 }

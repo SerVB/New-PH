@@ -24,10 +24,6 @@
 
 package Common;
 
-
-//#include <stdafx.h>
-//#include "cnst_text.h"
-
 /**
  * Русский язык
  */
@@ -36,7 +32,7 @@ public class lang_rus {
     /**
      * Хранилище русского текста
      */
-    public final String[] LANG_DATA_RUS = {
+    public final static String[] LANG_DATA_RUS = {
         "",
         "+",
         "-",
