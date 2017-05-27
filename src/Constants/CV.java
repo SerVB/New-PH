@@ -22,35 +22,56 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CTCNSTCAP.
+ * CHILD_VIEW.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class CV {
 
     /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
+     * Не определено.
      */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int UNDEFINED = -1;
 
     /**
-     * Конструктор
-     * @param _siz
-     * @param _type
+     * Меню.
      */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
+    public final static int MENU = 0;
+
+    /**
+     * На суше.
+     */
+    public final static int OVERLAND = 1;
+
+    /**
+     * Битва.
+     */
+    public final static int BATTLE = 2;
+
+    /**
+     * Замок.
+     */
+    public final static int CASTLE = 3;
+
+    /**
+     * Герой.
+     */
+    public final static int HERO = 4;
+
+    /**
+     * Обмен двух героев.
+     */
+    public final static int MEET = 5;
+
+    /**
+     * Миникарта.
+     */
+    public final static int MINIMAP = 6;
+
+    /**
+     * Количество активити.
+     */
+    public final static int COUNT = 7;
+
 }

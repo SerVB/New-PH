@@ -25,7 +25,7 @@
 package Common;
 
 /**
- * Фильтр магических заклинаний
+ * Фильтр магических заклинаний.
  */
 public class iSpellFilter {
 
@@ -35,10 +35,10 @@ public class iSpellFilter {
     public int reserved;
 
     /**
-     * Конструктор
-     * @param typeMask
-     * @param levelMask
-     * @param schoolMask
+     * Конструктор.
+     * @param typeMask Type mask.
+     * @param levelMask Level mask.
+     * @param schoolMask School mask.
      */
     public iSpellFilter(
             int typeMask,

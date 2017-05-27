@@ -25,32 +25,65 @@
 package Common;
 
 /**
- * spell descriptor ( 8 + 8 x 4 = 40 bytes)
+ * Описатель заклинания.
+ * Spell descriptor.
+ * ( 8 + 8 x 4 = 40 bytes )
  */
 public class SPELL_DESC_STRUCT {
+
+    /**
+     * Тип.
+     */
     public long type;
+
+    /**
+     * Уровень.
+     */
     public long level;
+
+    /**
+     * Школа.
+     */
     public long school;
+
+    /**
+     *
+     */
     public long spClass;
+
+    /**
+     * Стоимость.
+     */
     public long bcost;
+
+    /**
+     *
+     */
     public long label;
+
+    /**
+     *
+     */
     public long reserved;
 
+    /**
+     * Хранилище эффектов.
+     */
     public SPELL_EFFECT_DESC[] eff = new SPELL_EFFECT_DESC[cm_magic.MSL_COUNT];
 
     /**
-     * 
-     * @param type
-     * @param level
-     * @param school
+     * Конструктор.
+     * @param type Тип.
+     * @param level Уровень.
+     * @param school Школа.
      * @param spClass
-     * @param bcost
+     * @param bcost Стоимость.
      * @param label
      * @param reserved
-     * @param eff0
-     * @param eff1
-     * @param eff2
-     * @param eff3
+     * @param eff0 Эффект 0.
+     * @param eff1 Эффект 1.
+     * @param eff2 Эффект 2.
+     * @param eff3 Эффект 3.
      */
     public SPELL_DESC_STRUCT(
             long type,
@@ -64,7 +97,8 @@ public class SPELL_DESC_STRUCT {
             SPELL_EFFECT_DESC eff0,
             SPELL_EFFECT_DESC eff1,
             SPELL_EFFECT_DESC eff2,
-            SPELL_EFFECT_DESC eff3) {
+            SPELL_EFFECT_DESC eff3
+    ) {
         this.type = type;
         this.level = level;
         this.school = school;
@@ -78,6 +112,5 @@ public class SPELL_DESC_STRUCT {
         this.eff[2] = eff2;
         this.eff[3] = eff3;
     }
-
 
 }

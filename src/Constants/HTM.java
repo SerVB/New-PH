@@ -22,35 +22,40 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CTCNSTCAP.
+ * HTM.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class HTM {
 
     /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
+     * Рыцарь.
      */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int KNIGHT = 0;
 
     /**
-     * Конструктор
-     * @param _siz
-     * @param _type
+     * Варвар.
      */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
+    public final static int BARBARIAN = 1;
+
+    /**
+     * Волшебник.
+     */
+    public final static int WIZARD = 2;
+
+    /**
+     * Чернокнижник.
+     */
+    public final static int WARLOCK = 3;
+
+    /**
+     * Колдун.
+     */
+    public final static int SORCERESS = 4;
+
+    /**
+     * Некромант.
+     */
+    public final static int NECROMANCER = 5;
 }

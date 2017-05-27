@@ -24,6 +24,11 @@
 
 package Game;
 
+import Common.RGB;
+import Common.iPoint;
+import Common.iRect;
+import Common.iSize;
+
 //#include "stdafx.h"
 //#include "Credits.h"
 //#include "MenuView.h"
@@ -38,10 +43,10 @@ class MenuView {
      * От серо-желтого до яркого желтого.
      */
     iDib.pixel[] menuBtnText = {
-        RGB16(210,190,115), RGB16(214,192,110), RGB16(216,192,102), RGB16(219,193,96), RGB16(221,193,85),
-        RGB16(224,194,76),  RGB16(228,196,67),  RGB16(231,195,59), RGB16(233,196,49), RGB16(236,196,40),
-        RGB16(239,198,31), RGB16(242,198,23), RGB16(224,198,16), RGB16(247,199,0), RGB16(248,200,0)
-    }
+        new RGB(210,190,115), new RGB(214,192,110), new RGB(216,192,102), new RGB(219,193,96), new RGB(221,193,85),
+        new RGB(224,194,76),  new RGB(228,196,67),  new RGB(231,195,59),  new RGB(233,196,49), new RGB(236,196,40),
+        new RGB(239,198,31),  new RGB(242,198,23),  new RGB(224,198,16),  new RGB(247,199,0),  new RGB(248,200,0)
+    };
 
     /**
      * Активити главного меню
@@ -145,28 +150,18 @@ class MenuView {
          */
         public void OnCompose() {
             // Отрисовка поверхности-фоновой картинки?
-            m_crComposer.Compose(gApp.Surface(),iPoint(0,0));
+            m_crComposer.Compose(gApp.Surface(), new iPoint(0,0));
 
             // Устаревший код отрисовки
             //gGfxMgr.Blit( PDGG_LOGO, gApp.Surface(), iPoint( 44,2));
             //gGfxMgr.Blit(PDGG_LOGO2, gApp.Surface(), iPoint(174,3));
 
-            /*
-             * Написать где-то на экране
-             * "Эксклюзивная версия для читателей журнала Mobi (www.mobi.ru)"...
-             * Это вообще будет выполняться, false же?
-             */
-            if(false)
-                gTextComposer.TextOut(
-                        iTextComposer.FontConfig(iTextComposer.FS_MEDIUM, iDibFont.ComposeProps(cColor_White, cColor_Black, iDibFont.DecBorder ) ),
-                        gApp.Surface(), iPoint(), "Эксклюзивная версия для читателей журнала Mobi (www.mobi.ru)",
-                        iRect(0,m_Rect.y2()-15,m_Rect.w, 15), AlignCenter
-                                );
         }
 
         /**
          * Обработчик титров?
          */
+        @Override
         public boolean Process(long t) {
             // Если титры были начаты и закончились, то остановить титры
             if (m_crComposer.IsCreaditsStarted() && m_crComposer.IsCreaditsEnd())
@@ -202,7 +197,7 @@ class MenuView {
          * ???
          */
         private void iCMDH_ControlCommand(iView pView, CTRL_CMD_ID cmd, long param) {
-            uint32 uid = pView->GetUID();
+            int uid = pView.GetUID();
         }
 
         /**
@@ -279,12 +274,12 @@ class MenuView {
                 gApp.Surface().VLine(iPoint(rect.x+rect.w-1,rect.y+2), rect.y+rect.h-2, cColor_Grey);
 
                 iDibFont.ComposeProps props =
-                    iDibFont.ComposeProps(iGradient(menuBtnText,15), cColor_Black, iDibFont.DecBorder);
+                    iDibFont.ComposeProps(iGradient(menuBtnText,15), RGB.cColor_Black, iDibFont.DecBorder);
                 long state = GetButtonState();
                 if ( state & iButton.Disabled ) {
-                    props = iDibFont.ComposeProps(RGB16(128,100,0), cColor_Black, iDibFont.DecBorder);
+                    props = iDibFont.ComposeProps(new RGB(128,100,0), RGB.cColor_Black, iDibFont.DecBorder);
                 } else if ( state & iButton.Pressed ) {
-                    props = iDibFont.ComposeProps(RGB16(255,255,255), cColor_Black, iDibFont.DecBorder);
+                    props = iDibFont.ComposeProps(new RGB(255,255,255), RGB.cColor_Black, iDibFont.DecBorder);
                     gApp.Surface().Darken50Rect(GetScrRect());
                 }
                 iTextComposer.FontConfig fc(iTextComposer.FS_LARGE, props );
@@ -300,9 +295,9 @@ class MenuView {
             }
 
             /**
-             * То ли объект с текстом кнопки, то ли объект с "текстовой кнопкой".
+             * ID текста, отображаемого в кнопке.
              */
-            private TextResId m_TextKey;
+            private int m_TextKey;
         }
 
         /**
@@ -322,18 +317,13 @@ class MenuView {
          * Создание пяти кнопок
          */
         private void OnCreateDlg() {
-            boolean registered = IS_REGISTERED();
-
             iRect rc = GetDlgMetrics();
 
             rc.h = DEF_BTN_HEIGHT + 2;
             AddChild(new iMainMenuBtn(m_pMgr, this, rc, TRID_MENU_NEWGAME, 100, Visible|Enabled));
 
             rc.y += DEF_BTN_HEIGHT + BTN_DIST;
-            /*
-             * Если !registered, то кнопка загрузки игры не активна
-            */
-            AddChild(new iMainMenuBtn(m_pMgr, this, rc, TRID_MENU_LOADGAME, 101, (registered) ? (Visible|Enabled) : Visible));
+            AddChild(new iMainMenuBtn(m_pMgr, this, rc, TRID_MENU_LOADGAME, 101, Visible|Enabled));
 
             rc.y += DEF_BTN_HEIGHT + BTN_DIST;
             AddChild(new iMainMenuBtn(m_pMgr, this, rc, TRID_MENU_HIGHSCORE, 102, Visible|Enabled));

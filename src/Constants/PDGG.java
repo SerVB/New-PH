@@ -22,10 +22,10 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CONSTANT_GRAPHICS_DEFINITIONS
+ * CONSTANT_GRAPHICS_DEFINITIONS.
  */
 public class PDGG {
 
@@ -186,5 +186,5 @@ public class PDGG {
     public final static int                  PEL_SNROAD = 1562;
     public final static int                   PEL_RIVER = 1578;
     public final static int                  PEL_LRIVER = 1594;
-    
+
 }

@@ -25,32 +25,17 @@
 package Common;
 
 /**
- * CTCNSTCAP.
+ *
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class iRect {
+    public long x, y, w, h;
 
-    /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
-     */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
+    public iRect(long x, long y, long w, long h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
     }
 
-    /**
-     * Конструктор
-     * @param _siz
-     * @param _type
-     */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
+
 }

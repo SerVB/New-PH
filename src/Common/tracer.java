@@ -30,8 +30,12 @@ package Common;
  */
 public class tracer {
 
-    public static void check(boolean bb) {
-        if(!bb)
+    /**
+     * Проверяет на ошибку.
+     * @param noError true если нет ошибки, false если ошибка.
+     */
+    public static void check(boolean noError) {
+        if(!noError)
             System.err.println("tracer: Error detected!!!");
     }
 

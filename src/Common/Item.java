@@ -25,19 +25,19 @@
 package Common;
 
 /**
- *
+ * Item.
  */
 public class Item {
 
     /**
      *
      */
-    long        probability;
+    long probability;
 
     /**
      *
      */
-    iArmy       guards;
+    iArmy guards;
 
     /**
      *

@@ -24,33 +24,30 @@
 
 package Common;
 
+import java.awt.Color;
+
 /**
- * CTCNSTCAP.
+ * Хранилище цвета.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class RGB {
 
     /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
+     * Черный цвет.
      */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int cColor_Black = new Color(0, 0, 0).getRGB();
 
     /**
-     * Конструктор
-     * @param _siz
-     * @param _type
+     * Цвет.
      */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
+    public final Color color;
+
+    /**
+     * Конструктор.
+     * @param r Красный канал (0..255).
+     * @param g Зеленый канал (0..255).
+     * @param b Синий канал (0..255).
+     */
+    public RGB(int r, int g, int b) {
+        color = new Color(r, g, b);
     }
 }

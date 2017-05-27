@@ -22,35 +22,37 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CTCNSTCAP.
+ * Маска размера замка.
+ * Castle size mask.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class CTLSM {
 
     /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
+     * Small.
      */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int S = 1 << CTLS.SMALL;
 
     /**
-     * Конструктор
-     * @param _siz
-     * @param _type
+     * Medium.
      */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
+    public final static int M = 1 << CTLS.MEDIUM;
+
+    /**
+     * Large.
+     */
+    public final static int L = 1 << CTLS.LARGE;
+
+    /**
+     * Medium or Large.
+     */
+    public final static int ML = M | L;
+
+    /**
+     * All (Small or Medium or Large).
+     */
+    public final static int SML = S | M | L;
+
 }

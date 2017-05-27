@@ -22,10 +22,10 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CONSTANT_TEXT_DEFINITIONS
+ * CONSTANT_TEXT_DEFINITIONS.
  */
 public class TRID {
 

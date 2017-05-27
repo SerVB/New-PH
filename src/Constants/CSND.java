@@ -22,10 +22,10 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CONSTANT_SOUNDS_DEFINITIONS
+ * CONSTANT_SOUNDS_DEFINITIONS.
  */
 public class CSND {
 

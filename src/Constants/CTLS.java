@@ -22,35 +22,32 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CTCNSTCAP.
+ * Размер замка.
+ * Castle size / dimension.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class CTLS {
 
     /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
+     * Village.
      */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int SMALL  = 1;
 
     /**
-     * Конструктор
-     * @param _siz
-     * @param _type
+     * Town.
      */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
+    public final static int MEDIUM = 2;
+
+    /**
+     * City.
+     */
+    public final static int LARGE  = 3;
+
+    /**
+     * Count.
+     */
+    public final static int COUNT  = 4;
+
 }

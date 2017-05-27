@@ -22,35 +22,11 @@
  * SOFTWARE.
  */
 
-package Common;
+package Game;
 
 /**
- * CTCNSTCAP.
+ *
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class iMainView {
 
-    /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
-     */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
-
-    /**
-     * Конструктор
-     * @param _siz
-     * @param _type
-     */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
 }

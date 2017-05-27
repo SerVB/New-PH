@@ -25,7 +25,6 @@
 package Common;
 
 //#include "stdafx.h"
-//
 //#ifdef DO_INCLUDE_CREAT_DESC
 
 public class cm_creatures {

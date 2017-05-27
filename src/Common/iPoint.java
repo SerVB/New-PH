@@ -37,4 +37,8 @@ public class iPoint {
         this.y = y;
     }
 
+    public iPoint() {
+
+    }
+
 }

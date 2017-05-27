@@ -26,34 +26,36 @@
 package Common;
 
 /**
- * spell effect descriptor (4 x 2 = 8 bytes)
+ * Описатель эффекта заклинания.
+ * Spell effect descriptor.
+ * ( 4 x 2 = 8 bytes )
  */
 public class SPELL_EFFECT_DESC {
 
     /**
-     * Target type
+     * Target type.
      */
     public int tgtType;
 
     /**
-     * Target mode
+     * Target mode.
      */
     public int tgtMode;
 
     /**
-     * First parameter
+     * First parameter.
      */
     public int fparam;
 
     /**
-     * Second parameter
+     * Second parameter.
      */
     public long sparam;
 
     /**
      * Конструктор без двух параметров.
-     * @param tgtType
-     * @param tgtMode
+     * @param tgtType Target type.
+     * @param tgtMode Target mode.
      */
     public SPELL_EFFECT_DESC(int tgtType, int tgtMode) {
         this.tgtType = tgtType;
@@ -62,9 +64,9 @@ public class SPELL_EFFECT_DESC {
 
     /**
      * Конструктор без одного параметра.
-     * @param tgtType
-     * @param tgtMode
-     * @param fparam
+     * @param tgtType Target type.
+     * @param tgtMode Target mode.
+     * @param fparam First parameter.
      */
     public SPELL_EFFECT_DESC(int tgtType, int tgtMode, int fparam) {
         this.tgtType = tgtType;
@@ -74,10 +76,10 @@ public class SPELL_EFFECT_DESC {
 
     /**
      * Конструктор.
-     * @param tgtType
-     * @param tgtMode
-     * @param fparam
-     * @param sparam
+     * @param tgtType Target type.
+     * @param tgtMode Target mode.
+     * @param fparam First parameter.
+     * @param sparam Second parameter.
      */
     public SPELL_EFFECT_DESC(int tgtType, int tgtMode, int fparam, long sparam) {
         this.tgtType = tgtType;

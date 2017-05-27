@@ -22,16 +22,57 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * Бывшие константы HTM_. TODO: Переименовать HTM в понятное название!
+ * Тип замка.
+ * Castle type.
  */
-public class CONSTANTS_HTM {
-    public final static int KNIGHT      = 0;     // Рыцарь
-    public final static int BARBARIAN   = 1;  // Варвар
-    public final static int WIZARD      = 2;     // Волшебник
-    public final static int WARLOCK     = 3;    // Чернокнижник
-    public final static int SORCERESS   = 4;   // Колдун
-    public final static int NECROMANCER = 5; // Некромант
+public class CTLT {
+
+    /**
+     * Citadel.
+     */
+    public final static int CITADEL    = 0;
+
+    /**
+     * Stronghold.
+     */
+    public final static int STRONGHOLD = 1;
+
+    /**
+     * Tower.
+     */
+    public final static int TOWER      = 2;
+
+    /**
+     * Dungeon.
+     */
+    public final static int DUNGEON    = 3;
+
+    /**
+     * Fortress.
+     */
+    public final static int FORTRESS   = 4;
+
+    /**
+     * Necropolis.
+     */
+    public final static int NECROPOLIS = 5;
+
+    /**
+     * Random.
+     */
+    public final static int RANDOM     = 6;
+
+    /**
+     * Count.
+     */
+    public final static int COUNT      = 7;
+
+    /**
+     * Invalid.
+     */
+    public final static int INVALID    = 0xff;
+
 }

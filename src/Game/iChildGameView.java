@@ -22,35 +22,37 @@
  * SOFTWARE.
  */
 
-package Common;
+package Game;
 
 /**
- * CTCNSTCAP.
+ * Generic GameView
+ * Java не поддерживает мультинаследование!
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class iChildGameView extends iTopmostView {
+//class iChildGameView : public iTopmostView, public IViewCmdHandler
 
-    /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
-     */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
+    public iChildGameView(boolean bEternal, int cvParentView) {
+        super(gApp.ViewMgr()); // iTopmostView(&gApp.ViewMgr())
+        m_bEternal   = bEternal;
+        m_cvParentView = cvParentView;
     }
 
-    /**
-     * Конструктор
-     * @param _siz
-     * @param _type
-     */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
+    public boolean Eternal() {
+        return m_bEternal;
     }
+
+    int cvParentView() {
+        return m_cvParentView;
+    }
+
+    boolean Process(long t) {
+        return true;
+    }
+
+    void OnActivate(boolean bActivate) {
+
+    }
+
+    private int           m_cvParentView;
+    private boolean       m_bEternal;
 }

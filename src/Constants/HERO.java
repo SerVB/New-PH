@@ -22,33 +22,19 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- *
+ * Hero.
  */
-public class CTLCNST_DESC_STRUCT {
-    int         type;
-    iMineralSet price;
-    int[]       depend = new int[2];
-    CTCNSTCAP   caps;
-    long        fparam;
-    long        sparam;
+public class HERO {
 
-    CTLCNST_DESC_STRUCT(
-            int         _type,
-            iMineralSet _price,
-            int         _depend0,
-            int         _depend1,
-            CTCNSTCAP   _caps,
-            long        _fparam,
-            long        _sparam) {
-        this.type       = _type;
-        this.price      = _price;
-        this.depend[0]  = _depend0;
-        this.depend[1]  = _depend1;
-        this.caps       = _caps;
-        this.fparam     = _fparam;
-        this.sparam     = _sparam;
-    }
+    /**
+     * Направление взгляда героя, заспаунившегося в замке.
+     */
+    final static int[] ORIENT = {
+        1, // Left
+        7  // Right
+    };
+
 }

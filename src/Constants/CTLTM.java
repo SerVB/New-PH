@@ -22,35 +22,62 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CTCNSTCAP.
+ * Маска типа замка.
+ * Castle type mask.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class CTLTM {
 
     /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
+     * Citadel.
      */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int CITADEL = 1 << CTLT.CITADEL;
 
     /**
-     * Конструктор
-     * @param _siz
-     * @param _type
+     * Stronghold.
      */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
+    public final static int STRONGHOLD = 1 << CTLT.STRONGHOLD;
+
+    /**
+     * Tower.
+     */
+    public final static int TOWER = 1 << CTLT.TOWER;
+
+    /**
+     * Dungeon.
+     */
+    public final static int DUNGEON = 1 << CTLT.DUNGEON;
+
+    /**
+     * Fortress.
+     */
+    public final static int FORTRESS = 1 << CTLT.FORTRESS;
+
+    /**
+     * Necropolis.
+     */
+    public final static int NECROPOLIS = 1 << CTLT.NECROPOLIS;
+
+    /**
+     * Might.
+     */
+    public final static int MIGHT = CITADEL | STRONGHOLD;
+
+    /**
+     * Magic.
+     */
+    public final static int MAGIC = TOWER | DUNGEON;
+
+    /**
+     * Misc (Разное).
+     */
+    public final static int MISC = FORTRESS | NECROPOLIS;
+
+    /**
+     * All.
+     */
+    public final static int ALL = MIGHT | MAGIC | MISC;
+
 }
