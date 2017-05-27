@@ -22,17 +22,14 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * Predefined construction types
+ * Нужно разобраться в константах, отсортировать их, заменить значения!
  */
-public class cm_constructions {
+public class RANDOM {
 
-
-    // Ownerables "enum OWN_CNST_TYPE"
-    final static int OCNST_BASIC        = 0; // Generic Ownerable construction
-    final static int OCNST_FURTSKILL    = 1; // Modifies one or several owner's further skills
-    final static int OCNST_COUNT        = 2;
+    public final static long QUANTITY = -42;
+    public final static long VAL      = -42;
 
 }

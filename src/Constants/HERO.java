@@ -32,9 +32,58 @@ public class HERO {
     /**
      * Направление взгляда героя, заспаунившегося в замке.
      */
-    final static int[] ORIENT = {
+    public final static int[] ORIENT = {
         1, // Left
         7  // Right
     };
 
+    /**
+     * Initial hero army.
+     */
+    public final static long[][][] INITIAL_ARMY = {
+        {
+            // Knight
+            {
+                CREAT.PEASANT, 25, 50
+            },{
+                CREAT.ARCHER, 0, 7
+            }
+
+        },{
+            // Barbarian
+            {
+                CREAT.GOBLIN, 15, 30
+            },{
+                CREAT.ORC, 0, 8
+            }
+        },{
+            // Wizard
+            {
+                CREAT.HALFLING, 10, 20
+            },{
+                CREAT.BOAR, 0, 6
+            }
+        },{
+            // Warlock
+            {
+                CREAT.CENTAUR, 11, 22
+            },{
+                CREAT.GARGOYLE, 0, 6
+            }
+        },{
+            // Sorceress
+            {
+                CREAT.SPRITE, 14, 28
+            },{
+                CREAT.DWARF, 0, 8
+            }
+        },{
+            // Necromancer
+            {
+                CREAT.SKELETON, 20, 40
+            },{
+                CREAT.ZOMBIE, 0, 9
+            }
+        }
+    };
 }

@@ -83,4 +83,8 @@ public class iMineralSet {
     public void setQuant(int id, long quant) {
         this.set[id] = quant;
     }
+
+    public void Reset() {
+        throw new UnsupportedOperationException("Нужно написать!");
+    }
 }

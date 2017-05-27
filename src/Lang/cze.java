@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package Common;
+package Lang;
 
 /**
  *
  */
-public class lang_cze {
+public class cze {
 
     public final static String[] LANG_DATA_CZE = {
         "",
@@ -1696,5 +1696,5 @@ public class lang_cze {
         "",
         ""
     };
-
+    
 }

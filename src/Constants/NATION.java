@@ -22,17 +22,19 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
  *
  */
-public class cm_events {
+public class NATION {
 
-    /**
-     * Частота событий в днях
-     */
-    public final static long[] EventFreqDays = {
-        0, 1, 2, 3, 4, 5, 6, 7, 14, 21, 28
-    };
+    public final static int HIGHMEN     = 0;
+    public final static int BARBARIANS  = 1;
+    public final static int WIZARDS     = 2;
+    public final static int BEASTMEN    = 3;
+    public final static int ELVES       = 4;
+    public final static int UNDEADS     = 5;
+    public final static int NEUTRAL     = 6;
+
 }

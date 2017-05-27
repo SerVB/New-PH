@@ -25,30 +25,101 @@
 package Constants;
 
 /**
- * Predefined construction types.
- * Visitables.
- * VIS_CNST_TYPE
+ * Visitable construction type.
  */
 public class VCNST {
 
-    final static int BASIC        = 0;  // Generic Visitable construction
-    final static int STABLE       = 1;  // Adds 'n' action points (end of week to each visitor)
-    final static int GAZEBO       = 2;  // Adds 'n' exp points (once to each visitor)
-    final static int MANASOURCE   = 3;  // Adds 'n' mana points (end of week to each visitor)
-    final static int MLMODIFIER   = 4;  // Modifies morale and luck
-    final static int PSMODIFIER   = 5;  // Modifies set of primary skills by mask
-    final static int OBELISK      = 6;  // Opens one element of puzzle map
-    final static int SIGN         = 7;  // Shows message
-    final static int DWELLING     = 8;  // Dwelling
-    final static int WITCHHUT     = 9;  // Witch Hut (learn random or specified secondary skill)
-    final static int SHRINE       = 10; // Magic shrine (learn random spell of specified (1-3) level)
-    final static int TREASURY     = 11; // Resource treasury
-    final static int TELEPORT     = 12; // Teleports hero
-    final static int KEYMASTER    = 13; // Gives specified key
-    final static int KNWLTREE     = 14; // Tree of Knowledge
-    final static int WINDMILL     = 15; // Windmill (gives random ammount of random mineral one time per week)
-    final static int WEEKLYMIN    = 16; // Gives fixed ammount of specified mineral(s) one time per week
-    final static int COUNT        = 17;
+    /**
+     * Generic Visitable construction.
+     */
+    public final static int BASIC       = 0;
+
+    /**
+     * Adds 'n' action points (end of week to each visitor).
+     */
+    public final static int STABLE      = 1;
+
+    /**
+     * Adds 'n' exp points (once to each visitor).
+     */
+    public final static int GAZEBO      = 2;
+
+    /**
+     * Adds 'n' mana points (end of week to each visitor).
+     */
+    public final static int MANASOURCE  = 3;
+
+    /**
+     * Modifies morale and luck.
+     */
+    public final static int MLMODIFIER  = 4;
+
+    /**
+     * Modifies set of primary skills by mask.
+     */
+    public final static int PSMODIFIER  = 5;
+
+    /**
+     * Opens one element of puzzle map.
+     */
+    public final static int OBELISK     = 6;
+
+    /**
+     * Shows message.
+     */
+    public final static int SIGN        = 7;
+
+    /**
+     * Dwelling.
+     */
+    public final static int DWELLING    = 8;
+
+    /**
+     * Witch Hut (learn random or specified secondary skill).
+     */
+    public final static int WITCHHUT    = 9;
+
+    /**
+     * Magic shrine (learn random spell of specified (1-3) level).
+     */
+    public final static int SHRINE      = 10;
+
+    /**
+     * Resource treasury.
+     */
+    public final static int TREASURY    = 11;
+
+    /**
+     * Teleports hero.
+     */
+    public final static int TELEPORT    = 12;
+
+    /**
+     * Gives specified key.
+     */
+    public final static int KEYMASTER   = 13;
+
+    /**
+     * Tree of Knowledge.
+     */
+    public final static int KNWLTREE    = 14;
+
+    /**
+     * Windmill (gives random ammount of random mineral one time per week).
+     */
+    public final static int WINDMILL    = 15;
+
+    /**
+     * Gives fixed ammount of specified mineral(s) one time per week.
+     */
+    public final static int WEEKLYMIN   = 16;
+
+    /**
+     * Visitables count.
+     */
+    public final static int COUNT       = 17;
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////
     // Какие-то левые комменты из исхов:
@@ -67,5 +138,3 @@ public class VCNST {
     // Crypt/Graveyard
     // Corps/Skeleton
 ////////////////////////////////////////////////////////////////////////////////
-
-}

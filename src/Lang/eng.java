@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package Common;
+package Lang;
 
 /**
  * Английский язык
  */
-public class lang_eng {
+public class eng {
 
     /**
      * Хранилище английского текста

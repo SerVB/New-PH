@@ -24,6 +24,8 @@
 
 package Common;
 
+import Constants.*;
+
 /**
  * Описание группы существ.
  */
@@ -53,23 +55,27 @@ public class iCreatGroup {
      */
     public iCreatGroup(int ct, long count) {
         this.m_creatType = ct;
-        this.m_count = count;
+        this.m_count     = count;
     }
 
     /**
-     * Конструктор без параметра. Вызывает iCreatGroup(ct, RANDOM_QUANTITY).
+     * Конструктор без параметра. Вызывает iCreatGroup(ct, RANDOM.QUANTITY).
      * @param ct тип существ.
      */
     public iCreatGroup(int ct) {
-        iCreatGroup(ct, RANDOM_QUANTITY);
+//        iCreatGroup(ct, RANDOM.QUANTITY); // Не работает??
+        this.m_creatType = ct;
+        this.m_count     = RANDOM.QUANTITY;
     }
 
     /**
      * Конструктор без параметров.
-     * Вызывает iCreatGroup(CREAT_UNKNOWN, RANDOM_QUANTITY);
+     * Вызывает iCreatGroup(CREAT_UNKNOWN, RANDOM.QUANTITY);
      */
     public iCreatGroup() {
-        iCreatGroup(cm_creatures.CREAT_UNKNOWN, RANDOM_QUANTITY);
+//        iCreatGroup(CREAT.UNKNOWN); // Не работает??
+        this.m_creatType = CREAT.UNKNOWN;
+        this.m_count     = RANDOM.QUANTITY;
     }
 
     /**
@@ -84,18 +90,18 @@ public class iCreatGroup {
 
     /**
      * Заменить группу на новую без параметра.
-     * Вызывает Reset(ct, RANDOM_QUANTITY).
+     * Вызывает Reset(ct, RANDOM.QUANTITY).
      * @param ct тип существ.
      */
     public void Reset(int ct) {
-        Reset(ct, RANDOM_QUANTITY);
+        Reset(ct, RANDOM.QUANTITY);
     }
 
     /**
      * Заменить группу на новую без параметров.
      */
     public void Reset() {
-        Reset(cm_creatures.CREAT_UNKNOWN, RANDOM_QUANTITY);
+        Reset(CREAT.UNKNOWN, RANDOM.QUANTITY);
     }
 
     /**
@@ -103,7 +109,7 @@ public class iCreatGroup {
      * @return true если существует, false иначе.
      */
     public boolean IsValid() {
-        return m_creatType != cm_creatures.CREAT_UNKNOWN;
+        return m_creatType != CREAT.UNKNOWN;
     }
 
     /**
@@ -151,7 +157,7 @@ public class iCreatGroup {
      * @return мощь.
      */
     public long GroupPower() {
-        return m_count*cm_creatures.CREAT_DESC[m_creatType].pidx;
+        return m_count*CREAT.DESC[m_creatType].pidx;
     }
 
     /**
@@ -159,11 +165,11 @@ public class iCreatGroup {
      * @param weeks
      */
     public void Grow(long weeks) {
-        tracer.check(m_count != RAND_VAL);
+        tracer.check(m_count != RANDOM.VAL);
 
         while(weeks > 0) {
-            long div = CREAT_GROWTH_DIVIDER[cm_creatures.CREAT_DESC[m_creatType].level - 1];
-            if (m_count < cm_creatures.CREAT_DESC[m_creatType].growth*2) div /= 2;
+            long div = CREAT_GROWTH_DIVIDER[CREAT.DESC[m_creatType].level - 1];
+            if (m_count < CREAT.DESC[m_creatType].growth*2) div /= 2;
 
             m_count = m_count + (m_count+(div-1)) / div;
 

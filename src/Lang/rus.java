@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package Common;
+package Lang;
 
 /**
  * Русский язык
  */
-public class lang_rus {
+public class rus {
 
     /**
      * Хранилище русского текста

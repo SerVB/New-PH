@@ -24,8 +24,6 @@
 
 package Constants;
 
-import Common.CTCNSTCAP;
-import Common.cm_creatures;
 import Common.iMineralSet;
 
 /**
@@ -46,7 +44,7 @@ public class CTLCNSTS {
             new iMineralSet(200, 0, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.CITADEL),
-            cm_creatures.CREAT_PEASANT, 0
+            CREAT.PEASANT, 0
         ),
         new DESC_STRUCT(
             //
@@ -57,7 +55,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 0, 5, 0, 0, 0, 0),
             CTLCNST.DWELL_PEASNHUT, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.CITADEL),
-            cm_creatures.CREAT_ARCHER, 0
+            CREAT.ARCHER, 0
         ),
         new DESC_STRUCT(
             //
@@ -68,7 +66,7 @@ public class CTLCNSTS {
             new iMineralSet(1500, 5, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_ARCHTOWER, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.CITADEL),
-            cm_creatures.CREAT_PIKEMAN, 0
+            CREAT.PIKEMAN, 0
         ),
         new DESC_STRUCT(
             //
@@ -79,7 +77,7 @@ public class CTLCNSTS {
             new iMineralSet(2000, 10, 10, 0, 0, 0, 0),
             CTLCNST.DWELL_GHOUSE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.CITADEL),
-            cm_creatures.CREAT_SWORDSMAN, 0
+            CREAT.SWORDSMAN, 0
         ),
         new DESC_STRUCT(
             //
@@ -90,7 +88,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 0, 20, 0, 0, 0, 0),
             CTLCNST.DWELL_BARRACKS, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.CITADEL),
-            cm_creatures.CREAT_CAVALRY, 0
+            CREAT.CAVALRY, 0
         ),
         new DESC_STRUCT(
             //
@@ -101,7 +99,7 @@ public class CTLCNSTS {
             new iMineralSet(8000, 0, 20, 0, 0, 20, 0),
             CTLCNST.DWELL_BARRACKS, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.CITADEL),
-            cm_creatures.CREAT_PALADIN, 0
+            CREAT.PALADIN, 0
         ),
         new DESC_STRUCT(
             //
@@ -112,7 +110,7 @@ public class CTLCNSTS {
             new iMineralSet(300, 0, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.STRONGHOLD),
-            cm_creatures.CREAT_GOBLIN, 0
+            CREAT.GOBLIN, 0
         ),
         new DESC_STRUCT(
             //
@@ -123,7 +121,7 @@ public class CTLCNSTS {
             new iMineralSet(800, 0, 5, 0, 0, 0, 0),
             CTLCNST.DWELL_GBARRACKS, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.STRONGHOLD),
-            cm_creatures.CREAT_ORC, 0
+            CREAT.ORC, 0
         ),
         new DESC_STRUCT(
             //
@@ -134,7 +132,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 0, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_ORCTOWER, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.STRONGHOLD),
-            cm_creatures.CREAT_WOLF, 0
+            CREAT.WOLF, 0
         ),
         new DESC_STRUCT(
             //
@@ -145,7 +143,7 @@ public class CTLCNSTS {
             new iMineralSet(2000, 10, 10, 0, 0, 0, 0),
             CTLCNST.DWELL_ORCTOWER, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.STRONGHOLD),
-            cm_creatures.CREAT_OGRE, 0
+            CREAT.OGRE, 0
         ),
         new DESC_STRUCT(
             //
@@ -156,7 +154,7 @@ public class CTLCNSTS {
             new iMineralSet(4000, 20, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_OGREFORT, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.STRONGHOLD),
-            cm_creatures.CREAT_TROLL, 0
+            CREAT.TROLL, 0
         ),
         new DESC_STRUCT(
             //
@@ -167,7 +165,7 @@ public class CTLCNSTS {
             new iMineralSet(8000, 20, 0, 0, 0, 20, 0),
             CTLCNST.DWELL_WOLFDEN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.STRONGHOLD),
-            cm_creatures.CREAT_CYCLOP, 0
+            CREAT.CYCLOP, 0
         ),
         new DESC_STRUCT(
             //
@@ -178,7 +176,7 @@ public class CTLCNSTS {
             new iMineralSet(400, 0, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.TOWER),
-            cm_creatures.CREAT_HALFLING, 0
+            CREAT.HALFLING, 0
         ),
         new DESC_STRUCT(
             //
@@ -189,7 +187,7 @@ public class CTLCNSTS {
             new iMineralSet(800, 0, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_HLFHUT, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.TOWER),
-            cm_creatures.CREAT_BOAR, 0
+            CREAT.BOAR, 0
         ),
         new DESC_STRUCT(
             //
@@ -200,7 +198,7 @@ public class CTLCNSTS {
             new iMineralSet(1500, 5, 5, 5, 0, 0, 0),
             CTLCNST.DWELL_HLFHUT, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.TOWER),
-            cm_creatures.CREAT_GOLEM, 0
+            CREAT.GOLEM, 0
         ),
         new DESC_STRUCT(
             //
@@ -211,7 +209,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 0, 5, 0, 0, 0, 0),
             CTLCNST.DWELL_BOARPEN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.TOWER),
-            cm_creatures.CREAT_ROC, 0
+            CREAT.ROC, 0
         ),
         new DESC_STRUCT(
             //
@@ -222,7 +220,7 @@ public class CTLCNSTS {
             new iMineralSet(3500, 5, 5, 5, 5, 5, 5),
             CTLCNST.DWELL_GFACTORY, CTLCNST.MAGEGUILD_L1,
             new CTCNSTCAP(CTLSM.SML, CTLTM.TOWER),
-            cm_creatures.CREAT_MAGE, 0
+            CREAT.MAGE, 0
         ),
         new DESC_STRUCT(
             //
@@ -233,7 +231,7 @@ public class CTLCNSTS {
             new iMineralSet(25000, 5, 5, 0, 30, 0, 0),
             CTLCNST.DWELL_CLIFFNEST, CTLCNST.DWELL_MAGETOWER,
             new CTCNSTCAP(CTLSM.ML, CTLTM.TOWER),
-            cm_creatures.CREAT_TITAN, 0
+            CREAT.TITAN, 0
         ),
         new DESC_STRUCT(
             //
@@ -244,7 +242,7 @@ public class CTLCNSTS {
             new iMineralSet(500, 0, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.DUNGEON),
-            cm_creatures.CREAT_CENTAUR, 0
+            CREAT.CENTAUR, 0
         ),
         new DESC_STRUCT(
             //
@@ -255,7 +253,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 10, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_CENTCAVE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.DUNGEON),
-            cm_creatures.CREAT_GARGOYLE, 0
+            CREAT.GARGOYLE, 0
         ),
         new DESC_STRUCT(
             //
@@ -266,7 +264,7 @@ public class CTLCNSTS {
             new iMineralSet(2000, 0, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_CRYPT, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.DUNGEON),
-            cm_creatures.CREAT_GRIFFIN, 0
+            CREAT.GRIFFIN, 0
         ),
         new DESC_STRUCT(
             //
@@ -277,7 +275,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 0, 0, 0, 10, 0, 0),
             CTLCNST.DWELL_GRIFTOWER, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.DUNGEON),
-            cm_creatures.CREAT_MINOTAUR, 0
+            CREAT.MINOTAUR, 0
         ),
         new DESC_STRUCT(
             //
@@ -288,7 +286,7 @@ public class CTLCNSTS {
             new iMineralSet(4000, 0, 0, 0, 0, 0, 10),
             CTLCNST.DWELL_LABYRINTH, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.DUNGEON),
-            cm_creatures.CREAT_HYDRA, 0
+            CREAT.HYDRA, 0
         ),
         new DESC_STRUCT(
             //
@@ -299,7 +297,7 @@ public class CTLCNSTS {
             new iMineralSet(30000, 30, 0, 0, 0, 0, 30),
             CTLCNST.DWELL_HYDRAPOND, CTLCNST.MAGEGUILD_L2,
             new CTCNSTCAP(CTLSM.ML, CTLTM.DUNGEON),
-            cm_creatures.CREAT_BLACK_DRAGON, 0
+            CREAT.BLACK_DRAGON, 0
         ),
         new DESC_STRUCT(
             //
@@ -310,7 +308,7 @@ public class CTLCNSTS {
             new iMineralSet(500, 0, 5, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.FORTRESS),
-            cm_creatures.CREAT_SPRITE, 0
+            CREAT.SPRITE, 0
         ),
         new DESC_STRUCT(
             //
@@ -321,7 +319,7 @@ public class CTLCNSTS {
             new iMineralSet(1500, 0, 5, 0, 0, 0, 0),
             CTLCNST.DWELL_TREEHOUSE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.FORTRESS),
-            cm_creatures.CREAT_DWARF, 0
+            CREAT.DWARF, 0
         ),
         new DESC_STRUCT(
             //
@@ -332,7 +330,7 @@ public class CTLCNSTS {
             new iMineralSet(2000, 0, 10, 0, 0, 0, 0),
             CTLCNST.DWELL_DWCOTTAGE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.FORTRESS),
-            cm_creatures.CREAT_ELF, 0
+            CREAT.ELF, 0
         ),
         new DESC_STRUCT(
             //
@@ -343,7 +341,7 @@ public class CTLCNSTS {
             new iMineralSet(2500, 10, 0, 5, 0, 0, 0),
             CTLCNST.DWELL_HOMESTEAD, CTLCNST.MAGEGUILD_L1,
             new CTCNSTCAP(CTLSM.SML, CTLTM.FORTRESS),
-            cm_creatures.CREAT_DRUID, 0
+            CREAT.DRUID, 0
         ),
         new DESC_STRUCT(
             //
@@ -354,7 +352,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 0, 10, 0, 10, 0, 0),
             CTLCNST.DWELL_STONEHENGE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.FORTRESS),
-            cm_creatures.CREAT_UNICORN, 0
+            CREAT.UNICORN, 0
         ),
         new DESC_STRUCT(
             //
@@ -365,7 +363,7 @@ public class CTLCNSTS {
             new iMineralSet(10000, 30, 0, 20, 0, 0, 0),
             CTLCNST.DWELL_UNGLADE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.FORTRESS),
-            cm_creatures.CREAT_PHOENIX, 0
+            CREAT.PHOENIX, 0
         ),
         new DESC_STRUCT(
             //
@@ -376,7 +374,7 @@ public class CTLCNSTS {
             new iMineralSet(400, 0, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.NECROPOLIS),
-            cm_creatures.CREAT_SKELETON, 0
+            CREAT.SKELETON, 0
         ),
         new DESC_STRUCT(
             //
@@ -387,7 +385,7 @@ public class CTLCNSTS {
             new iMineralSet(1500, 0, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_EXCAVATION, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.NECROPOLIS),
-            cm_creatures.CREAT_ZOMBIE, 0
+            CREAT.ZOMBIE, 0
         ),
         new DESC_STRUCT(
             //
@@ -398,7 +396,7 @@ public class CTLCNSTS {
             new iMineralSet(2000, 10, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_GRAVEYARD, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.NECROPOLIS),
-            cm_creatures.CREAT_MUMMY, 0
+            CREAT.MUMMY, 0
         ),
         new DESC_STRUCT(
             //
@@ -409,7 +407,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 0, 10, 0, 5, 0, 0),
             CTLCNST.DWELL_PYRAMID, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.NECROPOLIS),
-            cm_creatures.CREAT_VAMPIRE, 0
+            CREAT.VAMPIRE, 0
         ),
         new DESC_STRUCT(
             //
@@ -420,7 +418,7 @@ public class CTLCNSTS {
             new iMineralSet(4000, 0, 10, 0, 0, 0, 5),
             CTLCNST.DWELL_MANSION, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.NECROPOLIS),
-            cm_creatures.CREAT_LICH, 0
+            CREAT.LICH, 0
         ),
         new DESC_STRUCT(
             //
@@ -431,7 +429,7 @@ public class CTLCNSTS {
             new iMineralSet(10000, 10, 10, 20, 0, 0, 0),
             CTLCNST.DWELL_MAUSOLEUM, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.NECROPOLIS),
-            cm_creatures.CREAT_BONE_DRAGON, 0
+            CREAT.BONE_DRAGON, 0
         ),
         new DESC_STRUCT(
             //
@@ -530,7 +528,7 @@ public class CTLCNSTS {
             new iMineralSet(2500, 0, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.M, CTLTM.ALL),
-            MINERAL_GOLD, 500
+            MINERAL.GOLD, 500
         ),
         new DESC_STRUCT(
             //
@@ -541,7 +539,7 @@ public class CTLCNSTS {
             new iMineralSet(5000, 0, 0, 0, 0, 0, 0),
             CTLCNST.MAGEGUILD_L1, CTLCNST.MARKETPLACE,
             new CTCNSTCAP(CTLSM.L, CTLTM.ALL),
-            MINERAL_GOLD, 1500
+            MINERAL.GOLD, 1500
         ),
         new DESC_STRUCT(
             //
@@ -552,7 +550,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 5, 0, 0, 0, 0, 0),
             CTLCNST.MARKETPLACE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.MIGHT | CTLTM.MISC),
-            MINERAL_ORE, 1
+            MINERAL.ORE, 1
         ),
         new DESC_STRUCT(
             //
@@ -563,7 +561,7 @@ public class CTLCNSTS {
             new iMineralSet(3000, 0, 5, 0, 0, 0, 0),
             CTLCNST.MARKETPLACE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.SML, CTLTM.MIGHT | CTLTM.MISC),
-            MINERAL_WOOD, 1
+            MINERAL.WOOD, 1
         ),
         new DESC_STRUCT(
             //
@@ -574,7 +572,7 @@ public class CTLCNSTS {
             new iMineralSet(5000, 5, 5, 0, 0, 0, 0),
             CTLCNST.MARKETPLACE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.MISC),
-            MINERAL_MERCURY, 1
+            MINERAL.MERCURY, 1
         ),
         new DESC_STRUCT(
             //
@@ -585,7 +583,7 @@ public class CTLCNSTS {
             new iMineralSet(5000, 5, 5, 0, 0, 0, 0),
             CTLCNST.MARKETPLACE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.TOWER),
-            MINERAL_GEMS, 1
+            MINERAL.GEMS, 1
         ),
         new DESC_STRUCT(
             //
@@ -596,7 +594,7 @@ public class CTLCNSTS {
             new iMineralSet(5000, 5, 5, 0, 0, 0, 0),
             CTLCNST.MARKETPLACE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.MIGHT),
-            MINERAL_CRYSTAL, 1
+            MINERAL.CRYSTAL, 1
         ),
         new DESC_STRUCT(
             //
@@ -607,7 +605,7 @@ public class CTLCNSTS {
             new iMineralSet(5000, 5, 5, 0, 0, 0, 0),
             CTLCNST.MARKETPLACE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.DUNGEON),
-            MINERAL_SULFUR, 1
+            MINERAL.SULFUR, 1
         ),
         new DESC_STRUCT(
             //
@@ -662,7 +660,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 0, 5, 0, 0, 0, 0),
             CTLCNST.DWELL_ARCHTOWER, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.CITADEL),
-            CTLCNST.DWELL_ARCHTOWER, cm_creatures.CREAT_DESC[cm_creatures.CREAT_ARCHER].growth
+            CTLCNST.DWELL_ARCHTOWER, CREAT.DESC[CREAT.ARCHER].growth
         ),
         new DESC_STRUCT(
             //
@@ -673,7 +671,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 5, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_ORCTOWER, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.STRONGHOLD),
-            CTLCNST.DWELL_ORCTOWER, cm_creatures.CREAT_DESC[cm_creatures.CREAT_ORC].growth
+            CTLCNST.DWELL_ORCTOWER, CREAT.DESC[CREAT.ORC].growth
         ),
         new DESC_STRUCT(
             //
@@ -684,7 +682,7 @@ public class CTLCNSTS {
             new iMineralSet(1500, 0, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_BOARPEN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.TOWER),
-            CTLCNST.DWELL_BOARPEN, cm_creatures.CREAT_DESC[cm_creatures.CREAT_BOAR].growth
+            CTLCNST.DWELL_BOARPEN, CREAT.DESC[CREAT.BOAR].growth
         ),
         new DESC_STRUCT(
             //
@@ -695,7 +693,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 5, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_CENTCAVE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.DUNGEON),
-            CTLCNST.DWELL_CENTCAVE, cm_creatures.CREAT_DESC[cm_creatures.CREAT_CENTAUR].growth
+            CTLCNST.DWELL_CENTCAVE, CREAT.DESC[CREAT.CENTAUR].growth
         ),
         new DESC_STRUCT(
             //
@@ -706,7 +704,7 @@ public class CTLCNSTS {
             new iMineralSet(500, 5, 5, 0, 0, 0, 0),
             CTLCNST.DWELL_DWCOTTAGE, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.FORTRESS),
-            CTLCNST.DWELL_DWCOTTAGE, cm_creatures.CREAT_DESC[cm_creatures.CREAT_DWARF].growth
+            CTLCNST.DWELL_DWCOTTAGE, CREAT.DESC[CREAT.DWARF].growth
         ),
         new DESC_STRUCT(
             //
@@ -717,7 +715,7 @@ public class CTLCNSTS {
             new iMineralSet(1500, 0, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_EXCAVATION, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.NECROPOLIS),
-            CTLCNST.DWELL_EXCAVATION, cm_creatures.CREAT_DESC[cm_creatures.CREAT_SKELETON].growth
+            CTLCNST.DWELL_EXCAVATION, CREAT.DESC[CREAT.SKELETON].growth
         ),
         new DESC_STRUCT(
             //
@@ -750,7 +748,7 @@ public class CTLCNSTS {
             new iMineralSet(1000, 5, 5, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.STRONGHOLD),
-            FSK_ATTACK, +1
+            FSK.ATTACK, +1
         ),
         new DESC_STRUCT(
             //
@@ -761,7 +759,7 @@ public class CTLCNSTS {
             new iMineralSet(2500, 10, 0, 0, 0, 0, 0),
             CTLCNST.DWELL_OGREFORT, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.STRONGHOLD),
-            CTLCNST.DWELL_OGREFORT, cm_creatures.CREAT_DESC[cm_creatures.CREAT_OGRE].growth
+            CTLCNST.DWELL_OGREFORT, CREAT.DESC[CREAT.OGRE].growth
         ),
         new DESC_STRUCT(
             //
@@ -772,7 +770,7 @@ public class CTLCNSTS {
             new iMineralSet(2000, 5, 0, 0, 0, 0, 0),
             CTLCNST.MAGEGUILD_L1, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.TOWER),
-            FSK_KNOWLEDGE, +1
+            FSK.KNOWLEDGE, +1
         ),
         new DESC_STRUCT(
             //
@@ -794,7 +792,7 @@ public class CTLCNSTS {
             new iMineralSet(5000, 5, 0, 0, 0, 0, 0),
             CTLCNST.TAVERN, CTLCNST.INVALID,
             new CTCNSTCAP(CTLSM.ML, CTLTM.DUNGEON),
-            MINERAL_GOLD, 1000
+            MINERAL.GOLD, 1000
         ),
         new DESC_STRUCT(
             //
@@ -856,7 +854,7 @@ public class CTLCNSTS {
     /**
      * Castle construction descriptor structure.
      */
-    class DESC_STRUCT {
+    public class DESC_STRUCT {
 
         /**
          * Тип.
@@ -916,4 +914,36 @@ public class CTLCNSTS {
             this.sparam     = _sparam;
         }
     }
+
+    /**
+     * CTCNSTCAP.
+     */
+    public class CTCNSTCAP {
+        long	siz;
+        long	type;
+
+        /**
+         *
+         * @param _type
+         * @param _siz
+         * @return
+         */
+        boolean Support(int _type, int _siz) {
+                return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
+        }
+
+        /**
+         * Конструктор
+         * @param _siz
+         * @param _type
+         */
+        public CTCNSTCAP(
+                long _siz,
+                long _type
+        ) {
+            this.siz = _siz;
+            this.type = _type;
+        }
+    }
+
 }

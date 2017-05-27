@@ -24,6 +24,8 @@
 
 package Common;
 
+import Constants.*;
+
 /**
  * Армия
  */
@@ -46,7 +48,7 @@ public class iArmy {
      * @return true если можно, false если нельзя
      */
     public boolean CanAddGroup(int ct) {
-        tracer.check(ct != cm_creatures.CREAT_UNKNOWN);
+        tracer.check(ct != CREAT.UNKNOWN);
 
         for(int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
             if (!m_creatGroups[xx].IsValid() ||  m_creatGroups[xx].Type() == ct)
@@ -64,7 +66,7 @@ public class iArmy {
     public boolean AddGroup(int ct, long count) {
         int firstEmpty = -1;
 
-        tracer.check(ct != cm_creatures.CREAT_UNKNOWN && count != RANDOM_QUANTITY);
+        tracer.check(ct != CREAT.UNKNOWN && count != RANDOM.QUANTITY);
 
         // first try to find similar type group
         for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx){
@@ -93,11 +95,11 @@ public class iArmy {
      * @return скорость.
      */
     public int SlowestSpeed() {
-        int res = cm_creatures.SPEED_MAX;
+        int res = SPEED.MAX;
 
         for (iCreatGroup cg : m_creatGroups)
-            if (cg.IsValid() && cm_creatures.CREAT_DESC[cg.Type()].speed < res)
-                res = cm_creatures.CREAT_DESC[cg.Type()].speed;
+            if (cg.IsValid() && CREAT.DESC[cg.Type()].speed < res)
+                res = CREAT.DESC[cg.Type()].speed;
 
         return res;
     }
@@ -110,9 +112,9 @@ public class iArmy {
         int idx = -1;
 
         for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
-            if (m_creatGroups[xx].Type() != cm_creatures.CREAT_UNKNOWN &&
+            if (m_creatGroups[xx].Type() != CREAT.UNKNOWN &&
                 (idx == -1 ||
-                 cm_creatures.CREAT_DESC[m_creatGroups[idx].Type()].pidx > cm_creatures.CREAT_DESC[m_creatGroups[xx].Type()].pidx)) {
+                 CREAT.DESC[m_creatGroups[idx].Type()].pidx > CREAT.DESC[m_creatGroups[xx].Type()].pidx)) {
                 idx=xx;
             }
         }
@@ -130,7 +132,7 @@ public class iArmy {
         int idx = -1;
 
         for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
-            if (m_creatGroups[xx].Type() != cm_creatures.CREAT_UNKNOWN &&
+            if (m_creatGroups[xx].Type() != CREAT.UNKNOWN &&
                 ( idx == -1 || m_creatGroups[idx].GroupPower() > m_creatGroups[xx].GroupPower() )) {
 
                 idx = xx;
@@ -151,7 +153,7 @@ public class iArmy {
 
         for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
             for (int yy = xx + 1; yy < ARMY_PLACES_COUNT; ++yy) {
-                if (m_creatGroups[xx].Type() != cm_creatures.CREAT_UNKNOWN &&
+                if (m_creatGroups[xx].Type() != CREAT.UNKNOWN &&
                     m_creatGroups[xx].Type() == m_creatGroups[yy].Type()) {
 
                     m_creatGroups[xx].addCount(m_creatGroups[yy].Count());
@@ -199,18 +201,18 @@ public class iArmy {
      * @return тип существа.
      */
     public int StrongestCreature() {
-        int ct = cm_creatures.CREAT_UNKNOWN;
+        int ct = CREAT.UNKNOWN;
         long pidx = 0;
 
         for (iCreatGroup cg : m_creatGroups) {
-            if (cg.Type() != cm_creatures.CREAT_UNKNOWN && cm_creatures.CREAT_DESC[cg.Type()].pidx > pidx) {
+            if (cg.Type() != CREAT.UNKNOWN && CREAT.DESC[cg.Type()].pidx > pidx) {
 
-                pidx = cm_creatures.CREAT_DESC[cg.Type()].pidx;
+                pidx = CREAT.DESC[cg.Type()].pidx;
                 ct = cg.Type();
             }
         }
 
-        tracer.check(ct != cm_creatures.CREAT_UNKNOWN);
+        tracer.check(ct != CREAT.UNKNOWN);
 
         return ct;
     }
@@ -226,14 +228,14 @@ public class iArmy {
         long nat_mask = 0;
 
         for (iCreatGroup cg : m_creatGroups) {
-            if (cg.Type() != cm_creatures.CREAT_UNKNOWN &&
-                ( nat_mask & (1<<cm_creatures.CREAT_DESC[cg.Type()].nation)) == 0 ) {
+            if (cg.Type() != CREAT.UNKNOWN &&
+                ( nat_mask & (1<<CREAT.DESC[cg.Type()].nation)) == 0 ) {
 
                 nations++;
 
-                nat_mask |= ( 1 << cm_creatures.CREAT_DESC[cg.Type()].nation );
+                nat_mask |= ( 1 << CREAT.DESC[cg.Type()].nation );
 
-                if (cm_creatures.CREAT_DESC[cg.Type()].nation == NATION_UNDEADS)
+                if (CREAT.DESC[cg.Type()].nation == NATION.UNDEADS)
                     bUndeads = true;
             }
         }
@@ -261,7 +263,7 @@ public class iArmy {
      */
     public boolean Empty() {
         for (iCreatGroup cg : m_creatGroups)
-            if (cg.Type() != cm_creatures.CREAT_UNKNOWN)
+            if (cg.Type() != CREAT.UNKNOWN)
                 return false;
 
         return true;
@@ -286,7 +288,7 @@ public class iArmy {
      */
     public iCreatGroup FirstGroup() {
         for (iCreatGroup cg : m_creatGroups)
-            if (cg.Type() != cm_creatures.CREAT_UNKNOWN)
+            if (cg.Type() != CREAT.UNKNOWN)
                 return cg;
 
         tracer.check(0);
@@ -301,7 +303,7 @@ public class iArmy {
         int cnt = 0;
 
         for (iCreatGroup cg : m_creatGroups)
-            if (cg.Type() != cm_creatures.CREAT_UNKNOWN)
+            if (cg.Type() != CREAT.UNKNOWN)
                 ++cnt;
 
         return cnt;
@@ -315,7 +317,7 @@ public class iArmy {
         long res = 0;
 
         for (iCreatGroup cg : m_creatGroups)
-            if (cg.Type() != cm_creatures.CREAT_UNKNOWN)
+            if (cg.Type() != CREAT.UNKNOWN)
                 res += cg.GroupPower();
 
         return res;

@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package Common;
+package Lang;
 
 /**
  *
  */
-public class lang_slov {
+public class slov {
 
     public final static String[] LANG_DATA_SLOV = {
         "",

@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package Common;
+package Lang;
 
 /**
  *
  */
-public class lang_pl {
+public class pl {
 
     public final static String[] LANG_DATA_PL = {
         "",

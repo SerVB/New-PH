@@ -24,8 +24,8 @@
 
 package Common;
 
-//#include "stdafx.h"
-//#include "serialize.h"
+
+import Constants.*;
 
 /**
  * Time-Events
@@ -53,7 +53,7 @@ public class iTimeEvent {
     private iMineralSet m_minerals;
 
     /**
-     * Конструктор
+     * Конструктор.
      * @param name
      * @param text
      * @param playerMask
@@ -74,7 +74,7 @@ public class iTimeEvent {
      * Конструктор без параметров
      */
     public iTimeEvent() {
-        this.m_playerMask = PIM_ALL;
+        this.m_playerMask = PIM.ALL;
         this.m_fTime = 1;
         this.m_repTime = EFREQ_NEVER;
 
@@ -98,6 +98,6 @@ public class iTimeEvent {
         else if (m_repTime == EFREQ_NEVER)
             return false;
         else
-            return ( (curDay-m_fTime) % cm_events.EventFreqDays[m_repTime] ) == 0;
+            return ( (curDay-m_fTime) % EVENT.FREQ_DAYS[m_repTime] ) == 0;
     }
 }

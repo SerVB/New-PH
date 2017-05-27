@@ -24,7 +24,6 @@
 
 package Constants;
 
-import Common.cm_magic;
 import Common.iSpellFilter;
 
 /**
@@ -56,42 +55,42 @@ public class CTL {
     iSpellFilter[][] MAGE_GUILD_FILTER = {
         {
             // Citadel
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIRST,  cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_SECOND, cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_THIRD,  cm_magic.MST_MASK_GOOD)
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_SECOND, MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_THIRD,  MST.MASK_GOOD)
         },{
             // Stronghold
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIRST,  cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_SECOND, cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_THIRD,  cm_magic.MST_MASK_EVIL)
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_SECOND, MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_THIRD,  MST.MASK_EVIL)
         },{
             // Tower
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIRST,  cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_SECOND, cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_THIRD,  cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FOURTH, cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIFTH,  cm_magic.MST_MASK_GOOD)
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_SECOND, MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_THIRD,  MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FOURTH, MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIFTH,  MST.MASK_GOOD)
         },{
             // Dungeon
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIRST,  cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_SECOND, cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_THIRD,  cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FOURTH, cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIFTH,  cm_magic.MST_MASK_EVIL)
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_SECOND, MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_THIRD,  MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FOURTH, MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIFTH,  MST.MASK_EVIL)
         },{
             // Fortress
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIRST,  cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_SECOND, cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_THIRD,  cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FOURTH, cm_magic.MST_MASK_GOOD),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIFTH,  cm_magic.MST_MASK_GOOD)
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_SECOND, MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_THIRD,  MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FOURTH, MST.MASK_GOOD),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIFTH,  MST.MASK_GOOD)
         },{
             // Necropolis
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIRST,  cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_SECOND, cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_THIRD,  cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FOURTH, cm_magic.MST_MASK_EVIL),
-            new iSpellFilter(cm_magic.SPT_MASK_ALL, cm_magic.SPL_MASK_FIFTH,  cm_magic.MST_MASK_EVIL)
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_SECOND, MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_THIRD,  MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FOURTH, MST.MASK_EVIL),
+            new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIFTH,  MST.MASK_EVIL)
         }
     };
 

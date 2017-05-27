@@ -22,35 +22,19 @@
  * SOFTWARE.
  */
 
-package Common;
+package Constants;
 
 /**
- * CTCNSTCAP.
+ * Gold, Ore, Wood, Mercury, Gems, Crystal, Sulfur.
  */
-public class CTCNSTCAP {
-    long	siz;
-    long	type;
+public class MINERAL {
 
-    /**
-     *
-     * @param _type
-     * @param _siz
-     * @return
-     */
-    boolean Support(int _type, int _siz) {
-            return (type & (1<<_type)) > 0 && (siz & (1<<_siz)) > 0;
-    }
+    public final static int GOLD    = 0;
+    public final static int ORE     = 1;
+    public final static int WOOD    = 2;
+    public final static int MERCURY = 3;
+    public final static int GEMS    = 4;
+    public final static int CRYSTAL = 5;
+    public final static int SULFUR  = 6;
 
-    /**
-     * Конструктор
-     * @param _siz
-     * @param _type
-     */
-    public CTCNSTCAP(
-            long _siz,
-            long _type
-    ) {
-        this.siz = _siz;
-        this.type = _type;
-    }
 }
