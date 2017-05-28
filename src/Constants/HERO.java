@@ -24,6 +24,8 @@
 
 package Constants;
 
+import Common.iPoint;
+
 /**
  * Hero.
  */
@@ -85,5 +87,130 @@ public class HERO {
                 CREAT.ZOMBIE, 0, 9
             }
         }
+    };
+
+    /**
+     * Типы идеологий героев.
+     */
+    public final static int[] TYPE_IDEOLOGY = {
+        IDEOLOGY.GOOD,
+        IDEOLOGY.EVIL,
+        IDEOLOGY.GOOD,
+        IDEOLOGY.EVIL,
+        IDEOLOGY.GOOD,
+        IDEOLOGY.EVIL
+    };
+
+    /**
+     * Доступные для обвеса артефактами места героя (голова, руки, ноги и т.д.).
+     */
+    public final static int[] ART_CELL_ASSIGN = {
+        ART_ASSIGN.HEAD,
+        ART_ASSIGN.NECK,
+        ART_ASSIGN.TORSO,
+        ART_ASSIGN.HANDS,
+        ART_ASSIGN.HANDS,
+        ART_ASSIGN.FINGERS,
+        ART_ASSIGN.FINGERS,
+        ART_ASSIGN.SHOULDERS,
+        ART_ASSIGN.LEGS,
+        ART_ASSIGN.FEET,
+        ART_ASSIGN.MISC,
+        ART_ASSIGN.MISC,
+        ART_ASSIGN.MISC,
+        ART_ASSIGN.MISC
+    };
+
+    /**
+     * Вероятность получения основного навыка при новом уровне в процентах.
+     */
+    public final static long[][] PRIM_SKILL = {
+        {25,50,5,20},    // Knight
+        {60,25,5,10},    // Barbarian
+        {10,10,40,40},   // Wizard
+        {15,10,45,30},   // Warlock
+        {15,15,30,40},   // Sorceress
+        {15,15,40,30}    // Necromancer
+    };
+
+    /**
+     * Вероятность получения вторичного навыка при новом уровне. Значение / сумму * 100%.
+     * Досчитать суммы!
+     */
+    public final static long[][] SEC_SKILL = {
+        {
+            // Knight (сумма = 50)
+            2,6,6,4,        // Estates, Leadership, Luck, Diplomacy
+            1,1,0,2,        // Air, Earth, Fire, Water
+            1,0,0,1,2,0,4,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,4,3,            // Scouting, Logistics, Pathfinding,
+            3,3,2,4            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Barbarian (сумма = 48)
+            2,4,4,3,        // Estates, Leadership, Luck, Diplomacy
+            1,1,2,0,        // Air, Earth, Fire, Water
+            1,0,0,1,1,0,2,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,3,5,            // Scouting, Logistics, Pathfinding,
+            4,3,5,3            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Wizard (сумма = ...)
+            2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,0,5,        // Air, Earth, Fire, Water
+            6,0,4,2,2,3,5,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,2,2,            // Scouting, Logistics, Pathfinding,
+            0,0,0,0            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Warlock (сумма = ...)
+            2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,5,0,        // Air, Earth, Fire, Water
+            4,1,4,3,2,5,4,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            4,2,3,            // Scouting, Logistics, Pathfinding,
+            0,0,0,0            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Sorceress (сумма = ...)
+            2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,0,5,        // Air, Earth, Fire, Water
+            6,0,4,2,2,3,5,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,2,2,            // Scouting, Logistics, Pathfinding,
+            1,1,0,0            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Necromancer (сумма = ...)
+            2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,5,0,        // Air, Earth, Fire, Water
+            4,5,4,3,2,5,4,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            4,2,3,            // Scouting, Logistics, Pathfinding,
+            1,1,0,0            // Archery, Ballistics, Offence, Armorer
+        }
+    };
+
+    /**
+     * 72 штуки каких-то точек.
+     */
+    public final static iPoint[]FLAG_ANCHOR = {
+        new iPoint(4,7), new iPoint(4,5), new iPoint(4,4), new iPoint(4,5), new iPoint(4,7),
+        new iPoint(4,6), new iPoint(4,4), new iPoint(4,5), new iPoint(4,6),
+
+        new iPoint(8,7), new iPoint(9,7), new iPoint(8,7), new iPoint(9,8), new iPoint(10,8),
+        new iPoint(10,7), new iPoint(9,7), new iPoint(8,7), new iPoint(7,7),
+
+        new iPoint(11,8), new iPoint(12,8), new iPoint(11,8), new iPoint(10,8), new iPoint(10,9),
+        new iPoint(9,9), new iPoint(10,8), new iPoint(11,8), new iPoint(10,8),
+
+        new iPoint(13,7), new iPoint(14,7), new iPoint(13,8), new iPoint(11,9), new iPoint(13,9),
+        new iPoint(14,10), new iPoint(14,9), new iPoint(14,8), new iPoint(12,7),
+
+        //
+        new iPoint(32,8), new iPoint(32,9), new iPoint(32,10), new iPoint(32,8), new iPoint(32,9),
+        new iPoint(32,10), new iPoint(32,11), new iPoint(32,8), new iPoint(32,9),
+
+        //
+        new iPoint(20,7), new iPoint(19,7), new iPoint(20,8), new iPoint(19,9), new iPoint(20,9),
+        new iPoint(19,10), new iPoint(19,9), new iPoint(19,8), new iPoint(22,7),
+
+        new iPoint(22,8), new iPoint(21,8), new iPoint(22,8), new iPoint(23,8), new iPoint(23,9),
+        new iPoint(24,9), new iPoint(23,8), new iPoint(22,8), new iPoint(23,8),
+
+        new iPoint(25,7), new iPoint(24,7), new iPoint(25,7), new iPoint(24,8), new iPoint(23,8),
+        new iPoint(23,7), new iPoint(24,7), new iPoint(25,7), new iPoint(26,7),
     };
 }

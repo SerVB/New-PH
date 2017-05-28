@@ -32,15 +32,10 @@ import Constants.*;
 public class iArmy {
 
     /**
-     * Максимальное количество групп в армии.
-     */
-    public final static int ARMY_PLACES_COUNT = 7;
-
-    /**
      * Хранилище всех групп существ армии.
      * Нужно инициализировать!
      */
-    private iCreatGroup[] m_creatGroups = new iCreatGroup[ARMY_PLACES_COUNT];
+    private iCreatGroup[] m_creatGroups = new iCreatGroup[ARMY.PLACES_COUNT];
 
     /**
      * Можно ли добавить группу существ данного типа?
@@ -50,10 +45,11 @@ public class iArmy {
     public boolean CanAddGroup(int ct) {
         tracer.check(ct != CREAT.UNKNOWN);
 
-        for(int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
+        for(int xx = 0; xx < ARMY.PLACES_COUNT; ++xx) {
             if (!m_creatGroups[xx].IsValid() ||  m_creatGroups[xx].Type() == ct)
                 return true;
         }
+        
         return false;
     }
 
@@ -69,7 +65,7 @@ public class iArmy {
         tracer.check(ct != CREAT.UNKNOWN && count != RANDOM.QUANTITY);
 
         // first try to find similar type group
-        for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx){
+        for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx){
             if (m_creatGroups[xx].Type() == ct) {
                 m_creatGroups[xx].addCount(count);
 
@@ -111,7 +107,7 @@ public class iArmy {
     public iCreatGroup WeakestCreatures() {
         int idx = -1;
 
-        for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
+        for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx) {
             if (m_creatGroups[xx].Type() != CREAT.UNKNOWN &&
                 (idx == -1 ||
                  CREAT.DESC[m_creatGroups[idx].Type()].pidx > CREAT.DESC[m_creatGroups[xx].Type()].pidx)) {
@@ -131,7 +127,7 @@ public class iArmy {
     public iCreatGroup WeakestGroup() {
         int idx = -1;
 
-        for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
+        for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx) {
             if (m_creatGroups[xx].Type() != CREAT.UNKNOWN &&
                 ( idx == -1 || m_creatGroups[idx].GroupPower() > m_creatGroups[xx].GroupPower() )) {
 
@@ -151,8 +147,8 @@ public class iArmy {
     public boolean JoinGroups() {
         boolean bJoined = false;
 
-        for (int xx = 0; xx < ARMY_PLACES_COUNT; ++xx) {
-            for (int yy = xx + 1; yy < ARMY_PLACES_COUNT; ++yy) {
+        for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx) {
+            for (int yy = xx + 1; yy < ARMY.PLACES_COUNT; ++yy) {
                 if (m_creatGroups[xx].Type() != CREAT.UNKNOWN &&
                     m_creatGroups[xx].Type() == m_creatGroups[yy].Type()) {
 
@@ -190,7 +186,7 @@ public class iArmy {
      * @param count количество.
      */
     public void SetGroup(int idx, int ct, long count) {
-        tracer.check(idx < ARMY_PLACES_COUNT );
+        tracer.check(idx < ARMY.PLACES_COUNT );
 
         m_creatGroups[idx].setType(ct);
         m_creatGroups[idx].setCount(count);
@@ -332,7 +328,7 @@ public class iArmy {
 //    public inline const iCreatGroup& operator[](uint32 idx) const { return At(idx); }
 //    public inline iCreatGroup& operator[](uint32 idx) { return At(idx); }
 
-        tracer.check(idx < ARMY_PLACES_COUNT );
+        tracer.check(idx < ARMY.PLACES_COUNT );
 
         return m_creatGroups[idx];
     }
@@ -344,6 +340,6 @@ public class iArmy {
     public void set(iArmy other) {
 //    public void operator= (const iArmy& other)    { memcpy(m_creatGroups, other.m_creatGroups, sizeof(m_creatGroups)); }
 
-        System.arraycopy(other.m_creatGroups, 0, this.m_creatGroups, 0, ARMY_PLACES_COUNT);
+        System.arraycopy(other.m_creatGroups, 0, this.m_creatGroups, 0, ARMY.PLACES_COUNT);
     }
 }

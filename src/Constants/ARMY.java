@@ -25,23 +25,13 @@
 package Constants;
 
 /**
- * Gold, Ore, Wood, Mercury, Gems, Crystal, Sulfur.
+ *
  */
-public class MINERAL {
-
-    public final static int GOLD    = 0;
-    public final static int ORE     = 1;
-    public final static int WOOD    = 2;
-    public final static int MERCURY = 3;
-    public final static int GEMS    = 4;
-    public final static int CRYSTAL = 5;
-    public final static int SULFUR  = 6;
+public class ARMY {
 
     /**
-     * Делитель материалов.
+     * Максимальное количество групп в армии.
      */
-    final static long[] DIVIDER = {
-        1000, 2, 2, 1, 1, 1, 1
-    };
+    public final static int PLACES_COUNT = 7;
 
 }

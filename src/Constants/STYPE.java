@@ -25,23 +25,21 @@
 package Constants;
 
 /**
- * Gold, Ore, Wood, Mercury, Gems, Crystal, Sulfur.
+ * Surface type.
  */
-public class MINERAL {
+public class STYPE {
 
-    public final static int GOLD    = 0;
-    public final static int ORE     = 1;
-    public final static int WOOD    = 2;
-    public final static int MERCURY = 3;
-    public final static int GEMS    = 4;
-    public final static int CRYSTAL = 5;
-    public final static int SULFUR  = 6;
-
-    /**
-     * Делитель материалов.
-     */
-    final static long[] DIVIDER = {
-        1000, 2, 2, 1, 1, 1, 1
-    };
+    public final static int WATER       = 0;
+    public final static int SAND        = 1;
+    public final static int DIRT        = 2;
+    public final static int GRASS       = 3;
+    public final static int SWAMP       = 4;
+    public final static int LAVA        = 5;
+    public final static int WASTELAND   = 6;
+    public final static int DESERT      = 7;
+    public final static int SNOW        = 8;
+    public final static int NDESERT     = 9;
+    public final static int PAVEMENT    = 10;
+    public final static int NWASTELAND  = 11;
 
 }

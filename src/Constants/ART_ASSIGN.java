@@ -25,23 +25,18 @@
 package Constants;
 
 /**
- * Gold, Ore, Wood, Mercury, Gems, Crystal, Sulfur.
+ * Artifact assignment.
  */
-public class MINERAL {
+public class ART_ASSIGN {
 
-    public final static int GOLD    = 0;
-    public final static int ORE     = 1;
-    public final static int WOOD    = 2;
-    public final static int MERCURY = 3;
-    public final static int GEMS    = 4;
-    public final static int CRYSTAL = 5;
-    public final static int SULFUR  = 6;
-
-    /**
-     * Делитель материалов.
-     */
-    final static long[] DIVIDER = {
-        1000, 2, 2, 1, 1, 1, 1
-    };
+    public final static int HEAD        = 0;
+    public final static int NECK        = 1;
+    public final static int TORSO       = 2;
+    public final static int HANDS       = 3; // x2
+    public final static int FINGERS     = 4; // x2
+    public final static int SHOULDERS   = 5;
+    public final static int LEGS        = 6;
+    public final static int FEET        = 7;
+    public final static int MISC        = 8; // x4
 
 }

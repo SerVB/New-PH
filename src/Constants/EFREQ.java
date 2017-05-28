@@ -25,23 +25,25 @@
 package Constants;
 
 /**
- * Gold, Ore, Wood, Mercury, Gems, Crystal, Sulfur.
+ * Event frequency.
  */
-public class MINERAL {
+public class EFREQ {
 
-    public final static int GOLD    = 0;
-    public final static int ORE     = 1;
-    public final static int WOOD    = 2;
-    public final static int MERCURY = 3;
-    public final static int GEMS    = 4;
-    public final static int CRYSTAL = 5;
-    public final static int SULFUR  = 6;
+    public final static int      NEVER  = 0;
 
-    /**
-     * Делитель материалов.
-     */
-    final static long[] DIVIDER = {
-        1000, 2, 2, 1, 1, 1, 1
-    };
+    public final static int   ONE_DAY   = 1;
+    public final static int   TWO_DAYS  = 2;
+    public final static int THREE_DAYS  = 3;
+    public final static int  FOUR_DAYS  = 4;
+    public final static int  FIVE_DAYS  = 5;
+    public final static int   SIX_DAYS  = 6;
+
+    public final static int   ONE_WEEK  = 7;
+    public final static int   TWO_WEEKS = 8;
+    public final static int THREE_WEEKS = 9;
+
+    public final static int   ONE_MONTH = 10;
+
+    public final static int      COUNT  = 11;
 
 }

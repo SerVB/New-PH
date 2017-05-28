@@ -29,12 +29,25 @@ package Constants;
  */
 public class NATION {
 
-    public final static int HIGHMEN     = 0;
-    public final static int BARBARIANS  = 1;
-    public final static int WIZARDS     = 2;
-    public final static int BEASTMEN    = 3;
-    public final static int ELVES       = 4;
-    public final static int UNDEADS     = 5;
-    public final static int NEUTRAL     = 6;
+    public final static int NEUTRAL     = 0;
+    public final static int HIGHMEN     = 1;
+    public final static int BARBARIANS  = 2;
+    public final static int WIZARDS     = 3;
+    public final static int BEASTMEN    = 4;
+    public final static int ELVES       = 5;
+    public final static int UNDEADS     = 6;
+
+    /**
+     * Типы идеологий рас.
+     */
+    public final static int[] TYPE_IDEOLOGY = {
+        IDEOLOGY.NEUTRAL,
+        IDEOLOGY.GOOD,
+        IDEOLOGY.EVIL,
+        IDEOLOGY.GOOD,
+        IDEOLOGY.EVIL,
+        IDEOLOGY.GOOD,
+        IDEOLOGY.EVIL
+    };
 
 }

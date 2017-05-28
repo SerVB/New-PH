@@ -32,12 +32,18 @@ public class FSK {
     public final static int ATTACK = -42;
     public final static int DEFENCE = -42;
     public final static int KNOWLEDGE = -42;
-    // Какой четвертый навык???
+    public final static int POWER = -42;
 
     public final static int RES_AIR = -42; // Resistance
     public final static int RES_EARTH = -42;
     public final static int RES_FIRE = -42;
     public final static int RES_WATER = -42;
+
+    public final static int RESIST = -42;
+
+    public final static int LOGISTICS = -42;
+
+    public final static int OFFENCE = -42;
 
     public final static int SPEED = -42;
 
@@ -51,5 +57,12 @@ public class FSK {
 
     public final static int MORALE = -42;
     public final static int LUCK = -42;
+
+    public final static int MIN_GOLD = -42;
+
+    public final static int NECROMANCY = -42;
+
+    public final static int VOID = -42;
+    public final static int VOID2 = -42;
 
 }

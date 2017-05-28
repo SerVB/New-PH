@@ -32,25 +32,12 @@ import Constants.*;
  */
 public class iTimeEvent {
 
-    final static int EFREQ_NEVER  = 0;
-    final static int EFREQ_1DAY   = 1;
-    final static int EFREQ_2DAYS  = 2;
-    final static int EFREQ_3DAYS  = 3;
-    final static int EFREQ_4DAYS  = 4;
-    final static int EFREQ_5DAYS  = 5;
-    final static int EFREQ_6DAYS  = 6;
-    final static int EFREQ_1WEEK  = 7;
-    final static int EFREQ_2WEEKS = 8;
-    final static int EFREQ_3WEEKS = 9;
-    final static int EFREQ_1MONTH = 10;
-    final static int EFREQ_COUNT  = 11;
-
-    private String      m_name;
-    private String      m_text;
-    private long        m_playerMask;
-    private long        m_fTime;
-    private int         m_repTime;
-    private iMineralSet m_minerals;
+    public String      m_name;
+    public String      m_text;
+    public long        m_playerMask;
+    public long        m_fTime;
+    public int         m_repTime;
+    public iMineralSet m_minerals;
 
     /**
      * Конструктор.
@@ -76,7 +63,7 @@ public class iTimeEvent {
     public iTimeEvent() {
         this.m_playerMask = PIM.ALL;
         this.m_fTime = 1;
-        this.m_repTime = EFREQ_NEVER;
+        this.m_repTime = EFREQ.NEVER;
 
         m_minerals.Reset();
     }
@@ -95,7 +82,7 @@ public class iTimeEvent {
         //
         if (curDay == m_fTime)
             return true;
-        else if (m_repTime == EFREQ_NEVER)
+        else if (m_repTime == EFREQ.NEVER)
             return false;
         else
             return ( (curDay-m_fTime) % EVENT.FREQ_DAYS[m_repTime] ) == 0;
