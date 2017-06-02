@@ -32,7 +32,7 @@ public class ULTART {
     /**
      * Описание бонусов для героев каждой расы.
      */
-    final static long[][][] STDMODIF = {
+    public final static long[][][] STDMODIF = {
         {
             // Knight
             {FSK.MIN_GOLD, 5000}, {FSK.ATTACK, 4}, {FSK.DEFENCE, 4}, {FSK.POWER, 4}, {FSK.KNOWLEDGE, 4}, {FSK.LOGISTICS, 20}, {FSK.SPEED, 2}
@@ -57,13 +57,13 @@ public class ULTART {
     /**
      * Специальные маски героев для каждой из рас.
      */
-    final static long[] SPECFLAGS = {
-        SHF_INVALID,        // Knight
-        SHF_NORANGEPENALTY, // Barbarian
-        SHF_SUMRESBOUNS,    // Wizard
-        SHF_MANARESTORE,    // Warlock
-        SHF_DMGSPBONUS,     // Sorceress
-        SHF_NECRBONUS       // Necromancer
+    public final static long[] SPECFLAGS = {
+        SHF.INVALID,        // Knight
+        SHF.NORANGEPENALTY, // Barbarian
+        SHF.SUMRESBOUNS,    // Wizard
+        SHF.MANARESTORE,    // Warlock
+        SHF.DMGSPBONUS,     // Sorceress
+        SHF.NECRBONUS       // Necromancer
     };
 
 }

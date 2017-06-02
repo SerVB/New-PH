@@ -25,23 +25,10 @@
 package Constants;
 
 /**
- * Surface type.
+ *
  */
-public class STYPE {
+public class GMAP {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
-
-    public final static int COUNT       = 12;
+    public final static int FILE_VERSION = -42;
 
 }

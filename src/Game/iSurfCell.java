@@ -21,27 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import Constants.*;
 
 /**
- * Surface type.
+ * Клетка поверхности.
  */
-public class STYPE {
+public class iSurfCell {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
+    /**
+     * Нижний слой.
+     */
+    int lowestLayer;
 
-    public final static int COUNT       = 12;
+    /**
+     * Слои.
+     */
+    int[] layers = new int[STYPE.COUNT];
 
+    /**
+     * Сброс, заполнение нулями.
+     */
+    public void reset() {
+        lowestLayer = 0;
+        layers = new int[STYPE.COUNT];
+    }
 }

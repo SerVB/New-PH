@@ -24,6 +24,7 @@
 
 package Common;
 
+import Constants.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,23 +37,23 @@ import java.util.logging.Logger;
 public class serialize {
 
     // Point
-    void Serialize(iDynamicBuffer dbuff, iPoint pos) {
+    public static void Serialize(iDynamicBuffer dbuff, iPoint pos) {
         dbuff.Write(pos.x);
         dbuff.Write(pos.y);
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iPoint pos) {
-        long x = dbuff.Read();
-        long y = dbuff.Read();
+    public static void Unserialize(iDynamicBuffer dbuff, iPoint pos) {
+        int x = (int) dbuff.Read();
+        int y = (int) dbuff.Read();
 
-        pos.x=x;
-        pos.y=y;
+        pos.x = x;
+        pos.y = y;
     }
 
-    void Unserialize(FileInputStream pFile, iPoint pos) {
+    public static void Unserialize(FileInputStream pFile, iPoint pos) {
         try {
-            long x = (pFile.read() << 8) + pFile.read(); // Считать два байта
-            long y = (pFile.read() << 8) + pFile.read(); // Считать два байта
+            int x = (pFile.read() << 8) + pFile.read(); // Считать два байта
+            int y = (pFile.read() << 8) + pFile.read(); // Считать два байта
 
             pos.x = x;
             pos.y = y;
@@ -65,12 +66,12 @@ public class serialize {
 
 
     // Creature group and army
-    void Serialize(iDynamicBuffer dbuff, iCreatGroup cg) {
+    public static void Serialize(iDynamicBuffer dbuff, iCreatGroup cg) {
         dbuff.Write(cg.Type());
         dbuff.Write(cg.Count());
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iCreatGroup cg) {
+    public static void Unserialize(iDynamicBuffer dbuff, iCreatGroup cg) {
         int ct = (int)dbuff.Read();
         long cnt = dbuff.Read();
 
@@ -78,27 +79,27 @@ public class serialize {
         cg.setCount(cnt);
     }
 
-    void Serialize(iDynamicBuffer dbuff, iArmy army) {
-        for (int xx = 0; xx < iArmy.ARMY_PLACES_COUNT; ++xx)
+    public static void Serialize(iDynamicBuffer dbuff, iArmy army) {
+        for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx)
             Serialize(dbuff, army.At(xx));
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iArmy army) {
-        for (int xx = 0; xx < iArmy.ARMY_PLACES_COUNT; ++xx)
+    public static void Unserialize(iDynamicBuffer dbuff, iArmy army) {
+        for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx)
             Unserialize(dbuff, army.At(xx));
     }
 
 
     // String of text
-    void Serialize(iDynamicBuffer dbuff, String text) {
+    public static void Serialize(iDynamicBuffer dbuff, String text) {
         dbuff.Write(text);
     }
 
-    void Unserialize(iDynamicBuffer dbuff, String text) {
+    public static void Unserialize(iDynamicBuffer dbuff, String text) {
         text = dbuff.ReadString();
     }
 
-    void Unserialize(FileInputStream pFile, String text) {
+    public static void Unserialize(FileInputStream pFile, String text) {
         try {
             int len = (pFile.read() << 24) + (pFile.read() << 16) +
                       (pFile.read() << 8) + pFile.read(); // Считать четыре байта
@@ -119,25 +120,25 @@ public class serialize {
     }
 
     // Further skills
-    void Serialize(iDynamicBuffer dbuff, iFurtSkills frSkills) {
+    public static void Serialize(iDynamicBuffer dbuff, iFurtSkills frSkills) {
         int cnt = 0;
         int xx;
-        for (xx = 0; xx < FSK_COUNT; ++xx)
-            if (frSkills.Value(xx))
+        for (xx = 0; xx < FSK.COUNT; ++xx)
+            if (frSkills.Value(xx) != 0)
                 ++cnt;
 
         dbuff.Write(cnt);
 
-        for (xx=0; xx < FSK_COUNT; ++xx) {
+        for (xx=0; xx < FSK.COUNT; ++xx) {
             int sk = xx ;
-            if (frSkills.Value(sk)) {
+            if (frSkills.Value(sk) != 0) {
                 dbuff.Write(xx);
                 dbuff.Write(frSkills.Value(sk));
             }
         }
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iFurtSkills frSkills) {
+    public static void Unserialize(iDynamicBuffer dbuff, iFurtSkills frSkills) {
         int cnt = (int) dbuff.Read();
         if (cnt <= 0)
             return;
@@ -154,13 +155,13 @@ public class serialize {
     }
 
     // Primary skills
-    void Serialize(iDynamicBuffer dbuff, iPrSkills prSkills) {
-        for (int xx = 0; xx < PRSKILL_COUNT; ++xx)
+    public static void Serialize(iDynamicBuffer dbuff, iPrSkills prSkills) {
+        for (int xx = 0; xx < PRSKILL.COUNT; ++xx)
             dbuff.Write(prSkills.val[xx]);
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iPrSkills prSkills) {
-        for (int xx = 0; xx < PRSKILL_COUNT; ++xx) {
+    public static void Unserialize(iDynamicBuffer dbuff, iPrSkills prSkills) {
+        for (int xx = 0; xx < PRSKILL.COUNT; ++xx) {
             prSkills.val[xx] = dbuff.Read();
         }
     }
@@ -169,19 +170,19 @@ public class serialize {
     // NOTE: Minerals now must be encrypted to:
     // a) prevent modification
     // b) checking real values to detect protection
-    void Serialize(iDynamicBuffer dbuff, iMineralSet minSet) {
+    public static void Serialize(iDynamicBuffer dbuff, iMineralSet minSet) {
         for (int xx=0; xx < iMineralSet.MINERAL_COUNT; ++xx)
             dbuff.Write(minSet.quant(xx));
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iMineralSet minSet) {
+    public static void Unserialize(iDynamicBuffer dbuff, iMineralSet minSet) {
         for (int xx = 0; xx < iMineralSet.MINERAL_COUNT; ++xx) {
             minSet.setQuant(xx, dbuff.Read());
         }
     }
 
 
-    void Unserialize(FileInputStream pFile, iMineralSet minSet) {
+    public static void Unserialize(FileInputStream pFile, iMineralSet minSet) {
         try {
             System.err.println("Сколько возращает sizeof(minSet.quant[xx])? Пусть пока четыре байта.");
 
@@ -196,16 +197,16 @@ public class serialize {
     }
 
     // Secondary Skills
-    void Serialize(iDynamicBuffer dbuff, iSecSkills secSkills) {
+    public static void Serialize(iDynamicBuffer dbuff, iSecSkills secSkills) {
         dbuff.Write(secSkills.GetSize());
 
         for (int ssid = 0; ssid < secSkills.GetSize(); ++ssid) {
-            dbuff.Write(secSkills[ssid].m_skill);
-            dbuff.Write(secSkills[ssid].m_level);
+            dbuff.Write(secSkills.get(ssid).m_skill);
+            dbuff.Write(secSkills.get(ssid).m_level);
         }
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iSecSkills secSkills) {
+    public static void Unserialize(iDynamicBuffer dbuff, iSecSkills secSkills) {
         // ss = secondary skill
         int sscnt;
         int ssType, ssLevel;
@@ -226,7 +227,7 @@ public class serialize {
 
 
     // Artifact list
-    void Serialize(iDynamicBuffer dbuff, iArtifactList artifacts) {
+    public static void Serialize(iDynamicBuffer dbuff, iArtifactList artifacts) {
         dbuff.Write(artifacts.Count());
 
         for (int artIdx = 0; artIdx < artifacts.Count(); ++artIdx) {
@@ -235,7 +236,7 @@ public class serialize {
         }
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iArtifactList artifacts) {
+    public static void Unserialize(iDynamicBuffer dbuff, iArtifactList artifacts) {
         long artCnt = dbuff.Read();
 
         while (artCnt-- > 0) {
@@ -247,14 +248,14 @@ public class serialize {
     }
 
     // Spells
-    void Serialize(iDynamicBuffer dbuff, iSpellList spells) {
+    public static void Serialize(iDynamicBuffer dbuff, iSpellList spells) {
         dbuff.Write(spells.GetSize());
 
         for (int spIdx = 0; spIdx < spells.GetSize(); ++spIdx)
-            dbuff.Write(spells.get(spIdx));
+            dbuff.Write(spells.get(spIdx).id);
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iSpellList spells) {
+    public static void Unserialize(iDynamicBuffer dbuff, iSpellList spells) {
         int spCnt = (int) dbuff.Read();
 
         if (spCnt <= 0)
@@ -264,13 +265,13 @@ public class serialize {
 
         while (spCnt-- > 0) {
             int spId = (int) dbuff.Read();
-            if (spId < cm_magic.MSP_COUNT)
-                spells.Add(spId);
+            if (spId < MSP.COUNT)
+                spells.Add(new iSpell(spId));
         }
     }
 
     // Rewards
-    void Serialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
+    public static void Serialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
         int quant = rewards.GetSize();
 
         dbuff.Write(quant);
@@ -282,7 +283,7 @@ public class serialize {
         }
     }
 
-    void Unserialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
+    public static void Unserialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
         rewards.RemoveAll();
 
         int quant = (int) dbuff.Read();

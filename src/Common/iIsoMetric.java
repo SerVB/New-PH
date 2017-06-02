@@ -28,33 +28,34 @@ package Common;
  * ISOMETRIC_PROJECTION_HANDLING
  */
 public class iIsoMetric {
-    final static long ATOM_WIDTH = 8;
-    final static long ATOM_HEIGHT = 3;
 
-    private final long m_CellFactor;
+    final static int ATOM_WIDTH = 8;
+    final static int ATOM_HEIGHT = 3;
+
+    private final int m_CellFactor;
 
 
     /**
      * Конструктор.
      * @param cf Cell factor of isometric cell (cf = CellWidth/ATOM_WIDTH).
      */
-    public iIsoMetric(long cf) {
+    public iIsoMetric(int cf) {
         this.m_CellFactor = cf;
     }
 
-    public long GetCellWidth(long cf) {
+    public int GetCellWidth(int cf) {
         return cf * ATOM_WIDTH;
     }
 
-    public long GetCellHeight(long cf) {
+    public int GetCellHeight(int cf) {
         return (GetCellWidth(cf) - 1) / 2;
     }
 
-    public long GetCellWidth() {
+    public int GetCellWidth() {
         return GetCellWidth(m_CellFactor);
     }
 
-    public long GetCellHeight() {
+    public int GetCellHeight() {
         return GetCellHeight(m_CellFactor);
     }
 
@@ -62,11 +63,11 @@ public class iIsoMetric {
         return new iSize(GetCellWidth(), GetCellHeight());
     }
 
-    public long GetCellStepX() {
+    public int GetCellStepX() {
         return GetCellWidth() / 2;
     }
 
-    public long GetCellStepY() {
+    public int GetCellStepY() {
         return (GetCellHeight() + 1) / 2;
     }
 
@@ -76,25 +77,25 @@ public class iIsoMetric {
     }
 
     public iPoint Map2Screen(final iPoint pos) {
-        long n = m_CellFactor * 2;
+        int n = m_CellFactor * 2;
         return new iPoint( (-2* n * pos.y) + (2 * n * pos.x),
                            (    n * pos.y) + (    n * pos.x));
     }
 
     public iPoint Screen2Map(final iPoint pos) {
-        long n    = 2 * m_CellFactor;
-        long coef = 4 * n;
+        int n    = 2 * m_CellFactor;
+        int coef = 4 * n;
 
-        long n2 = n * 2;
-        long n4 = n * 4;
+        int n2 = n * 2;
+        int n4 = n * 4;
 
-        long px = coef * pos.x;
-        long py = coef * ( pos.y - (GetCellHeight() / 2) );
+        int px = coef * pos.x;
+        int py = coef * ( pos.y - (GetCellHeight() / 2) );
 
-        long px2 = px + ( (px/2) <= py ? n4 : 0 );
+        int px2 = px + ( (px/2) <= py ? n4 : 0 );
 
-        long nx = (  px / n4 + py / n2);
-        long ny = (-px2 / n4 + py / n2);
+        int nx = (  px / n4 + py / n2);
+        int ny = (-px2 / n4 + py / n2);
 
         nx += (nx>0) ? n2 : -n2;
         ny += (ny>0) ? n2 : -n2;

@@ -29,10 +29,10 @@ package Common;
  */
 public class iPoint {
 
-    public long x;
-    public long y;
+    public int x;
+    public int y;
 
-    public iPoint(long x, long y) {
+    public iPoint(int x, int y) {
         this.x = x;
         this.y = y;
     }

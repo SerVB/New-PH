@@ -29,6 +29,116 @@ package Constants;
  */
 public class FSK {
 
+    /**
+     * Estates.
+     */
+    public final static int MIN_GOLD        = 0;
+
+    /**
+     * Leadership.
+     */
+    public final static int MORALE          = 1;
+
+    /**
+     * Luck.
+     */
+    public final static int LUCK            = 2;
+
+    /**
+     * Diplomacy.
+     */
+    public final static int DIPLOMACY       = 3;
+
+    /**
+     * Air magic.
+     */
+    public final static int MAG_AIR         = 4;
+
+    /**
+     * Earth magic.
+     */
+    public final static int MAG_EARTH       = 5;
+
+    /**
+     * Fire magic.
+     */
+    public final static int MAG_FIRE        = 6;
+
+    /**
+     * Water magic.
+     */
+    public final static int MAG_WATER       = 7;
+
+    /**
+     * Wisdom.
+     */
+    public final static int WISDOM          = 8;
+
+    /**
+     * Necromancy.
+     */
+    public final static int NECROMANCY      = 9;
+
+    /**
+     * Mysticism.
+     */
+    public final static int MANAPTS         = 10;
+
+    /**
+     * Intelligence.
+     */
+    public final static int INTELLIGENCE    = 11;
+
+    /**
+     * Resistance.
+     */
+    public final static int RESIST          = 12;
+
+    /**
+     * Sorcery.
+     */
+    public final static int SORCERY         = 13;
+
+    /**
+     * Learning.
+     */
+    public final static int LEARNING        = 14;
+
+    /**
+     * Scouting.
+     */
+    public final static int SCOUTING        = 15;
+
+    /**
+     * Logistics.
+     */
+    public final static int LOGISTICS       = 16;
+
+    /**
+     * Pathfinding.
+     */
+    public final static int PATHFINDING     = 17;
+
+    /**
+     * Archery.
+     */
+    public final static int ARCHERY         = 18;
+
+    /**
+     * Ballistics.
+     */
+    public final static int BALLISTICS      = 19;
+
+    /**
+     * Offence.
+     */
+    public final static int OFFENCE         = 20;
+
+    /**
+     * Armorer.
+     */
+    public final static int ARMORER         = 21;
+
     public final static int ATTACK = -42;
     public final static int DEFENCE = -42;
     public final static int KNOWLEDGE = -42;
@@ -39,12 +149,6 @@ public class FSK {
     public final static int RES_FIRE = -42;
     public final static int RES_WATER = -42;
 
-    public final static int RESIST = -42;
-
-    public final static int LOGISTICS = -42;
-
-    public final static int OFFENCE = -42;
-
     public final static int SPEED = -42;
 
     public final static int SHIELD = -42;
@@ -54,15 +158,17 @@ public class FSK {
     public final static int MELEEATTACK = -42;
 
     public final static int COUNTERSTRIKE = -42;
+    
+    public final static int COUNT = -42;
 
-    public final static int MORALE = -42;
-    public final static int LUCK = -42;
+    /**
+     * Отсутствие навыка.
+     */
+    public final static int VOID    = 0;
 
-    public final static int MIN_GOLD = -42;
-
-    public final static int NECROMANCY = -42;
-
-    public final static int VOID = -42;
-    public final static int VOID2 = -42;
+    /**
+     * Отсутствие навыка.
+     */
+    public final static int VOID2   = 0;
 
 }

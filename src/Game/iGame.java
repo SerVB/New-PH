@@ -151,7 +151,8 @@ public class iGame extends IGame {
 
     // Game control
     public void Quit() {
-        gApp.Exit(0);
+        System.exit(0);
+//        gApp.Exit(0);
     }
 
     public void MainMenu() {

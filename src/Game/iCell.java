@@ -21,27 +21,50 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import Common.tracer;
 
 /**
- * Surface type.
+ * Клетка.
  */
-public class STYPE {
+public class iCell {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
+    /**
+     * Конструктор.
+     */
+    public iCell() {
+        this.surf = 0;
+        this.avatar = 0;
+    }
 
-    public final static int COUNT       = 12;
+    /**
+     *
+     * @param idx
+     * @return
+     */
+    public int SurfNode(int idx) {
+        tracer.check(0 <= idx && idx <= 3);
+        return (surf >> ((3-idx)*4)) & 0xF;
+    }
 
+    /**
+     *
+     * @return
+     */
+    public boolean Solid() {
+        return (SurfNode(0) == SurfNode(1)) &&
+               (SurfNode(1) == SurfNode(2)) &&
+               (SurfNode(2) == SurfNode(3));
+    }
+
+    /**
+     *
+     */
+    public int surf;
+
+    /**
+     *
+     */
+    public int avatar;
 }

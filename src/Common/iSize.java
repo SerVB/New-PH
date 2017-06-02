@@ -28,15 +28,12 @@ package Common;
  *
  */
 public class iSize {
-    long x, y;
 
-    /**
-     * Конструктор.
-     * @param x
-     * @param y
-     */
-    public iSize(long x, long y) {
-        this.x = x;
-        this.y = y;
+    public int w, h;
+
+    public iSize(int w, int h) {
+        this.w = w;
+        this.h = h;
     }
+
 }

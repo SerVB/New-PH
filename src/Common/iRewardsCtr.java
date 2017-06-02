@@ -22,26 +22,30 @@
  * SOFTWARE.
  */
 
-package Constants;
+package Common;
+
+import java.util.ArrayList;
 
 /**
- * Surface type.
+ *
  */
-public class STYPE {
+public class iRewardsCtr {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
+    private ArrayList<iRewardItem> rewards = new ArrayList<>();
 
-    public final static int COUNT       = 12;
+    public int GetSize() {
+        return rewards.size();
+    }
 
+    public iRewardItem get(int idx) {
+        return rewards.get(idx);
+    }
+
+    public void RemoveAll() {
+        rewards.clear();
+    }
+
+    public void Add(iRewardItem reward) {
+        rewards.add(reward);
+    }
 }

@@ -25,7 +25,7 @@
 package Common;
 
 /**
- *
+ * Прямоугольник.
  */
 public class iRect {
     public long x, y, w, h;

@@ -24,9 +24,10 @@
 
 package Game;
 
-//#include "stdafx.h"
-
-import Common.iMineralSet;
+import Common.iSize;
+import Common.serialize;
+import Common.tracer;
+import Constants.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -34,85 +35,24 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//#include "serialize.h"
+/**
+ *
+ */
 
 /**
  * Информация об игровой карте
  */
-class iMapInfo {
+public class iMapInfo {
 
     /**
-     * Игровой режим GameMode
-     */
-
-    final static int GM_UNDEFINED = 0; // Неопределенный
-    final static int GM_SPLAYER   = 1; // Single player
-    final static int GM_HOTSEAT   = 2; // Hotseat
-
-    /**
-     *
-     */
-    class iPlayerInfo {
-        /**
-         * Конструктор.
-         */
-        iPlayerInfo(int pid, PLAYER_TYPE_MASK ptypemask, PLAYER_TYPE ptype, CTL_TYPE ntype) {
-            this.m_Id = pid;
-            this.m_TypeMask = ptypemask;
-            this.m_Type = ptype;
-            this.m_Nation = ntype;
-        }
-
-        /**
-         * Минералы.
-         */
-        iMineralSet m_Minerals;
-
-        /**
-         * ID игрока.
-         */
-        int m_Id;
-
-        /**
-         * ???
-         */
-        PLAYER_TYPE_MASK m_TypeMask;
-
-        /**
-         * ???
-         */
-        PLAYER_TYPE m_Type;
-
-        /**
-         * Нация.
-         */
-        CTL_TYPE m_Nation;
-
-        /**
-         * ???
-         */
-        long m_curHeroId;
-
-        /**
-         * ???
-         */
-        long m_curCastleIdx;
-
-        /**
-         * ???
-         */
-        long m_keys;
-    }
-
-    /**
-     * Считать инофрмацию карты
+     * Считать информацию карты.
      */
     boolean ReadMapInfo(FileInputStream pFile) {
         try {
 
             long ver; // Версия карты
             ver = (pFile.read() << 8) + pFile.read(); // Считать два байта
-            if (ver != GMAP_FILE_VERSION)
+            if (ver != GMAP.FILE_VERSION)
                 return false;
 
             // Encoding type
@@ -127,17 +67,17 @@ class iMapInfo {
                       (pFile.read() << 8) + pFile.read(); // Считать четыре байта
 
             // Map size
-            long mapSiz;
+            int mapSiz;
             mapSiz = pFile.read(); // Считать один байт
-            m_Size = new MAP_SIZE(mapSiz);
+            m_Size = MAP.SIZ_SIZE[mapSiz];
 
             // Map name and description (string of text)
-            Unserialize(pFile, m_Name);
-            Unserialize(pFile, m_Description);
+            serialize.Unserialize(pFile, m_Name);
+            serialize.Unserialize(pFile, m_Description);
 
             // Map version and author (string of text)
-            Unserialize(pFile, m_Version);
-            Unserialize(pFile, m_Author);
+            serialize.Unserialize(pFile, m_Version);
+            serialize.Unserialize(pFile, m_Author);
 
             // Current date (1 is default value for new game)
             m_curDay = (pFile.read() << 24) + (pFile.read() << 16) +
@@ -146,12 +86,12 @@ class iMapInfo {
             // Game mode (GM_UNDEFINED for new map)
             int gameMode;
             gameMode = (pFile.read() << 8) + pFile.read(); // Считать два байта
-            m_gameMode = GameMode.values()[gameMode];
+            m_gameMode = gameMode;
 
             // Difficulty level (DFC_UNDEFINED for new game)
             int gameDifLvl;
             gameDifLvl = pFile.read(); // Считать один байт
-            m_Difficulty = (DIFFICULTY_LEVEL)gameDifLvl;
+            m_Difficulty = gameDifLvl;
 
             // Read Player config
             long pCount;
@@ -163,25 +103,26 @@ class iMapInfo {
                 // Nation type
                 long nation = pFile.read(); // Считать один байт
                 // Player Type Mask
-                long playerTypeMask = pFile.read(); // Считать один байт
+                int playerTypeMask = pFile.read(); // Считать один байт
                 // Player Type (PT_UNDEFINED for new game)
                 long playerType = pFile.read(); // Считать один байт
                 // Create playerInfo descriptor
                 iPlayerInfo playerInfo = new iPlayerInfo(
-                                        (PLAYER_ID)playerId,
-                                        (PLAYER_TYPE_MASK)playerTypeMask,
-                                        (PLAYER_TYPE)playerType,
-                                        (CTL_TYPE)nation );
-                if (playerType == PT_UNDEFINED) {
-                    if (!bHumanDefined && (playerTypeMask == PTM_HUMAN_ONLY || playerTypeMask == PTM_HUMAN_OR_COMPUTER)) {
+                                        playerId,
+                                        playerTypeMask,
+                                        playerType,
+                                        nation
+                );
+                if (playerType == PT.UNDEFINED) {
+                    if (!bHumanDefined && (playerTypeMask == PTM.HUMAN_ONLY || playerTypeMask == PTM.HUMAN_OR_COMPUTER)) {
                         bHumanDefined = true;
-                        playerInfo.m_Type = PT_HUMAN;
+                        playerInfo.m_Type = PT.HUMAN;
                     } else {
-                        playerInfo.m_Type = PT_COMPUTER;
+                        playerInfo.m_Type = PT.COMPUTER;
                     }
                 }
                 // Player resources (undefined for new game)
-                Unserialize(pFilet, playerInfo.m_Minerals);
+                serialize.Unserialize(pFile, playerInfo.m_Minerals);
                 // Current Hero idx (0xFFFF = undefined for new game)
                 playerInfo.m_curHeroId = (pFile.read() << 8) + pFile.read(); // Считать два байта
                 // Current Castle idx (0xFFFF = undefined for new game)
@@ -193,15 +134,15 @@ class iMapInfo {
             }
 
             // Current player Id (PID_NEUTRAL = undefined for new game)
-            long curPlayerId = (pFile.read() << 8) + pFile.read(); // Считать два байта
+            int curPlayerId = (pFile.read() << 8) + pFile.read(); // Считать два байта
             if(curPlayerId == 0xFFFF)
-                m_curPlayerId = PID_NEUTRAL;
+                m_curPlayerId = PID.NEUTRAL;
             else
-                m_curPlayerId = (PLAYER_ID)curPlayerId;
+                m_curPlayerId = curPlayerId;
 
             // Map metrics
-            long w = (pFile.read() << 8) + pFile.read(); // Считать два байта
-            long h = (pFile.read() << 8) + pFile.read(); // Считать два байта
+            int w = (pFile.read() << 8) + pFile.read(); // Считать два байта
+            int h = (pFile.read() << 8) + pFile.read(); // Считать два байта
             m_metrics.w = w;
             m_metrics.h = h;
         } catch (FileNotFoundException ex) {
@@ -227,9 +168,9 @@ class iMapInfo {
         ArrayList<iPlayerInfo> defPl = new ArrayList();
         // Переместить PT_HUMAN из m_Players в defPl
         for(int pidx = 0; pidx < m_Players.size(); /**/) {
-            check(m_Players.get(pidx).m_Type != PT_UNDEFINED);
+            tracer.check(m_Players.get(pidx).m_Type != PT.UNDEFINED);
 
-            if (m_Players.get(pidx).m_Type == PT_HUMAN) {
+            if (m_Players.get(pidx).m_Type == PT.HUMAN) {
                 defPl.add(m_Players.get(pidx));
                 m_Players.remove(pidx);
             }
@@ -237,9 +178,9 @@ class iMapInfo {
                 ++pidx;
         }
         // Продолжить, если PT_HUMAN существуют
-        check(defPl.size() > 0);
+        tracer.check(defPl.size() > 0);
         // Если один PT_HUMAN, то игровой режим GM_SPLAYER, иначе GM_HOTSEAT
-        m_gameMode = (defPl.size() == 1) ? GameMode.GM_SPLAYER : GameMode.GM_HOTSEAT;
+        m_gameMode = (defPl.size() == 1) ? GM.SPLAYER : GM.HOTSEAT;
         // Добавить оставшихся игроков
         defPl.addAll(m_Players);
         // Записать порядок игроков в основной список
@@ -259,8 +200,8 @@ class iMapInfo {
     long HumanPlayers() {
         long res = 0;
         for(int xx = 0; xx < m_Players.size(); ++xx)
-            if(m_Players.get(xx).m_TypeMask == PTM_HUMAN_ONLY ||
-               m_Players.get(xx).m_TypeMask == PTM_HUMAN_OR_COMPUTER)
+            if(m_Players.get(xx).m_TypeMask == PTM.HUMAN_ONLY ||
+               m_Players.get(xx).m_TypeMask == PTM.HUMAN_OR_COMPUTER)
                 res++;
         return res;
     }
@@ -270,16 +211,15 @@ class iMapInfo {
      * ???
      */
     boolean Supported() {
-        if(OS_WINCE || (OS_WIN32 && DEV_VER)) {
-            if(DEV_VER)
-                if (m_encType == MET_MAPDES)
-                    return true;
-            boolean registered = IS_REGISTERED();
-            return (m_encType == MET_PUBLIC) ||
-                   (m_encType == MET_PRIVATE && registered);
+        if(OS.WINCE || (OS.WIN32 && DEV.VER)) {
+            if(DEV.VER && m_encType == MET.MAPDES)
+                return true;
+            else
+                return (m_encType == MET.PUBLIC) ||
+                       (m_encType == MET.PRIVATE);
         }
         else
-            return m_encType == MET_MAPDES;
+            return m_encType == MET.MAPDES;
     }
 
 
@@ -301,7 +241,7 @@ class iMapInfo {
     /**
      * Игровой режим
      */
-    GameMode m_gameMode;
+    int m_gameMode;
 
     /**
      * Имя файла?
@@ -311,7 +251,7 @@ class iMapInfo {
     /**
      * Уровень сложности
      */
-    DIFFICULTY_LEVEL m_Difficulty;
+    int m_Difficulty;
 
     /**
      * Список игроков?
@@ -321,7 +261,7 @@ class iMapInfo {
     /**
      * Размер карты
      */
-    MAP_SIZE  m_Size;
+    int m_Size;
 
     /**
      * Название карты?
@@ -351,7 +291,7 @@ class iMapInfo {
     /**
      * ???
      */
-    PLAYER_ID m_curPlayerId;
+    int m_curPlayerId;
 
     /**
      * Рандомное зерно?
@@ -362,151 +302,4 @@ class iMapInfo {
      * Размер карты?
      */
     iSize m_metrics;
-}
-
-/**
- * Клетка чего-то?
- */
-class iCell {
-
-    /**
-     * Конструктор
-     */
-    iCell() {
-        this.surf = 0;
-        this.avatar = 0;
-    }
-
-    /**
-     * ???
-     */
-    int SurfNode(int idx) {
-        check(idx<4);
-        return (surf >> ((3-idx)*4)) & 0xF;
-    }
-
-    /**
-     * ???
-     */
-    boolean Solid() {
-        return (SurfNode(0) == SurfNode(1)) &&
-               (SurfNode(1) == SurfNode(2)) &&
-               (SurfNode(2) == SurfNode(3));
-    }
-
-    /**
-     * ???
-     */
-    int surf;
-
-    /**
-     * ???
-     */
-    long avatar;
-}
-
-/**
- * ???
- */
-class iGameMap extends iMapT<iCell> {
-//public:
-//    typedef iIList<iVisCnst>        iVisCnstList;
-//    typedef iVisCnstList::Iterator    iVCIt;
-//
-//    typedef iIList<iOwnCnst>        iOwnCnstList;
-//    typedef iOwnCnstList::Iterator    iOCIt;
-//
-//    typedef iIList<iCastle>            iCastleList;
-//    typedef iCastleList::Iterator    iCtIt;
-//
-//    typedef iIList<iMapItem>        iMapItemList;
-//    typedef iMapItemList::Iterator    iMIt;
-//
-//    typedef iIList<iMapEvent>        iMapEventList;
-//    typedef iMapEventList::Iterator    iEIt;
-//
-//    typedef iIList<iMapGuard>        iMapGuardList;
-//    typedef iMapGuardList::Iterator    iGIt;
-//
-//    typedef iIList<iPlayer>            iPlayerList;
-//    typedef iPlayerList::Iterator    iPLIt;
-//
-//    typedef iIList<iHero>            iHeroList;
-//    typedef iHeroList::Iterator        iHLIt;
-
-    /**
-     * Ячейка поверхности (какой?)
-     */
-    public class iSurfCell {
-
-        /**
-         * Нижний слой (чего?)
-         */
-        long lowestLayer;
-
-        /**
-         * Слои (чего?)
-         */
-        long[] layers = new long[STYPE_COUNT];
-
-        /**
-         * Сброс, заполнение нулями
-         */
-        public void reset() {
-            lowestLayer = 0;
-            layers = new long[STYPE_COUNT];
-        }
-    }
-
-
-    /**
-     * Получить поверхность клетки
-     */
-    public boolean GetCellSurf(iPoint pos, iSurfCell cell) {
-        cell.reset();
-        iCell surf = GetAt(pos.x,pos.y);
-
-        // solid
-        if( surf.SurfNode(0) == surf.SurfNode(1) &&
-            surf.SurfNode(1) == surf.SurfNode(2) &&
-            surf.SurfNode(2) == surf.SurfNode(3) ) {
-            cell.lowestLayer = surf.SurfNode(0);
-            return true;
-        }
-
-        // calculate underlying surface type
-        cell.lowestLayer = Math.min(surf.SurfNode(0),
-                           Math.min(surf.SurfNode(1),
-                           Math.min(surf.SurfNode(2), surf.SurfNode(3)) ));
-
-        // setup config masks for all type of surfaces
-        for (int xx=0; xx<4; ++xx)
-            if (surf.SurfNode(xx) != cell.lowestLayer)
-                cell.layers[surf.SurfNode(xx)] |= (1 << xx);
-
-        return false;
-
-        /*
-        //  1 bit    : solid surface  flag
-        //  3 bits   : underlying surface type
-        //  28 bits  : 4 bits per surface transition config 4*7=28 bits
-        iCell cell = GetAt(pos.x,pos.y);
-        uint32 ccfg = 0;
-
-        if ( cell.Solid() ) {
-            // setup solid flag and surface type
-            ccfg |= (1<<31) | ( cell.SurfNode(0) << 28);
-            return ccfg;
-        }
-
-        uint8 uls = (uint8)iMIN(cell.SurfNode(0),iMIN(cell.SurfNode(1),iMIN(cell.SurfNode(2),cell.SurfNode(3))));
-        ccfg |= (uls<<28);
-        for (uint32 xx=0; xx<4; ++xx){
-            if (cell.SurfNode(xx) != uls) ccfg |= (1 << (cell.SurfNode(xx)*4+xx));
-        }
-
-        return ccfg;
-        */
-    }
-
 }

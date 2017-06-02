@@ -21,27 +21,61 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import Common.iMineralSet;
 
 /**
- * Surface type.
+ *
  */
-public class STYPE {
+public class iPlayerInfo {
+    /**
+    * Конструктор.
+    */
+   iPlayerInfo(int pid, int ptypemask, int ptype, int ntype) {
+       this.m_Id = pid;
+       this.m_TypeMask = ptypemask;
+       this.m_Type = ptype;
+       this.m_Nation = ntype;
+   }
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
+   /**
+    * Минералы.
+    */
+   iMineralSet m_Minerals;
 
-    public final static int COUNT       = 12;
+   /**
+    * ID игрока.
+    */
+   int m_Id;
 
+   /**
+    *
+    */
+   int m_TypeMask;
+
+   /**
+    *
+    */
+   int m_Type;
+
+   /**
+    * Нация.
+    */
+   int m_Nation;
+
+   /**
+    *
+    */
+   int m_curHeroId;
+
+   /**
+    *
+    */
+   int m_curCastleIdx;
+
+   /**
+    *
+    */
+   long m_keys;
 }

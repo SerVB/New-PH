@@ -25,23 +25,37 @@
 package Constants;
 
 /**
- * Surface type.
+ *
  */
-public class STYPE {
+public class SHF {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
+    /**
+     * Knight.
+     */
+    public final static int INVALID         = 0b000001;
 
-    public final static int COUNT       = 12;
+    /**
+     * Barbarian.
+     */
+    public final static int NORANGEPENALTY  = 0b000010;
 
+    /**
+     * Wizard.
+     */
+    public final static int SUMRESBOUNS     = 0b000100;
+
+    /**
+     * Warlock.
+     */
+    public final static int MANARESTORE     = 0b001000;
+
+    /**
+     * Sorceress.
+     */
+    public final static int DMGSPBONUS      = 0b010000;
+
+    /**
+     * Necromancer.
+     */
+    public final static int NECRBONUS       = 0b100000;
 }

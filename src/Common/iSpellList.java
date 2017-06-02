@@ -22,26 +22,30 @@
  * SOFTWARE.
  */
 
-package Constants;
+package Common;
+
+import java.util.ArrayList;
 
 /**
- * Surface type.
+ *
  */
-public class STYPE {
+public class iSpellList {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
+    private ArrayList<iSpell> spells = new ArrayList();
 
-    public final static int COUNT       = 12;
+    public void Add(iSpell spell) {
+        spells.add(spell);
+    }
 
+    public void RemoveAll() {
+        spells.clear();
+    }
+
+    public int GetSize() {
+        return spells.size();
+    }
+
+    public iSpell get(int idx) {
+        return spells.get(idx);
+    }
 }

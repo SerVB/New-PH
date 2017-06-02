@@ -25,23 +25,13 @@
 package Constants;
 
 /**
- * Surface type.
+ *
  */
-public class STYPE {
+public class DEV {
 
-    public final static int WATER       = 0;
-    public final static int SAND        = 1;
-    public final static int DIRT        = 2;
-    public final static int GRASS       = 3;
-    public final static int SWAMP       = 4;
-    public final static int LAVA        = 5;
-    public final static int WASTELAND   = 6;
-    public final static int DESERT      = 7;
-    public final static int SNOW        = 8;
-    public final static int NDESERT     = 9;
-    public final static int PAVEMENT    = 10;
-    public final static int NWASTELAND  = 11;
-
-    public final static int COUNT       = 12;
+    /**
+     * True если версия разработчика, false если обычная версия.
+     */
+    public final static boolean VER = true;
 
 }

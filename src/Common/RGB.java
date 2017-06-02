@@ -32,11 +32,6 @@ import java.awt.Color;
 public class RGB {
 
     /**
-     * Черный цвет.
-     */
-    public final static int cColor_Black = new Color(0, 0, 0).getRGB();
-
-    /**
      * Цвет.
      */
     public final Color color;

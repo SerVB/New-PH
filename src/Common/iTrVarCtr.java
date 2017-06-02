@@ -27,7 +27,7 @@ package Common;
 import java.util.ArrayList;
 
 /**
- * Treasury variants container
+ * Treasury variants container.
  */
 public class iTrVarCtr {
 
@@ -54,8 +54,8 @@ public class iTrVarCtr {
         dbuff.Write(quant);
         for (Item item : m_items) {
             dbuff.Write((int) item.probability);
-            ::Serialize(dbuff, item.guards);
-            ::Serialize(dbuff, item.rewards);
+            serialize.Serialize(dbuff, item.guards);
+            serialize.Serialize(dbuff, item.rewards);
         }
     }
 
@@ -67,8 +67,8 @@ public class iTrVarCtr {
             long prob;
             prob = dbuff.Read();
             m_items.add(new Item(prob));
-            ::Unserialize(dbuff, m_items.GetLast().guards);
-            ::Unserialize(dbuff, m_items.GetLast().rewards);
+            serialize.Unserialize(dbuff, m_items.get(m_items.size()-1).guards);
+            serialize.Unserialize(dbuff, m_items.get(m_items.size()-1).rewards);
         }
     }
 }
