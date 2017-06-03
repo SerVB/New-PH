@@ -35,4 +35,14 @@ public class COLOR {
      * Черный цвет.
      */
     public final static int BLACK = new Color(0, 0, 0).getRGB();
+
+    /**
+     * Красный цвет.
+     */
+    public final static int RED = -42;
+    
+    /**
+     * Зеленый цвет.
+     */
+    public final static int GREEN = -42;
 }

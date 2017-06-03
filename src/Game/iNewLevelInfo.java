@@ -21,21 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package Game;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iNewLevelInfo {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public iNewLevelInfo() {}
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iNewLevelInfo(final iNewLevelInfo other) {
+        this.prSkillType = other.prSkillType;
+        this.secSkill[0] = other.secSkill[0];
+        this.secSkill[1] = other.secSkill[1];
+    }
+
+    public iNewLevelInfo(int _pr, int sk1, int sk2 ) {
+        this.prSkillType = _pr;
+        this.secSkill[0] = sk1;
+        this.secSkill[1] = sk2;
+    }
+
+    public int        prSkillType;
+    public int[]    secSkill = new int[2];
 
 }

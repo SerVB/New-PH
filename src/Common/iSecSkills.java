@@ -24,6 +24,7 @@
 
 package Common;
 
+import entries.iSecSkillEntry;
 import java.util.ArrayList;
 
 /**

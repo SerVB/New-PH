@@ -21,21 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package entries;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iSpellEntry {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    iSpellEntry(final iCombatSpell pSpell, int duration, int param) {
+        this.m_pSpell = pSpell;
+        this.m_duration = duration;
+        this.m_param = param;
+    }
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    final iCombatSpell    m_pSpell;
+    int                 m_duration;
+    int                 m_param;
 
 }

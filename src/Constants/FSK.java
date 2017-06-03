@@ -139,6 +139,8 @@ public class FSK {
      */
     public final static int ARMORER         = 21;
 
+
+
     public final static int ATTACK = -42;
     public final static int DEFENCE = -42;
     public final static int KNOWLEDGE = -42;
@@ -158,8 +160,17 @@ public class FSK {
     public final static int MELEEATTACK = -42;
 
     public final static int COUNTERSTRIKE = -42;
-    
+
+    public final static int ACTPTS = -42;
+
+    /**
+     * Дополнительные выстрелы.
+     */
+    public final static int HITS = -42;
+
     public final static int COUNT = -42;
+
+    public final static int INVALID = -42;
 
     /**
      * Отсутствие навыка.

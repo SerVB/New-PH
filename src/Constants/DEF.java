@@ -21,21 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package Constants;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class DEF {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    //const float DEF_ANI_SPEED = 3.6f;
+    public final static double ANI_SPEED = 3.5;
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public final static int HERO_SCOUTING = -42;
+    public final static int HERO_MOVES = -42;
+    public final static int HERO_MYSTICISM = -42;
+
+    public final static int[] LEVEL_BOUNDS = {
+        0, 1000, 2000, 3200, 4600, 6200, 8000, 10000, 12200, 14700, 17500, 20600
+    };
 
 }

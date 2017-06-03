@@ -21,31 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Common;
-
-import java.util.ArrayList;
+package Game;
 
 /**
- *
+ * Animation Object.
  */
-public class iSpellList {
+public class IAniCB {
 
-    private ArrayList<iSpell> spells = new ArrayList();
+    void AniDone();
 
-    public void Add(iSpell spell) {
-        spells.add(spell);
-    }
-
-    public void RemoveAll() {
-        spells.clear();
-    }
-
-    public int GetSize() {
-        return spells.size();
-    }
-
-    public iSpell get(int idx) {
-        return spells.get(idx);
-    }
 }

@@ -21,21 +21,50 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import Common.tracer;
+import ConstantsGame.*;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iBattleUnit_Hero extends iBattleUnit {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public IMPL_TYPEAWARE( iBattleUnit_Hero );
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iBattleUnit_Hero(iBattleMember pOwner) {
+        super(UnitType.CreatGroup, pOwner);
 
+        if (!DynamicCast<iBattleMember_Hero>(pOwner)) {
+            iBattleMember_Castle pCastle = DynamicCast<iBattleMember_Castle>(pOwner);
+            tracer.check(pCastle.GetVisitor());
+        }
+    }
+
+    public iHero GetHero() {
+        if (iBattleMember_Hero* pHero = DynamicCast<iBattleMember_Hero*>(m_pOwner)) {
+            return pHero.GetHero();
+        } else if (iBattleMember_Castle* pCastle = DynamicCast<iBattleMember_Castle*>(m_pOwner)){
+            return pCastle.GetVisitor();
+        }
+        tracer.check(0);
+        return null;
+    }
+
+
+    @Override
+    public final boolean IsAlive() {
+        return true;
+    }
+
+    @Override
+    public final boolean CanWait() {
+        return false;
+    }
+
+    @Override
+    public final int Speed() {
+        return 0xFF;
+    }
 }

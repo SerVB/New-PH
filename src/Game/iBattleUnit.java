@@ -21,21 +21,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package Game;
 
 /**
- * Secondary skill.
+ * Battle Unit.
  */
-public class SECSK {
+public class iBattleUnit implements TypeAware {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public IMPL_TYPEAWARE( iBattleUnit );
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    /**
+     * C-tor.
+     * @param ut Unit Type.
+     * @param pOwner
+     */
+    public iBattleUnit(int ut, iBattleMember pOwner) {
+        this.m_ut = ut;
+        this.m_pOwner = pOwner;
+    }
+
+    public final int GetUnitType() {
+        return m_ut;
+    }
+
+    public iBattleMember Owner() {
+        return m_pOwner;
+    }
+
+    public abstract boolean IsAlive();
+    public abstract boolean CanWait();
+    public abstract int Speed();
+
+    protected iBattleMember    m_pOwner;
+    protected int        m_ut;
 
 }

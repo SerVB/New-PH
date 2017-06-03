@@ -21,21 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package entries;
 
-package Constants;
+import Common.iPoint;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iMeleeEntry {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public iMeleeEntry(final iPoint pos, int cfg) {
+        this.m_pos = pos;
+        this.m_cfg = cfg;
+    }
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iMeleeEntry(final iPoint pos) {
+        this.m_pos = pos;
+        this.m_cfg = 0;
+    }
+
+    /**
+     * Melee config 12 bits mask.
+     */
+    public int      m_cfg;
+    public iPoint   m_pos;
 
 }

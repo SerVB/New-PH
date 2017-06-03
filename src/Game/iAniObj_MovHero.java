@@ -21,45 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Common;
-
-import java.util.ArrayList;
+import Common.iPoint;
+import Constants.*;
 
 /**
- *
+ * Animation Object.
  */
-public class iFurtSkills {
+public class iAniObj_MovHero extends iAniObj {
 
-    // Integer написан для наличия, нас самом деле скорее всего нужен другой тип.
-    ArrayList<Integer> skills = new ArrayList<>();
+    public IMPL_TYPEAWARE( iAniObj_MovHero );
 
-    public int Value(int idx) {
-        return skills.get(idx);
+    public iAniObj_MovHero(IAniCB pcb, iHero pHero) {
+        super(pcb, pHero.Path().GetStepLength() / HERO.SPEED_VAL[gSettings.GetEntryValue(CET_HEROSPEED)], pHero.Pos());
+
+        this.m_aniSpeed = HERO.SPEED_VAL[gSettings.GetEntryValue(CET_HEROSPEED)];
+        this.m_pHero = pHero;
+        this.m_tgtPos = pHero.Path().GetStepPos();
     }
 
-    public void minusValue(int idx, int minusVal) {
-        Integer tmp = skills.get(idx);
-        tmp -= minusVal;
-        skills.set(idx, tmp);
+    public iPoint PtOffset() {
+        return new iPoint(
+            (int)Math.ceil( cellOffset[m_pHero.Angle()].x * (1.0 * m_Timer / m_Duration) ),
+            (int)Math.ceil( cellOffset[m_pHero.Angle()].y * (1.0 * m_Timer / m_Duration) )
+        );
     }
 
-    public void plusValue(int idx, int plusVal) {
-        Integer tmp = skills.get(idx);
-        tmp += plusVal;
-        skills.set(idx, tmp);
+    public void GetAniInfo(SpriteId sid, iPoint offset) {
+        sid = ((long)Math.ceil(m_Timer * 15.0 * m_aniSpeed)) % 8 + 1;
+        offset = PtOffset();
     }
 
-    public void Reset() {
-        skills.clear();
+    public iHero Hero() {
+        return m_pHero;
     }
 
-    public void SetValue(int idx, int val) {
-        skills.set(idx, val);
+    public final iPoint TargetPos() {
+        return m_tgtPos;
     }
 
-    public iFurtSkills(iFurtSkills fs1, iFurtSkills fs2) {
-        this.skills.addAll(fs1.skills);
-        this.skills.addAll(fs2.skills);
-    }
+
+    private iPoint    m_tgtPos;
+    private iHero    m_pHero;
+    private double    m_aniSpeed;
 }

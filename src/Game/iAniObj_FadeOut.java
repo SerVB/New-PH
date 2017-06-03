@@ -21,21 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import Common.iPoint;
+import Constants.*;
 
 /**
- * Secondary skill.
+ * Animation Object.
  */
-public class SECSK {
+public class iAniObj_FadeOut extends iAniObj {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public IMPL_TYPEAWARE( iAniObj_FadeOut );
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iAniObj_FadeOut(IAniCB pcb, SpriteId sid, final iPoint pos) {
+        super(pcb, 0.8 / DEF.ANI_SPEED, pos);
+        this.m_Sid = sid;
+    }
 
+    /**
+     * Get Animation Info.
+     * @param sid
+     * @param a
+     */
+    public void GetAniInfo(SpriteId sid, Integer a) {
+        sid = m_Sid;
+        a = new iCLAMP<Byte>( 0, 63, (byte) Math.ceil((m_Duration - m_Timer) * 64.0 / m_Duration) );
+    }
+
+
+    private SpriteId    m_Sid;
 }

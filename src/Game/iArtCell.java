@@ -21,21 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import Common.tracer;
+import Constants.*;
+import ConstantsGame.*;
 
 /**
- * Secondary skill.
+ * Artifacts container.
  */
-public class SECSK {
+public class iArtCell {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public iArtCell(int _cell, int _artId) {
+        this.cell = _cell;
+        this.artId = _artId;
+    }
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iArtCell(int _cell) {
+        this.cell = _cell;
+        this.artId = 0xFFFF;
+    }
 
+    public final boolean Empty() {
+        return artId == 0xFFFF;
+    }
+
+    public void Reset() {
+        artId = 0xFFFF;
+    }
+
+    public int AssignType() {
+        if (artId != 0xFFFF) {
+            return gGame.ItemMgr().m_artMgr.get(artId).Assign();
+        }
+
+        tracer.check(cell != AC.UNDEFINED);
+
+        return HERO.ART_CELL_ASSIGN[cell];
+    }
+
+    public int cell;
+    public int artId;
 }

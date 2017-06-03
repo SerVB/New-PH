@@ -29,11 +29,11 @@ package Common;
  */
 public class iRewardItem {
 
-    public long m_type;
-    public long m_fParam;
-    public long m_sParam;
+    public int m_type;
+    public int m_fParam;
+    public int m_sParam;
 
-    public iRewardItem(long m_type, long m_fParam, long m_sParam) {
+    public iRewardItem(int m_type, int m_fParam, int m_sParam) {
         this.m_type = m_type;
         this.m_fParam = m_fParam;
         this.m_sParam = m_sParam;

@@ -22,20 +22,19 @@
  * SOFTWARE.
  */
 
-package Constants;
+package entries;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iSecSkillEntry {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public int m_skill;
+    public int m_level;
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iSecSkillEntry(int m_skill, int m_level) {
+        this.m_skill = m_skill;
+        this.m_level = m_level;
+    }
 
 }

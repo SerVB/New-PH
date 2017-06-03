@@ -28,9 +28,9 @@ package Common;
  * Прямоугольник.
  */
 public class iRect {
-    public long x, y, w, h;
+    public int x, y, w, h;
 
-    public iRect(long x, long y, long w, long h) {
+    public iRect(int x, int y, int w, int h) {
         this.x = x;
         this.y = y;
         this.w = w;

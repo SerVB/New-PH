@@ -37,6 +37,8 @@ public class MINERAL {
     public final static int CRYSTAL = 5;
     public final static int SULFUR  = 6;
 
+    public final static int COUNT   = 7;
+
     /**
      * Делитель материалов.
      */

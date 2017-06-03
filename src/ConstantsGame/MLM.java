@@ -21,21 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package ConstantsGame;
 
 /**
- * Secondary skill.
+ * MORLUCK_MOD.
  */
-public class SECSK {
+public class MLM {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
-
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public final static int NEUTRAL  = 0;
+    public final static int NEGATIVE = 1;
+    public final static int POSITIVE = 2;
 
 }

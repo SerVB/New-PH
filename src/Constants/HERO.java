@@ -31,6 +31,11 @@ import Common.iPoint;
  */
 public class HERO {
 
+    //const float HERO_SPEED_VAL[5] = { 2.5f, 3.0f, 3.5f, 4.5f, 5.5f };
+    public final static double[] SPEED_VAL = {
+        2.5, 3.0, 3.5, 4.5, 5.5
+    };
+
     /**
      * Направление взгляда героя, заспаунившегося в замке.
      */
@@ -42,7 +47,7 @@ public class HERO {
     /**
      * Initial hero army.
      */
-    public final static long[][][] INITIAL_ARMY = {
+    public final static int[][][] INITIAL_ARMY = {
         {
             // Knight
             {
@@ -124,7 +129,7 @@ public class HERO {
     /**
      * Вероятность получения основного навыка при новом уровне в процентах.
      */
-    public final static long[][] PRIM_SKILL = {
+    public final static int[][] PRIM_SKILL = {
         {25,50,5,20},    // Knight
         {60,25,5,10},    // Barbarian
         {10,10,40,40},   // Wizard
@@ -137,7 +142,7 @@ public class HERO {
      * Вероятность получения вторичного навыка при новом уровне. Значение / сумму * 100%.
      * Досчитать суммы!
      */
-    public final static long[][] SEC_SKILL = {
+    public final static int[][] SEC_SKILL = {
         {
             // Knight (сумма = 50)
             2,6,6,4,        // Estates, Leadership, Luck, Diplomacy

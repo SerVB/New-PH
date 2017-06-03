@@ -21,21 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import ConstantsGame.*;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iBattleUnit_Turret extends iBattleUnit {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public IMPL_TYPEAWARE( iBattleUnit_Turret );
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iBattleUnit_Turret(iBattleMember pOwner, int et, iBattleWrapper pWrapper) {
+        super(UnitType.Turret, pOwner);
 
+        this.m_et = et;
+        this.m_pWrapper = pWrapper;
+    }
+
+    @Override
+    public final boolean IsAlive() {
+        return true;
+    }
+
+    @Override
+    public final boolean CanWait() {
+        return false;
+    }
+
+    @Override
+    public final int Speed() {
+        return 0xFF;
+    }
+
+    public void Attack(iBattleGroup pTarget);
+
+    public iBattleWrapper                m_pWrapper;
+    public int    m_et; // iCastleFort.ElementType
 }

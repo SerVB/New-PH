@@ -21,20 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Common;
+import ConstantsGame.*;
 
 /**
  *
  */
-public class iSecSkillEntry {
+public class iBattleUnit_Catapult extends iBattleUnit {
 
-    public int m_skill;
-    public int m_level;
+    public IMPL_TYPEAWARE( iBattleUnit_Catapult );
 
-    public iSecSkillEntry(int m_skill, int m_level) {
-        this.m_skill = m_skill;
-        this.m_level = m_level;
+    public iBattleUnit_Catapult(iBattleMember pOwner) {
+        super(UnitType.Catapult, pOwner);
+    }
+
+    @Override
+    public final boolean IsAlive() {
+        return true;
+    }
+
+    @Override
+    public final boolean CanWait() {
+        return false;
+    }
+
+    @Override
+    public final int Speed() {
+        return 0xFF;
     }
 
 }

@@ -21,21 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package Game;
 
 /**
- * Secondary skill.
+ * Animation Object.
  */
-public class SECSK {
+public class iAniObj_Teleport extends iAniObj {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public IMPL_TYPEAWARE( iAniObj_Teleport );
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iAniObj_Teleport(IAniCB pcb) {
+        super(pcb, 0.5);
+        this.m_buff = gApp.Surface();
+    }
+    public void Compose(iDib surf);
 
+
+    private iDib    m_buff;
 }

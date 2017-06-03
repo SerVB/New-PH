@@ -21,21 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package ConstantsGame;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class STATE {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public final static int Idle = 0;
+    public final static int Moving = 1;
+    public final static int Rotating = 2;
+    public final static int Melee = 3;
+    public final static int Shooting = 4;
+    public final static int RecDamage = 5;
+    public final static int CastingSpell = 6;
+    public final static int ResistSpell = 7;
+    public final static int Dead = 8;
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public final static int COUNT = 9;
 
 }

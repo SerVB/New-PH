@@ -589,12 +589,12 @@ public class CREAT {
         /**
          * Attack skill.
          */
-        public long attack;
+        public int attack;
 
         /**
          * Deffence skill.
          */
-        public long defence;
+        public int defence;
 
         /**
          * Unit speed (1-20).
@@ -614,22 +614,22 @@ public class CREAT {
         /**
          * 0 -- means no range attack.
          */
-        public long shots;
+        public int shots;
 
         /**
          * Hit points (health).
          */
-        public long hits;
+        public int hits;
 
         /**
          * Minimum damage.
          */
-        public long damage_min;
+        public int damage_min;
 
         /**
          * Maximum damage.
          */
-        public long damage_max;
+        public int damage_max;
 
         /**
          * Cost per unit.
@@ -639,12 +639,12 @@ public class CREAT {
         /**
          * Growth rate.
          */
-        public long growth;
+        public int growth;
 
         /**
          * Power index (used for AI).
          */
-        public long pidx;
+        public int pidx;
 
         /**
          * Creature perks.
@@ -673,20 +673,20 @@ public class CREAT {
                 int level,
                 int nation,
 
-                long attack,
-                long defence,
+                int attack,
+                int defence,
                 int speed,
                 int size,
 
                 int transType,
-                long shots,
-                long hits,
-                long damage_min,
-                long damage_max,
+                int shots,
+                int hits,
+                int damage_min,
+                int damage_max,
 
                 iMineralSet cost,
-                long growth,
-                long pidx,
+                int growth,
+                int pidx,
                 int perks
         ) {
             this.level = level;

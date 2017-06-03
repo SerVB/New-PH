@@ -21,21 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Constants;
+import ConstantsGame.*;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iBattleUnit_CreatGroup extends iBattleUnit {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public IMPL_TYPEAWARE( iBattleUnit_CreatGroup );
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public iBattleUnit_CreatGroup(iBattleGroup pCreatGroup) {
+        super(UnitType.CreatGroup, pCreatGroup.Owner());
 
+        this.m_pCreatGroup = pCreatGroup;
+    }
+
+    public iBattleGroup GetCreatGroup() {
+        return m_pCreatGroup;
+    }
+
+    @Override
+    public final boolean IsAlive() {
+        return m_pCreatGroup.IsAlive();
+    }
+
+    @Override
+    public final boolean CanWait() {
+        return m_pCreatGroup.CanWait();
+    }
+
+    @Override
+    public final int Speed() {
+        return m_pCreatGroup.Speed();
+    }
+
+    protected iBattleGroup    m_pCreatGroup;
 }

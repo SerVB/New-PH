@@ -24,10 +24,13 @@
 
 package Common;
 
+import entries.iSecSkillEntry;
 import Constants.*;
+import Game.iBattleGroup;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -248,14 +251,14 @@ public class serialize {
     }
 
     // Spells
-    public static void Serialize(iDynamicBuffer dbuff, iSpellList spells) {
-        dbuff.Write(spells.GetSize());
+    public static void Serialize(iDynamicBuffer dbuff, ArrayList<iBattleGroup.iSpellEntry> spells) {
+        dbuff.Write(spells.size());
 
-        for (int spIdx = 0; spIdx < spells.GetSize(); ++spIdx)
+        for (int spIdx = 0; spIdx < spells.size(); ++spIdx)
             dbuff.Write(spells.get(spIdx).id);
     }
 
-    public static void Unserialize(iDynamicBuffer dbuff, iSpellList spells) {
+    public static void Unserialize(iDynamicBuffer dbuff, ArrayList<iBattleGroup.iSpellEntry> spells) {
         int spCnt = (int) dbuff.Read();
 
         if (spCnt <= 0)

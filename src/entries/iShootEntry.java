@@ -21,21 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package entries;
 
-package Constants;
+import Common.iPoint;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iShootEntry {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public iShootEntry(final iPoint pos, int penalty) {
+        this.m_pos = pos;
+        this.m_penalty = penalty;
+    }
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public int    m_penalty;
+    public iPoint    m_pos;
 
-}
+};

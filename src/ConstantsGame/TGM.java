@@ -21,21 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package ConstantsGame;
 
 /**
- * Secondary skill.
+ * TGMODE.
  */
-public class SECSK {
+public class TGM {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
-
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public final static int NONE    = 0;
+    public final static int ATTACK  = 1;
+    public final static int TOUCH   = 2;
+    public final static int INTHERO = 3;
 
 }

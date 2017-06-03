@@ -21,21 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package ConstantsGame;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class UnitType {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
-
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public final static int Hero = 0;
+    public final static int CreatGroup = 1;
+    public final static int Catapult = 2;
+    public final static int Turret = 3;
+    public final static int Moat = 4;
 
 }

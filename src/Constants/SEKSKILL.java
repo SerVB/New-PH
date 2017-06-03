@@ -33,7 +33,7 @@ public class SEKSKILL {
      * Описание вторичных навыков.
      * Для каждого навыка описана каждая из трех ступеней.
      */
-    public final static long[][][] DESC = {
+    public final static int[][][] DESC = {
         {
             // Estates
             {FSK.MIN_GOLD, 250},{FSK.MIN_GOLD, 500},{FSK.MIN_GOLD, 1000},

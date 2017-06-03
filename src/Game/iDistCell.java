@@ -21,21 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Constants;
+package Game;
 
 /**
- * Secondary skill.
+ *
  */
-public class SECSK {
+public class iDistCell {
 
-    public final static int AIRMAGIC = -42;
-    public final static int EARTHMAGIC = -42;
-    public final static int FIREMAGIC = -42;
-    public final static int WATERMAGIC = -42;
+    public iDistCell(){
+        this.data = 0xFFFFFFFF;
+    }
 
-    public final static int COUNT = -42;
-    public final static int NONE = -42;
-    public final static int NECROMANCY = -42;
+    public class Dirs {
+        int    val;
+        int    dir;
+    };
+
+    public int    data;
+    public Dirs[] dirs = new Dirs[2];
 
 }
