@@ -23,6 +23,8 @@
  */
 package Game;
 
+import Game.map.iBaseMapObject;
+
 /**
  *
  */

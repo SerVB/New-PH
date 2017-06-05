@@ -37,5 +37,6 @@ public class SECSK {
     public final static int COUNT = -42;
     public final static int NONE = -42;
     public final static int NECROMANCY = -42;
+    public final static int LEADERSHIP = -42;
 
 }

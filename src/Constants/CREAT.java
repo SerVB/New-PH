@@ -709,4 +709,11 @@ public class CREAT {
             this.perks = perks;
         }
     }
+
+    /**
+     *
+     */
+    public final static int[] GROWTH_DIVIDER = {
+	9, 9, 10, 10, 11, 12
+    };
 }

@@ -23,13 +23,20 @@
  */
 package Game;
 
+import Constants.MDIR;
+import Constants.AttackFlags;
+import Constants.STATE;
+import Constants.DurationType;
+import Constants.HEX;
+import Constants.CT;
+import Constants.MLM;
+import Constants.TAIL;
 import Common.iArmy;
 import entries.iMeleeEntry;
 import Common.iFurtSkills;
 import Common.iPoint;
 import utils.tracer;
 import Constants.*;
-import ConstantsGame.*;
 import collections.simple.iDistMap;
 import collections.simple.iMeleeList;
 import collections.simple.iShotList;

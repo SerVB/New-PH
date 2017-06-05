@@ -23,9 +23,9 @@
  */
 package Game;
 
+import Constants.AC;
 import utils.tracer;
 import Constants.*;
-import ConstantsGame.*;
 
 /**
  * Artifacts container.

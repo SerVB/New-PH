@@ -23,9 +23,9 @@
  */
 package Game;
 
+import Constants.DRC;
 import Common.iRect;
 import Constants.*;
-import ConstantsGame.*;
 
 /**
  * Question dialog MB_YESNO.

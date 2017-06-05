@@ -23,9 +23,9 @@
  */
 package Game;
 
+import java.util.ArrayList;
+
 /**
  *
  */
-public class iVisitors {
-
-}
+public class iVisitors extends ArrayList<Integer> {}

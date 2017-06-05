@@ -23,9 +23,9 @@
  */
 package Game;
 
+import Constants.WeekDesc;
 import Common.iDynamicBuffer;
 import Constants.*;
-import ConstantsGame.*;
 
 /**
  *

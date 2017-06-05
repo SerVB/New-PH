@@ -23,7 +23,7 @@
  */
 package Game;
 
-import Game.mapConstruction.iMapCnst;
+import Game.map.construction.iMapCnst;
 import Common.iArmy;
 import Constants.*;
 import utils.tracer;

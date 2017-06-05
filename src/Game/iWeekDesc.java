@@ -23,8 +23,8 @@
  */
 package Game;
 
+import Constants.WeekDesc;
 import Constants.*;
-import ConstantsGame.*;
 
 /**
  * Week descriptor.

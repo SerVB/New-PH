@@ -23,10 +23,10 @@
  */
 package Game;
 
+import Constants.DRC;
 import Common.iRect;
 import Common.iSize;
 import Constants.*;
-import ConstantsGame.*;
 
 /**
  * Base text dialog MB_OK.

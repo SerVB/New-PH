@@ -23,7 +23,7 @@
  */
 package Game;
 
-import ConstantsGame.*;
+import Constants.UnitType;
 
 /**
  *

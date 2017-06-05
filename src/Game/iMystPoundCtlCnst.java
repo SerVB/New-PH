@@ -23,9 +23,9 @@
  */
 package Game;
 
+import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Constants.*;
-import ConstantsGame.*;
 import utils.ChangeableString;
 import utils.tracer;
 

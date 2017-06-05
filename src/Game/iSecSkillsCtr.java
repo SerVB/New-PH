@@ -23,12 +23,12 @@
  */
 package Game;
 
+import Constants.SSLVL;
 import Common.iFurtSkills;
 import entries.iSecSkillEntry;
 import Common.iSecSkills;
 import utils.tracer;
 import Constants.*;
-import ConstantsGame.*;
 
 /**
  * Secondary skills container.

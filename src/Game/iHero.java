@@ -23,8 +23,17 @@
  */
 package Game;
 
-import Game.mapItem.iMapItem;
-import Game.mapConstruction.iMapCnst;
+import Constants.ENDUR;
+import Constants.ARTT;
+import Constants.SSM;
+import Constants.AC;
+import Constants.RIT;
+import Constants.CNST;
+import Constants.CSTL;
+import Constants.SSLVL;
+import Game.map.iBaseMapObject;
+import Game.map.item.iMapItem;
+import Game.map.construction.iMapCnst;
 import Common.iArmy;
 import Common.iArtifactList;
 import Common.iCreatGroup;
@@ -36,7 +45,6 @@ import Common.iSecSkills;
 import utils.serialize;
 import utils.tracer;
 import Constants.*;
-import ConstantsGame.*;
 import collections.simple.iCharmList;
 import collections.simple.iSpellList;
 import java.util.ArrayList;
@@ -75,7 +83,8 @@ public class iHero extends iBaseMapObject implements iIListNode {
 
     private iMapCnst    m_pLocation;
     private boolean        m_bDead;
-    private IMPL_TYPEAWARE( iHero );
+
+//    private IMPL_TYPEAWARE( iHero );
 
 
     protected void ProcessItemChanges() {
@@ -787,7 +796,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         return m_Level;
     }
 
-    public final long Experience() {
+    public final int Experience() {
         return m_Experience;
     }
 
@@ -920,12 +929,12 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     // Opertaions
-    public final long ConvExpPts(long exppts) {
+    public final int ConvExpPts(int exppts) {
         exppts += (exppts * FurtSkill(FSK.LEARNING))/100;
         return exppts;
     }
 
-    public long ReceiveExperience(long points) {
+    public int ReceiveExperience(int points) {
         m_Experience += points;
 
         while (ReachNextLevel()) {
@@ -958,13 +967,13 @@ public class iHero extends iBaseMapObject implements iIListNode {
         return 0;
     }
 
-    public long RiseSkeletons(long enCas) {
+    public int RiseSkeletons(int enCas) {
         int val = FurtSkill(FSK.NECROMANCY);
         if (val == 0 || enCas == 0 || m_SecSkills.SkillLevel(SECSK.NECROMANCY) == SSLVL.NONE)
             return 0;
 
 //        sint32 quant = iCLAMP<sint32>(1,enCas,(enCas * val) / 100);
-        long quant = Math.max(1, Math.min(enCas, (enCas * val) / 100)); // Ограничевает третий параметр в диапазоне от первого до второго параметров.
+        int quant = Math.max(1, Math.min(enCas, (enCas * val) / 100)); // Ограничевает третий параметр в диапазоне от первого до второго параметров.
 
         int ct = HasSpecFlag(SHF.NECRBONUS) ? CREAT.MUMMY : CREAT.SKELETON;
 
@@ -1274,5 +1283,9 @@ public class iHero extends iBaseMapObject implements iIListNode {
             tracer.check(pAIPlyer != null && pAIPlyer.NeedMeeting(this, pHero));
             pAIPlyer.MeetHeroes(this, pHero);
         }
+    }
+
+    public void addManaPts(int cnt) {
+        m_manaPts += cnt;
     }
 }

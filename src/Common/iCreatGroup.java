@@ -40,21 +40,14 @@ public class iCreatGroup {
     /**
      * Количество существ в группе.
      */
-    private long m_count;
-
-    /**
-     *
-     */
-    final long[] CREAT_GROWTH_DIVIDER = {
-	9, 9, 10, 10, 11, 12
-    };
+    private int m_count;
 
     /**
      * Конструктор.
      * @param ct тип существ.
      * @param count количество существ.
      */
-    public iCreatGroup(int ct, long count) {
+    public iCreatGroup(int ct, int count) {
         this.m_creatType = ct;
         this.m_count     = count;
     }
@@ -84,7 +77,7 @@ public class iCreatGroup {
      * @param ct тип существ.
      * @param count количество существ.
      */
-    public void Reset(int ct, long count) {
+    public void Reset(int ct, int count) {
         this.m_creatType = ct;
         this.m_count = count;
     }
@@ -133,7 +126,7 @@ public class iCreatGroup {
      * Получить количество существ в группе.
      * @return количество существ.
      */
-    public long Count() {
+    public int Count() {
         return m_count;
     }
 
@@ -141,7 +134,7 @@ public class iCreatGroup {
      * Задать количество существ в группе.
      * @param count
      */
-    public void setCount(long count) {
+    public void setCount(int count) {
         m_count = count;
     }
 
@@ -158,7 +151,7 @@ public class iCreatGroup {
      * @return мощь.
      */
     public long GroupPower() {
-        return m_count*CREAT.DESC[m_creatType].pidx;
+        return m_count * CREAT.DESC[m_creatType].pidx;
     }
 
     /**
@@ -169,8 +162,10 @@ public class iCreatGroup {
         tracer.check(m_count != RANDOM.VAL);
 
         while(weeks > 0) {
-            long div = CREAT_GROWTH_DIVIDER[CREAT.DESC[m_creatType].level - 1];
-            if (m_count < CREAT.DESC[m_creatType].growth*2) div /= 2;
+            int div = CREAT.GROWTH_DIVIDER[CREAT.DESC[m_creatType].level - 1];
+            if (m_count < CREAT.DESC[m_creatType].growth*2) {
+                div /= 2;
+            }
 
             m_count = m_count + (m_count+(div-1)) / div;
 

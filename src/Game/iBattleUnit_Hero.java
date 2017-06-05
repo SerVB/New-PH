@@ -23,8 +23,8 @@
  */
 package Game;
 
+import Constants.UnitType;
 import utils.tracer;
-import ConstantsGame.*;
 
 /**
  *

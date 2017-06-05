@@ -23,9 +23,9 @@
  */
 package Game;
 
+import Constants.DLG;
 import Common.iRect;
 import Common.iSize;
-import ConstantsGame.*;
 
 /**
  * Base game dialog.

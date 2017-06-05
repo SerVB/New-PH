@@ -23,11 +23,11 @@
  */
 package Game;
 
+import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Common.iMineralSet;
 import utils.tracer;
 import Constants.*;
-import ConstantsGame.*;
 import utils.ChangeableString;
 
 /**

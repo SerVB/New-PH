@@ -23,9 +23,9 @@
  */
 package Game;
 
+import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Constants.*;
-import ConstantsGame.*;
 import java.util.ArrayList;
 import utils.tracer;
 

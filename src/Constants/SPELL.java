@@ -30,7 +30,7 @@ package Constants;
  */
 public class SPELL {
 
-    public final int[] LEVEL_MASKS = {
+    public final static int[] LEVEL_MASKS = {
         SPL.MASK_FIRST, SPL.MASK_SECOND, SPL.MASK_THIRD, SPL.MASK_FOURTH, SPL.MASK_FIFTH
     };
 

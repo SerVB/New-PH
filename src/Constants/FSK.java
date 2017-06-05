@@ -25,6 +25,7 @@
 package Constants;
 
 /**
+ * Further Skill.
  * Нужно отсортировать константы и заменить значения!
  */
 public class FSK {
