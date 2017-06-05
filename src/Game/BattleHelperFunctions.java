@@ -29,7 +29,7 @@ import ConstantsGame.*;
 /**
  * Battle helper functions.
  */
-public class HelperFunctions {
+public class BattleHelperFunctions {
 
     /**
      * Unit's color.

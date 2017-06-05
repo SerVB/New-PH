@@ -23,6 +23,7 @@
  */
 package Game;
 
+import Constants.*;
 import ConstantsGame.*;
 
 /**
@@ -53,7 +54,20 @@ public class iBattleUnit_Moat extends iBattleUnit {
         return 0xFF;
     }
 
-    public void Attack(iBattleGroup pTarget);
+    public void Attack(iBattleGroup pTarget) {
+        // calculate damage
+        int damage = 50;
+
+        m_pWrapper.AddLogEvent("#S0" + GetUnitsColor(m_pOwner.Owner()) + String.format(gTextMgr[TRID.MSG_BAT_MOAT_DODAMAGE],damage));
+        String cellMsg = FormatNumber(damage);
+
+        int dead = pTarget.ReceiveDamage(damage, true);
+
+        // Increase experience value (according with damage provided to enemy troops)
+        //if (pTarget.m_pOwner.GetSide() != m_pOwner.GetSide()) m_experience += damage;
+
+        //_LOG(iFormat(_T("%s do %d damage to %s"),_T("Moat"),damage,gTextMgr[TRID_CREATURE_PEASANT_F2+pTarget.Type()*3]).CStr());
+    }
 
     public iBattleWrapper                m_pWrapper;
 }

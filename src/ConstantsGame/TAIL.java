@@ -28,6 +28,9 @@ package ConstantsGame;
  */
 public class TAIL {
 
-    public final static int[] OFFSET;
+    /**
+     * Tail offsets [right, left direction].
+     */
+    public final static int[] OFFSET = { -1, +1 };
 
 }

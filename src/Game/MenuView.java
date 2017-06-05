@@ -24,7 +24,7 @@
 
 package Game;
 
-import Common.RGB;
+import utils.RGB;
 import Common.iPoint;
 import Common.iRect;
 import Common.iSize;

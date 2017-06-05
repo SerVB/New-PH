@@ -24,7 +24,7 @@
 
 package Constants;
 
-import Common.RGB;
+import utils.RGB;
 
 /**
  * Surface.

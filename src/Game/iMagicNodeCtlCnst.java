@@ -21,18 +21,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Common;
+import utils.tracer;
+import Constants.*;
 
 /**
  *
  */
-public class iSpell {
+public class iMagicNodeCtlCnst extends iCtlCnst {
 
-    public int id;
+//    public IMPL_TYPEAWARE( iMagicNodeCtlCnst );
 
-    public iSpell(int id) {
-        this.id = id;
+    public iMagicNodeCtlCnst(iCastle _pCastle, int _cnst) {
+        super(_pCastle, _cnst);
+        tracer.check(_cnst == CTLCNST.MAGICNODE);
+    }
+
+    @Override
+    public void OnBuild() {
+        if (pCastle.Owner() != PID.NEUTRAL) {
+            iPlayer pPlayer = gGame.Map().FindPlayer(pCastle.Owner());
+            pPlayer.FurtSkills().plusValue(FSK.MANAPTS, 1);
+        }
+    }
+
+    @Override
+    public void OnOwnerChanged(int newOwner, int oldOwner) {
+        if (oldOwner != PID.NEUTRAL) {
+            iPlayer pPlayer = gGame.Map().FindPlayer(oldOwner);
+            pPlayer.FurtSkills().minusValue(FSK.MANAPTS, 1);
+        }
+
+        if (newOwner != PID.NEUTRAL) {
+            iPlayer pPlayer = gGame.Map().FindPlayer(newOwner);
+            pPlayer.FurtSkills().plusValue(FSK.MANAPTS, 1);
+        }
     }
 
 }

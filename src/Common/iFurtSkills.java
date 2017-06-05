@@ -58,6 +58,10 @@ public class iFurtSkills {
         skills.set(idx, val);
     }
 
+    public iFurtSkills() {
+
+    }
+
     public iFurtSkills(iFurtSkills fs1, iFurtSkills fs2) {
         this.skills.addAll(fs1.skills);
         this.skills.addAll(fs2.skills);

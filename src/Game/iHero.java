@@ -23,6 +23,8 @@
  */
 package Game;
 
+import Game.mapItem.iMapItem;
+import Game.mapConstruction.iMapCnst;
 import Common.iArmy;
 import Common.iArtifactList;
 import Common.iCreatGroup;
@@ -31,33 +33,18 @@ import Common.iFurtSkills;
 import Common.iPoint;
 import Common.iRewardItem;
 import Common.iSecSkills;
-import Common.iSpellList;
-import Common.serialize;
-import Common.tracer;
+import utils.serialize;
+import utils.tracer;
 import Constants.*;
 import ConstantsGame.*;
+import collections.simple.iCharmList;
+import collections.simple.iSpellList;
 import java.util.ArrayList;
 
 /**
  *
  */
 public class iHero extends iBaseMapObject implements iIListNode {
-
-    private class iCharmEntry {
-        public iCharmEntry(int _spellId, int _flag) {
-            this.spellId = _spellId;
-            this.flag = _flag;
-        }
-
-        public iCharmEntry(int _spellId) {
-            this.spellId = _spellId;
-            this.flag = 0;
-        }
-
-        public int spellId;
-        public int flag;
-    };
-
 
     private iHeroT            m_pProto;
     private iSecSkillsCtr    m_SecSkills;
@@ -80,7 +67,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
     //iPoint        m_NextAnchor;
     private iPath        m_Path;
     private iPoint        m_NextPoint;
-    private ArrayList<iCharmEntry> m_charms = new ArrayList();
+    private iCharmList m_charms = new iCharmList();
 
     private boolean        m_bCanDig;
     private boolean        m_bStop;
@@ -279,7 +266,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         int owner = (int)dbuff.Read();
         if (owner != PID.NEUTRAL) {
             m_pOwner = gGame.Map().FindPlayer(owner);
-            tracer.check(m_pOwner);
+            tracer.check(m_pOwner != null);
             m_pOwner.AddHero(this, false);
         }
 
@@ -350,7 +337,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         // Spellbook
         int spflag = (int) dbuff.Read();
         if (spflag != 0) {
-            ArrayList<iBattleGroup.iSpellEntry> spellList = new ArrayList<>();
+            iSpellList spellList = new iSpellList();
             serialize.Unserialize(dbuff, spellList);
             m_spellBook.Reset();
             if (spellList.size() > 0)
@@ -1048,11 +1035,15 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     // Mana
-    public final long ManaPts() {
+    public final int ManaPts() {
         return m_manaPts;
     }
 
-    public final long MaxManaPts() {
+    public final void setManaPts(int newPts) {
+        m_manaPts = newPts;
+    }
+
+    public final int MaxManaPts() {
         return (FurtSkill(FSK.KNOWLEDGE) * 10) + ((FurtSkill(FSK.KNOWLEDGE) * 10 * FurtSkill(FSK.INTELLIGENCE))/100);
     }
 

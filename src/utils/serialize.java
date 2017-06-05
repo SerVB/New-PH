@@ -22,15 +22,26 @@
  * SOFTWARE.
  */
 
-package Common;
+package utils;
 
+import Common.iArmy;
+import Common.iArtifactList;
+import Common.iCreatGroup;
+import Common.iDynamicBuffer;
+import Common.iFurtSkills;
+import Common.iMineralSet;
+import Common.iPoint;
+import Common.iPrSkills;
+import Common.iRewardItem;
+import Common.iSecSkills;
 import entries.iSecSkillEntry;
 import Constants.*;
-import Game.iBattleGroup;
+import collections.simple.iRewardsCtr;
+import collections.simple.iSpellList;
+import entries.iSpellEntry;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -251,31 +262,31 @@ public class serialize {
     }
 
     // Spells
-    public static void Serialize(iDynamicBuffer dbuff, ArrayList<iBattleGroup.iSpellEntry> spells) {
+    public static void Serialize(iDynamicBuffer dbuff, iSpellList spells) {
         dbuff.Write(spells.size());
 
         for (int spIdx = 0; spIdx < spells.size(); ++spIdx)
             dbuff.Write(spells.get(spIdx).id);
     }
 
-    public static void Unserialize(iDynamicBuffer dbuff, ArrayList<iBattleGroup.iSpellEntry> spells) {
+    public static void Unserialize(iDynamicBuffer dbuff, iSpellList spells) {
         int spCnt = (int) dbuff.Read();
 
         if (spCnt <= 0)
             return;
 
-        spells.RemoveAll();
+        spells.clear();
 
         while (spCnt-- > 0) {
             int spId = (int) dbuff.Read();
             if (spId < MSP.COUNT)
-                spells.Add(new iSpell(spId));
+                spells.add(new iSpellEntry(spId));
         }
     }
 
     // Rewards
     public static void Serialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
-        int quant = rewards.GetSize();
+        int quant = rewards.size();
 
         dbuff.Write(quant);
 
@@ -287,16 +298,16 @@ public class serialize {
     }
 
     public static void Unserialize(iDynamicBuffer dbuff, iRewardsCtr rewards) {
-        rewards.RemoveAll();
+        rewards.clear();
 
         int quant = (int) dbuff.Read();
         while (quant-- > 0) {
             int rtype = (int) dbuff.Read();
 
-            long fparam = dbuff.Read();
-            long sparam = dbuff.Read();
+            int fparam = (int) dbuff.Read();
+            int sparam = (int) dbuff.Read();
 
-            rewards.Add(new iRewardItem(rtype, fparam, sparam));
+            rewards.add(new iRewardItem(rtype, fparam, sparam));
         }
     }
 }

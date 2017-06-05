@@ -26,7 +26,7 @@ package Game;
 import Common.iFurtSkills;
 import entries.iSecSkillEntry;
 import Common.iSecSkills;
-import Common.tracer;
+import utils.tracer;
 import Constants.*;
 import ConstantsGame.*;
 

@@ -25,37 +25,42 @@
 package Constants;
 
 /**
- * HTM.
+ * HTM. (Mask)
  */
 public class HTM {
 
     /**
      * Рыцарь.
      */
-    public final static int KNIGHT = 0;
+    public final static int KNIGHT      = 0b000001;
 
     /**
      * Варвар.
      */
-    public final static int BARBARIAN = 1;
+    public final static int BARBARIAN   = 0b000010;
 
     /**
      * Волшебник.
      */
-    public final static int WIZARD = 2;
+    public final static int WIZARD      = 0b000100;
 
     /**
      * Чернокнижник.
      */
-    public final static int WARLOCK = 3;
+    public final static int WARLOCK     = 0b001000;
 
     /**
      * Колдун.
      */
-    public final static int SORCERESS = 4;
+    public final static int SORCERESS   = 0b010000;
 
     /**
      * Некромант.
      */
-    public final static int NECROMANCER = 5;
+    public final static int NECROMANCER = 0b100000;
+
+    /**
+     * All.
+     */
+    public final static int ALL = KNIGHT | BARBARIAN | WIZARD | WARLOCK | SORCERESS | NECROMANCER;
 }

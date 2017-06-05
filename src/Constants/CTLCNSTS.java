@@ -34,7 +34,7 @@ public class CTLCNSTS {
     /**
      * Castle constructions description.
      */
-    public final DESC_STRUCT[] DESC = {
+    public final static DESC_STRUCT[] DESC = {
         new DESC_STRUCT(
             //
             // Peasants' hut
@@ -854,7 +854,7 @@ public class CTLCNSTS {
     /**
      * Castle construction descriptor structure.
      */
-    public class DESC_STRUCT {
+    public final static class DESC_STRUCT {
 
         /**
          * Тип.
@@ -879,12 +879,12 @@ public class CTLCNSTS {
         /**
          * First parameter.
          */
-        public long fparam;
+        public int fparam;
 
         /**
          * Second parameter.
          */
-        public long sparam;
+        public int sparam;
 
         /**
          * Конструктор.
@@ -902,8 +902,8 @@ public class CTLCNSTS {
                 int         _depend0,
                 int         _depend1,
                 CTCNSTCAP   _caps,
-                long        _fparam,
-                long        _sparam
+                int        _fparam,
+                int        _sparam
         ) {
             this.type       = _type;
             this.price      = _price;
@@ -918,9 +918,9 @@ public class CTLCNSTS {
     /**
      * CTCNSTCAP.
      */
-    public class CTCNSTCAP {
-        long	siz;
-        long	type;
+    public final static class CTCNSTCAP {
+        int	siz;
+        int	type;
 
         /**
          *
@@ -933,13 +933,13 @@ public class CTLCNSTS {
         }
 
         /**
-         * Конструктор
+         * Конструктор.
          * @param _siz
          * @param _type
          */
         public CTCNSTCAP(
-                long _siz,
-                long _type
+                int _siz,
+                int _type
         ) {
             this.siz = _siz;
             this.type = _type;

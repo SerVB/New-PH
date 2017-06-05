@@ -22,37 +22,38 @@
  * SOFTWARE.
  */
 
-package Common;
+package collections.extended;
 
+import Common.Item;
+import Common.iDynamicBuffer;
+import utils.serialize;
 import java.util.ArrayList;
 
 /**
  * Treasury variants container.
  */
-public class iTrVarCtr {
-
-    private ArrayList<Item> m_items = new ArrayList();
+public class iTrVarCtr extends ArrayList<Item> {
 
     public void AddVariant(long probability) {
-        m_items.add(new Item(probability));
+        super.add(new Item(probability));
     }
 
     public Item GetLastVariant() {
-        return m_items.get(m_items.size() - 1);
+        return super.get(super.size() - 1);
     }
 
     public Item GetVariant(int idx) {
-        return m_items.get(idx);
+        return super.get(idx);
     }
 
     public int VariantsCount() {
-        return m_items.size();
+        return super.size();
     }
 
     public void Serialize(iDynamicBuffer dbuff) {
-        int quant = m_items.size();
+        int quant = super.size();
         dbuff.Write(quant);
-        for (Item item : m_items) {
+        for (Item item : super.subList(0, super.size())) {
             dbuff.Write((int) item.probability);
             serialize.Serialize(dbuff, item.guards);
             serialize.Serialize(dbuff, item.rewards);
@@ -60,15 +61,15 @@ public class iTrVarCtr {
     }
 
     public void Unserialize(iDynamicBuffer dbuff) {
-        m_items.clear();
+        super.clear();
         int quant;
         quant = (int)dbuff.Read();
         while (quant-- > 0) {
             long prob;
             prob = dbuff.Read();
-            m_items.add(new Item(prob));
-            serialize.Unserialize(dbuff, m_items.get(m_items.size()-1).guards);
-            serialize.Unserialize(dbuff, m_items.get(m_items.size()-1).rewards);
+            super.add(new Item(prob));
+            serialize.Unserialize(dbuff, super.get(super.size()-1).guards);
+            serialize.Unserialize(dbuff, super.get(super.size()-1).rewards);
         }
     }
 }

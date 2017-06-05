@@ -21,28 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game.mapItem;
 
-package Common;
-
-import java.awt.Color;
+import Common.iDynamicBuffer;
+import Constants.*;
+import Game.iHero;
 
 /**
- * Хранилище цвета.
+ *
  */
-public class RGB {
+public class iMapItem_SpellScroll extends iMapItem {
 
-    /**
-     * Цвет.
-     */
-    public final Color color;
+    public iMapItem_SpellScroll(final iPoint pos, int spellId);
 
-    /**
-     * Конструктор.
-     * @param r Красный канал (0..255).
-     * @param g Зеленый канал (0..255).
-     * @param b Синий канал (0..255).
-     */
-    public RGB(int r, int g, int b) {
-        color = new Color(r, g, b);
+    public int SpellId() {
+        return m_spellId;
     }
+
+    public boolean Activate(iHero pHero, boolean bActive, boolean bShowMessage);
+
+    public void Serialize(iDynamicBuffer buff);
+
+    @Override
+    public int NameKey() {
+        return TRID.MAPRES_SPELLSCROLL;
+    }
+
+//    public IMPL_TYPEAWARE( iMapItem_SpellScroll );
+
+    private int    m_spellId;
 }

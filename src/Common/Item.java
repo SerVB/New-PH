@@ -24,6 +24,8 @@
 
 package Common;
 
+import collections.simple.iRewardsCtr;
+
 /**
  * Item.
  */
@@ -32,17 +34,17 @@ public class Item {
     /**
      *
      */
-    long probability;
+    public long probability;
 
     /**
      *
      */
-    iArmy guards;
+    public iArmy guards;
 
     /**
      *
      */
-    iRewardsCtr rewards;
+    public iRewardsCtr rewards;
 
     /**
      * Конструктор.

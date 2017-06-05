@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 
-package Common;
+package utils;
+
+import Common.iDynamicBuffer;
 
 /**
  *

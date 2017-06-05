@@ -21,14 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package ConstantsGame;
+package Game.mapConstruction;
 
 /**
- *
+ * Prototype.
  */
-public class HEX_MELEE {
-
-    public final static int[][][]   HEX_MELEE_NEBS1;
-    public final static int[][][][] HEX_MELEE_NEBS2;
+public class iVisCnstT {
 
 }

@@ -28,6 +28,7 @@ package Common;
  * Прямоугольник.
  */
 public class iRect {
+
     public int x, y, w, h;
 
     public iRect(int x, int y, int w, int h) {
@@ -37,5 +38,20 @@ public class iRect {
         this.h = h;
     }
 
+    public iRect(iSize size) {
+        this(0, 0, size.w, size.h);
+    }
+
+    public void DeflateRect(int Int) {
+        System.err.println("iRect.DeflateRect not supported yet!");
+    }
+
+    public int y2() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public iPoint point() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

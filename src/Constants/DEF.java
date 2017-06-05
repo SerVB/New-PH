@@ -35,6 +35,8 @@ public class DEF {
     public final static int HERO_MOVES = -42;
     public final static int HERO_MYSTICISM = -42;
 
+    public final static int BTN_HEIGHT = -42;
+
     public final static int[] LEVEL_BOUNDS = {
         0, 1000, 2000, 3200, 4600, 6200, 8000, 10000, 12200, 14700, 17500, 20600
     };

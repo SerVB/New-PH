@@ -28,14 +28,19 @@ package entries;
  */
 public class iSpellEntry {
 
-    iSpellEntry(final iCombatSpell pSpell, int duration, int param) {
+    public iSpellEntry(final iCombatSpell pSpell, int duration, int param) {
         this.m_pSpell = pSpell;
         this.m_duration = duration;
         this.m_param = param;
     }
 
-    final iCombatSpell    m_pSpell;
-    int                 m_duration;
-    int                 m_param;
+    public iSpellEntry(final int id) {
+        this.id = id;
+    }
+
+    public iCombatSpell   m_pSpell;
+    public int            id;
+    public int            m_duration;
+    public int            m_param;
 
 }

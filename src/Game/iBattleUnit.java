@@ -28,7 +28,7 @@ package Game;
  */
 public class iBattleUnit implements TypeAware {
 
-    public IMPL_TYPEAWARE( iBattleUnit );
+//    public IMPL_TYPEAWARE( iBattleUnit );
 
     /**
      * C-tor.

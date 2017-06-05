@@ -29,7 +29,7 @@ package Constants;
  */
 public class RANDOM {
 
-    public final static long QUANTITY = -42;
-    public final static long VAL      = -42;
+    public final static int QUANTITY = -42;
+    public final static int VAL      = -42;
 
 }

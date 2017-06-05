@@ -25,7 +25,7 @@
 package Game;
 
 import Common.iPoint;
-import Common.tracer;
+import utils.tracer;
 import Constants.CV;
 import java.io.File;
 import java.io.FileInputStream;

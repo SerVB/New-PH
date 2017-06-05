@@ -21,31 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Common;
-
-import java.util.ArrayList;
+package Game;
 
 /**
  *
  */
-public class iRewardsCtr {
+public class iVisitors {
 
-    private ArrayList<iRewardItem> rewards = new ArrayList<>();
-
-    public int GetSize() {
-        return rewards.size();
-    }
-
-    public iRewardItem get(int idx) {
-        return rewards.get(idx);
-    }
-
-    public void RemoveAll() {
-        rewards.clear();
-    }
-
-    public void Add(iRewardItem reward) {
-        rewards.add(reward);
-    }
 }

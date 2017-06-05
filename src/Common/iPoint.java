@@ -41,4 +41,11 @@ public class iPoint {
 
     }
 
+    public iPoint minus(iPoint other) {
+        this.x -= other.x;
+        this.y -= other.y;
+
+        return this;
+    }
+
 }

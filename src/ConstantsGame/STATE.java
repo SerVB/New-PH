@@ -40,4 +40,15 @@ public class STATE {
 
     public final static int COUNT = 9;
 
+    public final static String[] NAMES = {
+        "IDLE",
+        "MOVING",
+        "ROTATING",
+        "MELEE",
+        "SHOOTING",
+        "RECEIVING DAMAGE",
+        "CASTING SPELL",
+        "DEAD"
+    };
+
 }

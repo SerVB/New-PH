@@ -39,6 +39,8 @@ public class MINERAL {
 
     public final static int COUNT   = 7;
 
+    public final static int UNKNOWN = -1;
+
     /**
      * Делитель материалов.
      */

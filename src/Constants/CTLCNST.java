@@ -127,4 +127,14 @@ public class CTLCNST {
 
     // Count //
     public final static int COUNT             = 74;
+
+    public final static int[][] DEFAULT_CONSTRUCTIONS = {
+        { TAVERN, DWELL_PEASNHUT },
+        { TAVERN, DWELL_GBARRACKS },
+        { TAVERN, DWELL_HLFHUT },
+        { TAVERN, DWELL_CENTCAVE },
+        { TAVERN, DWELL_TREEHOUSE },
+        { TAVERN, DWELL_EXCAVATION }
+    };
+
 }

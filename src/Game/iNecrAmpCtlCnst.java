@@ -21,25 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game;
 
-package Common;
+import Constants.FSK;
+import Constants.PID;
 
 /**
- * Трассировщик возможных ошибок
- * TODO: Написать нормальную трассировку!
+ *
  */
-public class tracer {
+public class iNecrAmpCtlCnst extends iCtlCnst {
 
-    /**
-     * Проверяет на ошибку.
-     * @param noError true если нет ошибки, false если ошибка.
-     */
-    public static void check(boolean noError) {
-        if(!noError)
-            System.err.println("tracer: Error detected!!!");
+//    public IMPL_TYPEAWARE( iNecrAmpCtlCnst );
+
+    public iNecrAmpCtlCnst(iCastle _pCastle, int _cnst) {
+        super(_pCastle, _cnst);
     }
 
-    public static void check(int xx) {
-        check(xx != 0);
+    @Override
+    public void OnBuild() {
+        if (pCastle.Owner() != PID.NEUTRAL) {
+            iPlayer pPlayer = gGame.Map().FindPlayer(pCastle.Owner());
+            pPlayer.FurtSkills().plusValue(FSK.NECROMANCY, 10);
+        }
     }
+
+    @Override
+    public void OnOwnerChanged(int newOwner, int oldOwner) {
+        if (oldOwner != PID.NEUTRAL) {
+            iPlayer pPlayer = gGame.Map().FindPlayer(oldOwner);
+            pPlayer.FurtSkills().minusValue(FSK.NECROMANCY, 10);
+        }
+
+        if (newOwner != PID.NEUTRAL) {
+            iPlayer pPlayer = gGame.Map().FindPlayer(newOwner);
+            pPlayer.FurtSkills().plusValue(FSK.NECROMANCY, 10);
+        }
+    }
+
 }

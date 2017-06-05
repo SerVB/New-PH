@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iFurtSkills;
-import Common.tracer;
+import utils.tracer;
 import Constants.FSK;
 import java.util.ArrayList;
 

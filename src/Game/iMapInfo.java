@@ -25,8 +25,8 @@
 package Game;
 
 import Common.iSize;
-import Common.serialize;
-import Common.tracer;
+import utils.serialize;
+import utils.tracer;
 import Constants.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

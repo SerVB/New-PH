@@ -46,13 +46,13 @@ public class CTL {
     /**
      * Начальный / Минимальный золотой доход замка.
      */
-    public final long INCOME = 500;
+    public final static int INCOME = 500;
 
 
     /**
      * Описание для каждого замка заклинаний, открываемых по каждому сдедующему уровню гильдии.
      */
-    iSpellFilter[][] MAGE_GUILD_FILTER = {
+    public final static iSpellFilter[][] MAGE_GUILD_FILTER = {
         {
             // Citadel
             new iSpellFilter(SPT.MASK_ALL, SPL.MASK_FIRST,  MST.MASK_GOOD),
@@ -97,7 +97,7 @@ public class CTL {
     /**
      * Количество заклинаний каждой гильдии в порядке открытия.
      */
-    final long[][] MAGE_GUILD_SPELLS = {
+    public final static int[][] MAGE_GUILD_SPELLS = {
         {
             // Citadel
             5, 4, 3

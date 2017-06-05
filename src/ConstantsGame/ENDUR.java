@@ -24,12 +24,13 @@
 package ConstantsGame;
 
 /**
- *
+ * Temp hero enchancements. enum ENCH_DURATION.
  */
 public class ENDUR {
 
-    public final static int NEXTBATTLE = -42;
-    public final static int NEXTDAY = -42;
-    public final static int NEXTWEEK = -42;
+    public final static int NEXTDAY     = 0;
+    public final static int NEXTBATTLE  = 1;
+    public final static int NEXTWEEK    = 2;
+    public final static int COUNT       = 3;
 
 }
