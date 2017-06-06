@@ -42,16 +42,36 @@ public class iRect {
         this(0, 0, size.w, size.h);
     }
 
+    public iRect(iRect other) {
+        this(other.x, other.y, other.w, other.h);
+    }
+
     public void DeflateRect(int Int) {
-        System.err.println("iRect.DeflateRect not supported yet!");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public int y2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public iPoint point() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void plus(iRect other) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void plus(iPoint point) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public iSize size() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public boolean PtInRect(iPoint pos) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

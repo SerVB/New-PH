@@ -44,7 +44,7 @@ public class iOwnCnst_FurtSkill extends iOwnCnst {
      */
     @Override
     public void OnOwnerChanged(int newOwner, int oldOwner) {
-        iOwnCnstT_FurtSkill pProto = DynamicCast<iOwnCnstT_FurtSkill>(m_pProto);
+        iOwnCnstT_FurtSkill pProto = (iOwnCnstT_FurtSkill)(m_pProto);
         tracer.check(pProto != null);
         if (newOwner == oldOwner) {
             return;

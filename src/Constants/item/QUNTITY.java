@@ -21,29 +21,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map.construction;
-
-import Game.map.iBaseMapObject;
-import Common.iPoint;
-import Game.iHero;
+package Constants.item;
 
 /**
- * Common construction type.
+ *
  */
-public class iMapCnst extends iBaseMapObject implements iIListNode {
+public class QUNTITY {
 
-//    public IMPL_TYPEAWARE( iMapCnst );
+    /**
+     * RAND_QUANTITY_ITEM.
+     */
+    public final static class RAND_ITEM {
 
-    public iMapCnst(final iPoint pos) {
-        super(pos, false);
+        public int minVal;
+        public int maxVal;
+
+        public RAND_ITEM(int minVal, int maxVal) {
+            this.minVal = minVal;
+            this.maxVal = maxVal;
+        }
+
     }
 
-    public iHero Visitor() {
-        return gGame.Map().m_CoverMap.GetAt(Pos().x,Pos().y);
-    }
-
-    public boolean Activate(iHero pVisitor, boolean bActive) {
-        return true;
-    }
+    /**
+     * INITIAL_QUNTITY.
+     */
+    public final static RAND_ITEM[] INITIAL = {
+        new RAND_ITEM(750,   1500),
+        new RAND_ITEM(1000,  2000),
+        new RAND_ITEM(1500,  3000),
+        new RAND_ITEM(2000,  4000),
+        new RAND_ITEM(3000,  6000),
+        new RAND_ITEM(10000, 25000)
+    };
 
 }

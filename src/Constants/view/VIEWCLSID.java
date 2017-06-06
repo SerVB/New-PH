@@ -21,29 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map.construction;
-
-import Game.map.iBaseMapObject;
-import Common.iPoint;
-import Game.iHero;
+package Constants.view;
 
 /**
- * Common construction type.
+ *
  */
-public class iMapCnst extends iBaseMapObject implements iIListNode {
+public class VIEWCLSID {
 
-//    public IMPL_TYPEAWARE( iMapCnst );
-
-    public iMapCnst(final iPoint pos) {
-        super(pos, false);
-    }
-
-    public iHero Visitor() {
-        return gGame.Map().m_CoverMap.GetAt(Pos().x,Pos().y);
-    }
-
-    public boolean Activate(iHero pVisitor, boolean bActive) {
-        return true;
-    }
+    public final static int GENERIC_VIEWPORT = 0;
+    public final static int MODAL_DIALOG = 1;
+    public final static int PUSH_BUTTON = 2;
+    public final static int TABBED_SWITCH = 3;
+    public final static int SCROLL_BAR = 4;
+    public final static int LIST_BOX = 5;
 
 }

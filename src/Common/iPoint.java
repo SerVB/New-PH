@@ -41,11 +41,36 @@ public class iPoint {
 
     }
 
-    public iPoint minus(iPoint other) {
+
+
+    public iPoint(iPoint other) {
+        this.x = other.x;
+        this.y = other.y;
+    }
+
+    public void minus(iPoint other) {
         this.x -= other.x;
         this.y -= other.y;
+    }
 
-        return this;
+    public void plus(iPoint other) {
+        this.x += other.x;
+        this.y += other.y;
+    }
+
+    public iPoint(iPoint first, char oper, iPoint second) {
+        switch (oper) {
+        case '-':
+            this.x = first.x - second.x;
+            this.y = first.y - second.y;
+            break;
+        case '+':
+            this.x = first.x + second.x;
+            this.y = first.y + second.y;
+            break;
+        default:
+            throw new UnsupportedOperationException(oper + "Not supported yet.");
+        }
     }
 
 }

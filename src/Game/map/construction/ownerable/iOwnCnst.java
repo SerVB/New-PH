@@ -36,8 +36,6 @@ import utils.tracer;
  */
 public class iOwnCnst extends iMapCnst {
 
-//    public IMPL_TYPEAWARE( iOwnCnst );
-
     public iOwnCnst(iOwnCnstT pProto, final iPoint pos) {
         super(pos);
 
@@ -152,7 +150,7 @@ public class iOwnCnst extends iMapCnst {
     }
 
 
-    protected iArmy        m_Guard;
-    protected iOwnCnstT    m_pProto;
-    protected int    m_Owner;
+    protected iArmy     m_Guard;
+    protected iOwnCnstT m_pProto;
+    protected int       m_Owner;
 }

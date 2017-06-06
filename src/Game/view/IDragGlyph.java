@@ -21,13 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Constants;
+package Game.view;
 
 /**
  *
  */
-public class GENERIC {
+public interface IDragGlyph {
 
-    public final static int VIEWPORT = -42;
+    public abstract void ComposeDragGlyph();
 
 }
