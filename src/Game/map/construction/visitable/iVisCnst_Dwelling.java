@@ -27,7 +27,7 @@ import Constants.WeekDesc;
 import Constants.DRC;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Common.iFormat;
 import Constants.*;
 import Game.iHero;

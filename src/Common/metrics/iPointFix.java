@@ -21,57 +21,54 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Common;
+package Common.metrics;
 
 /**
- * Прямоугольник.
+ * Fixed point based iPoint.
  */
-public class iRect {
+public class iPointFix {
+public:
+    iPointFix() {}
 
-    public int x, y, w, h;
+    iPointFix(fix32 _x, fix32 _y)
+    : x(_x), y(_y) {}
 
-    public iRect(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+    iPointFix(sint32 _x, sint32 _y)
+    : x(_x), y(_y) {}
+
+    iPointFix(float _x, float _y)
+    : x(_x), y(_y) {}
+
+    iPointFix(const iPoint& pos)
+    : x(pos.x), y(pos.y) {}
+
+    inline void operator += (const iPointFix &pos)
+    {
+        x=x+pos.x;
+        y=y+pos.y;
     }
 
-    public iRect(iSize size) {
-        this(0, 0, size.w, size.h);
+    inline void operator -= (const iPointFix &pos)
+    {
+        x=x-pos.x;
+        y=y-pos.y;
     }
 
-    public iRect(iRect other) {
-        this(other.x, other.y, other.w, other.h);
-    }
+    inline iPointFix operator + (const iPointFix &pos) const
+    { return (iPointFix(x+pos.x,y+pos.y)); }
 
-    public void DeflateRect(int Int) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    inline iPointFix operator - (const iPointFix &pos) const
+    { return (iPointFix(x-pos.x,y-pos.y)); }
 
-    public int y2() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    inline bool operator== (const iPointFix &pos) const
+    { return ((x==pos.x) && (y==pos.y)); }
 
-    public iPoint point() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    inline bool operator!= (const iPointFix &pos) const
+    { return ! operator == ( pos ); }
 
-    public void plus(iRect other) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    inline iPoint IntPoint() const
+    { return iPoint(x.ceil(),y.ceil()); }
 
-    public void plus(iPoint point) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public iSize size() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public boolean PtInRect(iPoint pos) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    fix32    x;
+    fix32    y;
 }

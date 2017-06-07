@@ -23,7 +23,7 @@
  */
 package Game.map.construction.visitable;
 
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Game.iHero;
 import utils.tracer;
 

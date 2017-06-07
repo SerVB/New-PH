@@ -24,7 +24,7 @@
 package Game.map.construction.ownerable;
 
 import Common.iArmy;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;

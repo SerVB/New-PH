@@ -24,7 +24,7 @@
 
 package Game;
 
-import Common.iPoint;
+import Common.metrics.iPoint;
 import utils.tracer;
 import Constants.CV;
 import java.io.File;

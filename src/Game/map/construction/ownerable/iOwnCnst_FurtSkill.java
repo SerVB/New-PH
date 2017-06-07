@@ -24,7 +24,7 @@
 package Game.map.construction.ownerable;
 
 import Common.iFurtSkills;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Constants.*;
 import utils.tracer;
 

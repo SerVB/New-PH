@@ -23,10 +23,10 @@
  */
 package Game;
 
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Common.iCreatGroup;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 import Constants.*;
 
 /**

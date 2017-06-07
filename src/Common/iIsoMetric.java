@@ -24,6 +24,9 @@
 
 package Common;
 
+import Common.metrics.iPoint;
+import Common.metrics.iSize;
+
 /**
  * ISOMETRIC_PROJECTION_HANDLING
  */

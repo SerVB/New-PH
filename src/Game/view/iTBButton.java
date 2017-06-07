@@ -21,19 +21,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game.view;
 
-package Common;
+import Common.metrics.iRect;
 
 /**
- *
+ * Skroll Bar.
  */
-public class iSize {
+public class iTBButton extends iButton {
 
-    public int w, h;
-
-    public iSize(int w, int h) {
-        this.w = w;
-        this.h = h;
+    /**
+     *
+     * @param pViewMgr
+     * @param pCmdHandler
+     * @param rect
+     * @param uid
+     * @param state
+     * @param pScrollBar
+     * @param el EL.
+     */
+    public iTBButton(
+            iViewMgr pViewMgr,
+            IViewCmdHandler pCmdHandler,
+            final iRect rect,
+            int uid,
+            int state,
+            iScrollBar pScrollBar,
+            int el
+    ) {
+        super(pViewMgr, pCmdHandler, rect, uid, state);
+        m_pScrollBar = pScrollBar;
+        m_el = el;
     }
+
+    @Override
+    public void OnCompose() {
+        m_pScrollBar.ComposeSBElement(m_el, GetScrRect(), GetButtonState());
+    }
+
+
+    private final int        m_el;
+    private final iScrollBar m_pScrollBar;
 
 }

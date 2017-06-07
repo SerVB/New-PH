@@ -21,35 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map;
-
-import Common.metrics.iPoint;
+package Constants.view;
 
 /**
- *
+ * CTRL_CMD_ID.
  */
-public class iBaseMapObject implements TypeAware {
+public class CCI {
 
-//    public IMPL_TYPEAWARE( iBaseMapObject );
-
-    public iBaseMapObject(final iPoint pos, boolean bDisap) {
-        this.m_Pos = pos;
-        this.m_bDisap = bDisap;
-    }
-
-    public void SetPos(final iPoint pos) {
-        m_Pos = pos;
-    }
-
-    public iPoint Pos() {
-        return m_Pos;
-    }
-
-    public boolean Disap() {
-        return m_bDisap;
-    }
-
-    protected iPoint    m_Pos;
-    protected boolean   m_bDisap;
+    public final static int BTNCLICK = 0;
+    public final static int BTNDBLCLICK = 1;
+    public final static int TABCHANGED = 2;
+    public final static int CHECKED = 3;
+    public final static int SBLINEUP = 4;
+    public final static int SBLINEDOWN = 5;
+    public final static int SBPAGEUP = 6;
+    public final static int SBPAGEDOWN = 7;
+    public final static int SBTRACKING = 8;
+    public final static int LBSELCHANGED = 9;
+    public final static int LBSELDBLCLICK = 10;
+    public final static int EDITCHANGED = 11;
 
 }

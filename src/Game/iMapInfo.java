@@ -24,7 +24,7 @@
 
 package Game;
 
-import Common.iSize;
+import Common.metrics.iSize;
 import utils.serialize;
 import utils.tracer;
 import Constants.*;

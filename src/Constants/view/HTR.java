@@ -21,35 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map;
-
-import Common.metrics.iPoint;
+package Constants.view;
 
 /**
- *
+ * Skroll Bar Hit Test Res.
  */
-public class iBaseMapObject implements TypeAware {
+public class HTR {
 
-//    public IMPL_TYPEAWARE( iBaseMapObject );
-
-    public iBaseMapObject(final iPoint pos, boolean bDisap) {
-        this.m_Pos = pos;
-        this.m_bDisap = bDisap;
-    }
-
-    public void SetPos(final iPoint pos) {
-        m_Pos = pos;
-    }
-
-    public iPoint Pos() {
-        return m_Pos;
-    }
-
-    public boolean Disap() {
-        return m_bDisap;
-    }
-
-    protected iPoint    m_Pos;
-    protected boolean   m_bDisap;
+    public final static int PgUp = 0;
+    public final static int PgDown = 1;
+    public final static int Thumb = 2;
 
 }

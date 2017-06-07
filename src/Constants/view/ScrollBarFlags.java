@@ -21,56 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Common;
+package Constants.view;
 
 /**
- * Содержит две целочисленные переменные.
+ *
  */
-public class iPoint {
+public class ScrollBarFlags {
 
-    public int x;
-    public int y;
-
-    public iPoint(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public iPoint() {
-
-    }
-
-
-
-    public iPoint(iPoint other) {
-        this.x = other.x;
-        this.y = other.y;
-    }
-
-    public void minus(iPoint other) {
-        this.x -= other.x;
-        this.y -= other.y;
-    }
-
-    public void plus(iPoint other) {
-        this.x += other.x;
-        this.y += other.y;
-    }
-
-    public iPoint(iPoint first, char oper, iPoint second) {
-        switch (oper) {
-        case '-':
-            this.x = first.x - second.x;
-            this.y = first.y - second.y;
-            break;
-        case '+':
-            this.x = first.x + second.x;
-            this.y = first.y + second.y;
-            break;
-        default:
-            throw new UnsupportedOperationException(oper + "Not supported yet.");
-        }
-    }
+    public final static int Horizontal = 0x1;    // default is vertical
 
 }

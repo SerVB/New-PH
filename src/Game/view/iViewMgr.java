@@ -23,9 +23,9 @@
  */
 package Game.view;
 
-import Common.iPoint;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iPoint;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 import collections.simple.iDialogStack;
 import collections.simple.iTimerList;
 import utils.tracer;

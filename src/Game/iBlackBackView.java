@@ -24,7 +24,7 @@
 
 package Game;
 
-import Common.iRect;
+import Common.metrics.iRect;
 
 /**
  * BlackBack

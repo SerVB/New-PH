@@ -24,7 +24,7 @@
 package Game;
 
 import Constants.DRC;
-import Common.iRect;
+import Common.metrics.iRect;
 import Constants.*;
 
 /**

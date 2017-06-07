@@ -24,7 +24,7 @@
 package Game.map.misc;
 
 import Common.iArmy;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Common.iRewardItem;
 import Game.iHero;
 import Game.map.iBaseMapObject;

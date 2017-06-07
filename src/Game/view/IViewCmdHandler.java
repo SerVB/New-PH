@@ -21,35 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map;
-
-import Common.metrics.iPoint;
+package Game.view;
 
 /**
- *
+ * Command Handler.
  */
-public class iBaseMapObject implements TypeAware {
+public interface IViewCmdHandler {
 
-//    public IMPL_TYPEAWARE( iBaseMapObject );
-
-    public iBaseMapObject(final iPoint pos, boolean bDisap) {
-        this.m_Pos = pos;
-        this.m_bDisap = bDisap;
-    }
-
-    public void SetPos(final iPoint pos) {
-        m_Pos = pos;
-    }
-
-    public iPoint Pos() {
-        return m_Pos;
-    }
-
-    public boolean Disap() {
-        return m_bDisap;
-    }
-
-    protected iPoint    m_Pos;
-    protected boolean   m_bDisap;
+    /**
+     * C-tor.
+     * @param pView
+     * @param cmd CTRL_CMD_ID.
+     * @param param
+     */
+    public abstract void iCMDH_ControlCommand(iView pView, int cmd, int param);
 
 }

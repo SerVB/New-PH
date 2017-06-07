@@ -34,7 +34,7 @@ import Constants.TAIL;
 import Common.iArmy;
 import entries.iMeleeEntry;
 import Common.iFurtSkills;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import utils.tracer;
 import Constants.*;
 import collections.simple.iDistMap;

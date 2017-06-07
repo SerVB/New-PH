@@ -23,12 +23,13 @@
  */
 package Game;
 
+import Constants.view.CCI;
 import Common.iArmy;
 import Common.iCreatGroup;
 import Common.iFurtSkills;
-import Common.iPoint;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iPoint;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 import utils.tracer;
 import Constants.*;
 import java.util.ArrayList;

@@ -23,9 +23,9 @@
  */
 package Game;
 
-import Common.iPoint;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iPoint;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 
 /**
  * Base text with icon dialog MB_OK.

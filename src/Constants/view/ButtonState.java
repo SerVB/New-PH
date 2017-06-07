@@ -21,35 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map;
-
-import Common.metrics.iPoint;
+package Constants.view;
 
 /**
  *
  */
-public class iBaseMapObject implements TypeAware {
+public class ButtonState {
 
-//    public IMPL_TYPEAWARE( iBaseMapObject );
-
-    public iBaseMapObject(final iPoint pos, boolean bDisap) {
-        this.m_Pos = pos;
-        this.m_bDisap = bDisap;
-    }
-
-    public void SetPos(final iPoint pos) {
-        m_Pos = pos;
-    }
-
-    public iPoint Pos() {
-        return m_Pos;
-    }
-
-    public boolean Disap() {
-        return m_bDisap;
-    }
-
-    protected iPoint    m_Pos;
-    protected boolean   m_bDisap;
+    public final static int Pressed     = 0b001;
+    public final static int Selected    = 0b010;
+    public final static int Disabled    = 0b100;
 
 }

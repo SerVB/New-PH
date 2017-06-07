@@ -26,7 +26,7 @@ package Game.map.construction.visitable;
 import Constants.PROVIDER;
 import Constants.ENDUR;
 import Constants.RIT;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Common.iRewardItem;
 import Constants.*;
 import Game.iHero;

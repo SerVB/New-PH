@@ -24,7 +24,7 @@
 
 package Constants;
 
-import Common.iPoint;
+import Common.metrics.iPoint;
 
 /**
  * Hero.

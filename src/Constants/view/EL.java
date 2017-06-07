@@ -21,21 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Constants;
+package Constants.view;
 
 /**
- *
+ * Skroll Bar Element.
  */
-public class CCI {
+public class EL {
 
-    /**
-     * Double click.
-     */
-    public final static int BTNDBLCLICK = -42;
-
-    /**
-     * Click.
-     */
-    public final static int BTNCLICK = -42;
+    public final static int Bkgnd = 0;
+    public final static int Thumb = 1;
+    public final static int BtnUp = 2;
+    public final static int BtnDown = 3;
+    public final static int BtnLeft = 4;
+    public final static int BtnRight = 5;
 
 }

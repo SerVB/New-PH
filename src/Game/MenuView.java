@@ -25,9 +25,9 @@
 package Game;
 
 import utils.RGB;
-import Common.iPoint;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iPoint;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 
 //#include "stdafx.h"
 //#include "Credits.h"

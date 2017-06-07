@@ -23,7 +23,7 @@
  */
 package entries;
 
-import Common.iPoint;
+import Common.metrics.iPoint;
 
 /**
  *

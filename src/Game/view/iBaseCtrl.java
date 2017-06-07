@@ -21,35 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map;
+package Game.view;
 
-import Common.metrics.iPoint;
+import Common.metrics.iRect;
 
 /**
- *
+ * Base view-port based control.
  */
-public class iBaseMapObject implements TypeAware {
+public class iBaseCtrl extends iView {
 
-//    public IMPL_TYPEAWARE( iBaseMapObject );
+    /**
+     * C-tor.
+     * @param pViewMgr
+     * @param pCmdHandler
+     * @param rect
+     * @param clsId
+     * @param uid
+     * @param state
+     */
+    public iBaseCtrl(iViewMgr pViewMgr, IViewCmdHandler pCmdHandler, final iRect rect, int clsId, int uid, int state) {
+        super(pViewMgr, rect, clsId, uid, state);
 
-    public iBaseMapObject(final iPoint pos, boolean bDisap) {
-        this.m_Pos = pos;
-        this.m_bDisap = bDisap;
+        m_pCmdHandler = pCmdHandler;
     }
 
-    public void SetPos(final iPoint pos) {
-        m_Pos = pos;
+    /**
+     * Sets Command Handler.
+     * @param pCmdHandler Command Handler to be set.
+     */
+    public void SetCommandHandler(IViewCmdHandler pCmdHandler) {
+            m_pCmdHandler = pCmdHandler;
     }
 
-    public iPoint Pos() {
-        return m_Pos;
-    }
-
-    public boolean Disap() {
-        return m_bDisap;
-    }
-
-    protected iPoint    m_Pos;
-    protected boolean   m_bDisap;
+    /**
+     * Command Handler.
+     */
+    protected IViewCmdHandler m_pCmdHandler;
 
 }

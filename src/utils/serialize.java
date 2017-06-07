@@ -30,7 +30,7 @@ import Common.iCreatGroup;
 import Common.iDynamicBuffer;
 import Common.iFurtSkills;
 import Common.iMineralSet;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Common.iPrSkills;
 import Common.iRewardItem;
 import Common.iSecSkills;

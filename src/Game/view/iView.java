@@ -23,9 +23,9 @@
  */
 package Game.view;
 
-import Common.iPoint;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iPoint;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 import Constants.view.ViewState;
 import collections.simple.iViewList;
 import utils.tracer;
@@ -260,10 +260,6 @@ public class iView {
         m_UID       = uid;
 
         return true;
-    }
-
-    private void Cleanup() {
-        m_Childs.clear();
     }
 
     protected int                m_UID;

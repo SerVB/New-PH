@@ -24,7 +24,7 @@
 package Game.map.construction.visitable;
 
 import Constants.ENDUR;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;

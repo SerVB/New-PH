@@ -26,7 +26,7 @@ package Game.map.item;
 import Constants.map.MAPITEM;
 import Common.iDynamicBuffer;
 import Common.iFormat;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Constants.*;
 import Game.iHero;
 

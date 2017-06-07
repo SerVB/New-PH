@@ -21,35 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game.map;
-
-import Common.metrics.iPoint;
+package Constants.metrics;
 
 /**
  *
  */
-public class iBaseMapObject implements TypeAware {
+public class Alignment {
 
-//    public IMPL_TYPEAWARE( iBaseMapObject );
-
-    public iBaseMapObject(final iPoint pos, boolean bDisap) {
-        this.m_Pos = pos;
-        this.m_bDisap = bDisap;
-    }
-
-    public void SetPos(final iPoint pos) {
-        m_Pos = pos;
-    }
-
-    public iPoint Pos() {
-        return m_Pos;
-    }
-
-    public boolean Disap() {
-        return m_bDisap;
-    }
-
-    protected iPoint    m_Pos;
-    protected boolean   m_bDisap;
+    public final static int AlignCenter        = 0;
+    public final static int AlignTop        = 0x1;
+    public final static int AlignRight        = 0x2;
+    public final static int AlignBottom        = 0x4;
+    public final static int AlignLeft        = 0x8;
+    public final static int AlignTopRight    = AlignTop | AlignRight;
+    public final static int AlignBottomRight= AlignBottom | AlignRight;
+    public final static int AlignTopLeft    = AlignTop | AlignLeft;
+    public final static int AlignBottomLeft    = AlignBottom | AlignLeft;
 
 }

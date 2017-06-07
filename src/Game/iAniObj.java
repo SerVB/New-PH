@@ -23,7 +23,7 @@
  */
 package Game;
 
-import Common.iPoint;
+import Common.metrics.iPoint;
 
 /**
  * Animation Object.

@@ -39,7 +39,7 @@ import Common.iArtifactList;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
 import Common.iFurtSkills;
-import Common.iPoint;
+import Common.metrics.iPoint;
 import Common.iRewardItem;
 import Common.iSecSkills;
 import utils.serialize;

@@ -23,9 +23,10 @@
  */
 package Game;
 
+import Constants.view.CCI;
 import Constants.DRC;
-import Common.iRect;
-import Common.iSize;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
 import Constants.*;
 
 /**
