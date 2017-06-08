@@ -23,13 +23,17 @@
  */
 package Constants.metrics;
 
+import Common.metrics.iPoint;
+import Common.metrics.iRect;
+import Common.metrics.iSize;
+
 /**
  *
  */
 public class Invalid {
 
-    public final static  iPoint        cInvalidPoint;
-    public final static  iSize        cInvalidSize;
-    public final static  iRect        cInvalidRect;
+    public final static iPoint cInvalidPoint = new iPoint(0x7fff, 0x7fff);
+    public final static iSize  cInvalidSize  = new iSize(0xffff, 0xffff);
+    public final static iRect  cInvalidRect  = new iRect(0x7fff, 0x7fff, 0xffff, 0xffff);
 
 }

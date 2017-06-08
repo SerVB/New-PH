@@ -28,14 +28,16 @@ package Constants.metrics;
  */
 public class Alignment {
 
-    public final static int AlignCenter        = 0;
-    public final static int AlignTop        = 0x1;
-    public final static int AlignRight        = 0x2;
-    public final static int AlignBottom        = 0x4;
-    public final static int AlignLeft        = 0x8;
-    public final static int AlignTopRight    = AlignTop | AlignRight;
-    public final static int AlignBottomRight= AlignBottom | AlignRight;
-    public final static int AlignTopLeft    = AlignTop | AlignLeft;
-    public final static int AlignBottomLeft    = AlignBottom | AlignLeft;
+    public final static int AlignCenter         = 0;
+
+    public final static int AlignTop            = 0b0001;
+    public final static int AlignRight          = 0b0010;
+    public final static int AlignBottom         = 0b0100;
+    public final static int AlignLeft           = 0b1000;
+
+    public final static int AlignTopRight       = AlignTop      | AlignRight;
+    public final static int AlignBottomRight    = AlignBottom   | AlignRight;
+    public final static int AlignTopLeft        = AlignTop      | AlignLeft;
+    public final static int AlignBottomLeft     = AlignBottom   | AlignLeft;
 
 }

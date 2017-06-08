@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package Common.metrics;
 
 import helperFunction.MathOperations;
@@ -179,7 +178,7 @@ public class iPoint {
     }
 
     public int GetSqDelta(final iPoint pnt) {
-        return Math.max( MathOperations.dif(pnt.x, x), MathOperations.dif(pnt.y, y));
+        return Math.max( MathOperations.dif(pnt.x, x), MathOperations.dif(pnt.y, y) );
     }
 
     public int GetDelta(final iPoint pnt) {

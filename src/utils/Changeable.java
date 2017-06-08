@@ -21,54 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Common.metrics;
+package utils;
 
 /**
- * Fixed point based iPoint.
+ *
  */
-public class iPointFix {
-public:
-    iPointFix() {}
+public class Changeable<E> {
 
-    iPointFix(fix32 _x, fix32 _y)
-    : x(_x), y(_y) {}
+    public E value;
 
-    iPointFix(sint32 _x, sint32 _y)
-    : x(_x), y(_y) {}
-
-    iPointFix(float _x, float _y)
-    : x(_x), y(_y) {}
-
-    iPointFix(const iPoint& pos)
-    : x(pos.x), y(pos.y) {}
-
-    inline void operator += (const iPointFix &pos)
-    {
-        x=x+pos.x;
-        y=y+pos.y;
+    public Changeable(final E value) {
+        this.value = value;
     }
 
-    inline void operator -= (const iPointFix &pos)
-    {
-        x=x-pos.x;
-        y=y-pos.y;
-    }
-
-    inline iPointFix operator + (const iPointFix &pos) const
-    { return (iPointFix(x+pos.x,y+pos.y)); }
-
-    inline iPointFix operator - (const iPointFix &pos) const
-    { return (iPointFix(x-pos.x,y-pos.y)); }
-
-    inline bool operator== (const iPointFix &pos) const
-    { return ((x==pos.x) && (y==pos.y)); }
-
-    inline bool operator!= (const iPointFix &pos) const
-    { return ! operator == ( pos ); }
-
-    inline iPoint IntPoint() const
-    { return iPoint(x.ceil(),y.ceil()); }
-
-    fix32    x;
-    fix32    y;
 }

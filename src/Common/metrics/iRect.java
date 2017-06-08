@@ -21,8 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package Common.metrics;
+
+import Constants.metrics.*;
 
 /**
  * Прямоугольник.
@@ -34,48 +35,13 @@ public class iRect {
     public int w;
     public int h;
 
-//    public iRect(int x, int y, int w, int h) {
-//        this.x = x;
-//        this.y = y;
-//        this.w = w;
-//        this.h = h;
-//    }
-//
-//    public iRect(iSize size) {
-//        this(0, 0, size.w, size.h);
-//    }
-//
-//    public iRect(iRect other) {
-//        this(other.x, other.y, other.w, other.h);
-//    }
-//
-//    public void DeflateRect(int Int) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-//
-//    public int y2() {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-//
-//    public iPoint point() {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-//
-//    public void plus(iRect other) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-//
-//    public void plus(iPoint point) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-//
-//    public iSize size() {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
-//
-//    public boolean PtInRect(iPoint pos) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-//    }
+    public void setRect(final int x, final int y, final int w, final int h) {
+        this.x = x;
+        this.y = y;
+
+        this.w = w;
+        this.h = h;
+    }
 
     public iRect() {
         this.x = 0;
@@ -101,7 +67,7 @@ public class iRect {
         this.h = size.h;
     }
 
-    public iRect (final iPoint p1, final iPoint p2) {
+    public iRect(final iPoint p1, final iPoint p2) {
         int min_x = Math.min(p1.x, p2.x);
         int min_y = Math.min(p1.y, p2.y);
         int max_x = Math.max(p1.x, p2.x);
@@ -109,137 +75,230 @@ public class iRect {
 
         x = min_x;
         y = min_y;
+
         w = (max_x - min_x) + 1;
         h = (max_y - min_y) + 1;
     }
 
-    public iRect ( const iSize& size )
-    : iSize(size) {}
+    public iRect(final iSize size) {
+        this.x = 0;
+        this.y = 0;
 
-    public iRect ( const RECT& rect )
-    : iPoint(rect.left,rect.top), iSize(rect.right-rect.left, rect.bottom-rect.top) {}
-
-    public inline sint32 x1 () const
-    { return x; }
-
-    public inline sint32 y1 () const
-    { return y; }
-
-    public inline sint32 x2 () const
-    { return x+w-1; }
-
-    public inline sint32 y2 () const
-    { return y+h-1; }
-
-    public inline iPoint Center() const
-    { return iPoint(x+w/2,y+h/2); }
-
-    public inline iPoint TopRight() const
-    { return iPoint(x2(),y); }
-
-    public inline iPoint TopLeft() const
-    { return iPoint(x,y); }
-
-    public inline iPoint BottomRight() const
-    { return iPoint(x2(),y2()); }
-
-    public inline iPoint BottomLeft() const
-    { return iPoint(x,y2()); }
-
-    public inline iSize size () const
-    { return iSize(w,h); }
-
-    public inline iPoint point () const
-    { return iPoint(x,y); }
-
-    public inline bool PtInRect(const sint32 _x, const sint32 _y) const
-    { return (_x>=x && _y>=y && _x<sint32(x+w) && _y<sint32(y+h)); }
-
-    public inline bool PtInRect(const iPoint& pnt) const
-    { return PtInRect(pnt.x,pnt.y); }
-
-    public void Reset()
-    { x=y=w=h=0; }
-
-    public inline bool IsEmpty() const { return (w==0 || h==0); }
-
-    public operator RECT() const
-    {
-        RECT rect={x,y,x+w,y+h};
-        return rect;
+        this.w = size.w;
+        this.h = size.h;
     }
 
-    public inline bool operator== (const iRect &rect) const
-    { return ((x==rect.x) && (y==rect.y) && (w==rect.w) && (h==rect.h)); }
+    public iRect(final iRect other) {
+        this.x = other.x;
+        this.y = other.y;
 
-    public inline bool operator!= (const iRect &rect) const
-    { return ! operator == ( rect ); }
-
-    public inline iRect operator + (const iPoint &pos) const
-    { return (iRect(x+pos.x,y+pos.y,w,h)); }
-
-    public inline iRect operator - (const iPoint &pos) const
-    { return (iRect(x-pos.x,y-pos.y,w,h)); }
-
-    public inline iRect operator + (const iRect &rect) const
-    {
-        iRect rc( *this );
-        return  rc += rect;
+        this.w = other.w;
+        this.h = other.h;
     }
 
-    public iRect& operator += (const iPoint &point)
-    {
-        x += point.x;
-        y += point.y;
-        return *this;
+    public int x1() {
+        return x;
     }
 
-    public iRect& operator += (const iRect &rect)
-    {
-        if (IsEmpty()) *this = rect;
+    public int y1() {
+        return y;
+    }
 
-        sint32 min_x = iMIN(rect.x, x);
-        sint32 min_y = iMIN(rect.y, y);
+    public int x2() {
+        return x + w - 1;
+    }
 
-        sint32 max_x = iMAX(rect.x2(), x2());
-        sint32 max_y = iMAX(rect.y2(), y2());
+    public int y2() {
+        return y + h - 1;
+    }
+
+    public iPoint getCenter() {
+        return new iPoint(x + w / 2, y + h / 2);
+    }
+
+    public iPoint getTopRight() {
+        return new iPoint(x2(), y);
+    }
+
+    public iPoint getTopLeft() {
+        return new iPoint(x, y);
+    }
+
+    public iPoint getBottomRight() {
+        return new iPoint(x2(), y2());
+    }
+
+    public iPoint getBottomLeft() {
+        return new iPoint(x, y2());
+   }
+
+    public iSize getSize() {
+        return new iSize(w, h);
+    }
+
+    public iPoint getPoint() {
+        return new iPoint(x, y);
+    }
+
+    public boolean isPtInRect(final int x, final int y) {
+        return (
+                this.x <= x &&
+                this.y <= y &&
+
+                x <= this.x + this.w - 1 &&
+                y <= this.y + this.h - 1
+        );
+    }
+
+    public boolean isPtInRect(final iPoint pnt) {
+        return isPtInRect(pnt.x, pnt.y);
+    }
+
+    public void reset() {
+        x = y = w = h = 0;
+    }
+
+    public boolean isEmpty() {
+        return (w==0 || h==0);
+    }
+
+    public boolean equals(final iRect other) {
+        return (
+                this.x == other.x &&
+                this.y == other.y &&
+
+                this.w == other.w &&
+                this.h == other.h
+        );
+    }
+
+    public iRect(final iRect rect, final char oper, final iPoint point) {
+        switch (oper) {
+            case '+':
+                this.x = rect.x + point.x;
+                this.y = rect.y + point.y;
+
+                this.w = rect.w;
+                this.h = rect.h;
+                break;
+            case '-':
+                this.x = rect.x - point.x;
+                this.y = rect.y - point.y;
+
+                this.w = rect.w;
+                this.h = rect.h;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid oper '" + oper + "'!");
+        }
+    }
+
+    public iRect(final iRect first, final char oper, final iRect second) {
+        switch (oper) {
+            case '+':
+                this.x = first.x + second.x;
+                this.y = first.y + second.y;
+
+                this.w = first.w + second.w;
+                this.h = first.h + second.h;
+                break;
+            case '-':
+                this.x = first.x - second.x;
+                this.y = first.y - second.y;
+
+                this.w = first.w - second.w;
+                this.h = first.h - second.h;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid oper '" + oper + "'!");
+        }
+    }
+
+    public void add(final iPoint point) {
+        this.x += point.x;
+        this.y += point.y;
+    }
+
+    public void add(final iRect rect) {
+        int min_x = Math.min(rect.x, this.x);
+        int min_y = Math.min(rect.y, this.y);
+
+        int max_x = Math.max(rect.x2(), this.x2());
+        int max_y = Math.max(rect.y2(), this.y2());
 
         x = min_x;
         y = min_y;
-        w = max_x-min_x+1;
-        h = max_y-min_y+1;
 
-        return *this;
+        w = max_x - min_x + 1;
+        h = max_y - min_y + 1;
     }
 
-    public inline void InflateRect(uint32 left, uint32 top, uint32 right, uint32 bottom)
-    {
+    public void inflateRect(int left, int top, int right, int bottom) {
         x -= left;
         y -= top;
-        w += (left+right);
-        h += (top+bottom);
+
+        w += left + right;
+        h += top + bottom;
     }
 
-    public inline void InflateRect(uint32 x_offs, uint32 y_offs)
-    { InflateRect(x_offs,y_offs,x_offs,y_offs); }
+    public void inflateRect(int x_offs, int y_offs) {
+        inflateRect(x_offs, y_offs, x_offs, y_offs);
+    }
 
-    public inline void InflateRect(uint32 offs)
-    { InflateRect(offs,offs,offs,offs); }
+    public void inflateRect(int offs) {
+        inflateRect(offs, offs, offs, offs);
+    }
 
-    public inline void DeflateRect(uint32 left, uint32 top, uint32 right, uint32 bottom)
-    {
+    public void deflateRect(int left, int top, int right, int bottom) {
         x += left;
         y += top;
-        w -= (left+right);
-        h -= (top+bottom);
+
+        w -= (left + right);
+        h -= (top + bottom);
     }
 
-    public inline void DeflateRect(uint32 x_offs, uint32 y_offs)
-    { DeflateRect(x_offs,y_offs,x_offs,y_offs); }
+    public void deflateRect(int x_offs, int y_offs) {
+        deflateRect(x_offs, y_offs, x_offs, y_offs);
+    }
 
-    public inline void DeflateRect(uint32 offs)
-    { DeflateRect(offs,offs,offs,offs); }
+    public void deflateRect(int offs) {
+        deflateRect(offs, offs, offs, offs);
+    }
 
-    // Returns rectangle with specified size aligned in specified dst rect
-iRect AlignRect(const iSize& ss, const iRect dr, Alignment al);
+    /**
+     * Returns rectangle with specified size aligned in specified dst rect.
+     * @param ss
+     * @param dr
+     * @param al Alignment.
+     * @return
+     */
+    iRect AlignRect(final iSize ss, final iRect dr, final int al) {
+        iRect orc = new iRect(ss);
+
+        int sw = ss.w;
+        int sh = ss.h;
+        int dw = dr.w;
+        int dh = dr.h;
+
+        // Vertical alignment
+        if ((al & Alignment.AlignTop) != 0) {
+            orc.y = dr.y;
+        } else if ((al & Alignment.AlignBottom) != 0) {
+            orc.y = dr.y + dh - sh;
+        } else {
+            orc.y = dr.y + ((dh>>1) - (sh>>1));
+        }
+
+        // Horizontal alignment
+        if ((al & Alignment.AlignLeft) != 0) {
+            orc.x = dr.x;
+        } else if ((al & Alignment.AlignRight) != 0) {
+            orc.x = dr.x + dw - sw;
+        } else {
+            orc.x = dr.x + ((dw>>1) - (sw>>1));
+        }
+
+        return orc;
+    }
+
 }

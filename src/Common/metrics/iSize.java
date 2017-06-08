@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package Common.metrics;
 
 /**
@@ -83,7 +82,7 @@ public class iSize {
      * @param second Second object.
      */
     public iSize(final iSize first, final char oper, final iSize second) {
-        switch(oper) {
+        switch (oper) {
             case '+':
                 this.w = first.w + second.w;
                 this.h = first.h + second.h;
