@@ -1034,37 +1034,37 @@ public class SPELL {
         /**
          * Тип.
          */
-        public long type;
+        public int type;
 
         /**
          * Уровень.
          */
-        public long level;
+        public int level;
 
         /**
          * Школа.
          */
-        public long school;
+        public int school;
 
         /**
          *
          */
-        public long spClass;
+        public int spClass;
 
         /**
          * Стоимость.
          */
-        public long bcost;
+        public int bcost;
 
         /**
          *
          */
-        public long label;
+        public int label;
 
         /**
          *
          */
-        public long reserved;
+        public int reserved;
 
         /**
          * Хранилище эффектов.
@@ -1086,13 +1086,13 @@ public class SPELL {
          * @param eff3 Эффект 3.
          */
         public DESC_STRUCT(
-                long type,
-                long level,
-                long school,
-                long spClass,
-                long bcost,
-                long label,
-                long reserved,
+                int type,
+                int level,
+                int school,
+                int spClass,
+                int bcost,
+                int label,
+                int reserved,
 
                 EFFECT_DESC eff0,
                 EFFECT_DESC eff1,
@@ -1141,7 +1141,7 @@ public class SPELL {
         /**
          * Second parameter.
          */
-        public long sparam;
+        public int sparam;
 
         /**
          * Конструктор без двух параметров.
@@ -1149,8 +1149,7 @@ public class SPELL {
          * @param tgtMode Target mode.
          */
         public EFFECT_DESC(int tgtType, int tgtMode) {
-            this.tgtType = tgtType;
-            this.tgtMode = tgtMode;
+            this(tgtType, tgtMode, 0);
         }
 
         /**
@@ -1160,9 +1159,7 @@ public class SPELL {
          * @param fparam First parameter.
          */
         public EFFECT_DESC(int tgtType, int tgtMode, int fparam) {
-            this.tgtType = tgtType;
-            this.tgtMode = tgtMode;
-            this.fparam = fparam;
+            this(tgtType, tgtMode, fparam, 0);
         }
 
         /**
@@ -1172,7 +1169,7 @@ public class SPELL {
          * @param fparam First parameter.
          * @param sparam Second parameter.
          */
-        public EFFECT_DESC(int tgtType, int tgtMode, int fparam, long sparam) {
+        public EFFECT_DESC(int tgtType, int tgtMode, int fparam, int sparam) {
             this.tgtType = tgtType;
             this.tgtMode = tgtMode;
             this.fparam = fparam;

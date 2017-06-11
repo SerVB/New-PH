@@ -46,7 +46,7 @@ import utils.serialize;
 import utils.tracer;
 import Constants.*;
 import collections.simple.iCharmList;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import java.util.ArrayList;
 
 /**

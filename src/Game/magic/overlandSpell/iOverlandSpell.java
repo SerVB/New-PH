@@ -21,37 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game.magic.overlandSpell;
 
-package Constants;
-
-import utils.RGB;
+import Constants.*;
+import Game.iHero;
+import Game.magic.iBaseSpell;
+import utils.tracer;
 
 /**
- * Magic School secondary skills (Air, Earth, Fire, Water).
+ * Overland spell.
  */
-public class MSCH {
-
-    public final int[] SECSKILLS = {
-        SECSK.AIRMAGIC, SECSK.EARTHMAGIC, SECSK.FIREMAGIC, SECSK.WATERMAGIC
-    };
+public class iOverlandSpell extends iBaseSpell {
     
-    /**
-     * Magic school colors (Air, Earth, Fire, Water), (Background, Foreground).
-     */
-    public final RGB[][] MSCH_COLORS = {
-        {
-            new RGB(148, 190, 198),
-            new RGB( 18,  23, 127)
-        },{
-            new RGB(142, 232, 111),
-            new RGB( 41, 110,  18)
-        },{
-            new RGB(228, 156, 156),
-            new RGB(132,  12,  12)
-        },{
-            new RGB(128, 148, 255),
-            new RGB(  4,  16, 128)
-        }
-    };
+    public iOverlandSpell(int spellId) {
+        super(spellId);
+        tracer.check(SPELL.DESCRIPTORS[spellId].type == SPT.OVERLAND);
+    }
+
+    // virtuals
+    public boolean CanCast(final iHero pCaster) {
+        return true;
+    }
+    
+    public boolean Cast(final iHero pCaster) {
+        return CanCast(pCaster);
+    }
+    
+    public void OnRemove(final iHero pCaster, final int param) {}
     
 }

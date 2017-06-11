@@ -27,7 +27,7 @@ import Common.iDynamicBuffer;
 import Constants.MSP;
 import Constants.*;
 import Game.iHero;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import java.util.ArrayList;
 import utils.ChangeableString;
 import utils.tracer;

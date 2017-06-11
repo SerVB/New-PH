@@ -37,10 +37,11 @@ import Common.iFurtSkills;
 import Common.metrics.iPoint;
 import utils.tracer;
 import Constants.*;
+import Game.magic.combatSpell.iCombatSpell;
 import collections.simple.iDistMap;
 import collections.simple.iMeleeList;
 import collections.simple.iShotList;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import entries.iShootEntry;
 import entries.iSpellEntry;
 

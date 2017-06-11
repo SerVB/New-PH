@@ -23,15 +23,17 @@
  */
 package entries;
 
+import Game.magic.combatSpell.iCombatSpell;
+
 /**
  *
  */
 public class iSpellEntry {
 
-    public iSpellEntry(final iCombatSpell pSpell, int duration, int param) {
-        this.m_pSpell = pSpell;
+    public iSpellEntry(final iCombatSpell pSpell, final int duration, final int param) {
+        this.m_pSpell   = pSpell;
         this.m_duration = duration;
-        this.m_param = param;
+        this.m_param    = param;
     }
 
     public iSpellEntry(final int id) {

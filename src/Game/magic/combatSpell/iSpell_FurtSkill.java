@@ -21,37 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package Game.magic.combatSpell;
 
-package Constants;
-
-import utils.RGB;
+import Constants.*;
+import Game.iBattleGroup;
+import Game.iBattleUnit_Hero;
+import helperFunction.Magic;
 
 /**
- * Magic School secondary skills (Air, Earth, Fire, Water).
+ *
  */
-public class MSCH {
-
-    public final int[] SECSKILLS = {
-        SECSK.AIRMAGIC, SECSK.EARTHMAGIC, SECSK.FIREMAGIC, SECSK.WATERMAGIC
-    };
+public class iSpell_FurtSkill extends iCombatSpell {
     
-    /**
-     * Magic school colors (Air, Earth, Fire, Water), (Background, Foreground).
-     */
-    public final RGB[][] MSCH_COLORS = {
-        {
-            new RGB(148, 190, 198),
-            new RGB( 18,  23, 127)
-        },{
-            new RGB(142, 232, 111),
-            new RGB( 41, 110,  18)
-        },{
-            new RGB(228, 156, 156),
-            new RGB(132,  12,  12)
-        },{
-            new RGB(128, 148, 255),
-            new RGB(  4,  16, 128)
+    public iSpell_FurtSkill(final int spellId) {
+        super(spellId);
+    }
+    
+    @Override
+    public boolean Cast(final iBattleUnit_Hero pCaster, final iBattleGroup pTarget) {
+        if (!super.Cast(pCaster, pTarget)) {
+            return false;
         }
-    };
+
+        int msl = GetSchoolLevel(pCaster.GetHero());
+        int duration = pCaster.GetHero().FurtSkill(FSK.POWER);
+        int param = SPELL.DESCRIPTORS[m_spellId].eff[msl].sparam;
+        if (Magic.AddSpellToList(pTarget, this, duration, param)) {
+            pTarget.FurtSkills().plusValue(SPELL.DESCRIPTORS[m_spellId].eff[MSL.NONE].fparam, param);
+        }
+        return true;
+    }
+    
+    @Override
+    public void OnRemove(final iBattleGroup pTarget, final int param) {
+        pTarget.FurtSkills().minusValue(SPELL.DESCRIPTORS[m_spellId].eff[MSL.NONE].fparam, param);
+    }
     
 }

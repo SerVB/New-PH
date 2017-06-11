@@ -26,7 +26,7 @@ package Game;
 import Common.iDynamicBuffer;
 import utils.tracer;
 import Constants.*;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import entries.iSpellEntry;
 import java.util.ArrayList;
 

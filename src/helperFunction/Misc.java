@@ -29,7 +29,7 @@ import Common.iFormat;
 import Common.iSpellFilter;
 import Constants.*;
 import Constants.item.QUNTITY;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import entries.iSpellEntry;
 import java.io.File;
 import utils.tracer;

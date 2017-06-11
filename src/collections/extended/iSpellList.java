@@ -21,37 +21,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package collections.extended;
 
-package Constants;
-
-import utils.RGB;
+import entries.iSpellEntry;
+import java.util.ArrayList;
 
 /**
- * Magic School secondary skills (Air, Earth, Fire, Water).
+ *
  */
-public class MSCH {
+public class iSpellList extends ArrayList<iSpellEntry> {
 
-    public final int[] SECSKILLS = {
-        SECSK.AIRMAGIC, SECSK.EARTHMAGIC, SECSK.FIREMAGIC, SECSK.WATERMAGIC
-    };
-    
     /**
-     * Magic school colors (Air, Earth, Fire, Water), (Background, Foreground).
+     * Adds an unique element to the end of this list.
+     * If this list contains element, it won't be added.
+     * @param spellId Spell ID of the spell to be added.
+     * @return True if the element was added, else if not.
      */
-    public final RGB[][] MSCH_COLORS = {
-        {
-            new RGB(148, 190, 198),
-            new RGB( 18,  23, 127)
-        },{
-            new RGB(142, 232, 111),
-            new RGB( 41, 110,  18)
-        },{
-            new RGB(228, 156, 156),
-            new RGB(132,  12,  12)
-        },{
-            new RGB(128, 148, 255),
-            new RGB(  4,  16, 128)
+    public boolean AddUnique(final int spellId) {
+        if (Find(spellId) == -1) {
+            return super.add(new iSpellEntry(spellId));
+        } else {
+            return false;
         }
-    };
-    
+    }
+
+    public int Find(final int spellId) {
+        for (int idx = 0; idx < super.size(); idx++) {
+            if (super.get(idx).id == spellId) {
+                return idx;
+            }
+        }
+        
+        return -1;
+    }
 }

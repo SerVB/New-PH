@@ -37,7 +37,7 @@ import Common.iSecSkills;
 import entries.iSecSkillEntry;
 import Constants.*;
 import collections.simple.iRewardsCtr;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import entries.iSpellEntry;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

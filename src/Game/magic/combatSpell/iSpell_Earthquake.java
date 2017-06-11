@@ -21,12 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package collections.simple;
+package Game.magic.combatSpell;
 
-import entries.iSpellEntry;
-import java.util.ArrayList;
+import Game.iBattleGroup;
+import Game.iBattleUnit_Hero;
 
 /**
  *
  */
-public class iSpellList extends ArrayList<iSpellEntry> {}
+public class iSpell_Earthquake extends iCombatSpell {
+    
+    public iSpell_Earthquake(final int spellId) {
+        super(spellId);
+    }
+    
+    @Override
+    public boolean CanCast(final iBattleUnit_Hero pCaster, final iBattleGroup pTarget) {
+        if (!super.CanCast(pCaster, pTarget)) {
+            return false;
+        }
+        return (
+                pTarget.Owner().GetSide() == iBattleMember.Defender && 
+                pTarget.BattleWrapper().Engine().CastleFort() && 
+                pTarget.BattleWrapper().Engine().CastleFort().HasWalls()
+                );
+    }
+    
+    @Override
+    public boolean Cast(final iBattleUnit_Hero pCaster, final iBattleGroup pTarget) {
+        return true;
+    }
+    
+}

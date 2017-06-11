@@ -29,7 +29,7 @@ import Common.iSpellFilter;
 import Constants.*;
 import Game.iHero;
 import collections.simple.iRewardsCtr;
-import collections.simple.iSpellList;
+import collections.extended.iSpellList;
 import utils.serialize;
 import utils.tracer;
 
