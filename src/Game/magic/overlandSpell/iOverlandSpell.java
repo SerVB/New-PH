@@ -26,7 +26,7 @@ package Game.magic.overlandSpell;
 import Constants.*;
 import Game.iHero;
 import Game.magic.iBaseSpell;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Overland spell.
@@ -35,7 +35,7 @@ public class iOverlandSpell extends iBaseSpell {
     
     public iOverlandSpell(int spellId) {
         super(spellId);
-        tracer.check(SPELL.DESCRIPTORS[spellId].type == SPT.OVERLAND);
+        Tracer.check(SPELL.DESCRIPTORS[spellId].type == SPT.OVERLAND);
     }
 
     // virtuals

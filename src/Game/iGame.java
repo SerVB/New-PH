@@ -24,8 +24,8 @@
 
 package Game;
 
-import Common.metrics.iPoint;
-import utils.tracer;
+import newph.metric.iPoint;
+import newph.util.Tracer;
 import Constants.CV;
 import java.io.File;
 import java.io.FileInputStream;
@@ -65,7 +65,7 @@ public class iGame extends IGame {
      * @return
      */
     public boolean Init(final String fname) {
-        tracer.check(!m_bInited);
+        Tracer.check(!m_bInited);
         long localyRegistered = 182;
 
         // Load items
@@ -195,7 +195,7 @@ public class iGame extends IGame {
 //            iFilePtr pFile( OpenWin32File( mapInfo.m_FileName ));
 //        }
 
-//            tracer.check(pFile);
+//            Tracer.check(pFile);
 
             ShowProgressReport( 10, false ); // 10%
 
@@ -287,7 +287,7 @@ public class iGame extends IGame {
     public void ShowView(int cv) {
         xxc.sec_shuffle();
 
-        tracer.check (cv != CV.UNDEFINED);
+        Tracer.check (cv != CV.UNDEFINED);
         if (cv == m_tActView)
             return;
 
@@ -317,7 +317,7 @@ public class iGame extends IGame {
         // Create/Show new active view
         switch (cv) {
         case CV.MENU:
-            tracer.check(m_pChildView[cv] == null);
+            Tracer.check(m_pChildView[cv] == null);
 
             m_pChildView[cv] = new iMenuView();
             break;
@@ -333,14 +333,14 @@ public class iGame extends IGame {
             break;
 
         case CV.BATTLE:
-            tracer.check(m_pChildView[cv] == null);
+            Tracer.check(m_pChildView[cv] == null);
 
             m_pChildView[cv] = new iBattleView();
             break;
 
         case CV.CASTLE:
             if (m_tActView != CV.HERO || m_pChildView[cv] != null) {
-                tracer.check(m_pChildView[cv] == null);
+                Tracer.check(m_pChildView[cv] == null);
 
                 m_pChildView[cv] = new iCastleView();
             } else {
@@ -349,14 +349,14 @@ public class iGame extends IGame {
             break;
 
         case CV.HERO:
-            tracer.check(m_pChildView[cv] == null);
+            Tracer.check(m_pChildView[cv] == null);
 
             m_pChildView[cv] = new iHeroView(m_tActView);
             break;
 
         case CV.MEET:
             if (m_tActView != CV.HERO || m_pChildView[cv] != null) {
-                tracer.check(m_pChildView[cv] == null);
+                Tracer.check(m_pChildView[cv] == null);
 
                 m_pChildView[cv] = new iMeetView();
             } else {
@@ -365,7 +365,7 @@ public class iGame extends IGame {
             break;
 
         case CV.MINIMAP:
-            tracer.check(m_pChildView[cv] == null);
+            Tracer.check(m_pChildView[cv] == null);
 
             iMinimapView pMMView = new iMinimapView();
             pMMView.SetCenterCell(m_pMainView.Composer().GetCenterCell());
@@ -379,9 +379,9 @@ public class iGame extends IGame {
     }
 
     public void HideView(int cv) {
-        tracer.check(cv != CV.UNDEFINED);
-        tracer.check(cv != CV.OVERLAND);
-        tracer.check(m_pChildView[cv] != null);
+        Tracer.check(cv != CV.UNDEFINED);
+        Tracer.check(cv != CV.OVERLAND);
+        Tracer.check(m_pChildView[cv] != null);
 
         ShowView(m_pChildView[cv].cvParentView());
     }
@@ -401,14 +401,14 @@ public class iGame extends IGame {
     ///////////////////////// Game process: /////////////////////////
 
     public void BeginBattle(final iBattleInfo bi) {
-        tracer.check(!m_pBattle);
+        Tracer.check(!m_pBattle);
 
-        tracer.check(bi.m_pAssaulter.Owner() != PID_NEUTRAL); // Assaulter cannot be neutral
+        Tracer.check(bi.m_pAssaulter.Owner() != PID_NEUTRAL); // Assaulter cannot be neutral
 
         iPlayer pAssaulter = m_Map.FindPlayer(bi.m_pAssaulter.Owner());
         iPlayer pDefender = (bi.m_pDefender.Owner() == PID_NEUTRAL) ? NULL  :m_Map.FindPlayer(bi.m_pDefender.Owner());
 
-        tracer.check(pAssaulter != null && !pAssaulter.equals(pDefender)); // Assaulter and Defender can't be owned by one player or side
+        Tracer.check(pAssaulter != null && !pAssaulter.equals(pDefender)); // Assaulter and Defender can't be owned by one player or side
 
         // Reset env sounds
         if (pAssaulter.PlayerType() == PT_HUMAN)
@@ -426,7 +426,7 @@ public class iGame extends IGame {
             OnHeroStopMoving(gGame.Map().CurHero());
             if (gSettings.GetEntryValue(CET_QUICKCOMBAT)) {
                 // Autobattle with result
-                tracer.check(gGame.Map().CurHero() == bi.m_pAssaulter.SpellCaster());
+                Tracer.check(gGame.Map().CurHero() == bi.m_pAssaulter.SpellCaster());
                 m_pBattle = new iAutoBattle(true);
             } else {
                 // Interactive battle
@@ -444,7 +444,7 @@ public class iGame extends IGame {
      * Заканчивает битву.
      */
     public void EndBattle() {
-        tracer.check(m_pBattle);
+        Tracer.check(m_pBattle);
 //        delete m_pBattle;
         m_pBattle = null;
     }
@@ -699,7 +699,7 @@ public class iGame extends IGame {
                     m_pMainView.Composer().RemoveAniObj();
                 }
                 m_pMainView.Composer().SetAniObj(new iAniObj_MovHero(m_pMainView.Composer(), pHero));
-                tracer.check(pHero.Moving());
+                Tracer.check(pHero.Moving());
             } else {
                 pHero.Step();
             }

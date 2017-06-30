@@ -21,18 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Lang;
+package newph.constant.lang;
 
 /**
- * Русский язык
+ * Russian Localization.
  */
-public class rus {
+public class RUS extends Lang {
 
     /**
-     * Хранилище русского текста
+     * Language data.
      */
-    public final static String[] LANG_DATA_RUS = {
+    public final static String[] LANG_DATA = {
         "",
         "+",
         "-",

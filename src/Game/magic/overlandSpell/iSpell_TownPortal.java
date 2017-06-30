@@ -23,12 +23,12 @@
  */
 package Game.magic.overlandSpell;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iCastle;
 import Game.iHero;
 import Game.iPlayer;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -56,7 +56,7 @@ public class iSpell_TownPortal extends iOverlandSpell {
                 );
                 if (tlDlg.DoModal() == DRC.OK) {
                     iCastle pDest = tlDlg.Destination();
-                    tracer.check(pDest != null && pDest.Visitor() == null);
+                    Tracer.check(pDest != null && pDest.Visitor() == null);
                     iPoint oldPos = pCaster.Pos();
                     gGame.Map().MoveHero(pCaster.Pos(), pDest.Pos());
                     pCaster.SetPos(pDest.Pos());

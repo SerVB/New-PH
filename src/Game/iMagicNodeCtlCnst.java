@@ -23,7 +23,7 @@
  */
 package Game;
 
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 
 /**
@@ -35,7 +35,7 @@ public class iMagicNodeCtlCnst extends iCtlCnst {
 
     public iMagicNodeCtlCnst(iCastle _pCastle, int _cnst) {
         super(_pCastle, _cnst);
-        tracer.check(_cnst == CTLCNST.MAGICNODE);
+        Tracer.check(_cnst == CTLCNST.MAGICNODE);
     }
 
     @Override

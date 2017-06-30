@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iDynamicBuffer;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -64,7 +64,7 @@ public class iManaVtxCtlCnst extends iCtlCnst {
 
     @Override
     public void OnVisitorEnter(iHero pHero) {
-        tracer.check(pHero != null);
+        Tracer.check(pHero != null);
         if (!Visited(pHero)) {
             DoubleManaPoints(pHero);
         }
@@ -76,7 +76,7 @@ public class iManaVtxCtlCnst extends iCtlCnst {
     }
 
     private void DoubleManaPoints(iHero pHero) {
-        tracer.check(!m_bVisited);
+        Tracer.check(!m_bVisited);
         int act_pts = pHero.MaxManaPts() * 2;
         if (pHero.ManaPts() < act_pts) {
             pHero.setManaPts(act_pts);

@@ -24,11 +24,11 @@
 package Game.map.construction.visitable;
 
 import Constants.ENDUR;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -49,7 +49,7 @@ public class iVisCnst_Stable extends iVisCnst {
     public void OnActivate(iHero pVisitor, boolean bActive) {
         super.OnActivate(pVisitor, bActive);
         iVisCnstT_Stable pStable = DynamicCast<iVisCnstT_Stable>(m_pProto);
-        tracer.check(pStable);
+        Tracer.check(pStable);
         pVisitor.AddMoves(pStable.ActPts());
         pVisitor.Enchs().add(m_pProto.Type(), FSK.LOGISTICS, ENDUR.NEXTWEEK, pStable.ActPts());
     }

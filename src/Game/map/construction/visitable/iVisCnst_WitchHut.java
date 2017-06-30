@@ -25,7 +25,7 @@ package Game.map.construction.visitable;
 
 import Common.iDynamicBuffer;
 import Common.iFormat;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import java.util.ArrayList;

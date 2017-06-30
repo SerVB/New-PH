@@ -26,7 +26,7 @@ package Game.map.construction.visitable;
 import Constants.DRC;
 import Common.iArmy;
 import Common.iDynamicBuffer;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iVisitors;

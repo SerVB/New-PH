@@ -26,7 +26,7 @@ package Game;
 import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Common.iMineralSet;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 import utils.ChangeableString;
 
@@ -89,7 +89,7 @@ public class iCtlCnst implements TypeAware {
             case CTLCNST.COVEROFDARKNESS:   return gTextMgr[TRID.CTLCNST_COVEROFDARKNESS_DESC];
         };
 
-        tracer.check("Unknown construction!");
+        Tracer.check("Unknown construction!");
         return gTextMgr[TRID.VOID];
     }
 
@@ -110,7 +110,7 @@ public class iCtlCnst implements TypeAware {
     }
 
     public void Init() {
-        tracer.check(state == ConstructionState.Built && !bInited);
+        Tracer.check(state == ConstructionState.Built && !bInited);
         OnInit();
         if (pCastle.Visitor()) {
             OnVisitorEnter(pCastle.Visitor());
@@ -119,7 +119,7 @@ public class iCtlCnst implements TypeAware {
     }
 
     public void Build() {
-        tracer.check(state != ConstructionState.Built);
+        Tracer.check(state != ConstructionState.Built);
         state = ConstructionState.Built;
         OnBuild();
         Init();

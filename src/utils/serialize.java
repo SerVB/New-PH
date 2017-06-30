@@ -24,13 +24,14 @@
 
 package utils;
 
+import newph.util.Tracer;
 import Common.iArmy;
 import Common.iArtifactList;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
 import Common.iFurtSkills;
 import Common.iMineralSet;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.iPrSkills;
 import Common.iRewardItem;
 import Common.iSecSkills;
@@ -163,7 +164,7 @@ public class serialize {
             int sk = (int) dbuff.Read();
             int mod = (int) dbuff.Read();
 
-            tracer.check(frSkills.Value(sk) == 0);
+            Tracer.check(frSkills.Value(sk) == 0);
             frSkills.SetValue(sk, mod);
         }
     }

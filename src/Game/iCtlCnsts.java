@@ -27,7 +27,7 @@ import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Constants.*;
 import java.util.ArrayList;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -138,7 +138,7 @@ public class iCtlCnsts {
                 }
                 break;
             default:
-                tracer.check(0);
+                Tracer.check(0);
                 break;
         }
     }
@@ -150,7 +150,7 @@ public class iCtlCnsts {
             if (dep.dep[xx] != CTLCNST.INVALID && depList.indexOf(dep.dep[xx]) == -1) {
                 int ctlc = dep.dep[xx];
                 final iCtlCnst pDepCnst = GetCnst(ctlc);
-                tracer.check(pDepCnst != null);
+                Tracer.check(pDepCnst != null);
                 if (!pDepCnst.IsBuilt()){
                     depList.add(dep.dep[xx]);
                 }

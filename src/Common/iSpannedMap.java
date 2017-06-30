@@ -24,7 +24,7 @@
 
 package Common;
 
-import utils.tracer;
+import newph.util.Tracer;
 import java.util.ArrayList;
 
 /**
@@ -46,7 +46,7 @@ public class iSpannedMap {
      * @param radius
      */
     public iSpannedMap(int shape, int radius) {
-        tracer.check(0 <= radius);
+        Tracer.check(0 <= radius);
 
         switch (shape) {
             case Circle:
@@ -56,7 +56,7 @@ public class iSpannedMap {
                 MakeSquareSpan(radius);
                 break;
             default:
-                tracer.check(0);
+                Tracer.check(0);
                 break;
         }
     }
@@ -90,7 +90,7 @@ public class iSpannedMap {
      * @return
      */
     public iSpan get(int idx) {
-        tracer.check( 0 <= idx && idx < m_SpanList.size() );
+        Tracer.check( 0 <= idx && idx < m_SpanList.size() );
         return m_SpanList.get(idx);
     }
 

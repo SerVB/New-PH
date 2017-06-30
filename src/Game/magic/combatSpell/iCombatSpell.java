@@ -29,7 +29,7 @@ import Game.iBattleGroup;
 import Game.iBattleUnit_Hero;
 import Game.iHero;
 import Game.magic.iBaseSpell;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Combat spell.
@@ -38,7 +38,7 @@ public class iCombatSpell extends iBaseSpell {
   
     public iCombatSpell(final int spellId) {
         super(spellId) ;
-        tracer.check(SPELL.DESCRIPTORS[spellId].type == SPT.COMBAT); 
+        Tracer.check(SPELL.DESCRIPTORS[spellId].type == SPT.COMBAT); 
     }
 
     //
@@ -70,14 +70,14 @@ public class iCombatSpell extends iBaseSpell {
     }
     
     public int SpellLabel() {
-        tracer.check(SPELL.DESCRIPTORS[m_spellId].label != SLB.NONE);
+        Tracer.check(SPELL.DESCRIPTORS[m_spellId].label != SLB.NONE);
         
         return SPELL_LABEL.DESCRIPTORS[SPELL.DESCRIPTORS[m_spellId].label].trid;
     }
 
     // Virtuals
     public boolean CanCast(final iBattleUnit_Hero pCaster, final iBattleGroup pTarget) {
-        tracer.check(pCaster != null);
+        Tracer.check(pCaster != null);
         int msl = GetSchoolLevel(pCaster.GetHero());
         int tt = TargetType(msl);
         boolean bFriendly = pCaster.Owner().GetSide() == pTarget.Owner().GetSide();

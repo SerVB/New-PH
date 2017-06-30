@@ -27,7 +27,7 @@ import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Constants.*;
 import utils.ChangeableString;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -74,7 +74,7 @@ public class iMystPoundCtlCnst extends iCtlCnst {
 
     @Override
     public final boolean GetActivityText(ChangeableString text) {
-        tracer.check(state == ConstructionState.Built);
+        Tracer.check(state == ConstructionState.Built);
         if (m_mt == MINERAL.UNKNOWN) {
             text.changeTo(gTextMgr[TRID.CTLCNST_MYSTICPOUND_NPROD]);
         } else {

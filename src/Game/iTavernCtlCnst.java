@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iDynamicBuffer;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 
 /**
@@ -39,7 +39,7 @@ public class iTavernCtlCnst extends iCtlCnst {
 
         m_bRecruited = false;
 
-        tracer.check(_cnst == CTLCNST.TAVERN);
+        Tracer.check(_cnst == CTLCNST.TAVERN);
     }
 
     @Override
@@ -87,14 +87,14 @@ public class iTavernCtlCnst extends iCtlCnst {
         }
 
         iPlayer pOwner = gGame.Map().FindPlayer(pCastle.Owner());
-        tracer.check(pOwner != null);
+        Tracer.check(pOwner != null);
         return pOwner.TavernVisitor();
     }
 
     public iHero RecruitVisitor() {
-        tracer.check(CanRecruit());
+        Tracer.check(CanRecruit());
         iPlayer pOwner = gGame.Map().FindPlayer(pCastle.Owner());
-        tracer.check(pOwner != null);
+        Tracer.check(pOwner != null);
         m_bRecruited = true;
         return pOwner.RecruitTavernVisitor(pCastle);
     }

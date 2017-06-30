@@ -23,9 +23,9 @@
  */
 package Game.map.construction.visitable;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Game.iHero;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -38,7 +38,7 @@ public class iVisCnst_Obelisk extends iVisCnst {
 
     @Override
     public void OnActivate(iHero pVisitor, boolean bActive) {
-        tracer.check(!Visited(pVisitor));
+        Tracer.check(!Visited(pVisitor));
         int opened = pVisitor.Owner().OpenObelisk();
         m_Visitors.add(pVisitor.Owner().PlayerId());
         if (bActive) {
@@ -50,7 +50,7 @@ public class iVisCnst_Obelisk extends iVisCnst {
             pmdlg.DoModal();
         } else {
             iAI_Player pOwner = DynamicCast<iAI_Player>(pVisitor.Owner());
-            tracer.check(pOwner != null);
+            Tracer.check(pOwner != null);
             pOwner.UpdateUltSeekPoint();
         }
     }

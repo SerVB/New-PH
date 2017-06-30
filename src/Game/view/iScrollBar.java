@@ -23,7 +23,7 @@
  */
 package Game.view;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Constants.view.*;
 

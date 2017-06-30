@@ -26,10 +26,10 @@ package Game.map.item;
 import Constants.map.MAPITEM;
 import Constants.DRC;
 import Common.iDynamicBuffer;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -73,7 +73,7 @@ public class iMapItem_KeyGuard extends iMapItem {
                 return false;
             }
         } else {
-            tracer.check(pHero.Owner().HasKey(m_key));
+            Tracer.check(pHero.Owner().HasKey(m_key));
             if (pHero.Owner().HasKey(m_key)) {
                 return true;
             }

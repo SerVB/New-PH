@@ -23,11 +23,11 @@
  */
 package Game.map.construction.visitable;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import utils.ChangeableString;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -44,10 +44,10 @@ public class iVisCnst_Teleport extends iVisCnst {
     public void OnActivate(iHero pVisitor, boolean bActive) {
         if ((IsTwoWay() || IsEntrance()) && m_tgtIdx != -1) {
             iVisCnst_Teleport pTarget = gGame.Map().GetTeleport(m_tgtIdx);
-            tracer.check(pTarget != null);
+            Tracer.check(pTarget != null);
             // Check for visitor at target cell
             if (iHero pTeleportVisitor = DynamicCast<iHero>(gGame.Map().m_CoverMap.GetAt(pTarget.Pos().x,pTarget.Pos().y))) {
-                tracer.check(pTeleportVisitor.GetLocation() == pTarget);
+                Tracer.check(pTeleportVisitor.GetLocation() == pTarget);
                 if (pTeleportVisitor.Owner().PlayerId() != pVisitor.Owner().PlayerId()) {
                     pVisitor.AttackHero(pTeleportVisitor);
                 } else {

@@ -25,7 +25,7 @@ package helperFunction;
 
 import Constants.*;
 import java.util.ArrayList;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Helper Functions for Creatures.
@@ -49,7 +49,7 @@ public class creature {
                     cid.add(xx);
                 }
             }
-            tracer.check(!cid.isEmpty());
+            Tracer.check(!cid.isEmpty());
             return cid.get(gGame.Map().Rand(cid.size()));
         }
     }

@@ -23,12 +23,12 @@
  */
 package Game.view;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
 import collections.simple.iDialogStack;
 import collections.simple.iTimerList;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -218,12 +218,12 @@ public class iViewMgr {
 
     // Capture view
     public void SetViewCapture(iView pCapView) {
-        tracer.check(m_pCapView == null);
+        Tracer.check(m_pCapView == null);
         m_pCapView = pCapView;
     }
 
     public iView ReleaseViewCapture() {
-        tracer.check(m_pCapView != null);
+        Tracer.check(m_pCapView != null);
         iView nView = m_pCapView;
 //        m_pCapView = NULL;
         return nView;
@@ -251,13 +251,13 @@ public class iViewMgr {
 
     // Popup windows
     public void TrackPopup(iPopupView pPopupView, final iPoint pos, final iRect bound, Alignment al) {
-        tracer.check(!m_pPopupView && pPopupView);
+        Tracer.check(!m_pPopupView && pPopupView);
         m_pPopupView = pPopupView;
         m_pPopupView.TrackPopup(pos, bound, al);
     }
 
     public void HidePopup() {
-        tracer.check(m_pPopupView != null);
+        Tracer.check(m_pPopupView != null);
         m_pPopupView = null;
         if (m_pCurView != null) {
             m_pCurView.Invalidate();

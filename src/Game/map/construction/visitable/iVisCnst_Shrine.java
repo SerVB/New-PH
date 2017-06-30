@@ -30,7 +30,7 @@ import Game.iHero;
 import collections.extended.iSpellList;
 import java.util.ArrayList;
 import utils.ChangeableString;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -93,7 +93,7 @@ public class iVisCnst_Shrine extends iVisCnst {
             // Init by default
             iSpellList spells = new iSpellList();
             SelectSpells(spells, SpellFilter(SPT.MASK_ALL, SPELL.LEVEL_MASKS[m_pProto.SpellLevel()], MST.MASK_ALL), 1, MSP.INVALID);
-            tracer.check(!spells.isEmpty());
+            Tracer.check(!spells.isEmpty());
             m_spell = spells.get(0).id;
         } else {
             // Skill

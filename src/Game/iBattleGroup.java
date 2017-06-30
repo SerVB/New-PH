@@ -34,8 +34,8 @@ import Constants.TAIL;
 import Common.iArmy;
 import entries.iMeleeEntry;
 import Common.iFurtSkills;
-import Common.metrics.iPoint;
-import utils.tracer;
+import newph.metric.iPoint;
+import newph.util.Tracer;
 import Constants.*;
 import Game.magic.combatSpell.iCombatSpell;
 import collections.simple.iDistMap;
@@ -262,13 +262,13 @@ public class iBattleGroup {
     }
 
     public void EnterMoat() {
-        tracer.check(!m_bInMoat);
+        Tracer.check(!m_bInMoat);
         m_bInMoat = true;
         m_furtSkills.minusValue(FSK.DEFENCE, 3);
     }
 
     public void LeaveMoat() {
-        tracer.check(m_bInMoat);
+        Tracer.check(m_bInMoat);
         m_bInMoat = false;
         m_furtSkills.plusValue(FSK.DEFENCE, 3);
     }
@@ -410,12 +410,12 @@ public class iBattleGroup {
     }
 
     public void Wait() {
-        tracer.check(!m_bWaited);
+        Tracer.check(!m_bWaited);
         m_bWaited = true;
     }
 
     public void Defend() {
-        tracer.check(m_toDefend == 0);
+        Tracer.check(m_toDefend == 0);
         m_toDefend = DefenceSkill() >> 2;
         m_furtSkills.plusValue(FSK.DEFENCE, m_toDefend);
     }
@@ -520,7 +520,7 @@ public class iBattleGroup {
 
         //
         if (bRange && (aflags & AttackFlags.LichCloud) == 0) {
-            tracer.check(m_shots > 0);
+            Tracer.check(m_shots > 0);
             --m_shots;
         }
 
@@ -536,7 +536,7 @@ public class iBattleGroup {
             m_pWrapper.AddLogEvent("#S0" + GetUnitsColor(m_pOwner.Owner()) + String.format(gTextMgr[TRID.MSG_BAT_HALF],gTextMgr[TRID.CREATURE_PEASANT_F2+m_creatType*3]));
             int halfExp;
             int dead = pTarget.Half(halfExp);
-            tracer.check(dead);
+            Tracer.check(dead);
             //OutputDebugString(iFormat(_T("%s do half to %s"),gTextMgr[TRID_CREATURE_PEASANT_F2+m_creatType*3],gTextMgr[TRID_CREATURE_PEASANT_F2+pTarget.Type()*3]).CStr());
             m_pOwner.AddExperience(halfExp);
         } else {
@@ -588,7 +588,7 @@ public class iBattleGroup {
                 m_hitPoints += HitPoints();
             }
             //OutputDebugString(iFormat(_T("%d units dead\n"),dead).CStr());
-            tracer.check(m_creatCount > 0);
+            Tracer.check(m_creatCount > 0);
             m_casualties += dead;
         }
 
@@ -685,7 +685,7 @@ public class iBattleGroup {
     public void GetMeleePosition(final iBattleGroup pTarget, final iPoint pos, int mdir, iPoint meleePos, Integer meleeOrient) {
         if (mdir == MDIR.RSPTOP || mdir == MDIR.RSPBOTTOM || mdir == MDIR.LSPTOP  || mdir == MDIR.LSPBOTTOM) {
             // target should be double sized and attack point should be between location cells
-            tracer.check(pTarget.Size() == 2);
+            Tracer.check(pTarget.Size() == 2);
             int sor = (mdir == MDIR.RSPTOP || mdir == MDIR.RSPBOTTOM)?0:1;
             int sdir = (mdir == MDIR.RSPTOP || mdir == MDIR.LSPTOP)?0:2;
             meleePos.x = pos.x + HEX.NEBS[pos.y&1][sor][sdir][0];
@@ -698,7 +698,7 @@ public class iBattleGroup {
             }
         } else if (mdir == MDIR.NORTH || mdir == MDIR.SOUTH) {
             // assaulter should be double sized
-            tracer.check(m_Size == 2);
+            Tracer.check(m_Size == 2);
             int mmd = (mdir == MDIR.NORTH)?0:2;
             meleePos.x = pos.x + HEX.NEBS[pos.y&1][m_Orient][mmd][0];
             meleePos.y = pos.y + HEX.NEBS[pos.y&1][m_Orient][mmd][1];
@@ -716,11 +716,11 @@ public class iBattleGroup {
     public void Synchronize(iArmy army) {
         if (m_idx == -1)
             return;
-        tracer.check(army.At(m_idx).Type() == m_creatType);
+        Tracer.check(army.At(m_idx).Type() == m_creatType);
         army.At(m_idx).setCount(m_creatCount);
         if (m_casualties != 0) {
             m_casualties = 0;
-            tracer.check(army.At(m_idx).Count() >= 0);
+            Tracer.check(army.At(m_idx).Count() >= 0);
             if (army.At(m_idx).Count() == 0)
                 army.At(m_idx).setType(CREAT.UNKNOWN);
         }
@@ -728,7 +728,7 @@ public class iBattleGroup {
 
     public void InitPassMap(final iBattleMap obsMap, final iCastleFort pFort) {
         m_passMap.CopyFrom(obsMap);
-        tracer.check(m_meleeList.isEmpty() && m_shotList.isEmpty() && m_potTargets.isEmpty());
+        Tracer.check(m_meleeList.isEmpty() && m_shotList.isEmpty() && m_potTargets.isEmpty());
         // insert fort elements
         if (pFort != null) {
             pFort.ProcessPassMap(m_passMap, m_pOwner.MemberType() == iBattleMember.Castle);
@@ -786,7 +786,7 @@ public class iBattleGroup {
     }
 
     public void AddMeleeEntry(final iPoint pos, int mdir) {
-        tracer.check(mdir < MDIR.COUNT);
+        Tracer.check(mdir < MDIR.COUNT);
         for (int xx=0; xx<m_meleeList.size(); ++xx){
             if (m_meleeList.get(xx).m_pos == pos) {
                 m_meleeList.get(xx).m_cfg |= (1<<mdir);

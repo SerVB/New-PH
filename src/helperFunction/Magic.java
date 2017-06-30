@@ -23,11 +23,11 @@
  */
 package helperFunction;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iBattleGroup;
 import Game.magic.combatSpell.iCombatSpell;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -86,7 +86,7 @@ public class Magic {
             }
         }
 
-        tracer.check(found>0 && found<=11);
+        Tracer.check(found>0 && found<=11);
         return new iPoint(x, ylist[gGame.Map().Rand(found)]);
     }
     

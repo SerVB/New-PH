@@ -27,7 +27,7 @@ import Constants.SSLVL;
 import Common.iFurtSkills;
 import entries.iSecSkillEntry;
 import Common.iSecSkills;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 
 /**
@@ -49,7 +49,7 @@ public class iSecSkillsCtr {
     public void Inc(int secSkill) {
         for (int xx=0; xx < m_secSkills.GetSize(); ++xx){
             if (m_secSkills.get(xx).m_skill == secSkill){
-                tracer.check(m_secSkills.get(xx).m_level < SSLVL.EXPERT && m_secSkills.get(xx).m_level > SSLVL.NONE);
+                Tracer.check(m_secSkills.get(xx).m_level < SSLVL.EXPERT && m_secSkills.get(xx).m_level > SSLVL.NONE);
                 m_furtSkills.minusValue(SEKSKILL.DESC[m_secSkills.get(xx).m_skill][m_secSkills.get(xx).m_level][0],
                                         SEKSKILL.DESC[m_secSkills.get(xx).m_skill][m_secSkills.get(xx).m_level][1]);
                 m_secSkills.get(xx).m_level++;
@@ -63,14 +63,14 @@ public class iSecSkillsCtr {
     }
 
     public void Set(int secSkill, int lvl) {
-        tracer.check(SkillLevel(secSkill) == SSLVL.NONE && m_secSkills.GetSize() < 8);
+        Tracer.check(SkillLevel(secSkill) == SSLVL.NONE && m_secSkills.GetSize() < 8);
         m_secSkills.Add(new iSecSkillEntry(secSkill,lvl));
         m_furtSkills.plusValue(SEKSKILL.DESC[secSkill][lvl][0],
                                SEKSKILL.DESC[secSkill][lvl][1]);
     }
 
     public void Set(final iSecSkills secSkills) {
-        tracer.check(m_secSkills.GetSize() == 0);
+        Tracer.check(m_secSkills.GetSize() == 0);
         for (int xx = 0; xx < secSkills.GetSize(); ++xx)
             Set(secSkills.get(xx).m_skill, secSkills.get(xx).m_level);
     }

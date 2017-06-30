@@ -24,7 +24,7 @@
 
 package Common;
 
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 
 /**
@@ -44,7 +44,7 @@ public class iArmy {
      * @return true если можно, false если нельзя
      */
     public boolean CanAddGroup(int ct) {
-        tracer.check(ct != CREAT.UNKNOWN);
+        Tracer.check(ct != CREAT.UNKNOWN);
 
         for(int xx = 0; xx < ARMY.PLACES_COUNT; ++xx) {
             if (!m_creatGroups[xx].IsValid() ||  m_creatGroups[xx].Type() == ct)
@@ -63,7 +63,7 @@ public class iArmy {
     public boolean AddGroup(int ct, long count) {
         int firstEmpty = -1;
 
-        tracer.check(ct != CREAT.UNKNOWN && count != RANDOM.QUANTITY);
+        Tracer.check(ct != CREAT.UNKNOWN && count != RANDOM.QUANTITY);
 
         // first try to find similar type group
         for (int xx = 0; xx < ARMY.PLACES_COUNT; ++xx){
@@ -116,7 +116,7 @@ public class iArmy {
             }
         }
 
-        tracer.check(idx != -1);
+        Tracer.check(idx != -1);
 
         return m_creatGroups[idx];
     }
@@ -136,7 +136,7 @@ public class iArmy {
             }
         }
 
-        tracer.check(idx != -1);
+        Tracer.check(idx != -1);
 
         return m_creatGroups[idx];
     }
@@ -187,7 +187,7 @@ public class iArmy {
      * @param count количество.
      */
     public void SetGroup(int idx, int ct, long count) {
-        tracer.check(idx < ARMY.PLACES_COUNT );
+        Tracer.check(idx < ARMY.PLACES_COUNT );
 
         m_creatGroups[idx].setType(ct);
         m_creatGroups[idx].setCount(count);
@@ -209,7 +209,7 @@ public class iArmy {
             }
         }
 
-        tracer.check(ct != CREAT.UNKNOWN);
+        Tracer.check(ct != CREAT.UNKNOWN);
 
         return ct;
     }
@@ -288,7 +288,7 @@ public class iArmy {
             if (cg.Type() != CREAT.UNKNOWN)
                 return cg;
 
-        tracer.check(0);
+        Tracer.check(0);
         return m_creatGroups[0];
     }
 
@@ -329,7 +329,7 @@ public class iArmy {
 //    public inline const iCreatGroup& operator[](uint32 idx) const { return At(idx); }
 //    public inline iCreatGroup& operator[](uint32 idx) { return At(idx); }
 
-        tracer.check(idx < ARMY.PLACES_COUNT );
+        Tracer.check(idx < ARMY.PLACES_COUNT );
 
         return m_creatGroups[idx];
     }

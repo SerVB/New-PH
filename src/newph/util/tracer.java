@@ -21,34 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package utils;
+package newph.util;
 
 /**
- * Трассировщик возможных ошибок
- * TODO: Написать нормальную трассировку!
+ * Tracer of possible errors.
+ * TODO: Write a normal trace!
  */
-public class tracer {
+public final class Tracer {
 
     /**
-     * Проверяет на ошибку.
-     * @param noError true если нет ошибки, false если ошибка.
+     * Checks if it's an error. Traces if there is an error.
+     * @param noError true if no error, else false.
      */
-    public static void check(boolean noError) {
-        if(!noError)
-            System.err.println("tracer: Error detected!!!");
+    public static void check(final boolean noError) {
+        if(noError == false) {
+            doThrow("An error detected!!!");
+        }
     }
 
-    public static void check(int xx) {
+    /**
+     * Checks if it's an error. Traces if xx == 0.
+     * @param xx 0 if there is an error.
+     */
+    public static void check(final int xx) {
         check(xx != 0);
     }
 
     /**
-     * Бросает ошибку.
-     * @param str Текст ошибки.
+     * Traces anyway.
+     * @param msg Error message.
      */
-    public static void check(String str) {
-        System.err.println("tracer: " + str);
-        check(false);
+    public static void check(String msg) {
+        doThrow(msg);
+    }
+    
+    private static void doThrow(final String msg) {
+        throw new IllegalArgumentException("fatal > " + "tracer: " + msg);
     }
 }

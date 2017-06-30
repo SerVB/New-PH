@@ -21,15 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Lang;
+package newph.constant.lang;
 
 /**
- *
+ * French Localization.
  */
-public class fr {
+public class FR extends Lang {
 
-    public final static String[] LANG_DATA_FR = {
+    /**
+     * Language data.
+     */
+    public final static String[] LANG_DATA = {
         "",
         "+",
         "-",

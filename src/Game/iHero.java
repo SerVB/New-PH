@@ -39,11 +39,11 @@ import Common.iArtifactList;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
 import Common.iFurtSkills;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.iRewardItem;
 import Common.iSecSkills;
 import utils.serialize;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 import collections.simple.iCharmList;
 import collections.extended.iSpellList;
@@ -109,7 +109,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
 
         // Primary skill
         int pskill = CalcRandValue(HERO.PRIM_SKILL[Type()],PRSKILL.COUNT);
-        tracer.check(pskill != -1);
+        Tracer.check(pskill != -1);
         result.prSkillType = pskill;
 
         // Secondary skill
@@ -267,7 +267,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         //DbgDumpFurtSkills(Name() + _T(" (initial constant)"), m_constFurtSkills);
         //DbgDumpFurtSkills(Name() + _T(" (initial var)"), m_varFurtSkills);
 
-        tracer.check(m_bDead);
+        Tracer.check(m_bDead);
         if (bInit)
             m_bDead = false;
 
@@ -275,7 +275,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         int owner = (int)dbuff.Read();
         if (owner != PID.NEUTRAL) {
             m_pOwner = gGame.Map().FindPlayer(owner);
-            tracer.check(m_pOwner != null);
+            Tracer.check(m_pOwner != null);
             m_pOwner.AddHero(this, false);
         }
 
@@ -382,7 +382,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     public void Deinit(boolean bResetArmy) {
-        tracer.check(!m_bDead);
+        Tracer.check(!m_bDead);
         m_bDead = true;
         m_pOwner = null;
         SetPos(cInvalidPoint);
@@ -396,7 +396,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     public void Init(iPlayer pOwner, final iPoint pos, int angle) {
-        tracer.check(m_bDead && m_pOwner == null && m_Pos == cInvalidPoint);
+        Tracer.check(m_bDead && m_pOwner == null && m_Pos == cInvalidPoint);
         m_pOwner = pOwner;
         m_spellSetMode = SSM.ALL;
         SetPos(pos);
@@ -440,7 +440,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
                     }
                 } else if (step.m_action == iPath.Enter) {
                     // process action (if end point)
-                    tracer.check(m_Path.IsEmpty() && m_pLocation);
+                    Tracer.check(m_Path.IsEmpty() && m_pLocation);
                     StopMoving();
                     iCastle pCastle = DynamicCast<iCastle>(m_pLocation);
                     if (pCastle != null) {
@@ -455,17 +455,17 @@ public class iHero extends iBaseMapObject implements iIListNode {
                 iPath.iStep nStep = m_Path.Step();
                 //
                 iBaseMapObject pMapObj = gGame.Map().m_CoverMap.GetAt(nStep.m_Pos.x, nStep.m_Pos.y);
-                tracer.check(pMapObj);
+                Tracer.check(pMapObj);
 
                 iHero pHero = DynamicCast<iHero*>(pMapObj);
                 if (pHero != null) {
                     if (step.m_action == iPath.Meet) {
-                        tracer.check(pHero.Owner() == Owner());
+                        Tracer.check(pHero.Owner() == Owner());
                         StopMoving();
                         bNeedAction = true;
                         MeetHero(pHero);
                     } else if (step.m_action == iPath.Attack){
-                        tracer.check(pHero.Owner() != Owner());
+                        Tracer.check(pHero.Owner() != Owner());
                         iCastle pCastle = DynamicCast<iCastle>(pHero.GetLocation());
                         if (pCastle != null){
                             StopMoving();
@@ -477,30 +477,20 @@ public class iHero extends iBaseMapObject implements iIListNode {
                             AttackHero(pHero);
                         }
                     } else {
-                        tracer.check(0);
+                        Tracer.check(0);
                     }
                 } else if ((iMapGuard pGuard = DynamicCast<iMapGuard>(pMapObj)) != null) {
-                    tracer.check(step.m_action == iPath.Attack);
+                    Tracer.check(step.m_action == iPath.Attack);
                     StopMoving();
                     bNeedAction = true;
                     TouchMapGuard(pGuard, false);
-                } else if (DynamicCast<iMapItem_Artifact*>(pMapObj) || DynamicCast<iMapItem_CampFire*>(pMapObj) || DynamicCast<iMapItem_Chest*>(pMapObj) || DynamicCast<iMapItem_Lamp*>(pMapObj) || DynamicCast<iMapItem_ManaCrystal*>(pMapObj) || DynamicCast<iMapItem_Mineral*>(pMapObj) || DynamicCast<iMapItem_SpellScroll*>(pMapObj) || DynamicCast<iMapItem_KeyGuard*>(pMapObj)) {
-                    tracer.check(step.m_action == iPath.Touch);
-                    StopMoving();
-                    bNeedAction = true;
-                    iMapItem pMapItem = pMapObj;
-                    TouchMapItem(pMapItem, false);
-                } else if (iCastle pCastle = DynamicCast<iCastle>(pMapObj)) {
+                } else ) {
                     StopMoving();
                     bNeedAction = true;
                     SiegeCastle(pCastle);
-                } else {
-                    // unknown object
-                    tracer.check(0);
-                }
-            } else {
+                } else             } else {
                 // unknown action
-                tracer.check(0);
+                Tracer.check(0);
             }
 
             if (m_bDead)
@@ -558,7 +548,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
     public iPath.Target GetTarget(int x, int y, boolean bIgnoreFog) {
         iPath.Target res = new iPath.Target();
         iBaseMapObject pObj = gGame.Map().m_CoverMap.GetAt(x,y);
-        tracer.check(pObj != null);
+        Tracer.check(pObj != null);
         if (DynamicCast<iHero*>(pObj) || DynamicCast<iMapGuard*>(pObj) || DynamicCast<iMapItem_Mineral*>(pObj) || DynamicCast<iMapItem_ManaCrystal*>(pObj) || DynamicCast<iMapItem_CampFire*>(pObj) || DynamicCast<iMapItem_Chest*>(pObj) || DynamicCast<iMapItem_Lamp*>(pObj) || DynamicCast<iMapItem_Artifact*>(pObj) || DynamicCast<iMapItem_SpellScroll*>(pObj)  || DynamicCast<iMapItem_KeyGuard*>(pObj)) {
             res.epmask = 0xFF;
             if (bIgnoreFog || !Owner().FogMap().IsHidden(iPoint(x,y))) {
@@ -593,7 +583,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
                 res.action = iPath.Enter;
             res.epmask = 0x82;
         } else {
-            tracer.check(0);
+            Tracer.check(0);
         }
 
         return res;
@@ -608,7 +598,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
 
         if (m_Pos.x == x && m_Pos.y == y) {
             // inline activation
-            tracer.check(m_pLocation);
+            Tracer.check(m_pLocation);
             ActivateConstruction(m_pLocation);
             return true;
         }
@@ -662,7 +652,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         }
     }
     public void SetPath(final iPath path) {
-        tracer.check(!m_bMoving);
+        Tracer.check(!m_bMoving);
         m_Path = path;
         m_NextPoint = Pos();
     }
@@ -720,7 +710,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     public void LearnSpell(int spellId, boolean bForce) {
-        tracer.check(bForce || CanLearnSpell(spellId));
+        Tracer.check(bForce || CanLearnSpell(spellId));
         m_spellBook.Add(spellId);
     }
 
@@ -764,7 +754,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
             }
         } else {
             if (!m_bCanDig || !gGame.Map().CanDig(m_Pos)) {
-                tracer.check(0);
+                Tracer.check(0);
             } else {
                 // dig here
                 if (gGame.Map().Dig(m_Pos)) {
@@ -949,7 +939,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
                 if (ss != SECSK.NONE)
                     m_SecSkills.Inc(ss);
             } else {
-                tracer.check(Owner().PlayerType() == PT.COMPUTER);
+                Tracer.check(Owner().PlayerType() == PT.COMPUTER);
                 if (nli.secSkill[0] != SECSK.NONE && nli.secSkill[1] != SECSK.NONE)
                     m_SecSkills.Inc(nli.secSkill[gGame.Map().Rand(2)]);
                 else if (nli.secSkill[0] != SECSK.NONE)
@@ -1010,7 +1000,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
             m_Enchs.Add(reward.m_type, FSK.LUCK, ENDUR.NEXTBATTLE, reward.m_sParam);
             break;
         case RIT.FURTSKILL:
-            tracer.check(reward.m_fParam >= FSK.ATTACK && reward.m_fParam <= FSK.KNOWLEDGE);
+            Tracer.check(reward.m_fParam >= FSK.ATTACK && reward.m_fParam <= FSK.KNOWLEDGE);
             m_constFurtSkills.plusValue(reward.m_fParam, reward.m_sParam);
             break;
         case RIT.ARTIFACT:
@@ -1029,7 +1019,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
             iCreatGroup cg = new iCreatGroup(reward.m_fParam, reward.m_sParam);
             if (m_pOwner.PlayerType() == PT.COMPUTER) {
                 iAI_Player pAIOwner = DynamicCast<iAI_Player>(m_pOwner);
-                tracer.check(pAIOwner);
+                Tracer.check(pAIOwner);
                 pAIOwner.ProcessJoinCreatures(m_Army, cg);
             } else {
                 if (!m_Army.AddGroup(cg.Type(), cg.Count())) {
@@ -1039,7 +1029,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
             }
             break;
         default:
-            tracer.check(0);
+            Tracer.check(0);
         }
     }
 
@@ -1081,7 +1071,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
 
     // Charms
     public void CastSpell(int spell) {
-        tracer.check(spell != MSP.INVALID && SPELL.DESCRIPTORS[spell].type == SPT.OVERLAND);
+        Tracer.check(spell != MSP.INVALID && SPELL.DESCRIPTORS[spell].type == SPT.OVERLAND);
 
 //        iOverlandSpell pSpell =  (iOverlandSpell*)gGame.ItemMgr().m_spellMgr.Spell(spell);
         iOverlandSpell pSpell = gGame.ItemMgr().m_spellMgr.Spell(spell);
@@ -1142,7 +1132,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         for (int xx=0; xx < m_charms.size(); ++xx) {
             int spell = m_charms.get(xx).spellId;
 
-            tracer.check(spell != MSP.INVALID && SPELL.DESCRIPTORS[spell].type == SPT.OVERLAND);
+            Tracer.check(spell != MSP.INVALID && SPELL.DESCRIPTORS[spell].type == SPT.OVERLAND);
 
             iOverlandSpell pSpell = gGame.ItemMgr().m_spellMgr.Spell(spell);
             pSpell.OnRemove(this, m_charms.get(xx).flag);
@@ -1211,8 +1201,8 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     public void SiegeCastle(iCastle pCastle) {
-        tracer.check(pCastle.Owner() != m_pOwner.PlayerId());
-        tracer.check(!pCastle.Garrison().Empty() || pCastle.Visitor());
+        Tracer.check(pCastle.Owner() != m_pOwner.PlayerId());
+        Tracer.check(!pCastle.Garrison().Empty() || pCastle.Visitor());
         iBattleInfo bi = new iBattleInfo(this, pCastle);
         gGame.BeginBattle(bi);
     }
@@ -1221,7 +1211,7 @@ public class iHero extends iBaseMapObject implements iIListNode {
         iPlayer oldPlayer = null;
         if (pCastle.Owner() != PID.NEUTRAL) {
             oldPlayer = gGame.Map().FindPlayer(pCastle.Owner());
-            tracer.check(oldPlayer != null);
+            Tracer.check(oldPlayer != null);
             oldPlayer.RemoveCastle(pCastle);
         } else {
             gGame.Map().m_Castles.Remove(iGameWorld.iCtIt(pCastle));
@@ -1275,12 +1265,12 @@ public class iHero extends iBaseMapObject implements iIListNode {
     }
 
     public void MeetHero(iHero pHero) {
-        tracer.check(m_pOwner.PlayerId() == pHero.Owner().PlayerId());
+        Tracer.check(m_pOwner.PlayerId() == pHero.Owner().PlayerId());
         if (m_pOwner.PlayerType() == PT.HUMAN) {
             gGame.MeetHeroes(this, pHero, true);
         } else {
             iAI_Player pAIPlyer = DynamicCast<iAI_Player>(m_pOwner);
-            tracer.check(pAIPlyer != null && pAIPlyer.NeedMeeting(this, pHero));
+            Tracer.check(pAIPlyer != null && pAIPlyer.NeedMeeting(this, pHero));
             pAIPlyer.MeetHeroes(this, pHero);
         }
     }

@@ -21,16 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package utils;
+package newph.servb;
 
 /**
- *
+ * Changeable object to be passed to functions
+ * and to be changed in them.
+ * @param <T> Object's Type.
  */
-public class Changeable<E> {
+public class Changeable<T> {
 
-    public E value;
+    /**
+     * Changeable value.
+     */
+    public T value;
 
-    public Changeable(final E value) {
+    /**
+     * Constructs the changeable object.
+     * @param value The initial value of the object.
+     */
+    public Changeable(final T value) {
         this.value = value;
     }
 

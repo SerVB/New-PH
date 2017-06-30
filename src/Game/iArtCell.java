@@ -24,7 +24,7 @@
 package Game;
 
 import Constants.AC;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 
 /**
@@ -55,7 +55,7 @@ public class iArtCell {
             return gGame.ItemMgr().m_artMgr.get(artId).Assign();
         }
 
-        tracer.check(cell != AC.UNDEFINED);
+        Tracer.check(cell != AC.UNDEFINED);
 
         return HERO.ART_CELL_ASSIGN[cell];
     }

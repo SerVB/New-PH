@@ -25,11 +25,11 @@ package Game.map.construction.visitable;
 
 import Constants.PROVIDER;
 import Constants.ENDUR;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -63,7 +63,7 @@ public class iVisCnst_ManaSource extends iVisCnst {
 
     public int ManaPts() {
         iVisCnstT_ManaSource pManaSource = DynamicCast<iVisCnstT_ManaSource>(m_pProto);
-        tracer.check(pManaSource != null);
+        Tracer.check(pManaSource != null);
         return pManaSource.ManaPts();
     }
 

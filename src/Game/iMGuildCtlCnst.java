@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iDynamicBuffer;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 import collections.extended.iSpellList;
 import entries.iSpellEntry;
@@ -96,7 +96,7 @@ public class iMGuildCtlCnst extends iCtlCnst {
 
     @Override
     public void OnVisitorEnter(iHero pHero) {
-        tracer.check(pHero != null);
+        Tracer.check(pHero != null);
         for (int xx = 0; xx < spells.size(); ++xx) {
             if (pHero.CanLearnSpell(spells.get(xx).id)) {
                 pHero.LearnSpell(spells.get(xx).id);
@@ -115,7 +115,7 @@ public class iMGuildCtlCnst extends iCtlCnst {
     }
 
     public final int Spell(int idx) {
-        tracer.check( idx < spells.size() );
+        Tracer.check( idx < spells.size() );
         return spells.get(idx).id;
     }
 

@@ -24,7 +24,7 @@
 
 package Common;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iSize;
 
 /**

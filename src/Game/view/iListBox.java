@@ -23,10 +23,10 @@
  */
 package Game.view;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Constants.view.*;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * List Box (virtual).
@@ -76,7 +76,7 @@ public abstract class iListBox extends iBaseCtrl implements IViewCmdHandler {
     }
 
     public void SetCurSel(int idx, boolean bNotify) {
-        tracer.check(idx == -1 || IsValidIdx(idx));
+        Tracer.check(idx == -1 || IsValidIdx(idx));
         if (idx != m_selItem) {
             m_selItem = idx;
             if (bNotify && m_pCmdHandler != null) {
@@ -167,7 +167,7 @@ public abstract class iListBox extends iBaseCtrl implements IViewCmdHandler {
 
     @Override
     public void iCMDH_ControlCommand(iView pView, int cmd, int param) {
-        tracer.check(m_pScrollBar != null && m_pScrollBar == pView);
+        Tracer.check(m_pScrollBar != null && m_pScrollBar == pView);
         SetCurPos(param);
     }
 

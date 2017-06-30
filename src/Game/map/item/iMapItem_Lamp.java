@@ -27,10 +27,10 @@ import Constants.map.MAPITEM;
 import Constants.DRC;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -56,7 +56,7 @@ public class iMapItem_Lamp extends iMapItem {
         if (!super.Activate(pHero, bActive, bShowMessage)) {
             return false;
         }
-        tracer.check(m_count > 0);
+        Tracer.check(m_count > 0);
         if (bActive) {
             iCreatGroup cg = new iCreatGroup(CREAT.GENIE, m_count);
             iDlg_Recruit rdlg = new iDlg_Recruit(gApp.ViewMgr(), cg, pHero.Army(), pHero.Owner().PlayerId());
@@ -68,7 +68,7 @@ public class iMapItem_Lamp extends iMapItem {
             }
         } else {
             iAI_Player pOwner = DynamicCast<iAI_Player>(pHero.Owner());
-            tracer.check(pOwner);
+            Tracer.check(pOwner);
             iCreatGroup cg = new iCreatGroup(CREAT.GENIE, m_count);
             if (pOwner.ProcessRecruitCreatures(pHero.Army(), cg)) {
                 m_count -= cg.Count();

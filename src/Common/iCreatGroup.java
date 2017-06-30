@@ -24,7 +24,7 @@
 
 package Common;
 
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 
 /**
@@ -159,7 +159,7 @@ public class iCreatGroup {
      * @param weeks
      */
     public void Grow(long weeks) {
-        tracer.check(m_count != RANDOM.VAL);
+        Tracer.check(m_count != RANDOM.VAL);
 
         while(weeks > 0) {
             int div = CREAT.GROWTH_DIVIDER[CREAT.DESC[m_creatType].level - 1];

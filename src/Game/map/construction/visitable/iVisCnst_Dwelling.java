@@ -27,12 +27,12 @@ import Constants.WeekDesc;
 import Constants.DRC;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.iFormat;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -136,9 +136,9 @@ public class iVisCnst_Dwelling extends iVisCnst {
                 }
             } else {
                 iAI_Player pOwner = DynamicCast<iAI_Player>(pVisitor.Owner());
-                tracer.check(pOwner != null);
+                Tracer.check(pOwner != null);
                 iVisCnstT_Dwelling pProto = DynamicCast<iVisCnstT_Dwelling>(m_pProto);
-                tracer.check(pProto);
+                Tracer.check(pProto);
                 iCreatGroup cg = new iCreatGroup(pProto.CreatType(),m_creatCount);
                 if (JoinForFree()) {
                     // Join

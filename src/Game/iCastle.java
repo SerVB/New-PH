@@ -26,7 +26,7 @@ package Game;
 import Game.map.construction.iMapCnst;
 import Common.iArmy;
 import Constants.*;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -105,7 +105,7 @@ public class iCastle extends iMapCnst {
                     pCtlCnst = new iCovOfDarkCtlCnst(this, cnstId);
                     break;
                 default:
-                    tracer.check("Unknown construction type!");
+                    Tracer.check("Unknown construction type!");
                     break;
                 }
 
@@ -177,10 +177,10 @@ public class iCastle extends iMapCnst {
             if (selhid != iHeroesMgr.INVALID_HERO_ID) {
                 iHero pHero = gGame.ItemMgr().HeroesMgr().Get(selhid);
                 iPlayer pOwner = gGame.Map().FindPlayer(m_Owner);
-                tracer.check(pHero != null && pOwner != null);
+                Tracer.check(pHero != null && pOwner != null);
                 gGame.Map().AddHero(pHero, pOwner, m_Pos, HERO.ORIENT[m_pProto.Orient()]);
             } else {
-                tracer.check(0);
+                Tracer.check(0);
             }
         }
     }
@@ -297,7 +297,7 @@ public class iCastle extends iMapCnst {
     }
 
     public void Build(iCtlCnst pCnst) {
-        tracer.check(m_bCanBuild);
+        Tracer.check(m_bCanBuild);
 
         gGame.Map().FindPlayer(Owner()).subtractMinerals(pCnst.Price());
         pCnst.Build();

@@ -27,10 +27,10 @@ import Constants.view.CCI;
 import Common.iArmy;
 import Common.iCreatGroup;
 import Common.iFurtSkills;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 import java.util.ArrayList;
 
@@ -69,7 +69,7 @@ public class iArmyListEx extends iBaseCtrl {
     }
 
     public void BeginDrag(int fromCell, iCreatGroup cGroup, final iPoint pos) {
-        tracer.check(m_pDragItem == null);
+        Tracer.check(m_pDragItem == null);
 
         m_pDragItem = new iDragItem(
                 this,
@@ -86,8 +86,8 @@ public class iArmyListEx extends iBaseCtrl {
     }
 
     public void EndDrag() {
-        tracer.check(m_pDragItem != null);
-        tracer.check(m_pArmy != null);
+        Tracer.check(m_pDragItem != null);
+        Tracer.check(m_pArmy != null);
         m_pMgr.SetDragGlyph(null);
         if (m_pDragItem.m_pReceiver != null)
             m_pDragItem.m_pReceiver.Drop();
@@ -98,7 +98,7 @@ public class iArmyListEx extends iBaseCtrl {
     }
 
     public void Drag(final iPoint pos) {
-        tracer.check(m_pDragItem != null);
+        Tracer.check(m_pDragItem != null);
         m_pDragItem.m_pos = pos;
         for (int xx = 0; xx < m_Competitors.GetSize(); ++xx) {
             if (m_Competitors.get(xx).GetScrRect().PtInRect(pos)) {
@@ -121,7 +121,7 @@ public class iArmyListEx extends iBaseCtrl {
     public void EnterDrop(iDragItem pDragItem) {
         if (m_pArmy == null)
             return;
-        tracer.check(m_pDropItem == null);
+        Tracer.check(m_pDropItem == null);
         m_pDropItem = pDragItem;
         m_pDropItem.m_pReceiver = this;
         m_pDropItem.m_toCell = -1;
@@ -129,7 +129,7 @@ public class iArmyListEx extends iBaseCtrl {
     }
 
     public void LeaveDrop() {
-        tracer.check(m_pDropItem != null);
+        Tracer.check(m_pDropItem != null);
         m_pDropItem.m_pReceiver = null;
         m_pDropItem.m_toCell = -1;
         m_pDropItem = null;

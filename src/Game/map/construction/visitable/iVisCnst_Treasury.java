@@ -31,7 +31,7 @@ import Game.iHero;
 import collections.simple.iRewardsCtr;
 import collections.extended.iSpellList;
 import utils.serialize;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -93,9 +93,9 @@ public class iVisCnst_Treasury extends iVisCnst {
         int flag = super.Unserialize(dbuff);
         if (flag == 0) {
             // Init by default
-            tracer.check(m_Guard.Empty());
+            Tracer.check(m_Guard.Empty());
             iVisCnstT_Treasury pProto = DynamicCast<iVisCnstT_Treasury>(m_pProto);
-            tracer.check(pProto != null);
+            Tracer.check(pProto != null);
             iTrVarCtr tvar = pProto.GetVarCtr();
             m_bVisited = false;
             int val = gGame.Map().Rand(100);
@@ -109,7 +109,7 @@ public class iVisCnst_Treasury extends iVisCnst {
                 }
                 val -= tvar.GetVariant(xx).probability;
             }
-            tracer.check(bSel);
+            Tracer.check(bSel);
             // Initialize reward item (if necessary)
             for (int xx = 0; xx < m_rewards.size(); ++xx) {
                 if (m_rewards.get(xx).m_type == RIT.ARTIFACT) {
@@ -138,7 +138,7 @@ public class iVisCnst_Treasury extends iVisCnst {
                                 MSP.INVALID
                         );
                     }
-                    tracer.check(!spells.isEmpty());
+                    Tracer.check(!spells.isEmpty());
                     m_rewards.get(xx).m_fParam = spells.get(0).id;
                 }
             }

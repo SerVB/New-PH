@@ -21,15 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Lang;
+package newph.constant.lang;
 
 /**
- *
+ * Slovak Localization.
  */
-public class slov {
+public class SLOV extends Lang {
 
-    public final static String[] LANG_DATA_SLOV = {
+    /**
+     * Language data.
+     */
+    public final static String[] LANG_DATA = {
         "",
         "+",
         "-",

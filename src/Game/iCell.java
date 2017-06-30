@@ -23,7 +23,7 @@
  */
 package Game;
 
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Клетка.
@@ -44,7 +44,7 @@ public class iCell {
      * @return
      */
     public int SurfNode(int idx) {
-        tracer.check(0 <= idx && idx <= 3);
+        Tracer.check(0 <= idx && idx <= 3);
         return (surf >> ((3-idx)*4)) & 0xF;
     }
 

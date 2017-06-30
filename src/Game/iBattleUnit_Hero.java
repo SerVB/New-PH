@@ -24,7 +24,7 @@
 package Game;
 
 import Constants.UnitType;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -38,7 +38,7 @@ public class iBattleUnit_Hero extends iBattleUnit {
 
         if (!DynamicCast<iBattleMember_Hero>(pOwner)) {
             iBattleMember_Castle pCastle = DynamicCast<iBattleMember_Castle>(pOwner);
-            tracer.check(pCastle.GetVisitor());
+            Tracer.check(pCastle.GetVisitor());
         }
     }
 
@@ -48,7 +48,7 @@ public class iBattleUnit_Hero extends iBattleUnit {
         } else if (iBattleMember_Castle* pCastle = DynamicCast<iBattleMember_Castle*>(m_pOwner)){
             return pCastle.GetVisitor();
         }
-        tracer.check(0);
+        Tracer.check(0);
         return null;
     }
 

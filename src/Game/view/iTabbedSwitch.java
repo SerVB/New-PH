@@ -23,10 +23,10 @@
  */
 package Game.view;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Constants.view.*;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Tabbed switch control.
@@ -63,8 +63,8 @@ public abstract class iTabbedSwitch extends iBaseCtrl {
 
         m_ItemWidth = m_Rect.w / m_TabsCount;
 
-        tracer.check(m_ItemWidth);
-        tracer.check((rect.w % m_TabsCount) == 0);
+        Tracer.check(m_ItemWidth);
+        Tracer.check((rect.w % m_TabsCount) == 0);
     }
 
     /**
@@ -90,7 +90,7 @@ public abstract class iTabbedSwitch extends iBaseCtrl {
 
     // inlines
     public void EnableTab(int idx, boolean bEnable) {
-        tracer.check(idx<m_TabsCount);
+        Tracer.check(idx<m_TabsCount);
         m_tabStates[idx] = bEnable ? 1 : 0;
     }
 
@@ -99,7 +99,7 @@ public abstract class iTabbedSwitch extends iBaseCtrl {
     }
 
     public boolean IsTabEnabled(int idx) {
-        tracer.check(idx < m_TabsCount);
+        Tracer.check(idx < m_TabsCount);
         return m_tabStates[idx] != 0;
     }
 
@@ -108,7 +108,7 @@ public abstract class iTabbedSwitch extends iBaseCtrl {
     }
 
     public void SetCurrentTab(int ntab) {
-        tracer.check(ntab<m_TabsCount);
+        Tracer.check(ntab<m_TabsCount);
         m_CurTab = ntab;
     }
 

@@ -21,11 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package Game;
+package newph.servb;
 
-/**
- *
- */
-public class iPlayer {
+import newph.util.Logger;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
+public final class ChangeableTest {
+    
+    public ChangeableTest() {}
+    
+    @BeforeClass
+    public static void setUpClass() {}
+    
+    @AfterClass
+    public static void tearDownClass() {}
+
+    @Test
+    public void testConstructor() {
+        Logger.printLog(Logger.LogLevel.TEST, "Changeable(T)", "begin");
+        
+        {
+            Integer a = 1;
+            Changeable<Integer> b = new Changeable<>(a);
+            assertEquals(a, b.value);
+
+            assertNotEquals(a + 1, b.value + 0);
+        }
+        
+        {
+            Integer a = 10;
+            Changeable<Integer> b = new Changeable<>(a);
+            assertEquals(a, b.value);
+        }
+        
+        Logger.printLog(Logger.LogLevel.TEST, "Changeable(T)", "end");
+    }
+    
 }

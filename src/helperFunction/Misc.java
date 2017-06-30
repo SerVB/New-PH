@@ -32,7 +32,7 @@ import Constants.item.QUNTITY;
 import collections.extended.iSpellList;
 import entries.iSpellEntry;
 import java.io.File;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -58,7 +58,7 @@ public class Misc {
     }
 
     public static int SelectSpells(iSpellList spIds, iSpellFilter filter, int count, int reqSpell) {
-        tracer.check(count > 0 && spIds.isEmpty());
+        Tracer.check(count > 0 && spIds.isEmpty());
 
         int[] tsp = new int[MSP.COUNT];
         int tsp_cnt = 0;
@@ -88,13 +88,13 @@ public class Misc {
             spIds.add(gGame.Map().Rand(spIds.size()+1), reqSpell);
         }
 
-        tracer.check(count == 0);
+        Tracer.check(count == 0);
 
         return spIds.size();
     }
 
     public static int CalcRandValue(final int[] pVals, int siz) {
-        tracer.check(siz>0);
+        Tracer.check(siz>0);
 
         int tot_vals = 0;
 
@@ -115,7 +115,7 @@ public class Misc {
             sval += pVals[ridx];
         }
 
-        tracer.check(pVals[ridx] != 0);
+        Tracer.check(pVals[ridx] != 0);
 
         return ridx;
     }

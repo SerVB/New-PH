@@ -23,12 +23,12 @@
  */
 package Game.view;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
 import Constants.view.ViewState;
 import collections.simple.iViewList;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -102,7 +102,7 @@ public class iView {
     public boolean MouseDown(final iPoint pos) {
         if (!m_bEnabled) {
             // only topmost window can receive messages in disabled state
-            tracer.check(m_pParent == null);
+            Tracer.check(m_pParent == null);
             m_pMgr.SetViewCapture(this);
             m_bTracking = true;
             return true;
@@ -128,7 +128,7 @@ public class iView {
                 OnMouseClick(pos);
             }
         } else {
-            tracer.check(0);
+            Tracer.check(0);
         }
 
         return true;

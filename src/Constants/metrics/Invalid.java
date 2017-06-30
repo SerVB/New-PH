@@ -23,7 +23,7 @@
  */
 package Constants.metrics;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
 

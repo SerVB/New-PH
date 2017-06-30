@@ -21,15 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Lang;
+package newph.constant.lang;
 
 /**
- *
+ * Poland Localization.
  */
-public class pl {
-
-    public final static String[] LANG_DATA_PL = {
+public class PL extends Lang {
+    
+    /**
+     * Language data.
+     */
+    public final static String[] LANG_DATA = {
         "",
         "+",
         "-",

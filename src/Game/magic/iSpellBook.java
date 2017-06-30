@@ -25,7 +25,7 @@ package Game.magic;
 
 import collections.extended.iSpellList;
 import entries.iSpellEntry;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Spell Book.
@@ -49,15 +49,15 @@ public class iSpellBook {
     }
     
     public iBaseSpell SpellByIdx(final int idx) {
-        tracer.check(idx < m_spells.size());
-        tracer.check(m_spells.get(idx) < gGame.ItemMgr().m_spellMgr.SpellsCount());
+        Tracer.check(idx < m_spells.size());
+        Tracer.check(m_spells.get(idx) < gGame.ItemMgr().m_spellMgr.SpellsCount());
         
         return gGame.ItemMgr().m_spellMgr.Spell(m_spells.get(idx).id);
     }
     
     public iBaseSpell FavoriteByIdx(final int idx) {
-        tracer.check(idx < m_favorites.size());
-        tracer.check(m_favorites.get(idx) < gGame.ItemMgr().m_spellMgr.SpellsCount());
+        Tracer.check(idx < m_favorites.size());
+        Tracer.check(m_favorites.get(idx) < gGame.ItemMgr().m_spellMgr.SpellsCount());
         
         return gGame.ItemMgr().m_spellMgr.Spell(m_favorites.get(idx).id);
     }

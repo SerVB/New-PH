@@ -23,14 +23,12 @@
  */
 package Game.map;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 
 /**
  *
  */
-public class iBaseMapObject implements TypeAware {
-
-//    public IMPL_TYPEAWARE( iBaseMapObject );
+public class iBaseMapObject {
 
     public iBaseMapObject(final iPoint pos, boolean bDisap) {
         this.m_Pos = pos;

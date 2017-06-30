@@ -21,15 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package Lang;
+package newph.constant.lang;
 
 /**
- *
+ * German Localization.
  */
-public class ger {
+public class GER extends Lang {
 
-    public final static String[] LANG_DATA_GER = {
+    /**
+     * Language data.
+     */
+    public final static String[] LANG_DATA = {
         "",
         "+",
         "-",

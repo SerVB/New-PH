@@ -23,21 +23,23 @@
  */
 package Common.metrics;
 
+import newph.metric.iPoint;
+
 /**
  * Contains weight "w" and height "h".
  */
 public class iSize {
 
     /**
-     * C-tor. Sets metrics to zero.
+     * Constructs the object with metrics of zero.
      */
     public iSize() {
-        w = 0;
-        h = 0;
+        this.w = 0;
+        this.h = 0;
     }
 
     /**
-     * C-tor.
+     * Constructs the object with specified metrics. 
      * @param w Width.
      * @param h Height.
      */
@@ -47,7 +49,8 @@ public class iSize {
     }
 
     /**
-     * C-tor. Copies iSize object.
+     * Constructs the object by copying
+     * parameters of the other Size object.
      * @param other Object to be copied.
      */
     public iSize(final iSize other) {
@@ -56,29 +59,30 @@ public class iSize {
     }
 
     /**
-     * @deprecated Use {@link #InflateSize(int)} instead!
+     * @deprecated Use {@link #inflateSize(int)} instead!
      * Adds value to each metric.
      * @param value Value to be added.
      */
     public void add(final int value) {
-        w += value;
-        h += value;
+        inflateSize(value);
     }
 
     /**
-     * @deprecated Use {@link #DeflateSize(int)} instead!
+     * @deprecated Use {@link #deflateSize(int)} instead!
      * Subtracts value from each metric.
      * @param value Value to be subtracted.
      */
     public void subtract(final int value) {
-        w -= value;
-        h -= value;
+        deflateSize(value);
     }
 
     /**
-     * C-tor. Makes operations with metrics of two iSize objects.
+     * Constructs a new object with
+     * operated two other objects' metrics.
      * @param first First object.
      * @param oper Operator ('+').
+     * If '+' metrics add,
+     * else throws IllegalArgumentException.
      * @param second Second object.
      */
     public iSize(final iSize first, final char oper, final iSize second) {
@@ -111,7 +115,7 @@ public class iSize {
     }
 
     /**
-     * Compares the object with the other object.
+     * Checks if the object is equal to the other object.
      * @param other Other object.
      * @return True if objects are equal, false if not.
      */
@@ -124,16 +128,16 @@ public class iSize {
      * @param w_offs Value to be added to width.
      * @param h_offs Value to be added to height.
      */
-    public void inflateSize(int w_offs, int h_offs) {
-        w += w_offs;
-        h += h_offs;
+    public void inflateSize(final int w_offs, final int h_offs) {
+        this.w += w_offs;
+        this.h += h_offs;
     }
 
     /**
      * Adds value to each metric.
      * @param offs Value to be added.
      */
-    public void inflateSize(int offs) {
+    public void inflateSize(final int offs) {
         inflateSize(offs, offs);
     }
 
@@ -142,16 +146,15 @@ public class iSize {
      * @param w_offs Value to be added to width.
      * @param h_offs Value to be added to height.
      */
-    public void deflateSize(int w_offs, int h_offs) {
-        w -= w_offs;
-        h -= h_offs;
+    public void deflateSize(final int w_offs, final int h_offs) {
+        inflateSize(-w_offs, -h_offs);
     }
 
     /**
      * Subtracts value from each metric.
      * @param offs Value to be subtracted.
      */
-    public void deflateSize(int offs) {
+    public void deflateSize(final int offs) {
         deflateSize(offs, offs);
     }
 
@@ -175,7 +178,17 @@ public class iSize {
      * @return True if equals to zero, false if not.
      */
     public boolean isZero() {
-        return w == 0 && h == 0;
+        return (w == 0) && (h == 0);
+    }
+    
+    /**
+     * Constructs the Size object from the Point object.
+     * "w" sets to "x", "h" sets to "y".
+     * @param point The Size object.
+     */
+    public iSize(final iPoint point) {
+        this.w = point.x;
+        this.h = point.y;
     }
 
     /**

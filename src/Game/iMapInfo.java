@@ -26,7 +26,7 @@ package Game;
 
 import Common.metrics.iSize;
 import utils.serialize;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -168,7 +168,7 @@ public class iMapInfo {
         ArrayList<iPlayerInfo> defPl = new ArrayList();
         // Переместить PT_HUMAN из m_Players в defPl
         for(int pidx = 0; pidx < m_Players.size(); /**/) {
-            tracer.check(m_Players.get(pidx).m_Type != PT.UNDEFINED);
+            Tracer.check(m_Players.get(pidx).m_Type != PT.UNDEFINED);
 
             if (m_Players.get(pidx).m_Type == PT.HUMAN) {
                 defPl.add(m_Players.get(pidx));
@@ -178,7 +178,7 @@ public class iMapInfo {
                 ++pidx;
         }
         // Продолжить, если PT_HUMAN существуют
-        tracer.check(defPl.size() > 0);
+        Tracer.check(defPl.size() > 0);
         // Если один PT_HUMAN, то игровой режим GM_SPLAYER, иначе GM_HOTSEAT
         m_gameMode = (defPl.size() == 1) ? GM.SPLAYER : GM.HOTSEAT;
         // Добавить оставшихся игроков

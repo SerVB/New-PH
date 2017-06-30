@@ -24,9 +24,9 @@
 package Game.map.construction.ownerable;
 
 import Common.iFurtSkills;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -45,7 +45,7 @@ public class iOwnCnst_FurtSkill extends iOwnCnst {
     @Override
     public void OnOwnerChanged(int newOwner, int oldOwner) {
         iOwnCnstT_FurtSkill pProto = (iOwnCnstT_FurtSkill)(m_pProto);
-        tracer.check(pProto != null);
+        Tracer.check(pProto != null);
         if (newOwner == oldOwner) {
             return;
         }

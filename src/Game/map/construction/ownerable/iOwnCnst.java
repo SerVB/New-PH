@@ -24,12 +24,12 @@
 package Game.map.construction.ownerable;
 
 import Common.iArmy;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import Game.map.construction.iMapCnst;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Ownerables.
@@ -111,7 +111,7 @@ public class iOwnCnst extends iMapCnst {
         } else {
             if (m_Owner != PID.NEUTRAL) {
                 iPlayer oldPlayer = gGame.Map().FindPlayer(m_Owner);
-                tracer.check(oldPlayer != null);
+                Tracer.check(oldPlayer != null);
                 oldPlayer.m_Cnsts.Remove(iPlayer.iCLIt(this));
                 oldPlayer.UpdateFogMap();
             } else {

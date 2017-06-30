@@ -24,7 +24,7 @@
 package Game;
 
 import Constants.AC;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.*;
 import java.util.ArrayList;
 
@@ -42,7 +42,7 @@ public class iArtCtr {
 
     //
     public int Pop() {
-        tracer.check(BackPackCount());
+        Tracer.check(BackPackCount());
         System.err.println("Что означает pop? Удалить первый или последний элемент?");
 //        return m_BackPack.Pop();
         return m_BackPack.remove(m_BackPack.size() - 1);
@@ -136,7 +136,7 @@ public class iArtCtr {
     }
 
     public void PushDressed(int artId, int cell) {
-        tracer.check(m_Dressed.get(cell).Empty() && CanAttach(artId));
+        Tracer.check(m_Dressed.get(cell).Empty() && CanAttach(artId));
 
         m_Dressed.get(cell).artId = artId;
         gGame.ItemMgr().m_artMgr.get(artId).Attach(m_pOwner);
@@ -148,13 +148,13 @@ public class iArtCtr {
 
     public int Pop(boolean bDressed, int idx) {
         if (bDressed) {
-            tracer.check( idx < m_Dressed.size() && !m_Dressed.get(idx).Empty());
+            Tracer.check( idx < m_Dressed.size() && !m_Dressed.get(idx).Empty());
             int result = m_Dressed.get(idx).artId;
             m_Dressed.get(idx).Reset();
             gGame.ItemMgr().m_artMgr.get(result).Dettach(m_pOwner);
             return result;
         } else {
-            tracer.check(idx < m_BackPack.size());
+            Tracer.check(idx < m_BackPack.size());
             int result = m_BackPack.get(idx);
             m_BackPack.remove(idx);
             return result;
@@ -197,7 +197,7 @@ public class iArtCtr {
     }
 
     public final int BackPackItem(int idx) {
-        tracer.check(idx < m_BackPack.size());
+        Tracer.check(idx < m_BackPack.size());
         return m_BackPack.get(idx);
     }
 

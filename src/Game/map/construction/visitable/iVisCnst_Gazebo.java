@@ -23,7 +23,7 @@
  */
 package Game.map.construction.visitable;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.iRewardItem;
 import Constants.RIT;
 import Game.iHero;

@@ -26,13 +26,13 @@ package Game.map.construction.visitable;
 import Constants.PROVIDER;
 import Constants.ENDUR;
 import Constants.RIT;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.iRewardItem;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import collections.simple.iRewardsCtr;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -63,7 +63,7 @@ public class iVisCnst_MLModifier extends iVisCnst {
             }
         } else {
             iVisCnstT_MLModifier pProto = DynamicCast<iVisCnstT_MLModifier>(m_pProto);
-            tracer.check(pProto);
+            Tracer.check(pProto);
             if (bActive) {
                 iRewardsCtr rew = new iRewardsCtr();
                 if (pProto.MoraleModifier()) {

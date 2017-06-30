@@ -26,10 +26,10 @@ package Game.map.item;
 import Constants.map.MAPITEM;
 import Common.iDynamicBuffer;
 import Common.iFormat;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -69,12 +69,12 @@ public class iMapItem_Chest extends iMapItem {
             } else if (res == iDlg_Chest.Experience) {
                 pHero.ReceiveExperience(dlg.ExpCount());
             } else {
-                tracer.check(0);
+                Tracer.check(0);
             }
             gSfxMgr.PlaySound(CSND.PICKUP01 + (m_Pos.x+m_Pos.y) % 5);
         } else {
             iAI_Player pOwner = DynamicCast<iAI_Player>(pHero.Owner());
-            tracer.check(pOwner != null);
+            Tracer.check(pOwner != null);
             pOwner.ProcessChest(pHero, this);
         }
 

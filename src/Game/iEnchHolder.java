@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iFurtSkills;
-import utils.tracer;
+import newph.util.Tracer;
 import Constants.FSK;
 import java.util.ArrayList;
 
@@ -49,7 +49,7 @@ public class iEnchHolder {
     }
 
     public final iEnchItem get(int idx) {
-        tracer.check(idx < m_items.GetSize());
+        Tracer.check(idx < m_items.GetSize());
         return m_items.get(idx);
     }
 

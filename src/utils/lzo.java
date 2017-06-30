@@ -24,6 +24,7 @@
 
 package utils;
 
+import newph.util.Tracer;
 import Common.iDynamicBuffer;
 
 /**
@@ -45,7 +46,7 @@ public class lzo {
         lzoBuffLen -=  2;
         lzoBuffIdx += 2;
         if (hdr != LZO_BLOCK_HDR) {
-            tracer.check(0);
+            Tracer.check(0);
             return 0;
         }
 
@@ -54,7 +55,7 @@ public class lzo {
         lzoBuffLen -=  4;
         lzoBuffIdx += 4;
         if (raw_buf_len <= 0 || raw_buf_len > LZO_MAX_BUF_LEN) {
-            tracer.check(0);
+            Tracer.check(0);
             return 0;
         }
 
@@ -62,7 +63,7 @@ public class lzo {
         rawBuff.IncSize( raw_buf_len );
         int res = lzo1x_decompress(lzoBuff, lzoBuffLen, rawBuff.GetData(), raw_buf_len, null);
         if (res != LZO_E_OK) {
-            tracer.check(0);
+            Tracer.check(0);
             return 0;
         }
         
@@ -70,7 +71,7 @@ public class lzo {
     }
 
     int Compress(final byte[] rawBuff, int rawBuffLen, iDynamicBuffer lzoBuff) {
-        tracer.check(rawBuffLen > 0 && rawBuffLen <= LZO_MAX_BUF_LEN);
+        Tracer.check(rawBuffLen > 0 && rawBuffLen <= LZO_MAX_BUF_LEN);
         int out_len = (rawBuffLen + rawBuffLen / 16 + 64 + 3);
         char[] buff = new char[out_len];
 
@@ -78,7 +79,7 @@ public class lzo {
         int res = lzo1x_1_compress(rawBuff,rawBuffLen,buff,out_len,wrkmem);
         if (res != LZO_E_OK) {
             // this should NEVER happen
-            tracer.check(0);
+            Tracer.check(0);
             return 0;
         }
 

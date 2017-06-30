@@ -25,7 +25,7 @@ package Game;
 
 import Common.iDynamicBuffer;
 import java.util.ArrayList;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -43,7 +43,7 @@ public class iPermFSKModCtlCnst extends iCtlCnst {
 
     @Override
     public void OnVisitorEnter(iHero pHero) {
-        tracer.check(pHero != null);
+        Tracer.check(pHero != null);
         if (!Visited(pHero)) {
             pHero.ConstFurtSkills().plusValue(skill, mod);
             visitors.add(pHero.Proto().m_protoId);

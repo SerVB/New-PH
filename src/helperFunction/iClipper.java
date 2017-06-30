@@ -23,9 +23,9 @@
  */
 package helperFunction;
 
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Common.metrics.iRect;
-import utils.Changeable;
+import newph.servb.Changeable;
 
 /**
  *

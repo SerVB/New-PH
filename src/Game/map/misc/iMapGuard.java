@@ -28,13 +28,13 @@ import Constants.DRC;
 import Constants.GDISP;
 import Common.iCreatGroup;
 import Common.iFormat;
-import Common.metrics.iPoint;
+import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import Game.map.iBaseMapObject;
 import helperFunction.*;
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  *
@@ -139,7 +139,7 @@ public class iMapGuard extends iBaseMapObject {
 
         } else {
             iAI_Player pOwner = DynamicCast<iAI_Player>(pHero.Owner());
-            tracer.check(pOwner);
+            Tracer.check(pOwner);
             // TRICK: #2 - join all encountered creatures
             if ( pOwner.m_HackedTricks & 0x0c != 0 ) {
                 pOwner.ProcessJoinCreatures(pHero.Army(), m_creatures);

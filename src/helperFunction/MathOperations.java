@@ -23,7 +23,7 @@
  */
 package helperFunction;
 
-import utils.tracer;
+import newph.util.Tracer;
 
 /**
  * Math Operations.
@@ -31,7 +31,7 @@ import utils.tracer;
 public class MathOperations {
 
     public final static int clamp(final int min, final int max, final int value) {
-        tracer.check(min <= max);
+        Tracer.check(min <= max);
 
         if (min <= value && value <= max) {
             return value;
@@ -72,7 +72,7 @@ public class MathOperations {
     }
 
     public final static int wrap(int val, int minv, int wrap) {
-        tracer.check(minv < wrap);
+        Tracer.check(minv < wrap);
 
         if (val < minv) {
             return val + wrap - minv;
