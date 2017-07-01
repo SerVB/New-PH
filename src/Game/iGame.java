@@ -25,7 +25,7 @@
 package Game;
 
 import newph.metric.iPoint;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.CV;
 import java.io.File;
 import java.io.FileInputStream;

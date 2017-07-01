@@ -28,7 +28,7 @@ import Common.metrics.iRect;
 import Common.metrics.iSize;
 import Constants.view.ViewState;
 import collections.simple.iViewList;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

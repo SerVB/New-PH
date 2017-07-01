@@ -35,7 +35,7 @@ import Common.iArmy;
 import entries.iMeleeEntry;
 import Common.iFurtSkills;
 import newph.metric.iPoint;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.*;
 import Game.magic.combatSpell.iCombatSpell;
 import collections.simple.iDistMap;

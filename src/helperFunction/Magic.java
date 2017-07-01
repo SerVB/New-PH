@@ -27,7 +27,7 @@ import newph.metric.iPoint;
 import Constants.*;
 import Game.iBattleGroup;
 import Game.magic.combatSpell.iCombatSpell;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

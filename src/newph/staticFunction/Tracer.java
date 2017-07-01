@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.util;
+package newph.staticFunction;
 
 /**
  * Tracer of possible errors.
@@ -55,6 +55,10 @@ public final class Tracer {
         doThrow(msg);
     }
     
+    /**
+     * Throws exception anyway.
+     * @param msg Error message.
+     */
     private static void doThrow(final String msg) {
         throw new IllegalArgumentException("fatal > " + "tracer: " + msg);
     }

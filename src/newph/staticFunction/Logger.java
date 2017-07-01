@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.util;
+package newph.staticFunction;
 
 /**
  * Prints log messages.
@@ -33,7 +33,7 @@ public final class Logger {
     /**
      * Log Level.
      */
-    public enum LogLevel {
+    public static enum LogLevel {
         
         /**
          * Debug.

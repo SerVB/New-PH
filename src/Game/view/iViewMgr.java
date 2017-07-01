@@ -28,7 +28,7 @@ import Common.metrics.iRect;
 import Common.metrics.iSize;
 import collections.simple.iDialogStack;
 import collections.simple.iTimerList;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

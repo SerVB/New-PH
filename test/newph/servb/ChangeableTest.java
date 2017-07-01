@@ -23,7 +23,7 @@
  */
 package newph.servb;
 
-import newph.util.Logger;
+import newph.staticFunction.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

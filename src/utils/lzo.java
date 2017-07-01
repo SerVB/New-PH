@@ -24,7 +24,7 @@
 
 package utils;
 
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Common.iDynamicBuffer;
 
 /**

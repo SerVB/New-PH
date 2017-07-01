@@ -24,7 +24,7 @@
 package newph.metric;
 
 import Common.metrics.iSize;
-import newph.util.Logger;
+import newph.staticFunction.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

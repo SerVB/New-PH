@@ -26,7 +26,7 @@ package Game.view;
 import newph.metric.iPoint;
 import Common.metrics.iRect;
 import Constants.view.*;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  * Tabbed switch control.

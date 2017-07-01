@@ -34,7 +34,7 @@ import Game.iHero;
 import Game.iWeekDesc;
 import Game.map.iBaseMapObject;
 import helperFunction.*;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

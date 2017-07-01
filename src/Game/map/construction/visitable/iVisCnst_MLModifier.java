@@ -32,7 +32,7 @@ import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import collections.simple.iRewardsCtr;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

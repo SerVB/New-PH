@@ -25,7 +25,7 @@ package newph.metric;
 
 import Common.metrics.iSize;
 import helperFunction.MathOperations;
-import newph.util.Logger;
+import newph.staticFunction.Logger;
 
 /**
  * Contains coordinates "x" and "y".

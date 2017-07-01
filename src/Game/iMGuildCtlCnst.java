@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iDynamicBuffer;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.*;
 import collections.extended.iSpellList;
 import entries.iSpellEntry;

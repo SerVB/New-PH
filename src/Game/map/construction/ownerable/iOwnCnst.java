@@ -29,7 +29,7 @@ import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import Game.map.construction.iMapCnst;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  * Ownerables.

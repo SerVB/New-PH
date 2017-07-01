@@ -110,8 +110,8 @@ public class iClipper {
     }
 
     public static boolean clipLine(final iPoint pnt1, final iPoint pnt2, final iRect rect) {
-        Changeable<Integer> c1 = new Changeable(0);
-        Changeable<Integer> c2 = new Changeable(0);
+        Changeable<Integer> c1 = new Changeable(-42);
+        Changeable<Integer> c2 = new Changeable(-42);
         iPoint d = new iPoint();
         iRect clip = new iRect(rect);
 

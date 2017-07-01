@@ -26,7 +26,7 @@ package Game.magic.overlandSpell;
 import Constants.*;
 import Game.iHero;
 import Game.magic.iBaseSpell;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  * Overland spell.

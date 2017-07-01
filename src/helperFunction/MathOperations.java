@@ -23,13 +23,20 @@
  */
 package helperFunction;
 
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  * Math Operations.
  */
-public class MathOperations {
+public final class MathOperations {
 
+    /**
+     * Restricts the value between min and max values.
+     * @param min   Min value.
+     * @param max   Max value.
+     * @param value Value.
+     * @return      Restricted value.
+     */
     public final static int clamp(final int min, final int max, final int value) {
         Tracer.check(min <= max);
 
@@ -46,7 +53,7 @@ public class MathOperations {
      * Returns absolute value of difference between two values.
      * @param x First value.
      * @param y Second value.
-     * @return Absolute value of difference.
+     * @return  Absolute value of difference.
      */
     public final static int dif(final int x, final int y) {
         return (x > y) ? (x - y) : (y - x);
@@ -55,7 +62,7 @@ public class MathOperations {
     /**
      * Sign function.
      * @param x Value.
-     * @return 1 if the value is greater than 0, 0 if the value is 0, - 1 if the value is smaller than 0.
+     * @return  1 if the value is greater than 0, 0 if the value is 0, - 1 if the value is smaller than 0.
      */
     public final static int sign(final int x) {
         if (0 < x) {
@@ -83,6 +90,11 @@ public class MathOperations {
         }
     }
 
+    /**
+     * Rounds negative and positive double correctly.
+     * @param d Double to round.
+     * @return  Rounded correctly double.
+     */
     public final static double roundDouble(double d) {
         if (d < 0.0) {
             return Math.ceil(d - 0.5);

@@ -28,7 +28,7 @@ import Constants.*;
 import Game.iCastle;
 import Game.iHero;
 import Game.iPlayer;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

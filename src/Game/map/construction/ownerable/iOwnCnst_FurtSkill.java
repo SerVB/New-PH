@@ -26,7 +26,7 @@ package Game.map.construction.ownerable;
 import Common.iFurtSkills;
 import newph.metric.iPoint;
 import Constants.*;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

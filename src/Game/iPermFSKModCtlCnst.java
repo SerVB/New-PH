@@ -25,7 +25,7 @@ package Game;
 
 import Common.iDynamicBuffer;
 import java.util.ArrayList;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

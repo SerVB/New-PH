@@ -29,7 +29,7 @@ import Common.iFormat;
 import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

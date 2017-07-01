@@ -26,7 +26,7 @@ package Game;
 
 import Common.metrics.iSize;
 import utils.serialize;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

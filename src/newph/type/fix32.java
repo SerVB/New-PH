@@ -25,15 +25,13 @@ package newph.type;
 
 /**
  * Fixed point type with the storage of 32 bits.
- * TODO:: Correct division code ( now can lead to overflow / ZERO division in some cases )
- * TODO:: Add diagnostics
+ * TODO: Correct division code (now can lead to overflow / ZERO division in some cases)
+ * TODO: Check work with negative numbers (need short to do it?):
+ *       add tests and fix if there are problems.
+ * TODO: Check if the class is needed and remove it if not.
+ * TODO: Change name to "Fixed32" (after full sources rewrite).
  */
-public final class Fixed32 {
-    
-//    /**
-//     * Number of bits of storage type (int).
-//     */
-//    private final static int BITS = 32;
+public final class fix32 {
     
     /**
      * Number of bits of fraction.
@@ -43,23 +41,23 @@ public final class Fixed32 {
     /**
      * Constant equals zero.
      */
-    public final static Fixed32 ZERO = new Fixed32(0);
+    public final static fix32 ZERO = new fix32(0);
     
     /**
      * Value of fixed equals 1.
      */
-    private final static int ONE_VALUE = 1 << FRAC_BITS;
+    private final static long ONE_VALUE = 1 << FRAC_BITS;
     
     /**
      * Mask of fraction bits.
      */
-    private final static int FRAC_BITS_MASK = calculateFracBitsMask();
+    private final static long FRAC_BITS_MASK = calculateFracBitsMask();
     
     /**
      * Constructs the object by copying the other.
      * @param other Object to copy.
      */
-    public Fixed32(final Fixed32 other) {
+    public fix32(final fix32 other) {
         set(other);
     }
     
@@ -67,7 +65,7 @@ public final class Fixed32 {
      * Constructs the object from integer.
      * @param ii Integer.
      */
-    public Fixed32(final int ii) {
+    public fix32(final int ii) {
         set(ii);
     }
     
@@ -75,7 +73,7 @@ public final class Fixed32 {
      * Constructs the object from double.
      * @param dd Double.
      */
-    public Fixed32(final double dd) {
+    public fix32(final double dd) {
         set(dd);
     }
 
@@ -83,7 +81,7 @@ public final class Fixed32 {
      * Copies the other object's value to this object.
      * @param other Other object.
      */
-    public final void set(final Fixed32 other) {
+    public final void set(final fix32 other) {
         val = other.val;
     }
     
@@ -116,7 +114,7 @@ public final class Fixed32 {
      * Adds the other object's value.
      * @param other Other object.
      */
-    public final void add(final Fixed32 other) {
+    public final void add(final fix32 other) {
         val += other.val;
     }
     
@@ -125,7 +123,7 @@ public final class Fixed32 {
      * Subtracts the other object's value.
      * @param other Other object.
      */
-    public final void subtract(final Fixed32 other) {
+    public final void subtract(final fix32 other) {
         val -= other.val;
     }
 
@@ -134,8 +132,8 @@ public final class Fixed32 {
      * Multiplies this object's value and the other object's value.
      * @param other Other object.
      */
-    public final void multiply(final Fixed32 other) {
-        val = mul_shift(val, other.val);
+    public final void multiply(final fix32 other) {
+        val = getValueByMulShift(val, other.val);
     }
     
     /**
@@ -143,9 +141,9 @@ public final class Fixed32 {
      * Divides this object's value and the other object's value.
      * @param other Other object.
      */
-    public final void divide(final Fixed32 other) {
-        val = shift_div(val, other.val);
-//        val = val / ( rhs.val >> frac_bits ); // Comment in sources
+    public final void divide(final fix32 other) {
+        val = getValueByShiftDiv(val, other.val);
+//        val = val / ( other.val >> FRAC_BITS ); // Missing fraction this way!
     }
 
     /**
@@ -154,7 +152,7 @@ public final class Fixed32 {
      * @param ii Integer.
      */
     public final void add(final int ii) {
-        add(new Fixed32(ii));
+        add(new fix32(ii));
     }
     
     /**
@@ -163,7 +161,7 @@ public final class Fixed32 {
      * @param ii Integer.
      */
     public final void subtract(final int ii) {
-        subtract(new Fixed32(ii));
+        subtract(new fix32(ii));
     }
     
     /**
@@ -190,27 +188,27 @@ public final class Fixed32 {
      * @param oper Operation ('+' or '-' or '*' or '/' or throws IllegalArgumentException).
      * @param second Second object.
      */
-    public Fixed32(final Fixed32 first, final char oper, final Fixed32 second) {
-        final Fixed32 tmp;
+    public fix32(final fix32 first, final char oper, final fix32 second) {
+        final fix32 tmp;
         
         switch (oper) {
             case '+':
-                tmp = new Fixed32(first);
+                tmp = new fix32(first);
                 tmp.add(second); 
                 this.val = tmp.val;
                 break;
             case '-':
-                tmp = new Fixed32(first);
+                tmp = new fix32(first);
                 tmp.subtract(second); 
                 this.val = tmp.val;
                 break;
             case '*':
-                tmp = new Fixed32(first);
+                tmp = new fix32(first);
                 tmp.multiply(second); 
                 this.val = tmp.val;
                 break;
             case '/':
-                tmp = new Fixed32(first);
+                tmp = new fix32(first);
                 tmp.divide(second); 
                 this.val = tmp.val;
                 break;
@@ -225,8 +223,8 @@ public final class Fixed32 {
      * @param oper Operation ('+' or '-' or '*' or '/' or throws IllegalArgumentException).
      * @param ii Integer.
      */
-    public Fixed32(final Fixed32 fixed, final char oper, final int ii) {
-        this(fixed, oper, new Fixed32(ii));
+    public fix32(final fix32 fixed, final char oper, final int ii) {
+        this(fixed, oper, new fix32(ii));
     }
     
     /**
@@ -235,8 +233,8 @@ public final class Fixed32 {
      * @param oper Operation ('+' or '-' or '*' or '/' or throws IllegalArgumentException).
      * @param fixed Object.
      */
-    public Fixed32(final int ii, final char oper, final Fixed32 fixed) {
-        this(new Fixed32(ii), oper, fixed);
+    public fix32(final int ii, final char oper, final fix32 fixed) {
+        this(new fix32(ii), oper, fixed);
     }
 
     /**
@@ -244,7 +242,7 @@ public final class Fixed32 {
      * @return Floored value.
      */
     public final int floor() {
-        return getIntegerPart();
+        return (int) getIntegerPart();
     }
     
     /**
@@ -253,9 +251,9 @@ public final class Fixed32 {
      */
     public final int ceil() {
         if (containsFraction()) {
-            return getIntegerPart() + 1;
+            return (int) getIntegerPart() + 1;
         } else {
-            return getIntegerPart();
+            return (int) getIntegerPart();
         }
     }
     
@@ -263,7 +261,7 @@ public final class Fixed32 {
      * Returns converted to integer integer part of the object.
      * @return Integer part.
      */
-    private int getIntegerPart() {
+    private long getIntegerPart() {
         return val >> FRAC_BITS;
     }
     
@@ -279,7 +277,7 @@ public final class Fixed32 {
      * Returns raw fraction value: clears the integer part bits.
      * @return Raw fraction value.
      */
-    private int getRawFraction() {
+    private long getRawFraction() {
         return val & FRAC_BITS_MASK;
     }
     
@@ -287,8 +285,8 @@ public final class Fixed32 {
      * Statically initializes fraction bits mask.
      * @return Fraction bits mask.
      */
-    private static int calculateFracBitsMask() {
-        int res = 0;
+    private static long calculateFracBitsMask() {
+        long res = 0;
         
         for (int xx = 0; xx < FRAC_BITS; xx++) {
             res |= 1 << xx;
@@ -299,22 +297,22 @@ public final class Fixed32 {
     
     /**
      * Returns multiplied then shifted value.
-     * @param a First integer.
-     * @param b Second integer.
+     * @param firstValue First fix32 value.
+     * @param secondValue Second fix32 value.
      * @return Calculated value.
      */
-    private int mul_shift(final int a, final int b) {
-        return (a * b) >> FRAC_BITS;
+    private long getValueByMulShift(final long firstValue, final long secondValue) {
+        return (firstValue * secondValue) >> FRAC_BITS;
     }
     
     /**
      * Returns shifted then divided value.
-     * @param a First integer.
-     * @param b Second integer.
+     * @param firstValue First fix32 value.
+     * @param secondValue Second fix32 value.
      * @return Calculated value.
      */
-    private int shift_div(final int a, final int b) {
-        return (a << FRAC_BITS) / b;
+    private long getValueByShiftDiv(final long firstValue, final long secondValue) {
+        return (firstValue << FRAC_BITS) / secondValue;
     }
     
     /**
@@ -322,7 +320,7 @@ public final class Fixed32 {
      * @param other Other object.
      * @return True if equals, false if not.
      */
-    public final boolean equals(final Fixed32 other) {
+    public final boolean equals(final fix32 other) {
         return this.val == other.val;
     }
     
@@ -331,7 +329,7 @@ public final class Fixed32 {
      * @param other Other object.
      * @return True if greater than, false if not.
      */
-    public final boolean greaterThan(final Fixed32 other) {
+    public final boolean greaterThan(final fix32 other) {
         return this.val > other.val;
     }
     
@@ -340,7 +338,7 @@ public final class Fixed32 {
      * @param other Other object.
      * @return True if less than, false if not.
      */
-    public final boolean lessThan(final Fixed32 other) {
+    public final boolean lessThan(final fix32 other) {
         return this.val < other.val;
     }
     
@@ -349,7 +347,7 @@ public final class Fixed32 {
      * @param other Other object.
      * @return True if greater or equal than, false if not.
      */
-    public final boolean greaterOrEqualThan(final Fixed32 other) {
+    public final boolean greaterOrEqualThan(final fix32 other) {
         return this.val >= other.val;
     }
     
@@ -358,59 +356,14 @@ public final class Fixed32 {
      * @param other Other object.
      * @return True if less or equal than, false if not.
      */
-    public final boolean lessOrEqualThan(final Fixed32 other) {
+    public final boolean lessOrEqualThan(final fix32 other) {
         return this.val <= other.val;
-    }
-    
-    /**
-     * Checks if the object's value equals the integer value.
-     * @param other Integer.
-     * @return True if equals, false if not.
-     */
-    public final boolean equals(final int other) {
-        return this.equals(new Fixed32(other));
-    }
-    
-    /**
-     * Checks if the object's value is greater than the integer value.
-     * @param other Integer.
-     * @return True if greater than, false if not.
-     */
-    public final boolean greaterThan(final int other) {
-        return this.greaterThan(new Fixed32(other));
-    }
-    
-    /**
-     * Checks if the object's value is less than the integer value.
-     * @param other Integer.
-     * @return True if less than, false if not.
-     */
-    public final boolean lessThan(final int other) {
-        return this.lessThan(new Fixed32(other));
-    }
-    
-    /**
-     * Checks if the object's value is greater or equal than the integer value.
-     * @param other Integer.
-     * @return True if greater or equal than, false if not.
-     */
-    public final boolean greaterOrEqualThan(final int other) {
-        return this.greaterOrEqualThan(new Fixed32(other));
-    }
-    
-    /**
-     * Checks if the object's value is less or equal than the integer value.
-     * @param other Integer.
-     * @return True if less or equal than, false if not.
-     */
-    public final boolean lessOrEqualThan(final int other) {
-        return this.lessOrEqualThan(new Fixed32(other));
     }
     
     /**
      * Value storage.
      */
-    private int val;
+    private long val;
 
 }
 

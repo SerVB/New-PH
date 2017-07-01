@@ -26,7 +26,7 @@ package Game;
 import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Common.iMineralSet;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.*;
 import utils.ChangeableString;
 

@@ -302,4 +302,14 @@ public class iRect {
         return orc;
     }
 
+    /**
+     * Converts Size to Rect ("w" to "x" and "h" to "y").
+     * TODO: Test this!
+     * @param size Size to convert.
+     * @return Converted to Size Rect.
+     */
+    public final static iRect sizeToRect(final iSize size) {
+        return new iRect(size.w, size.h, 0, 0);
+    }
+    
 }

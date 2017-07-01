@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iFurtSkills;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.FSK;
 import java.util.ArrayList;
 

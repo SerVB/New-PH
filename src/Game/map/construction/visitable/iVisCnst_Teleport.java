@@ -27,7 +27,7 @@ import newph.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import utils.ChangeableString;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 
 /**
  *

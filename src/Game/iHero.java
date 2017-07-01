@@ -43,7 +43,7 @@ import newph.metric.iPoint;
 import Common.iRewardItem;
 import Common.iSecSkills;
 import utils.serialize;
-import newph.util.Tracer;
+import newph.staticFunction.Tracer;
 import Constants.*;
 import collections.simple.iCharmList;
 import collections.extended.iSpellList;
