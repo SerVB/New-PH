@@ -303,13 +303,13 @@ public class iRect {
     }
 
     /**
-     * Converts Size to Rect ("w" to "x" and "h" to "y").
-     * TODO: Test this!
+     * Converts Size to Rect.
+     * @deprecated Use {@link #iRect(Common.metrics.iSize)} instead!
      * @param size Size to convert.
      * @return Converted to Size Rect.
      */
     public final static iRect sizeToRect(final iSize size) {
-        return new iRect(size.w, size.h, 0, 0);
+        return new iRect(0, 0, size.w, size.h);
     }
     
 }

@@ -30,6 +30,7 @@ import helperFunction.iClipper;
 import newph.constant.dib.COLOR;
 import newph.constant.dib.COLOR_MASK;
 import newph.finalant.dib.COLOR_TYPE;
+import newph.memory.iBuff;
 import newph.metric.iPoint;
 import newph.servb.Changeable;
 import newph.staticFunction.RGB;
@@ -975,7 +976,7 @@ public class iDib {
         Tracer.check(m_RGB.IsClean());
         
         m_Siz = dib.GetSize();
-        m_RGB.Allocate(dib.m_RGB, dib.m_Siz.w*dib.m_Siz.h);
+        m_RGB.Allocate(dib.m_RGB.GetPtr(), dib.m_Siz.w*dib.m_Siz.h);
     }
     
 }

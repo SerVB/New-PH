@@ -89,14 +89,14 @@ public final class iPaletteDib {
             for (int xx = 0; xx < dst_rect.w; ++xx) {
                 if (this.m_RGB.get(src_clr + xx) != 0) {
                     if (alpha == 255) {
-                        dst_clr[xx] = pal[src_clr[xx]];
+                        dib.GetPtr().set(dst_clr + xx, pal.GetPtr()[src_clr + xx]);
                     } else {
                         SetDibPixelAlpha(&dst_clr[xx], pal[src_clr[xx]],alpha);
                     }
                 }
             }
-            src_clr+=m_Siz.w;
-            dst_clr+=dib.GetWidth();
+            src_clr += m_Siz.w;
+            dst_clr += dib.GetWidth();
         }
     }
     
