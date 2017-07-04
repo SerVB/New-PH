@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * Parent class for localizations.
+ * TODO: If the localization string is missing (equal to ""),
+ *       load the string from English.
  */
 public abstract class Lang {
     
