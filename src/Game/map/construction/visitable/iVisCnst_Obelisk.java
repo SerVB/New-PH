@@ -25,7 +25,7 @@ package Game.map.construction.visitable;
 
 import newph.metric.iPoint;
 import Game.iHero;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

@@ -25,7 +25,7 @@ package Game.magic;
 
 import collections.extended.iSpellList;
 import entries.iSpellEntry;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  * Spell Book.

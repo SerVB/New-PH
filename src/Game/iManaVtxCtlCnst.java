@@ -24,7 +24,7 @@
 package Game;
 
 import Common.iDynamicBuffer;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

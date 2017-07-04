@@ -28,13 +28,13 @@ import Constants.DRC;
 import Constants.GDISP;
 import Common.iCreatGroup;
 import Common.iFormat;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import Game.map.iBaseMapObject;
 import helperFunction.*;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

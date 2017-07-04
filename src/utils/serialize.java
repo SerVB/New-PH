@@ -24,14 +24,14 @@
 
 package utils;
 
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 import Common.iArmy;
 import Common.iArtifactList;
 import Common.iCreatGroup;
 import Common.iDynamicBuffer;
 import Common.iFurtSkills;
 import Common.iMineralSet;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Common.iPrSkills;
 import Common.iRewardItem;
 import Common.iSecSkills;

@@ -23,7 +23,7 @@
  */
 package Common.metrics;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 
 /**
  * Double based iPoint.

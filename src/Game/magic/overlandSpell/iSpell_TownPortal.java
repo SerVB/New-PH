@@ -23,12 +23,12 @@
  */
 package Game.magic.overlandSpell;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.iCastle;
 import Game.iHero;
 import Game.iPlayer;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

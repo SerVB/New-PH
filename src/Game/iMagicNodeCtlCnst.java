@@ -23,7 +23,7 @@
  */
 package Game;
 
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 import Constants.*;
 
 /**

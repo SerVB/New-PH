@@ -26,13 +26,13 @@ package Game.map.construction.visitable;
 import Constants.PROVIDER;
 import Constants.ENDUR;
 import Constants.RIT;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Common.iRewardItem;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import collections.simple.iRewardsCtr;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

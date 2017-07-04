@@ -26,7 +26,7 @@ package Game.map.item;
 import Constants.DRC;
 import Common.iArmy;
 import Common.iDynamicBuffer;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.map.iBaseMapObject;
 import Game.iHero;

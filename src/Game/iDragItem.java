@@ -23,7 +23,7 @@
  */
 package Game;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Common.iCreatGroup;
 import Common.metrics.iRect;
 import Common.metrics.iSize;

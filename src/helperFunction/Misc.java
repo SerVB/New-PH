@@ -32,7 +32,7 @@ import Constants.item.QUNTITY;
 import collections.extended.iSpellList;
 import entries.iSpellEntry;
 import java.io.File;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

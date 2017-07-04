@@ -29,7 +29,7 @@ import Game.iBattleGroup;
 import Game.iBattleUnit_Hero;
 import Game.iHero;
 import Game.magic.iBaseSpell;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  * Combat spell.

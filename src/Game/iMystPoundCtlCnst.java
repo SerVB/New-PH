@@ -27,7 +27,7 @@ import Constants.ConstructionState;
 import Common.iDynamicBuffer;
 import Constants.*;
 import utils.ChangeableString;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

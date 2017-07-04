@@ -27,7 +27,7 @@ import Constants.SSLVL;
 import Common.iFurtSkills;
 import entries.iSecSkillEntry;
 import Common.iSecSkills;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 import Constants.*;
 
 /**

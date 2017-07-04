@@ -23,7 +23,7 @@
  */
 package Game.player;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.metrics.Invalid;
 
 /**

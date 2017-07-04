@@ -23,12 +23,12 @@
  */
 package Game.view;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
 import collections.simple.iDialogStack;
 import collections.simple.iTimerList;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

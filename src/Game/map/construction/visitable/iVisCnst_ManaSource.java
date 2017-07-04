@@ -25,11 +25,11 @@ package Game.map.construction.visitable;
 
 import Constants.PROVIDER;
 import Constants.ENDUR;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

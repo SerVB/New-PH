@@ -24,7 +24,7 @@
 package Game.map.construction.visitable;
 
 import Common.iDynamicBuffer;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Common.iRewardItem;
 import Constants.*;
 import Game.iHero;

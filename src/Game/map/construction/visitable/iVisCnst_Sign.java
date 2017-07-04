@@ -23,7 +23,7 @@
  */
 package Game.map.construction.visitable;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Game.iHero;
 
 /**

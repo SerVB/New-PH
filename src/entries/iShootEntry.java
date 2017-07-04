@@ -23,7 +23,7 @@
  */
 package entries;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 
 /**
  *

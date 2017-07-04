@@ -26,10 +26,10 @@ package Game.map.item;
 import Constants.map.MAPITEM;
 import Common.iDynamicBuffer;
 import Common.iFormat;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.iHero;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

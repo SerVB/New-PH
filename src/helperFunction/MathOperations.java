@@ -23,7 +23,7 @@
  */
 package helperFunction;
 
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  * Math Operations.

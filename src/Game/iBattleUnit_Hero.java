@@ -24,7 +24,7 @@
 package Game;
 
 import Constants.UnitType;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

@@ -27,10 +27,10 @@ import Constants.view.CCI;
 import Common.iArmy;
 import Common.iCreatGroup;
 import Common.iFurtSkills;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 import Constants.*;
 import java.util.ArrayList;
 

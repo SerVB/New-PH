@@ -23,11 +23,11 @@
  */
 package helperFunction;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.iBattleGroup;
 import Game.magic.combatSpell.iCombatSpell;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

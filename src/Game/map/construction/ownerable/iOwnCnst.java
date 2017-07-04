@@ -24,12 +24,12 @@
 package Game.map.construction.ownerable;
 
 import Common.iArmy;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Constants.*;
 import Game.iHero;
 import Game.iWeekDesc;
 import Game.map.construction.iMapCnst;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  * Ownerables.

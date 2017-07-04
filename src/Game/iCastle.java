@@ -26,7 +26,7 @@ package Game;
 import Game.map.construction.iMapCnst;
 import Common.iArmy;
 import Constants.*;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

@@ -24,7 +24,7 @@
 
 package Constants;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 
 /**
  * Hero.

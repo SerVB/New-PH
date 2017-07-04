@@ -31,7 +31,7 @@ import Game.iHero;
 import collections.simple.iRewardsCtr;
 import collections.extended.iSpellList;
 import utils.serialize;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

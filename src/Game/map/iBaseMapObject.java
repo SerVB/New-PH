@@ -23,7 +23,7 @@
  */
 package Game.map;
 
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 
 /**
  *

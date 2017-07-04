@@ -30,7 +30,7 @@ import Game.iHero;
 import collections.extended.iSpellList;
 import java.util.ArrayList;
 import utils.ChangeableString;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  *

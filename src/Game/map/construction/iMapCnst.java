@@ -24,7 +24,7 @@
 package Game.map.construction;
 
 import Game.map.iBaseMapObject;
-import newph.metric.iPoint;
+import newph.core.metric.iPoint;
 import Game.iHero;
 
 /**

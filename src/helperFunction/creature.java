@@ -25,7 +25,7 @@ package helperFunction;
 
 import Constants.*;
 import java.util.ArrayList;
-import newph.staticFunction.Tracer;
+import newph.core.staticFunction.Tracer;
 
 /**
  * Helper Functions for Creatures.
