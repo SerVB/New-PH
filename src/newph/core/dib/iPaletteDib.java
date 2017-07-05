@@ -26,6 +26,7 @@ package newph.core.dib;
 import Common.metrics.iRect;
 import Common.metrics.iSize;
 import helperFunction.iClipper;
+import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;
 import newph.core.staticFunction.Tracer;
 
@@ -35,8 +36,8 @@ import newph.core.staticFunction.Tracer;
 public final class iPaletteDib {
 
 
-    private iBuff<Integer> m_RGB;
-    private iSize          m_Siz;
+    private iBuffColor m_RGB;
+    private iSize      m_Siz;
 
     public iPaletteDib() {}
     
@@ -87,11 +88,11 @@ public final class iPaletteDib {
         int dst_clr = dst_rect.y*dib.GetWidth() + dst_rect.x; // other
         for (int yy = 0; yy < dst_rect.h; yy++) {
             for (int xx = 0; xx < dst_rect.w; ++xx) {
-                if (this.m_RGB.get(src_clr + xx) != 0) {
+                if (this.m_RGB.at(src_clr + xx) != 0) {
                     if (alpha == 255) {
                         dib.GetPtr().set(dst_clr + xx, pal.GetPtr()[src_clr + xx]);
                     } else {
-                        SetDibPixelAlpha(&dst_clr[xx], pal[src_clr[xx]],alpha);
+                        SetDibPixelAlpha(dst_clr[xx], pal[src_clr[xx]],alpha);
                     }
                 }
             }
@@ -160,7 +161,7 @@ public final class iPaletteDib {
      * TODO: Remove the method, create "setPixel" method.
      * @return Image container
      */
-    public int[] GetPtr() {
+    public iBuffColor GetPtr() {
         return m_RGB;
     }
 

@@ -24,12 +24,13 @@
 package newph.core.memory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @param <T>
  */
-public final class iBuff<T> {
+public abstract class iBuff<T> {
 
     public iBuff() {}
 
@@ -45,11 +46,11 @@ public final class iBuff<T> {
         Allocate(buff);
     }
 
-    public boolean IsClean() {
-        return m_pBuff == null;
+    public final boolean IsClean() {
+        return m_pBuff == null || m_pBuff.isEmpty();
     }
 
-    public void Allocate(final int siz) {
+    public final void Allocate(final int siz) {
         Clean();
         m_pBuff = new ArrayList<>(siz);
         
@@ -59,15 +60,17 @@ public final class iBuff<T> {
         
 //        memset(m_pBuff,0,m_Siz*sizeof(T));
     }
+    
+    public final void Allocate(final T[] ar, final int siz) {
+        Allocate(new ArrayList(Arrays.asList(ar)), siz);
+    }
 
-    public void Allocate(final ArrayList<T> buff, final int siz) {
+    public final void Allocate(final ArrayList<T> buff, final int siz) {
         Clean();
-        m_pBuff = new ArrayList<>();
+        
         m_pBuff.addAll(buff);
         
-        trimToSize(siz);
-        
-//        memcpy(m_pBuff,buff,m_Siz*sizeof(T));
+        trimToSize(siz); // memcpy(m_pBuff,buff,m_Siz*sizeof(T));
     }
     
     /**
@@ -76,30 +79,36 @@ public final class iBuff<T> {
      */
     private void trimToSize(final int size) {
         while (size < m_pBuff.size()) {
-            m_pBuff.remove(m_pBuff.size() - 1);
+            final int lastId = m_pBuff.size() - 1;
+            m_pBuff.remove(lastId);
         }
     }
 
-    public void Allocate(final iBuff<T> buff) {
+    public final void Allocate(final iBuff<T> buff) {
         Clean();
         
-        m_pBuff = new ArrayList<>();
         m_pBuff.addAll(buff.GetPtr());
     }
 
-    public void Clean() {
+    public final void Clean() {
         m_pBuff = new ArrayList();
     }
 
-    public int GetSize() {
+    public final int GetSize() {
         return m_pBuff.size();
     }
 
-    public ArrayList<T> GetPtr() {
+    protected final ArrayList<T> GetPtr() {
         return m_pBuff;
     }
     
-    public T set(final int idx, final T elem) {
+    /**
+     * Sets the specified element to the specified value.
+     * @param idx   Index of element.
+     * @param elem  New value of element.
+     * @return      Old value of element.
+     */
+    public final T set(final int idx, final T elem) {
         return m_pBuff.set(idx, elem);
     }
     
@@ -107,11 +116,7 @@ public final class iBuff<T> {
         return m_pBuff.get(idx);
     }
     
-//    public T[] getAr() {
-//        T[] tmp = null;
-//        m_pBuff.toArray(tmp);
-//        return tmp;
-//    }
+    public abstract T[] getAr();
 
     private ArrayList<T> m_pBuff;
     

@@ -23,9 +23,11 @@
  */
 package newph.core.staticFunction;
 
-import java.io.File;
 import newph.core.constant.dib.COLOR;
+import newph.core.constant.dib.COLOR_MASK;
+import newph.core.constant.dib.COLOR_TYPE;
 import newph.core.dib.iDib;
+import newph.core.memory.iBuffColor;
 
 /**
  * Static RGB functions.
@@ -79,22 +81,245 @@ public final class RGB {
     }
     
     /**
-     * Copies src array to dst array. (Blit function)
-     * @param dst       Destination array of pixels.
+     * Copies src buffer to dst buffer. (Blit function)
+     * @param dst       Destination buffer of pixels.
      * @param dst_idx   Index of the first element to copy in dst.
-     * @param src       Source array of pixels.
+     * @param src       Source buffer of pixels.
      * @param src_idx   Index of the first element to copy in src.
      * @param size      Elements to copy number.
      */
     public final static void BlitDibBlock_RGB(
-            final int[] dst,
+            final iBuffColor dst,
             final int dst_idx,
-            final int[] src,
+            final iBuffColor src,
             final int src_idx,
             final int size
     ) {
-        System.arraycopy(src, dst_idx, dst, src_idx, size);
+        for (int ii = 0; ii < size; ii++) {
+            dst.set(
+                    dst_idx + ii,
+                    src.at(src_idx + ii)
+            );
+        }
 //        memcpy(dst,src,size*sizeof(iDib.pixel));
+    }
+    
+    /**
+     * Fills the specified Dib block {@code [0, size-1]}
+     * with the specified pixel.
+     * @param buff      Buffer.
+     * @param color     Pixel color.
+     * @param size      Number of pixels to fill.
+     */
+    public final static void FillDibBlock(
+            final iBuffColor buff,
+            final int color,
+            final int size
+    ) {
+        FillDibBlock(buff, color, 0, size);
+    }
+    
+    /**
+     * Fills the specified Dib block with the specified pixel.
+     * @param buff      Buffer.
+     * @param color     Pixel color.
+     * @param beginIdx  First pixel index to fill.
+     * @param size      Number of pixels to fill.
+     */
+    public final static void FillDibBlock(
+            final iBuffColor buff,
+            final int color,
+            final int beginIdx,
+            final int size
+    ) {
+            for (int xx=0; xx < size; ++xx) {
+                buff.set(beginIdx + xx, color);
+            }
+    }
+    
+    public final static void FillDibBlockAlpha(
+            final iBuffColor buff,
+            final int color,
+            final int alpha,
+            final int size
+    ) {
+        FillDibBlockAlpha(buff, color, alpha, 0, size);
+    }
+    
+    public final static void FillDibBlockAlpha(
+            final iBuffColor buff,
+            final int color,
+            final int alpha,
+            final int beginIdx,
+            final int size
+    ) {
+        if (true) {
+            final int sb = color & 0x1f;
+            final int sg = (color >> 5) & 0x3f;
+            final int sr = (color >> 11) & 0x1f;
+
+            for (int xx = 0; xx < size; ++xx) {
+                    final int b = buff.at(beginIdx + xx);
+                    
+                    final int db = b & 0x1f;
+                    final int dg = (b >> 5) & 0x3f;
+                    final int dr = (b >> 11) & 0x1f;
+                    
+                    final int newColor =
+                            (((alpha * (sb-db)) >> 8) + db) | 
+                            (((alpha * (sg-dg)) >> 8) + dg) << 5 | 
+                            (((alpha * (sr-dr)) >> 8) + dr) << 11;
+
+                    buff.set(beginIdx + xx, newColor);
+            }
+        }
+        /* Comment in sources (deprecated?): */
+//        else {
+//            uint8 inv_a = 255-a;
+//            uint16 sr = a * ((src & RED_MASK[iDib::RGB]) >> 11);
+//            uint16 sg = a * ((src & GREEN_MASK[iDib::RGB]) >> 5);
+//            uint16 sb = a * ((src & BLUE_MASK[iDib::RGB]));
+//            for (uint32 xx=0; xx<size; ++xx, ++dst) {
+//                    uint16 dr = inv_a * ((*dst & RED_MASK[iDib::RGB]) >> 11);
+//                    uint16 dg = inv_a * ((*dst & GREEN_MASK[iDib::RGB]) >> 5);
+//                    uint16 db = inv_a * ((*dst & BLUE_MASK[iDib::RGB]));
+//                    *dst = (((sr+dr)>>8)<<11 | ((sg+dg)>>8)<<5 | ((sb+db)>>8));
+//            }
+//        }
+    }
+    
+    public final static int TintedShadow(final int color) { 
+        //static uint8 rpt = 31;
+        final int chnl = (color >> 6) & 0x1f;
+        return ( (COLOR.BWPAL[chnl] & 0xf7de) >> 1 ) + ((0x39e7 & 0xf7de) >> 1);
+    }
+    
+    public final static void SetDibPixelAlpha(
+            final iBuffColor buff,
+            final int index,
+            final int color,
+            final int a
+    ) {
+        final int oldColor = buff.at(index);
+         
+        final int inv_a = 255 - a;
+        
+        final int sr = a * ((color & COLOR_MASK.RED  [COLOR_TYPE.RGB]) >> 11);
+        final int sg = a * ((color & COLOR_MASK.GREEN[COLOR_TYPE.RGB]) >> 5);
+        final int sb = a * ((color & COLOR_MASK.BLUE [COLOR_TYPE.RGB]));
+        
+        final int dr = inv_a * ((oldColor & COLOR_MASK.RED  [COLOR_TYPE.RGB]) >> 11);
+        final int dg = inv_a * ((oldColor & COLOR_MASK.GREEN[COLOR_TYPE.RGB]) >> 5);
+        final int db = inv_a * ((oldColor & COLOR_MASK.BLUE [COLOR_TYPE.RGB]));
+        
+        buff.set(
+                index,
+                (((sr+dr)>>8) << 11) | (((sg+dg)>>8) << 5) | ((sb+db)>>8)
+        );
+    }
+     
+    public final static void BlitDibBlockAlpha(
+            final iBuffColor dst,
+            final int dst_idx,
+            final iBuffColor src,
+            final int src_idx,
+            final int alpha,
+            final int size
+    ) {
+        if (true) {
+            for (int xx = 0; xx < size; ++xx) {
+                    final int a = src.at(src_idx + xx);
+                    final int b = dst.at(dst_idx + xx);
+                    
+                    final int sb = a & 0x1f;
+                    final int sg = (a >> 5) & 0x3f;
+                    final int sr = (a >> 11) & 0x1f;
+                    
+                    final int db = b & 0x1f;
+                    final int dg = (b >> 5) & 0x3f;
+                    final int dr = (b >> 11) & 0x1f;
+
+                    dst.set(dst_idx + xx, 
+                        (((alpha * (sb-db)) >> 8) + db) |
+                        (((alpha * (sg-dg)) >> 8) + dg) << 5 |
+                        (((alpha * (sr-dr)) >> 8) + dr) << 11
+                    );
+            }
+        }
+        /* Comment in sources: (deprecated?) */
+//        else {
+//                uint8 inv_a = 256-alpha;
+//                for (uint32 xx=0; xx<size; ++xx, ++dst, ++color) {
+//                        uint16 sr = alpha * ((*color & RED_MASK[iDib::RGB]) >> 11);
+//                        uint16 sg = alpha * ((*color & GREEN_MASK[iDib::RGB]) >> 5);
+//                        uint16 sb = alpha * ((*color & BLUE_MASK[iDib::RGB]));
+//                        uint16 dr = inv_a * ((*dst & RED_MASK[iDib::RGB]) >> 11);
+//                        uint16 dg = inv_a * ((*dst & GREEN_MASK[iDib::RGB]) >> 5);
+//                        uint16 db = inv_a * ((*dst & BLUE_MASK[iDib::RGB]));
+//                        *dst = (((sr+dr)>>8)<<11 | ((sg+dg)>>8)<<5 | ((sb+db)>>8));
+//                }
+//        }
+    }
+    
+    public final static void BlitDibBlock_RGBA(
+            final iBuffColor dst,
+            final int dst_idx,
+            final iBuffColor src,
+            final int src_idx,
+            final int size
+    ) {
+        for (int xx = 0; xx < size; ++xx) {
+            final int spix = src.at(src_idx + xx);
+            
+            if ((spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBA]) == 0xF) {
+                dst.set(
+                        dst_idx + xx,
+                        (spix & COLOR_MASK.RED[COLOR_TYPE.RGBA]) |
+                        (spix & COLOR_MASK.GREEN[COLOR_TYPE.RGBA])>>1 |
+                        (spix & COLOR_MASK.BLUE[COLOR_TYPE.RGBA])>>3
+                );
+            } else if ((spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBA]) > 0) {
+                final int dpix = dst.at(dst_idx + xx);
+                
+                final int aa = (spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBA]) << 2;
+                
+                final int RB1 = dpix & (COLOR_MASK.RED[COLOR_TYPE.RGB] | COLOR_MASK.BLUE[COLOR_TYPE.RGB]); 
+                final int G1  = dpix & (COLOR_MASK.GREEN[COLOR_TYPE.RGB]); 
+                
+                final int RB2 = 
+                        (spix & COLOR_MASK.RED[COLOR_TYPE.RGBA]) |
+                        (spix & COLOR_MASK.BLUE[COLOR_TYPE.RGBA]) >> 3; 
+                final int G2  = (spix & (COLOR_MASK.GREEN[COLOR_TYPE.RGBA])) >> 1; 
+                
+                int RB = RB1 + (((RB2 - RB1) * aa) >> 6); 
+                int G  = G1  + ((( G2 - G1 ) * aa) >> 6);
+                
+                RB &= (COLOR_MASK.RED[COLOR_TYPE.RGB] | COLOR_MASK.BLUE[COLOR_TYPE.RGB]); 
+                G  &= COLOR_MASK.GREEN[COLOR_TYPE.RGB]; 
+                
+                dst.set(dst_idx + xx, RB | G);
+            }
+        }
+    }
+    
+    public final static void BlitDibBlock_RGBCK(
+            final iBuffColor dst,
+            final int dst_idx,
+            final iBuffColor src,
+            final int src_idx,
+            final int size
+    ) {
+        for (int xx = 0; xx < size; ++xx) {
+            final int spix = src.at(src_idx + xx);
+            if ((spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBCK]) > 0) {
+                dst.set(
+                        dst_idx + xx,
+                        (spix & COLOR_MASK.RED[COLOR_TYPE.RGBCK]) |
+                        (spix & COLOR_MASK.GREEN[COLOR_TYPE.RGBCK]) |
+                        (spix & COLOR_MASK.BLUE[COLOR_TYPE.RGBCK]) >> 1
+                );
+            }
+    }
     }
     
     /*

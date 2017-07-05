@@ -29,10 +29,11 @@ import helperFunction.MathOperations;
 import helperFunction.iClipper;
 import newph.core.constant.dib.COLOR;
 import newph.core.constant.dib.COLOR_MASK;
-import newph.finalant.dib.COLOR_TYPE;
-import newph.core.memory.iBuff;
+import newph.core.constant.dib.COLOR_TYPE;
+import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;
 import newph.core.servb.Changeable;
+import newph.core.staticFunction.Logger;
 import newph.core.staticFunction.RGB;
 import newph.core.staticFunction.Tracer;
 
@@ -44,17 +45,17 @@ public class iDib {
     /**
      * Buffer contains pixels.
      */
-    private iBuff<Integer>  m_RGB;
+    private iBuffColor  m_RGB;
     
     /**
      * Type of pixels.
      */
-    private int             m_dibType;
+    private int m_dibType;
     
     /**
      * Size of image.
      */
-    private iSize           m_Siz;
+    private iSize m_Siz;
 
     /**
      * Constructs the empty object with the default pixel type (RGB16).
@@ -111,10 +112,52 @@ public class iDib {
         int dst_ptr = 0;
         
         for (int yy=0; yy<rect.h; ++yy){
-            System.arraycopy(dib.GetPtr(), src_ptr, this.GetPtr(), dst_ptr, rect.w);
+            copyFrom(dib, src_ptr, dst_ptr, rect.w);
 //            memcpy(dst_ptr,src_ptr,rect.w*sizeof(pixel));
             dst_ptr += rect.w;
             src_ptr += dib.m_Siz.w;
+        }
+    }
+    
+    /**
+     * Copies pixels from other to this.
+     * @param other         Other image (Source).
+     * @param otherBeginIdx Index of first pixel to copy of source.
+     * @param thisBeginIdx  Index of first pixel to copy of destination.
+     * @param number        Number of pixels to copy.
+     */
+    private void copyFrom(
+            final iDib other,
+            final int otherBeginIdx,
+            final int thisBeginIdx,
+            final int number
+    ) {
+        for (int ii = 0; ii < number; ii++) {
+            this.setPixelAt(
+                    thisBeginIdx + ii,
+                    other.getPixelAt(otherBeginIdx + ii)
+            );
+        }
+    }
+    
+    /**
+     * Copies pixels from int[] to this.
+     * @param other         int[] (Source).
+     * @param otherBeginIdx Index of first pixel to copy of source.
+     * @param thisBeginIdx  Index of first pixel to copy of destination.
+     * @param number        Number of pixels to copy.
+     */
+    private void copyFrom(
+            final int[] other,
+            final int otherBeginIdx,
+            final int thisBeginIdx,
+            final int number
+    ) {
+        for (int ii = 0; ii < number; ii++) {
+            this.setPixelAt(
+                    thisBeginIdx + ii,
+                    other[otherBeginIdx + ii]
+            );
         }
     }
     
@@ -216,7 +259,7 @@ public class iDib {
      * @return  Pixel code.
      */
     public final int GetPixel(final int x, final int y) {
-        return m_RGB.get(y*m_Siz.w + x);
+        return m_RGB.at(y*m_Siz.w + x);
     }
 
     /**
@@ -252,12 +295,18 @@ public class iDib {
 
     /**
      * Returns image container.
-     * @deprecated Low level method.
-     * TODO: Remove the method, create "setPixel" method.
      * @return Image container.
      */
-    public final iBuff<Integer> GetPtr() {
+    private iBuffColor GetPtr() {
         return m_RGB;
+    }
+    
+    public final void setPixelAt(final int idx, final int value) {
+        m_RGB.set(idx, value);
+    }
+    
+    public final int getPixelAt(final int idx) {
+        return m_RGB.at(idx);
     }
 
     /**
@@ -327,9 +376,9 @@ public class iDib {
      */
     public void Fill(final int color, final int alpha) {
         if (alpha==255) {
-            FillDibBlock(m_RGB, color, m_Siz.w*m_Siz.h);
+            RGB.FillDibBlock(m_RGB, color, m_Siz.w*m_Siz.h);
         } else {
-            FillDibBlockAlpha(m_RGB, color, alpha, m_Siz.w*m_Siz.h);
+            RGB.FillDibBlockAlpha(m_RGB, color, alpha, m_Siz.w*m_Siz.h);
         }
     }
     
@@ -357,9 +406,9 @@ public class iDib {
         int h = drect.h;
         while (h-- > 0) {
             if (alpha==255) {
-                FillDibBlock(dstPtr, color, drect.w);
+                RGB.FillDibBlock(m_RGB, color, dstPtr, drect.w);
             } else {
-                FillDibBlockAlpha(dstPtr, color, alpha, drect.w);
+                RGB.FillDibBlockAlpha(m_RGB, color, alpha, dstPtr, drect.w);
             }
             dstPtr += m_Siz.w;
         }
@@ -380,7 +429,7 @@ public class iDib {
             int pptr = dstPtr;
             
             for (int xx = 0; xx < drect.w; ++xx) {
-                m_RGB.set(pptr, RGB.TintedShadow(m_RGB.get(pptr)));
+                m_RGB.set(pptr, RGB.TintedShadow(m_RGB.at(pptr)));
                 pptr++;
             }
             
@@ -402,7 +451,7 @@ public class iDib {
         while (h-- > 0) {
             int pptr = dstPtr;
             for (int xx = 0; xx < drect.w; ++xx) {
-                m_RGB.set(pptr, RGB.Darken50(m_RGB.get(pptr)));
+                m_RGB.set(pptr, RGB.Darken50(m_RGB.at(pptr)));
                 pptr++;
             }
             dstPtr += m_Siz.w;
@@ -421,7 +470,7 @@ public class iDib {
         while (h-- > 0) {
             int pptr = dstPtr;
             for (int xx=0; xx<drect.w; ++xx) {
-                m_RGB.set(pptr, RGB.Darken25(m_RGB.get(pptr)));
+                m_RGB.set(pptr, RGB.Darken25(m_RGB.at(pptr)));
                 ++pptr;
             }
             dstPtr += m_Siz.w;
@@ -465,7 +514,12 @@ public class iDib {
         int h = drect.h;
         while (h-- > 0) { // Sets gradient to each line.
 //            memcpy(dstPtr, gr, cnt * sizeof(pixel));
-            System.arraycopy(gr, 0, m_RGB, dstPtr, cnt);
+            copyFrom(
+                    gr,
+                    0,
+                    dstPtr,
+                    cnt
+            );
             dstPtr += m_Siz.w;
         }
     }
@@ -484,7 +538,7 @@ public class iDib {
         int dstPtr = drect.y*m_Siz.w + drect.x;
         int th = rc.h - 1;
         if (th <= 0){
-            FillDibBlock(dstPtr, c1, drect.w);
+            RGB.FillDibBlock(m_RGB, c1, dstPtr, drect.w);
             return;
         }
         int tp = drect.y-rc.y;
@@ -496,7 +550,7 @@ public class iDib {
             int ng  = MathOperations.clamp(0,0x3F,  ((c1&0x7E0)>>5) + ((dg*tp)/th));
             int db = (c2&0x1F) - (c1&0x1F);
             int nb  = MathOperations.clamp(0,0x1F,  (c1&0x1F) + ((db*tp)/th));
-            FillDibBlock(dstPtr, (nr<<11) | (ng<<5) | nb , drect.w);
+            RGB.FillDibBlock(m_RGB, (nr << 11) | (ng << 5) | nb, dstPtr, drect.w);
             dstPtr += m_Siz.w;
             tp++;
         }
@@ -555,9 +609,9 @@ public class iDib {
         int len = dx2.value - dpos1.x + 1;
         int dstPtr = dpos1.y*m_Siz.w + dpos1.x;
         if (a==255) {
-            FillDibBlock(dstPtr, clr, len);
+            RGB.FillDibBlock(m_RGB, clr, dstPtr, len);
         } else {
-            FillDibBlockAlpha(dstPtr, clr, a, len);
+            RGB.FillDibBlockAlpha(m_RGB, clr, a, dstPtr, len);
         }
     }
     
@@ -588,9 +642,10 @@ public class iDib {
         int dstPtr = dpos1.y*m_Siz.w + dpos1.x;
         int h = dy2.value - dpos1.y;
         while (h-- > 0) {
-            if (a==255) m_RGB.set(dstPtr, clr);
-            else {
-                SetDibPixelAlpha(dstPtr,clr,a);
+            if (a==255) {
+                m_RGB.set(dstPtr, clr);
+            } else {
+                RGB.SetDibPixelAlpha(m_RGB, dstPtr, clr, a);
             }
             dstPtr += m_Siz.w;
         }
@@ -706,14 +761,9 @@ public class iDib {
         iRect dst_rect = new iRect(pos, siz);
         if (!iClipper.iClipRectRect(
                 dst_rect,
-                new iRect(
-                        0,
-                        0,
-                        dib.GetWidth(),
-                        dib.GetHeight()
-                ),
+                new iRect(dib.GetSize()),
                 src_rect,
-                iRect.sizeToRect(GetSize())
+                new iRect(this.GetSize())
         )) {
             return;
         }
@@ -722,7 +772,7 @@ public class iDib {
         int dst_clr = dst_rect.y*dib.GetWidth() + dst_rect.x;
 
         for (int yy = 0; yy < dst_rect.h; yy++) {
-            BlitDibBlockAlpha(dib.GetPtr(), dst_clr, this.GetPtr(), src_clr, a, dst_rect.w);
+            RGB.BlitDibBlockAlpha(dib.GetPtr(), dst_clr, this.GetPtr(), src_clr, a, dst_rect.w);
             src_clr += m_Siz.w;
             dst_clr += dib.GetWidth();
         }
@@ -738,14 +788,9 @@ public class iDib {
         iRect dst_rect = new iRect(pos, siz);
         if (!iClipper.iClipRectRect(
                 dst_rect,
-                new iRect(
-                        0,
-                        0,
-                        dib.GetWidth(),
-                        dib.GetHeight()
-                ),
+                new iRect(dib.GetSize()),
                 src_rect,
-                iRect.sizeToRect(GetSize())
+                new iRect(this.GetSize())
         )) {
             return;
         }
@@ -754,30 +799,36 @@ public class iDib {
         int dst_clr = dst_rect.y*dib.GetWidth() + dst_rect.x;
 
         for (int yy = 0; yy < dst_rect.h; yy++) {
-            if (m_dibType == COLOR_TYPE.RGB) {
-                RGB.BlitDibBlock_RGB(
-                        dib.GetPtr().getAr(),
-                        dst_clr,
-                        this.GetPtr().getAr(),
-                        src_clr,
-                        dst_rect.w
-                );
-            } else if (m_dibType == COLOR_TYPE.RGBA) {
-                RGB.BlitDibBlock_RGBA(
-                        dib.GetPtr().getAr(),
-                        dst_clr,
-                        this.GetPtr().getAr(),
-                        src_clr,
-                        dst_rect.w
-                );
-            } else if (m_dibType == COLOR_TYPE.RGBCK) {
-                RGB.BlitDibBlock_RGBCK(
-                        dib.GetPtr().getAr(),
-                        dst_clr,
-                        this.GetPtr().getAr(),
-                        src_clr,
-                        dst_rect.w
-                );
+            switch (m_dibType) {
+                case COLOR_TYPE.RGB:
+                    RGB.BlitDibBlock_RGB(
+                            dib.GetPtr(),
+                            dst_clr,
+                            this.GetPtr(),
+                            src_clr,
+                            dst_rect.w
+                    );
+                    break;
+                case COLOR_TYPE.RGBA:
+                    RGB.BlitDibBlock_RGBA(
+                            dib.GetPtr(),
+                            dst_clr,
+                            this.GetPtr(),
+                            src_clr,
+                            dst_rect.w
+                    );
+                    break;
+                case COLOR_TYPE.RGBCK:
+                    RGB.BlitDibBlock_RGBCK(
+                            dib.GetPtr(),
+                            dst_clr,
+                            this.GetPtr(),
+                            src_clr,
+                            dst_rect.w
+                    );
+                    break;
+                default:
+                    Logger.printLog(Logger.LogLevel.DEBUG, "CopyToDibXY", "Unknown color type!");
             }
             src_clr += m_Siz.w;
             dst_clr += dib.GetWidth();
@@ -815,30 +866,36 @@ public class iDib {
 
         if ( a == 255 ) {
             for (int yy = 0; yy < dst_rect.h; yy++) {
-                if (m_dibType == COLOR_TYPE.RGB) {
-                    RGB.BlitDibBlock_RGB(
-                        dib.GetPtr().getAr(),
-                        dst_clr,
-                        this.GetPtr().getAr(),
-                        src_clr,
-                        dst_rect.w
-                    );
-                } else if (m_dibType == COLOR_TYPE.RGBA) {
-                    RGB.BlitDibBlock_RGBA(
-                        dib.GetPtr().getAr(),
-                        dst_clr,
-                        this.GetPtr().getAr(),
-                        src_clr,
-                        dst_rect.w
-                    );
-                } else if (m_dibType == COLOR_TYPE.RGBCK) {
-                    RGB.BlitDibBlock_RGBCK(
-                        dib.GetPtr().getAr(),
-                        dst_clr,
-                        this.GetPtr().getAr(),
-                        src_clr,
-                        dst_rect.w
-                    );
+                switch (m_dibType) {
+                    case COLOR_TYPE.RGB:
+                        RGB.BlitDibBlock_RGB(
+                                dib.GetPtr(),
+                                dst_clr,
+                                this.GetPtr(),
+                                src_clr,
+                                dst_rect.w
+                        );
+                        break;
+                    case COLOR_TYPE.RGBA:
+                        RGB.BlitDibBlock_RGBA(
+                                dib.GetPtr(),
+                                dst_clr,
+                                this.GetPtr(),
+                                src_clr,
+                                dst_rect.w
+                        ); 
+                        break;
+                    case COLOR_TYPE.RGBCK:
+                        RGB.BlitDibBlock_RGBCK(
+                                dib.GetPtr(),
+                                dst_clr,
+                                this.GetPtr(),
+                                src_clr,
+                                dst_rect.w
+                        ); 
+                        break;
+                    default:
+                        Logger.printLog(Logger.LogLevel.DEBUG, "CopyRectToDibXY", "Unknown color type!");
                 }
                 src_clr += m_Siz.w;
                 dst_clr += dib.GetWidth();
@@ -846,9 +903,9 @@ public class iDib {
         } else {
             for (int yy = 0; yy < dst_rect.h; yy++) {
                 RGB.BlitDibBlockAlpha(
-                        dib.GetPtr().getAr(),
+                        dib.GetPtr(),
                         dst_clr,
-                        this.GetPtr().getAr(),
+                        this.GetPtr(),
                         src_clr,
                         a,
                         dst_rect.w
@@ -950,7 +1007,7 @@ public class iDib {
 //    }
 
     private void Swap(final iDib other) {
-        iBuff<Integer> tmp_buff = new iBuff(m_RGB);
+        iBuffColor tmp_buff = new iBuffColor(m_RGB);
         m_RGB.Allocate(other.m_RGB);
         other.m_RGB.Allocate(tmp_buff);
 
@@ -976,7 +1033,7 @@ public class iDib {
         Tracer.check(m_RGB.IsClean());
         
         m_Siz = dib.GetSize();
-        m_RGB.Allocate(dib.m_RGB.GetPtr(), dib.m_Siz.w*dib.m_Siz.h);
+        m_RGB.Allocate(dib.m_RGB.getAr(), dib.m_Siz.w * dib.m_Siz.h);
     }
     
 }

@@ -52,7 +52,12 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.IsClean()", "begin");
         
         {
-            iBuff instance = new iBuff();
+            iBuff instance = new iBuff() {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             boolean expResult = true;
             boolean result = instance.IsClean();
             assertEquals(expResult, result);
@@ -63,7 +68,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             boolean expResult = false;
             boolean result = instance.IsClean();
             assertEquals(expResult, result);
@@ -81,7 +91,12 @@ public class iBuffTest {
         
         {
             int siz = 0;
-            iBuff instance = new iBuff();
+            iBuff instance = new iBuff() {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             instance.Allocate(siz);
             
             assertEquals(instance.GetSize(), siz);
@@ -89,7 +104,12 @@ public class iBuffTest {
         
         {
             int siz = 11;
-            iBuff instance = new iBuff();
+            iBuff instance = new iBuff() {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             instance.Allocate(siz);
             
             assertEquals(instance.GetSize(), siz);
@@ -110,7 +130,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             boolean expResult = false;
             boolean result = instance.IsClean();
             assertEquals(expResult, result);
@@ -138,9 +163,19 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff tmp = new iBuff(al, 3);
+            iBuff tmp = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
-            iBuff instance = new iBuff(tmp);
+            iBuff instance = new iBuff(tmp) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
             boolean expResult = false;
             boolean result = instance.IsClean();
@@ -169,7 +204,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
             instance.Clean();
             
@@ -191,7 +231,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
             assertEquals(3, instance.GetSize());
         }
@@ -211,7 +256,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
             assertEquals(al, instance.GetPtr());
         }
@@ -231,7 +281,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
             al.set(0, 0);
             al.set(1, 10);
@@ -258,7 +313,12 @@ public class iBuffTest {
             al.add(1);
             al.add(2);
             al.add(3);
-            iBuff instance = new iBuff(al, 3);
+            iBuff instance = new iBuff(al, 3) {
+                @Override
+                public Object[] getAr() {
+                    throw new UnsupportedOperationException("Testing the abstract class!");
+                }
+            };
             
             assertEquals(1, instance.at(0));
             assertEquals(2, instance.at(1));
