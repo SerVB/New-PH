@@ -109,9 +109,9 @@ public class iDynamicPtr<T> {
         if (m_Data != null && pdata != null && 0 < number) {
             for (int ii = 0; ii < number; ii++) {
                 if (startIdx + ii < pdata.size()) {
-                    pdata.set(startIdx + ii, pdata.get(m_Pos + ii));
+                    pdata.set(startIdx + ii, m_Data.get(m_Pos + ii));
                 } else {
-                    m_Data.add(pdata.get(m_Pos + ii));
+                    pdata.add(m_Data.get(m_Pos + ii));
                 }
             }
             
