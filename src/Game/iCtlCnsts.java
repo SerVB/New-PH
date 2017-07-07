@@ -172,7 +172,7 @@ public class iCtlCnsts {
                 if (!bCanBuild) {
                     item.SetState(ConstructionState.Unavailable);
                 } else if ( !item.Depends().Empty() )    {
-                    ArrayList<Integer> depList = new ArrayList();
+                    ArrayList<Integer> depList = new ArrayList<>();
                     DependsList(item,depList);
                     if (depList.isEmpty()) {
                         if (pOwner.Minerals().Has(item.Price())) {

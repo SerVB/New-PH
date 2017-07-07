@@ -38,7 +38,7 @@ public class iSpannedMap {
     /**
      * Хранилище
      */
-    private ArrayList<iSpan> m_SpanList = new ArrayList();
+    private ArrayList<iSpan> m_SpanList = new ArrayList<>();
 
     /**
      * Constructs with circle or square spaned map

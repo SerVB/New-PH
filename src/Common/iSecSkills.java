@@ -32,7 +32,7 @@ import java.util.ArrayList;
  */
 public class iSecSkills {
 
-    ArrayList<iSecSkillEntry> skills = new ArrayList();
+    ArrayList<iSecSkillEntry> skills = new ArrayList<>();
 
     public iSecSkillEntry get(int idx) {
         return skills.get(idx);

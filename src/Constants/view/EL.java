@@ -24,7 +24,7 @@
 package Constants.view;
 
 /**
- * Skroll Bar Element.
+ * Scroll Bar Element.
  */
 public class EL {
 

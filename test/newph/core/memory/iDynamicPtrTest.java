@@ -56,17 +56,17 @@ public class iDynamicPtrTest {
             Byte[] ar = {10, 1, 2};
             ArrayList<Byte> al = new ArrayList<>(Arrays.asList(ar));
             iDynamicPtr<Byte> instance = new iDynamicPtr();
-            boolean result = instance.Write(al, 0);
+            int result = instance.Write(al, 0);
             
-            assertEquals(true, result);
+            assertEquals(1, result);
             
             ArrayList<Byte> newAl = new ArrayList<>();
             
             instance.Rewind();
             
-            result = instance.Read(newAl, 0);
+            boolean result1 = instance.Read(newAl, 0);
             
-            assertEquals(true, result);
+            assertEquals(true, result1);
             
             assertTrue(newAl.get(0) == 10);
         }
@@ -85,17 +85,17 @@ public class iDynamicPtrTest {
             Byte[] ar = {0, 1, 2};
             ArrayList<Byte> al = new ArrayList<>(Arrays.asList(ar));
             iDynamicPtr<Byte> instance = new iDynamicPtr();
-            boolean result = instance.Write(al, 0, 3);
+            int result = instance.Write(al, 0, 3);
             
-            assertEquals(true, result);
+            assertEquals(1, result);
             
             ArrayList<Byte> newAl = new ArrayList<>(Arrays.asList(ar));
             
             instance.Rewind();
             
-            result = instance.Read(newAl, 2, 3);
+            boolean result1 = instance.Read(newAl, 2, 3);
             
-            assertEquals(true, result);
+            assertEquals(true, result1);
             
             assertTrue(
                     newAl.get(0) == 0 && 

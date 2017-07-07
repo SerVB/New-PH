@@ -35,8 +35,7 @@ import static org.junit.Assert.*;
  */
 public class iBuffTest {
     
-    public iBuffTest() {
-    }
+    public iBuffTest() {}
     
     @BeforeClass
     public static void setUpClass() {}
@@ -64,7 +63,7 @@ public class iBuffTest {
         }
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -126,7 +125,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.Allocate(ArrayList, int)", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -159,7 +158,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.Allocate(iBuff)", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -200,7 +199,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.Clean()", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -227,7 +226,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.GetSize()", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -252,7 +251,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.GetPtr()", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -277,7 +276,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.set(int, T)", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);
@@ -309,7 +308,7 @@ public class iBuffTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuff.at(int)", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);

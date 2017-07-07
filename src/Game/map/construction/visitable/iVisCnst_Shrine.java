@@ -124,5 +124,5 @@ public class iVisCnst_Shrine extends iVisCnst {
 
 
     private int m_spell;
-    private final ArrayList<Integer> m_visPlayers = new ArrayList();
+    private final ArrayList<Integer> m_visPlayers = new ArrayList<>();
 }

@@ -31,13 +31,21 @@ import java.util.ArrayList;
  */
 public class iBuffColor extends iBuff<Integer> {
     
-    public iBuffColor() {}
+    public iBuffColor() {
+        super();
+    }
 
-    public iBuffColor(final int siz) {}
+    public iBuffColor(final int siz) {
+        super(siz);
+    }
 
-    public iBuffColor(final ArrayList<Integer> buff, final int siz) {}
+    public iBuffColor(final ArrayList<Integer> buff, final int siz) {
+        super(buff, siz);
+    }
 
-    public iBuffColor(final iBuff<Integer> buff)  {}
+    public iBuffColor(final iBuff<Integer> buff)  {
+        super(buff);
+    }
 
     @Override
     public Integer[] getAr() {

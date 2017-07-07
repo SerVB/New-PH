@@ -43,7 +43,7 @@ public class creature {
             return gGame.Map().Rand(CREAT.COUNT);
         } else {
             int lvl = ct - CREAT.RANDOM;
-            ArrayList<Integer> cid = new ArrayList();
+            ArrayList<Integer> cid = new ArrayList<>();
             for (int xx = 0; xx < CREAT.COUNT; ++xx) {
                 if (CREAT.DESC[xx].level == lvl) {
                     cid.add(xx);

@@ -165,7 +165,7 @@ public class iMapInfo {
      * потом PT_COMPUTER игроки.
      */
     void ReorderPlayers() {
-        ArrayList<iPlayerInfo> defPl = new ArrayList();
+        ArrayList<iPlayerInfo> defPl = new ArrayList<>();
         // Переместить PT_HUMAN из m_Players в defPl
         for(int pidx = 0; pidx < m_Players.size(); /**/) {
             Tracer.check(m_Players.get(pidx).m_Type != PT.UNDEFINED);

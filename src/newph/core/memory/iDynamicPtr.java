@@ -36,7 +36,7 @@ public class iDynamicPtr<T> {
      * the storage is empty, the position is 0.
      */
     public iDynamicPtr() {
-        m_Data = new ArrayList();
+        m_Data = new ArrayList<>();
         m_Pos  = 0;
     }
 
@@ -46,7 +46,7 @@ public class iDynamicPtr<T> {
      * @param toCopy The other storage.
      */
     public iDynamicPtr(final ArrayList<T> toCopy) {
-        m_Data = new ArrayList(toCopy);
+        m_Data = new ArrayList<>(toCopy);
         m_Pos  = 0;
     }
     
@@ -57,7 +57,7 @@ public class iDynamicPtr<T> {
      * @param index Index of the element to copy in the other storage.
      * @return      If the writing was successful.
      */
-    public boolean Write(final ArrayList<T> pdata, final int index) {
+    public int Write(final ArrayList<T> pdata, final int index) {
         return Write(pdata, index, 1);
     }
     
@@ -69,7 +69,7 @@ public class iDynamicPtr<T> {
      * @param number    Number of elements to copy.
      * @return          If the writing was successful.
      */
-    public boolean Write(final ArrayList<T> pdata, final int startIdx, final int number) {
+    public int Write(final ArrayList<T> pdata, final int startIdx, final int number) {
         if (m_Data != null && pdata != null && 0 < number) {
             for (int ii = 0; ii < number; ii++) {
                 if (m_Pos + ii < m_Data.size()) {
@@ -80,10 +80,10 @@ public class iDynamicPtr<T> {
             }
             
             m_Pos += number;
-            return true;
+            return 1;
         }
         
-        return false;
+        return 0;
     }
     
     /**

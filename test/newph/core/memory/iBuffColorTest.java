@@ -52,7 +52,7 @@ public class iBuffColorTest {
         Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList();
+            ArrayList<Integer> al = new ArrayList<>();
             al.add(1);
             al.add(2);
             al.add(3);

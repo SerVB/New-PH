@@ -131,5 +131,5 @@ public class iVisCnst_WitchHut extends iVisCnst {
     }
 
     private int                 m_skill;
-    private ArrayList<Integer>  m_visPlayers = new ArrayList();
+    private ArrayList<Integer>  m_visPlayers = new ArrayList<>();
 }

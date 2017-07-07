@@ -62,7 +62,7 @@ public abstract class iBuff<T> {
     }
     
     public final void Allocate(final T[] ar, final int siz) {
-        Allocate(new ArrayList(Arrays.asList(ar)), siz);
+        Allocate(new ArrayList<>(Arrays.asList(ar)), siz);
     }
 
     public final void Allocate(final ArrayList<T> buff, final int siz) {
@@ -91,7 +91,7 @@ public abstract class iBuff<T> {
     }
 
     public final void Clean() {
-        m_pBuff = new ArrayList();
+        m_pBuff = new ArrayList<>();
     }
 
     public final int GetSize() {

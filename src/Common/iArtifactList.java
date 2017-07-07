@@ -31,7 +31,7 @@ import java.util.ArrayList;
  */
 public class iArtifactList {
 
-    ArrayList<iArtifact> artis = new ArrayList();
+    ArrayList<iArtifact> artis = new ArrayList<>();
 
     public int Count() {
         return artis.size();
