@@ -23,25 +23,15 @@
  */
 package newph.core.type;
 
-import newph.core.type.fix32;
 import newph.core.staticFunction.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Fixed32 Test.
+ * @author SerVB
  */
 public class Fixed32Test {
-    
-    public Fixed32Test() {}
-    
-    @BeforeClass
-    public static void setUpClass() {}
-    
-    @AfterClass
-    public static void tearDownClass() {}
 
     /**
      * Test of set method, of class fix32.

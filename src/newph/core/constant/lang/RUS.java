@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * Russian Localization.
+ * @author SerVB
+ * @since "SourceForge old sources"
  */
 public final class RUS extends Lang {
 

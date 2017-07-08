@@ -26,24 +26,14 @@ package newph.core.memory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import newph.core.staticFunction.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Win7
+ * DynamicPtr Test.
+ * @author SerVB
  */
 public class iDynamicPtrTest {
-    
-    public iDynamicPtrTest() {}
-    
-    @BeforeClass
-    public static void setUpClass() {}
-    
-    @AfterClass
-    public static void tearDownClass() {}
 
     /**
      * Test of Write and Read methods, of class iDynamicPtr.

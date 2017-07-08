@@ -26,20 +26,14 @@ package newph.core.memory;
 import java.util.ArrayList;
 import java.util.Objects;
 import newph.core.staticFunction.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * DynamicBuffer Test.
+ * @author SerVB
+ */
 public class iDynamicBufferTest {
-    
-    public iDynamicBufferTest() {}
-    
-    @BeforeClass
-    public static void setUpClass() {}
-    
-    @AfterClass
-    public static void tearDownClass() {}
 
     /**
      * Test of set method, of class iDynamicBuffer.

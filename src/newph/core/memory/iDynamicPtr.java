@@ -28,6 +28,8 @@ import java.util.ArrayList;
 /**
  * Storages an array.
  * @param <T> Elements type in the array.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class iDynamicPtr<T> {
 

@@ -25,12 +25,14 @@ package newph.core.staticFunction;
 
 import newph.core.constant.dib.COLOR;
 import newph.core.constant.dib.COLOR_MASK;
-import newph.core.constant.dib.COLOR_TYPE;
+import newph.core.enumeration.ColorType;
 import newph.core.dib.iDib;
 import newph.core.memory.iBuffColor;
 
 /**
  * Static RGB functions.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public final class RGB {
 
@@ -204,13 +206,13 @@ public final class RGB {
          
         final int inv_a = 255 - a;
         
-        final int sr = a * ((color & COLOR_MASK.RED  [COLOR_TYPE.RGB]) >> 11);
-        final int sg = a * ((color & COLOR_MASK.GREEN[COLOR_TYPE.RGB]) >> 5);
-        final int sb = a * ((color & COLOR_MASK.BLUE [COLOR_TYPE.RGB]));
+        final int sr = a * ((color & COLOR_MASK.RED  [ColorType.RGB.getValue()]) >> 11);
+        final int sg = a * ((color & COLOR_MASK.GREEN[ColorType.RGB.getValue()]) >> 5);
+        final int sb = a * ((color & COLOR_MASK.BLUE [ColorType.RGB.getValue()]));
         
-        final int dr = inv_a * ((oldColor & COLOR_MASK.RED  [COLOR_TYPE.RGB]) >> 11);
-        final int dg = inv_a * ((oldColor & COLOR_MASK.GREEN[COLOR_TYPE.RGB]) >> 5);
-        final int db = inv_a * ((oldColor & COLOR_MASK.BLUE [COLOR_TYPE.RGB]));
+        final int dr = inv_a * ((oldColor & COLOR_MASK.RED  [ColorType.RGB.getValue()]) >> 11);
+        final int dg = inv_a * ((oldColor & COLOR_MASK.GREEN[ColorType.RGB.getValue()]) >> 5);
+        final int db = inv_a * ((oldColor & COLOR_MASK.BLUE [ColorType.RGB.getValue()]));
         
         buff.set(
                 index,
@@ -271,31 +273,30 @@ public final class RGB {
         for (int xx = 0; xx < size; ++xx) {
             final int spix = src.at(src_idx + xx);
             
-            if ((spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBA]) == 0xF) {
-                dst.set(
-                        dst_idx + xx,
-                        (spix & COLOR_MASK.RED[COLOR_TYPE.RGBA]) |
-                        (spix & COLOR_MASK.GREEN[COLOR_TYPE.RGBA])>>1 |
-                        (spix & COLOR_MASK.BLUE[COLOR_TYPE.RGBA])>>3
+            if ((spix & COLOR_MASK.ALPHA[ColorType.RGBA.getValue()]) == 0xF) {
+                dst.set(dst_idx + xx,
+                        (spix & COLOR_MASK.RED  [ColorType.RGBA.getValue()])    |
+                        (spix & COLOR_MASK.GREEN[ColorType.RGBA.getValue()])>>1 |
+                        (spix & COLOR_MASK.BLUE [ColorType.RGBA.getValue()])>>3
                 );
-            } else if ((spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBA]) > 0) {
+            } else if ((spix & COLOR_MASK.ALPHA[ColorType.RGBA.getValue()]) > 0) {
                 final int dpix = dst.at(dst_idx + xx);
                 
-                final int aa = (spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBA]) << 2;
+                final int aa = (spix &  COLOR_MASK.ALPHA[ColorType.RGBA.getValue()]) << 2;
                 
-                final int RB1 = dpix & (COLOR_MASK.RED[COLOR_TYPE.RGB] | COLOR_MASK.BLUE[COLOR_TYPE.RGB]); 
-                final int G1  = dpix & (COLOR_MASK.GREEN[COLOR_TYPE.RGB]); 
+                final int RB1 = dpix & (COLOR_MASK.RED  [ColorType.RGB.getValue()] | COLOR_MASK.BLUE[ColorType.RGB.getValue()]); 
+                final int G1  = dpix & (COLOR_MASK.GREEN[ColorType.RGB.getValue()]); 
                 
                 final int RB2 = 
-                        (spix & COLOR_MASK.RED[COLOR_TYPE.RGBA]) |
-                        (spix & COLOR_MASK.BLUE[COLOR_TYPE.RGBA]) >> 3; 
-                final int G2  = (spix & (COLOR_MASK.GREEN[COLOR_TYPE.RGBA])) >> 1; 
+                        (spix & COLOR_MASK.RED  [ColorType.RGBA.getValue()]) |
+                        (spix & COLOR_MASK.BLUE [ColorType.RGBA.getValue()]) >> 3; 
+                final int G2  = (spix & (COLOR_MASK.GREEN[ColorType.RGBA.getValue()])) >> 1; 
                 
                 int RB = RB1 + (((RB2 - RB1) * aa) >> 6); 
                 int G  = G1  + ((( G2 - G1 ) * aa) >> 6);
                 
-                RB &= (COLOR_MASK.RED[COLOR_TYPE.RGB] | COLOR_MASK.BLUE[COLOR_TYPE.RGB]); 
-                G  &= COLOR_MASK.GREEN[COLOR_TYPE.RGB]; 
+                RB &= (COLOR_MASK.RED  [ColorType.RGB.getValue()] | COLOR_MASK.BLUE[ColorType.RGB.getValue()]); 
+                G  &=  COLOR_MASK.GREEN[ColorType.RGB.getValue()]; 
                 
                 dst.set(dst_idx + xx, RB | G);
             }
@@ -311,12 +312,11 @@ public final class RGB {
     ) {
         for (int xx = 0; xx < size; ++xx) {
             final int spix = src.at(src_idx + xx);
-            if ((spix & COLOR_MASK.ALPHA[COLOR_TYPE.RGBCK]) > 0) {
-                dst.set(
-                        dst_idx + xx,
-                        (spix & COLOR_MASK.RED[COLOR_TYPE.RGBCK]) |
-                        (spix & COLOR_MASK.GREEN[COLOR_TYPE.RGBCK]) |
-                        (spix & COLOR_MASK.BLUE[COLOR_TYPE.RGBCK]) >> 1
+            if ((spix & COLOR_MASK.ALPHA[ColorType.RGBCK.getValue()]) > 0) {
+                dst.set(dst_idx + xx,
+                        (spix & COLOR_MASK.RED  [ColorType.RGBCK.getValue()]) |
+                        (spix & COLOR_MASK.GREEN[ColorType.RGBCK.getValue()]) |
+                        (spix & COLOR_MASK.BLUE [ColorType.RGBCK.getValue()]) >> 1
                 );
             }
     }
@@ -437,7 +437,7 @@ public final class RGB {
     public final static int TintedShadow(final int pixel) { 
         //static uint8 rpt = 31;
         int chnl = (pixel >> 6) & 0x1f;
-        return ((COLOR.BWPAL[chnl] & 0xf7de) >> 1) + ((0x39e7 & 0xf7de) >> 1);
+        return ((MASK_COLOR.BWPAL[chnl] & 0xf7de) >> 1) + ((0x39e7 & 0xf7de) >> 1);
     
     */
     } 

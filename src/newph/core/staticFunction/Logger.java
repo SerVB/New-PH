@@ -27,6 +27,8 @@ package newph.core.staticFunction;
  * Prints log messages.
  * TODO: Rewrite logging to human readable style.
  * TODO: Add useful features.
+ * @author SerVB
+ * @since PHH 0
  */
 public final class Logger {
     

@@ -28,6 +28,8 @@ import java.util.ArrayList;
 
 /**
  * Replaces {@code iBuff<color>}
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class iBuffColor extends iBuff<Integer> {
     

@@ -21,46 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.memory;
-
-import java.util.ArrayList;
-import newph.core.staticFunction.Logger;
-import org.junit.Test;
-import static org.junit.Assert.*;
+package newph.core.type;
 
 /**
- * BuffColor Test.
+ * Changeable object to be passed to functions
+ * and to be changed in them.
+ * @param <T> Object's Type.
  * @author SerVB
+ * @since PHH 0
  */
-public class iBuffColorTest {
+public class Changeable<T> {
 
     /**
-     * Test of getAr method, of class iBuffColor.
+     * Changeable value.
      */
-    @Test
-    public void testGetAr() {
-        Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "begin");
-        
-        {
-            ArrayList<Integer> al = new ArrayList<>();
-            al.add(1);
-            al.add(2);
-            al.add(3);
-            iBuffColor instance = new iBuffColor(al, 3);
-            
-            assertEquals(false, instance.IsClean());
-            
-            assertEquals(3, instance.GetSize());
-            
-            assertTrue(
-                    instance.getAr()[0] == 1 &&
-                    instance.getAr()[1] == 2 &&
-                    instance.getAr()[2] == 3
-            );
-        }
-        
-        Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "end.");
-    
+    public T value;
+
+    /**
+     * Constructs the changeable object.
+     * @param value The initial value of the object.
+     */
+    public Changeable(final T value) {
+        this.value = value;
     }
-    
+
 }

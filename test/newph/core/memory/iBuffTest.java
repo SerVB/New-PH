@@ -25,23 +25,14 @@ package newph.core.memory;
 
 import java.util.ArrayList;
 import newph.core.staticFunction.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Buff Test.
+ * @author SerVB
  */
 public class iBuffTest {
-    
-    public iBuffTest() {}
-    
-    @BeforeClass
-    public static void setUpClass() {}
-    
-    @AfterClass
-    public static void tearDownClass() {}
 
     /**
      * Test of IsClean method, of class iBuff.

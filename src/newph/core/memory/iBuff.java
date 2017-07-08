@@ -29,6 +29,8 @@ import java.util.Arrays;
 /**
  *
  * @param <T>
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public abstract class iBuff<T> {
 

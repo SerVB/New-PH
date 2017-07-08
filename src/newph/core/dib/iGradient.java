@@ -23,10 +23,12 @@
  */
 package newph.core.dib;
 
-import helperFunction.MathOperations;
+import newph.core.staticFunction.MathOperations;
 
 /**
- *
+ * Contains gradient pixel codes.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class iGradient {
 

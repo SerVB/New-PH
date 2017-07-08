@@ -27,6 +27,8 @@ import newph.core.staticFunction.Tracer;
 
 /**
  * 256-colors palette.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public final class iPalette {
 

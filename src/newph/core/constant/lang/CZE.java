@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * Czech Localization.
+ * @author SerVB
+ * @since "SourceForge old sources"
  */
 public final class CZE extends Lang {
 

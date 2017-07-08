@@ -25,6 +25,8 @@ package newph.core.dib;
 
 /**
  *
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class iDibReader {
 

@@ -30,6 +30,8 @@ package newph.core.type;
  *       add tests and fix if there are problems.
  * TODO: Check if the class is needed and remove it if not.
  * TODO: Change name to "Fixed32" (after full sources rewrite).
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public final class fix32 {
     

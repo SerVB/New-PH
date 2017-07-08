@@ -26,6 +26,8 @@ package newph.core.staticFunction;
 /**
  * Tracer of possible errors.
  * TODO: Write a normal trace!
+ * @author SerVB
+ * @since PHH 0
  */
 public final class Tracer {
 

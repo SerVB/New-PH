@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * Slovak Localization.
+ * @author SerVB
+ * @since "SourceForge old sources"
  */
 public final class SLOV extends Lang {
 

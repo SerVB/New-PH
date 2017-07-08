@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * Poland Localization.
+ * @author SerVB
+ * @since "SourceForge old sources"
  */
 public final class PL extends Lang {
     

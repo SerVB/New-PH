@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * French Localization.
+ * @author SerVB
+ * @since "SourceForge old sources"
  */
 public final class FR extends Lang {
 

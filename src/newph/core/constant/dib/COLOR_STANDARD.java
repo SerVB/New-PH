@@ -21,20 +21,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.constant.lang;
+package newph.core.constant.dib;
 
 /**
- * Parent class for localizations.
- * TODO: If the localization string is missing (equal to ""),
- *       load the string from English.
+ * Standard color constants.
  * @author SerVB
- * @since "SourceForge old sources"
+ * @since "GitHub new sources"
  */
-public abstract class Lang {
+public class COLOR_STANDARD {
     
-    /**
-     * Language data.
-     */
-    public static String[] LANG_DATA;
+    public static final int cColor_Whiteb   = 0xFFFF;
     
+    public static final int cColor_Black    = 0x0000;
+    
+    public static final int cColor_Gray192  = 0xC618;
+    public static final int cColor_Gray128  = 0x8410;
+    public static final int cColor_Gray64   = 0x4208;
+    
+    public static final int cColor_Red      = 0xF800;
+    
+    public static final int cColor_Green64  = 0x0200;
+    public static final int cColor_Green128 = 0x03E0;
+    public static final int cColor_Green192 = 0x05E0;
+    
+    public static final int cColor_Green    = 0x07E0;
+    
+    public static final int cColor_Blue     = 0x001F;
+    public static final int cColor_Blue64   = 0x0008;
+    public static final int cColor_Blue128  = 0x0010;
+    public static final int cColor_Blue192  = 0x0018;
+    
+    public static final int cColor_Yello    = 0xFFE0;
+    public static final int cColor_Yello192 = 0xBDE0;
+
 }

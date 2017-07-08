@@ -24,15 +24,60 @@
 package newph.core.constant.dib;
 
 /**
- * Color mask constants.
+ * The pixel mask constants.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class COLOR_MASK {
     
-//                               for: {   RGB16  ,   RGBA16 ,   RGBCK16 }
-    public final static int[] RED   = {  0x1F<<11,   0xF<<12,   0x1F<<11};
-    public final static int[] GREEN = {  0x3F<< 5,   0xF<< 8,   0x1F<< 6};
-    public final static int[] BLUE  = {  0x1F,       0xF<< 4,   0x1F<< 1};
-    public final static int[] COLOR = {0xFFFF,     0xFFF<< 4, 0x7FFF<< 1};
-    public final static int[] ALPHA = {     0,       0xF,        0x1    };
+    /**
+     * The pixel mask for all channels except the alpha channel.
+     * #ColorType: (R5G6B5A0 = RGB16, R4G4B4A4 = RGBA16, R5G5B5A1 = RGBCK16)
+     */
+    public static final int[] COLOR = {
+        0b1111_1111_1111_1111,
+        0b1111_1111_1111_0000,
+        0b1111_1111_1111_1110
+    };
+    
+    /**
+     * The pixel mask for the red channel.
+     * #ColorType: (R5G6B5A0 = RGB16, R4G4B4A4 = RGBA16, R5G5B5A1 = RGBCK16)
+     */
+    public static final int[] RED = {
+        0b1111_1000_0000_0000,
+        0b1111_0000_0000_0000,
+        0b1111_1000_0000_0000
+    };
+    
+    /**
+     * The pixel mask for the green channel.
+     * #ColorType: (R5G6B5A0 = RGB16, R4G4B4A4 = RGBA16, R5G5B5A1 = RGBCK16)
+     */
+    public static final int[] GREEN = {
+        0b0000_0111_1110_0000,
+        0b0000_1111_0000_0000,
+        0b0000_0111_1100_0000
+    };
+    
+    /**
+     * The pixel mask for the blue channel.
+     * #ColorType: (R5G6B5A0 = RGB16, R4G4B4A4 = RGBA16, R5G5B5A1 = RGBCK16)
+     */
+    public static final int[] BLUE = {
+        0b0000_0000_0001_1111, 
+        0b0000_0000_1111_0000, 
+        0b0000_0000_0011_1110
+    };
+    
+    /**
+     * The pixel mask for the alpha channel.
+     * #ColorType: (R5G6B5A0 = RGB16, R4G4B4A4 = RGBA16, R5G5B5A1 = RGBCK16)
+     */
+    public static final int[] ALPHA = {
+        0b0000_0000_0000_0000,
+        0b0000_0000_0000_1111,
+        0b0000_0000_0000_0001
+    };
     
 }

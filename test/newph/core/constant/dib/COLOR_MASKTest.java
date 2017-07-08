@@ -21,46 +21,52 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.memory;
+package newph.core.constant.dib;
 
-import java.util.ArrayList;
-import newph.core.staticFunction.Logger;
+import newph.core.enumeration.ColorType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * BuffColor Test.
+ * COLOR_MASK Test.
  * @author SerVB
  */
-public class iBuffColorTest {
+public class COLOR_MASKTest {
 
-    /**
-     * Test of getAr method, of class iBuffColor.
-     */
     @Test
-    public void testGetAr() {
-        Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "begin");
+    public void testRGB_Sum() {
         
-        {
-            ArrayList<Integer> al = new ArrayList<>();
-            al.add(1);
-            al.add(2);
-            al.add(3);
-            iBuffColor instance = new iBuffColor(al, 3);
+        for (int colorType = 0; colorType < ColorType.COUNT.getValue(); colorType++) {
+            int sum = 0;
             
-            assertEquals(false, instance.IsClean());
+            sum += COLOR_MASK.RED  [colorType];
+            sum += COLOR_MASK.GREEN[colorType];
+            sum += COLOR_MASK.BLUE [colorType];
             
-            assertEquals(3, instance.GetSize());
+            final int expected = COLOR_MASK.COLOR[colorType];
             
-            assertTrue(
-                    instance.getAr()[0] == 1 &&
-                    instance.getAr()[1] == 2 &&
-                    instance.getAr()[2] == 3
-            );
+            assertEquals("For color #" + colorType, expected, sum);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "end.");
+    }
     
+    @Test
+    public void testRGBA_Sum() {
+        
+        // TODO: Move this somewhere
+        final int[] expected = {(1 << 16) - 1, (1 << 16) - 1, (1 << 16) - 1};
+        
+        for (int colorType = 0; colorType < ColorType.COUNT.getValue(); colorType++) {
+            int sum = 0;
+            
+            sum += COLOR_MASK.RED  [colorType];
+            sum += COLOR_MASK.GREEN[colorType];
+            sum += COLOR_MASK.BLUE [colorType];
+            sum += COLOR_MASK.ALPHA[colorType];
+            
+            assertEquals("For color #" + colorType, expected[colorType], sum);
+        }
+        
     }
     
 }

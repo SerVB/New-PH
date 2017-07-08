@@ -21,46 +21,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.memory;
+package newph.core.type;
 
-import java.util.ArrayList;
 import newph.core.staticFunction.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * BuffColor Test.
+ * Changeable Test. 
  * @author SerVB
  */
-public class iBuffColorTest {
+public final class ChangeableTest {
 
-    /**
-     * Test of getAr method, of class iBuffColor.
-     */
     @Test
-    public void testGetAr() {
-        Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "begin");
+    public void testConstructor() {
+        Logger.printLog(Logger.LogLevel.TEST, "Changeable(T)", "begin");
         
         {
-            ArrayList<Integer> al = new ArrayList<>();
-            al.add(1);
-            al.add(2);
-            al.add(3);
-            iBuffColor instance = new iBuffColor(al, 3);
-            
-            assertEquals(false, instance.IsClean());
-            
-            assertEquals(3, instance.GetSize());
-            
-            assertTrue(
-                    instance.getAr()[0] == 1 &&
-                    instance.getAr()[1] == 2 &&
-                    instance.getAr()[2] == 3
-            );
+            Integer a = 1;
+            Changeable<Integer> b = new Changeable<>(a);
+            assertEquals(a, b.value);
+
+            assertNotEquals(a + 1, b.value + 0);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "iBuffColor.getAr()", "end.");
-    
+        {
+            Integer a = 10;
+            Changeable<Integer> b = new Changeable<>(a);
+            assertEquals(a, b.value);
+        }
+        
+        Logger.printLog(Logger.LogLevel.TEST, "Changeable(T)", "end");
     }
     
 }

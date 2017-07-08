@@ -25,6 +25,8 @@ package newph.core.constant.lang;
 
 /**
  * English Localization.
+ * @author SerVB
+ * @since "SourceForge old sources"
  */
 public final class ENG extends Lang {
 

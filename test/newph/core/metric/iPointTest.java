@@ -23,26 +23,15 @@
  */
 package newph.core.metric;
 
-import newph.core.metric.iPoint;
-import Common.metrics.iSize;
 import newph.core.staticFunction.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Point Test.
+ * @author SerVB
  */
 public final class iPointTest {
-    
-    public iPointTest() {}
-    
-    @BeforeClass
-    public static void setUpClass() {}
-    
-    @AfterClass
-    public static void tearDownClass() {}
 
     /**
      * Test of add method, of class iPoint.

@@ -25,6 +25,8 @@ package newph.core.constant.dib;
 
 /**
  * Color constants.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public final class COLOR {
 
@@ -38,23 +40,6 @@ public final class COLOR {
         0xC618, 0xCE59, 0xD69A, 0xDEDB, 0xE71C, 0xEF5D, 0xF79E, 0xFFDF
     };
     
-    public final static int cColor_White    = 0xFFFF;
-    public final static int cColor_Black    = 0x0000;
-    public final static int cColor_Gray192  = 0xC618;
-    public final static int cColor_Gray128  = 0x8410;
-    public final static int cColor_Gray64   = 0x4208;
-    public final static int cColor_Red      = 0xF800;
-    public final static int cColor_Green64  = 0x0200;
-    public final static int cColor_Green128 = 0x03E0;
-    public final static int cColor_Green192 = 0x05E0;
-    public final static int cColor_Green    = 0x07E0;
-    public final static int cColor_Blue     = 0x001F;
-    public final static int cColor_Blue64   = 0x0008;
-    public final static int cColor_Blue128  = 0x0010;
-    public final static int cColor_Blue192  = 0x0018;
-    public final static int cColor_Yello    = 0xFFE0;
-    public final static int cColor_Yello192 = 0xBDE0;
-
     // 32 colors
     public final static int[] tintGradient = {
         0x4101,    0x4101,    0x4921,    0x4942,    0x5142,    0x5162,    0x5983,    0x61a3,

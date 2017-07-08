@@ -23,15 +23,14 @@
  */
 package newph.core.dib;
 
-import Common.metrics.iRect;
-import Common.metrics.iSize;
-import helperFunction.iClipper;
 import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;
 import newph.core.staticFunction.Tracer;
 
 /**
  * iPalette Dib i.e. 8bit dib with palette.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public final class iPaletteDib {
 

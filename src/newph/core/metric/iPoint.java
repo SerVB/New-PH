@@ -23,13 +23,14 @@
  */
 package newph.core.metric;
 
-import Common.metrics.iSize;
-import helperFunction.MathOperations;
+import newph.core.staticFunction.MathOperations;
 import newph.core.staticFunction.Logger;
 
 /**
  * Contains coordinates "x" and "y".
  * TODO: Rename (refactor) to "Point" (after full source move).
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public final class iPoint {
 

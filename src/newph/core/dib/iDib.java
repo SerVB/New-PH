@@ -23,22 +23,22 @@
  */
 package newph.core.dib;
 
-import Common.metrics.iRect;
-import Common.metrics.iSize;
-import helperFunction.MathOperations;
-import helperFunction.iClipper;
+import newph.core.staticFunction.MathOperations;
 import newph.core.constant.dib.COLOR;
 import newph.core.constant.dib.COLOR_MASK;
-import newph.core.constant.dib.COLOR_TYPE;
+import newph.core.constant.dib.COLOR_STANDARD;
+import newph.core.enumeration.ColorType;
 import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;
-import newph.core.servb.Changeable;
+import newph.core.type.Changeable;
 import newph.core.staticFunction.Logger;
 import newph.core.staticFunction.RGB;
 import newph.core.staticFunction.Tracer;
 
 /**
  * Contains BMP image.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class iDib {
 
@@ -50,7 +50,7 @@ public class iDib {
     /**
      * Type of pixels.
      */
-    private int m_dibType;
+    private ColorType m_dibType;
     
     /**
      * Size of image.
@@ -61,7 +61,7 @@ public class iDib {
      * Constructs the empty object with the default pixel type (RGB16).
      */
     public iDib() {
-        this.m_dibType = COLOR_TYPE.RGB;
+        this.m_dibType = ColorType.RGB;
     }
     
     /**
@@ -166,7 +166,7 @@ public class iDib {
      * @param siz   Image size.
      * @param dType Type of pixels.
      */
-    public final void Init(final iSize siz, final int dType) {
+    public final void Init(final iSize siz, final ColorType dType) {
         m_dibType = dType;
         Allocate(siz);
     }
@@ -177,7 +177,7 @@ public class iDib {
     public void Cleanup() {
         m_RGB.Clean();
         m_Siz.toZero();
-        m_dibType = COLOR_TYPE.RGB;
+        m_dibType = ColorType.RGB;
     }
     
     /**
@@ -313,7 +313,7 @@ public class iDib {
      * Returns type of the image pixels.
      * @return Type of pixel.
      */
-    public final int GetType() {
+    public final ColorType GetType() {
         return m_dibType;
     }
 
@@ -355,9 +355,9 @@ public class iDib {
      */
     public void Fade(final int alpha) {
         if (alpha == 0){
-            Fill(COLOR.cColor_Black);
+            Fill(COLOR_STANDARD.cColor_Black);
         } else if (alpha != 255) {
-            Fill(COLOR.cColor_Black, 255 - alpha);
+            Fill(COLOR_STANDARD.cColor_Black, 255 - alpha);
         }
     }
     
@@ -755,7 +755,7 @@ public class iDib {
             return;
         }
 
-        Tracer.check(m_dibType == COLOR_TYPE.RGB);
+        Tracer.check(m_dibType == ColorType.RGB);
         iRect src_rect = new iRect(GetSize());
         iSize siz = new iSize(dib.GetWidth() - pos.x, dib.GetHeight() - pos.y);
         iRect dst_rect = new iRect(pos, siz);
@@ -800,7 +800,7 @@ public class iDib {
 
         for (int yy = 0; yy < dst_rect.h; yy++) {
             switch (m_dibType) {
-                case COLOR_TYPE.RGB:
+                case RGB:
                     RGB.BlitDibBlock_RGB(
                             dib.GetPtr(),
                             dst_clr,
@@ -809,7 +809,7 @@ public class iDib {
                             dst_rect.w
                     );
                     break;
-                case COLOR_TYPE.RGBA:
+                case RGBA:
                     RGB.BlitDibBlock_RGBA(
                             dib.GetPtr(),
                             dst_clr,
@@ -818,7 +818,7 @@ public class iDib {
                             dst_rect.w
                     );
                     break;
-                case COLOR_TYPE.RGBCK:
+                case RGBCK:
                     RGB.BlitDibBlock_RGBCK(
                             dib.GetPtr(),
                             dst_clr,
@@ -867,7 +867,7 @@ public class iDib {
         if ( a == 255 ) {
             for (int yy = 0; yy < dst_rect.h; yy++) {
                 switch (m_dibType) {
-                    case COLOR_TYPE.RGB:
+                    case RGB:
                         RGB.BlitDibBlock_RGB(
                                 dib.GetPtr(),
                                 dst_clr,
@@ -876,7 +876,7 @@ public class iDib {
                                 dst_rect.w
                         );
                         break;
-                    case COLOR_TYPE.RGBA:
+                    case RGBA:
                         RGB.BlitDibBlock_RGBA(
                                 dib.GetPtr(),
                                 dst_clr,
@@ -885,7 +885,7 @@ public class iDib {
                                 dst_rect.w
                         ); 
                         break;
-                    case COLOR_TYPE.RGBCK:
+                    case RGBCK:
                         RGB.BlitDibBlock_RGBCK(
                                 dib.GetPtr(),
                                 dst_clr,
@@ -960,12 +960,12 @@ public class iDib {
                 int colorAtScl = this.m_RGB.at(scl);
                 if (colorAtScl != ck) {
                     int inv_a = 255 - bval;
-                    int sr = bval  * ((colorAtScl & COLOR_MASK.RED  [COLOR_TYPE.RGB]) >> 11);
-                    int sg = bval  * ((colorAtScl & COLOR_MASK.GREEN[COLOR_TYPE.RGB]) >> 5);
-                    int sb = bval  * ((colorAtScl & COLOR_MASK.BLUE [COLOR_TYPE.RGB]));
-                    int dr = inv_a * ((colorAtScl & COLOR_MASK.RED  [COLOR_TYPE.RGB]) >> 11);
-                    int dg = inv_a * ((colorAtScl & COLOR_MASK.GREEN[COLOR_TYPE.RGB]) >> 5);
-                    int db = inv_a * ((colorAtScl & COLOR_MASK.BLUE [COLOR_TYPE.RGB]));
+                    int sr = bval  * ((colorAtScl & COLOR_MASK.RED  [ColorType.RGB.getValue()]) >> 11);
+                    int sg = bval  * ((colorAtScl & COLOR_MASK.GREEN[ColorType.RGB.getValue()]) >> 5);
+                    int sb = bval  * ((colorAtScl & COLOR_MASK.BLUE [ColorType.RGB.getValue()]));
+                    int dr = inv_a * ((colorAtScl & COLOR_MASK.RED  [ColorType.RGB.getValue()]) >> 11);
+                    int dg = inv_a * ((colorAtScl & COLOR_MASK.GREEN[ColorType.RGB.getValue()]) >> 5);
+                    int db = inv_a * ((colorAtScl & COLOR_MASK.BLUE [ColorType.RGB.getValue()]));
                     dib.m_RGB.set(dcl, ((sr+dr)>>8)<<11 | ((sg+dg)>>8)<<5 | ((sb+db)>>8));
                 }
                 scl++;
@@ -1017,7 +1017,7 @@ public class iDib {
         other.m_Siz = tmpSize;
         
 //        iSwap(m_dibType, other.m_dibType);
-        final int tmpDibType = this.m_dibType;
+        final ColorType tmpDibType = this.m_dibType;
         this.m_dibType = other.m_dibType;
         other.m_dibType = tmpDibType;
     }

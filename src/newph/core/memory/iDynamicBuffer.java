@@ -29,6 +29,8 @@ import java.util.ArrayList;
 
 /**
  * Dynamic byte buffer.
+ * @author SerVB
+ * @since "GitHub new sources"
  */
 public class iDynamicBuffer extends iDynamicPtr<Byte> {
     
