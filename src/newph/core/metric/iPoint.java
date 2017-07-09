@@ -35,11 +35,10 @@ import newph.core.staticFunction.Logger;
 public final class iPoint {
 
     /**
-     * Constructs the object with coordinates of zero.
+     * Constructs the object with zero coordinates.
      */
     public iPoint() {
-        this.x = 0;
-        this.y = 0;
+        this(0, 0);
     }
 
     /**

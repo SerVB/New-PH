@@ -24,7 +24,7 @@
 package newph.core.constant.dib;
 
 /**
- * Standard color constants.
+ * Standard color constants. (R5G6B5 = RGB16)
  * @author SerVB
  * @since "GitHub new sources"
  */
