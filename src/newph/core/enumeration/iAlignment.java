@@ -30,15 +30,54 @@ package newph.core.enumeration;
  */
 public enum iAlignment {
     
+    /**
+     * No Alignment.
+     */
     No,
+    
+    /**
+     * Left Top Alignment.
+     */
     LeftTop,
+    
+    /**
+     * Top Alignment.
+     */
     Top,
+    
+    /**
+     * Right Top Alignment.
+     */
     RightTop,
+    
+    /**
+     * Right Alignment.
+     */
     Right,
+    
+    /**
+     * Right Bottom Alignment.
+     */
     RightBottom,
+    
+    /**
+     * Bottom Alignment.
+     */
     Bottom,
+    
+    /**
+     * Left Bottom Alignment.
+     */
     LeftBottom,
+    
+    /**
+     * Left Alignment.
+     */
     Left,
+    
+    /**
+     * Center Alignment.
+     */
     Center;
     
 }

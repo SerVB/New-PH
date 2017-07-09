@@ -27,7 +27,7 @@ import newph.core.staticFunction.MathOperations;
 import newph.core.staticFunction.Logger;
 
 /**
- * Contains coordinates "x" and "y".
+ * Point class. Contains coordinates "x" and "y".
  * TODO: Rename (refactor) to "Point" (after full source move).
  * @author SerVB
  * @since "GitHub new sources"
@@ -75,10 +75,10 @@ public final class iPoint {
      * @param pos Point object. If null nothing is done.
      */
     public final void add(final iPoint pos) {
-        try {
+        if (pos != null) {
             this.x += pos.x;
             this.y += pos.y;
-        } catch (NullPointerException ex) {
+        } else {
             Logger.printLog(
                     Logger.LogLevel.DEBUG,
                     "Point.add(Point pos)",
@@ -93,10 +93,10 @@ public final class iPoint {
      * @param pos Point object. If null nothing is done.
      */
     public final void subtract(final iPoint pos) {
-        try {
+        if (pos != null) {
             this.x -= pos.x;
             this.y -= pos.y;
-        } catch (NullPointerException ex) {
+        } else {
             Logger.printLog(
                     Logger.LogLevel.DEBUG,
                     "Point.subtract(Point pos)",
@@ -106,48 +106,51 @@ public final class iPoint {
     }
 
     /**
-     * Constructs a new object with
-     * operated two other objects' metrics.
-     * @param first First object. If null uses default constructor.
-     * @param oper Operator ('+', '-').
-     *      If '+' metrics add,
-     * else if '-' metrics subtract,
-     * else throws IllegalArgumentException.
-     * @param second Second object. If null uses default constructor.
+     * Constructs Point object.
+     * Adds the second Point to the first Point object.
+     * (Operator +)
+     * @param first     The first Point.
+     * @param second    The second Point.
+     * @return          New Point object.
      */
-    public iPoint(final iPoint first, final char oper, final iPoint second) {
-        try {
-            switch (oper) {
-                case '+':
-                    this.x = first.x + second.x;
-                    this.y = first.y + second.y;
-                    break;
-                case '-':
-                    this.x = first.x - second.x;
-                    this.y = first.y - second.y;
-                    break;
-                default:
-                    throw new IllegalArgumentException("fatal > " + "Invalid operator '" + oper + "'!");
-            }
-        } catch (NullPointerException ex) {
-            final String msg;
-            
-            if (first == null && second == null) {
-                msg = "first and second are null, nothing to operate!";
-            } else if (first == null) {
-                msg = "first is null, nothing to operate!";
-            } else if (second == null) {
-                msg = "second is null, nothing to operate!";
-            } else {
-                throw new IllegalStateException("fatal > " + "wtf???");
-            }
-            
-            Logger.printLog(
-                    Logger.LogLevel.DEBUG,
-                    "Point(Point first, boolean oper, Point second)",
-                    msg
-            );
+    public static iPoint addToPoint(iPoint first, iPoint second) {
+        // Check for nulls:
+        if (first == null) {
+            first = new iPoint();
         }
+        if (second == null) {
+            second = new iPoint();
+        }
+        
+        // Calculate the result:
+        iPoint res = new iPoint(first);
+        res.add(second);
+        
+        return res;
+    }
+
+    /**
+     * Constructs Point object.
+     * Subtracts the second Point from the first Point object.
+     * (Operator -)
+     * @param first     The first Point.
+     * @param second    The second Point.
+     * @return          New Point object.
+     */
+    public static iPoint subtractFromPoint(iPoint first, iPoint second) {
+        // Check for nulls:
+        if (first == null) {
+            first = new iPoint();
+        }
+        if (second == null) {
+            second = new iPoint();
+        }
+        
+        // Calculate the result:
+        iPoint res = new iPoint(first);
+        res.subtract(second);
+        
+        return res;
     }
 
     /**
@@ -171,21 +174,6 @@ public final class iPoint {
     }
 
     /**
-     * Constructs a new object with
-     * operated two other objects' metrics
-     * ("x" and "w", "y" and "h").
-     * @param point Point object.
-     * @param oper Operator ('+', '-').
-     *      If '+' metrics add,
-     * else if '-' metrics subtract,
-     * else throws IllegalArgumentException.
-     * @param size Size object.
-     */
-    public iPoint(final iPoint point, final char oper, final iSize size) {
-        this(point, oper, new iPoint(size));
-    }
-
-    /**
      * Adds value to each metric.
      * @param offs Value to be added.
      */
@@ -202,17 +190,45 @@ public final class iPoint {
     }
 
     /**
-     * Constructs a new object with
-     * operated other object's metrics and the value.
-     * @param point Point object.
-     * @param oper Operator ('+', '-').
-     *      If '+' metrics and the value add,
-     * else if '-' metrics and the value subtract,
-     * else throws IllegalArgumentException.
-     * @param offs Value.
+     * Constructs Point object.
+     * Adds the given value to the given Point object.
+     * (Operator +)
+     * @param point     The Point object.
+     * @param increment The value.
+     * @return          New Point object.
      */
-    public iPoint(final iPoint point, final char oper, final int offs) {
-        this(point, oper, new iPoint(offs, offs));
+    public static iPoint addToPoint(iPoint point, final int increment) {
+        // Check for null:
+        if (point == null) {
+            point = new iPoint();
+        }
+        
+        // Calculate the result:
+        iPoint res = new iPoint(point);
+        res.add(increment);
+        
+        return res;
+    }
+
+    /**
+     * Constructs Point object.
+     * Subtracts the given value from the given Point object.
+     * (Operator -)
+     * @param point     The Point object.
+     * @param decrement The value.
+     * @return          New Point object.
+     */
+    public static iPoint subtractFromPoint(iPoint point, final int decrement) {
+        // Check for null:
+        if (point == null) {
+            point = new iPoint();
+        }
+        
+        // Calculate the result:
+        iPoint res = new iPoint(point);
+        res.subtract(decrement);
+        
+        return res;
     }
 
     /**

@@ -28,7 +28,7 @@ package newph.core.type;
  * and to be changed in them.
  * @param <T> Object's Type.
  * @author SerVB
- * @since PHH 0
+ * @since PPH 0
  */
 public class Changeable<T> {
 
