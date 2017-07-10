@@ -22,41 +22,45 @@
  * SOFTWARE.
  */
 
-package newph.core.dib;
+package newph.core.staticFunction;
 
-import newph.core.staticFunction.Tracer;
+import newph.core.metric.iSize;
 
 /**
- * 256-colors palette.
+ * Metrics static functions.
  * @author SerVB
  * @since "GitHub new sources"
  */
-public final class iPalette {
-
-    public iPalette() {}
-
-    public iPalette(final int[] pal) {
-        Init(pal);
-    }
-
-    public final void Init(final int[] pal) {
-        System.arraycopy(pal, 0, m_Palette, 0, 256);
-    }
-
-    public final void set(final int nIndex, final int color) {
-        Tracer.check(0 <= nIndex && nIndex < 256);
-        m_Palette[nIndex] = color;
-    }
-
-    public final int get(final int nIndex) {
-        Tracer.check(0 <= nIndex && nIndex < 256);
-        return m_Palette[nIndex];
-    }
-
-    public final int[] GetPtr() {
-        return m_Palette;
-    }
+public class Metric {
     
-    private final int[] m_Palette = new int[256]; // uint16
+    /// Scale specified size according to another (preserve aspect ratio)
+    public boolean ScaleSize(final iSize src_siz, final iSize bbox) {
+        float srcAspect = src_siz.GetAspectRatio();
+        float bbxAspect = bbox.GetAspectRatio();
+
+        // test weather wndAspect is bigger than video
+        if ( bbxAspect > srcAspect ) {
+            // correct width
+            src_siz.w = iMIN((uint32)((float)(bbox.h) * srcAspect),bbox.h);
+            src_siz.h = bbox.h;
+        } else {
+            // correct height;
+            src_siz.w = bbox.w;
+            src_siz.h = iMIN((uint32)((float)(bbox.w) / srcAspect),bbox.w);
+
+        }
+
+        return (src_siz.w && src_siz.h);
+    }
+
+    /// Scale specified rect to another circumscribed rect (preserve aspect ratio)
+    public inline bool ScaleRect2Rect(const iRect& src, const iRect& dst, iRect& out)
+    {
+        out = src;
+        if (!ScaleSize(out,dst)) return false;
+        out.x = dst.w/2 - out.w/2;
+        out.y = dst.h/2 - out.h/2;
+        return true;
+    }
     
 }

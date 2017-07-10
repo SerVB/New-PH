@@ -21,9 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 package newph.core.staticFunction;
 
 import newph.core.metric.iPoint;
+import newph.core.metric.iRect;
 import newph.core.type.Changeable;
 
 /**
@@ -197,7 +199,7 @@ public class iClipper {
         int y2 = Math.min(src_rect1.y2(), src_rect2.y2()) + 1;
 
         if ( (x2 - x1) > 0 && (y2 - y1) > 0 ) {
-            dst_rect.setRect(x1, y1, x2-x1, y2-y1);
+            dst_rect.set(new iRect(x1, y1, x2-x1, y2-y1));
             return true;
         } else {
             return false;
