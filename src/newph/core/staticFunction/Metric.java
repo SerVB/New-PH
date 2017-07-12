@@ -24,6 +24,7 @@
 
 package newph.core.staticFunction;
 
+import newph.core.metric.iRect;
 import newph.core.metric.iSize;
 
 /**
@@ -33,31 +34,46 @@ import newph.core.metric.iSize;
  */
 public class Metric {
     
-    /// Scale specified size according to another (preserve aspect ratio)
-    public boolean ScaleSize(final iSize src_siz, final iSize bbox) {
-        float srcAspect = src_siz.GetAspectRatio();
-        float bbxAspect = bbox.GetAspectRatio();
+    /**
+     * Scales specified size according to another (preserve aspect ratio).
+     * Changes metrics of Size to be scaled.
+     * @param sizeToScale   Size to be scaled.
+     * @param sizeWdestAr   Size with given (destination) aspect ratio.
+     * @return              False if the scaled Size's at least one metric is zero,
+     *                      true if not.
+     */
+    public boolean ScaleSize(final iSize sizeToScale, final iSize sizeWdestAr) {
+        double srcAspect = sizeToScale.getAspectRatio();
+        double dstAspect = sizeWdestAr.getAspectRatio();
 
-        // test weather wndAspect is bigger than video
-        if ( bbxAspect > srcAspect ) {
+        // test weather dstAspect is bigger than srcAspect (video)
+        if (srcAspect < dstAspect) {
             // correct width
-            src_siz.w = iMIN((uint32)((float)(bbox.h) * srcAspect),bbox.h);
-            src_siz.h = bbox.h;
+            sizeToScale.w = Math.min((int)(sizeWdestAr.h * srcAspect), sizeWdestAr.h);
+            sizeToScale.h = sizeWdestAr.h;
         } else {
             // correct height;
-            src_siz.w = bbox.w;
-            src_siz.h = iMIN((uint32)((float)(bbox.w) / srcAspect),bbox.w);
+            sizeToScale.w = sizeWdestAr.w;
+            sizeToScale.h = Math.min((int)(sizeWdestAr.w / srcAspect), sizeWdestAr.w);
 
         }
 
-        return (src_siz.w && src_siz.h);
+        return sizeToScale.w > 0 && sizeToScale.h > 0;
     }
 
-    /// Scale specified rect to another circumscribed rect (preserve aspect ratio)
-    public inline bool ScaleRect2Rect(const iRect& src, const iRect& dst, iRect& out)
-    {
-        out = src;
-        if (!ScaleSize(out,dst)) return false;
+    /**
+     * Scale specified Rect to another circumscribed Rect (preserve aspect ratio).
+     * Changes out Rect.
+     * @param src
+     * @param dst
+     * @param out
+     * @return 
+     */
+    public boolean ScaleRect2Rect(final iRect src, final iRect dst, final iRect out) {
+        out.set(src);
+        if (!ScaleSize(new iSize(out), new iSize(dst))) {
+            return false;
+        }
         out.x = dst.w/2 - out.w/2;
         out.y = dst.h/2 - out.h/2;
         return true;

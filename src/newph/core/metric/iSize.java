@@ -41,11 +41,11 @@ public class iSize {
     /**
      * Constructs Size object with given width and height.
      * @param w The width.
-     * @param t The height.
+     * @param h The height.
      */
-    public iSize(final int w, final int t) {
+    public iSize(final int w, final int h) {
         this.w = w;
-        this.h = t;
+        this.h = h;
     }
 
     /**
@@ -54,6 +54,10 @@ public class iSize {
      */
     public iSize(final iSize toBeCopied) {
         this(toBeCopied.w, toBeCopied.h);
+    }
+    
+    public iSize(final iRect rect) {
+        this(rect.w, rect.h);
     }
 
     /**

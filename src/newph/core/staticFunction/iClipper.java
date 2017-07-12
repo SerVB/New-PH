@@ -223,8 +223,8 @@ public class iClipper {
 
     /**
      * Clips two rects.
-     * @param rc
-     * @param rect
+     * @param rc    The first Rect.
+     * @param rect  The second Rect.
      * @return 
      */
     public static boolean clipRect(final iRect rc, final iRect rect) {
