@@ -24,19 +24,38 @@
 
 package newph.core.metric;
 
+import newph.core.type.Hash;
+
 /**
  * Rectangle class.
  * @author SerVB
  * @since "GitHub new sources"
  */
 public final class iRect {
-    
+
+    /**
+     * The "x" (horizontal) coordinate of the top-left corner. 
+     */
     public int x;
+
+    /**
+     * The "y" (vertical) coordinate of the top-left corner. 
+     */
     public int y;
+
+    /**
+     * The width (horizontal size).
+     */
     public int w;
+    
+    /**
+     * The height (vertical size).
+     */
     public int h;
 
-    /// Default constructor
+    /**
+     * Constructs the Rectangle object with metrics of zero.
+     */
     public iRect() {
         x = 0;
         y = 0;
@@ -45,7 +64,13 @@ public final class iRect {
         h = 0;
     }
     
-    /// Constructs iRect object with given coordinate of left top corner, width and height
+    /**
+     * Constructs the Rectangle object with given coordinates of the left top corner, the width and the height.
+     * @param x The "x" (horizontal) coordinate of the left top corner.
+     * @param y The "y" (vertical) coordinate of the left top corner.
+     * @param w The width of the Rectangle.
+     * @param h The height of the Rectangle.
+     */
     public iRect(final int x, final int y, final int w, final int h) {
         this.x = x;
         this.y = y;
@@ -54,16 +79,20 @@ public final class iRect {
         this.h = h;
     }
 
-    /// Constructs iRect object with given coordinate of left top corner, width and height
+    /**
+     * Constructs the Rectangle object with the given Point of the left-top corner and Size.
+     * @param point The Point of the left-top corner.
+     * @param size  The Size.
+     */
     public iRect(final iPoint point, final iSize size) {
-        x = point.x;
-        y = point.y;
-        
-        w = size.w;
-        h = size.h;
+        this(point.x, point.y, size.w, size.h);
     }
 
-    /// Constructs iRect object with two given coordinates
+    /**
+     * Constructs the Rectangle object with two given corner Points.
+     * @param p1 The first Point.
+     * @param p2 The second Point.
+     */
     public iRect(final iPoint p1, final iPoint p2) {
         final int min_x = Math.min(p1.x, p2.x);
         final int min_y = Math.min(p1.y, p2.y);
@@ -76,7 +105,11 @@ public final class iRect {
         h = (max_y - min_y) + 1;
     }
 
-    /// Constructs iRect object with specified size
+    /**
+     * Constructs the Rectangle object with the specified Size. 
+     * The left-top corner of the Rectangle sets to the origin.
+     * @param size The specified size.
+     */
     public iRect(final iSize size) {
         x = 0;
         y = 0;
@@ -85,142 +118,212 @@ public final class iRect {
         h = size.h;
     }
 
-    /// Constructs iRect object with RECT structure
-    public iRect(final iRect rect) {
-        set(rect);
+    /**
+     * Constructs the Rectangle object by copying the other Rectangle.
+     * @param other The other Rectangle.
+     */
+    public iRect(final iRect other) {
+        set(other);
     }
 
-    /// Returns x coordinate of left-top corner
+    /**
+     * Returns the "x" coordinate of the left-top corner.
+     * @return The "x" coordinate of the left-top corner.
+     */
     public int x1() { 
         return x; 
     }
-
-    /// Returns y coordinate of left-top corner
+    
+    /**
+     * Returns the "y" coordinate of the left-top corner.
+     * @return The "y" coordinate of the left-top corner.
+     */
     public int y1() { 
         return y; 
     }
 
-    /// Returns x coordinate of right-bottom corner
+    /**
+     * Returns the "x" coordinate of the right-bottom corner.
+     * @return The "x" coordinate of the right-bottom corner.
+     */
     public int x2() { 
         return x + w - 1; 
     }
     
-    /// Returns y coordinate of right-bottom corner
+    /**
+     * Returns the "y" coordinate of the right-bottom corner.
+     * @return The "y" coordinate of the right-bottom corner.
+     */
     public int y2() { 
         return y + h - 1; 
     }
 
-    /// Returns center point of rect
+    /**
+     * Returns the center Point of the Rectangle.
+     * @return The center Point of the Rectangle.
+     */
     public iPoint Center() {
         return new iPoint(x + w / 2, y + h / 2);
     }
 
-    /// Returns coordinate of right-top corner
+    /**
+     * Returns the Point of the right-top corner.
+     * @return The Point of the right-top corner.
+     */
     public iPoint TopRight() {
         return new iPoint(x2(), y);
     }
 
-    /// Returns coordinate of left-top corner
+    /**
+     * Returns the Point of the left-top corner.
+     * @return The Point of the left-top corner.
+     */
     public iPoint TopLeft() {
         return new iPoint(x, y);
     }
 
-    /// Returns coordinate of right-bottom corner
+    /**
+     * Returns the Point of the right-bottom corner.
+     * @return The Point of the right-bottom corner.
+     */
     public iPoint BottomRight() {
         return new iPoint(x2(), y2());
     }
 
-    /// Returns coordinate of left-bottom corner
+    /**
+     * Returns the Point of the left-bottom corner.
+     * @return The Point of the left-bottom corner.
+     */
     public iPoint BottomLeft() {
         return new iPoint(x, y2());
     }
 
-    /// Returns size of rect
+    /**
+     * Returns the Size of the Rectangle.
+     * @return The Size of the Rectangle.
+     */
     public iSize size() { 
         return new iSize(w, h); 
     }
 
-    /// Returns coordinate of left-top corner
+    /**
+     * Returns the Point of the left-top corner.
+     * @return The Point of the left-top corner.
+     */
     public iPoint point() { 
-        return new iPoint(x,y); 
+        return new iPoint(x, y); 
     }
 
-    /// @brief Determines whether the specified point lies within the specified rectangle. 
-    /// A point is within a rectangle if it lies on the left or top side or is within all four sides. 
+    /**
+     * Determines whether the specified point lies within the Rectangle. 
+     * A point is within a rectangle if it lies on the left or top side or is within all four sides.
+     * @param _x    The "x" coordinate of the point.
+     * @param _y    The "y" coordinate of the point.
+     * @return      {@code True} if the Point lies within the Rectangle, {@code false} otherwise.
+     */
     public boolean PtInRect(final int _x, final int _y) { 
         return 
-                x <= _x &&
-                y <= _y &&
-                _x <= x + w - 1 &&
-                _y <= y + h - 1;
+                x <= _x && _x <= x + w - 1 &&
+                y <= _y && _y <= y + h - 1;
     }
 
-    /// @brief Determines whether the specified point lies within the specified rectangle. 
-    /// A point is within a rectangle if it lies on the left or top side or is within all four sides. 
-    public boolean PtInRect(final iPoint pnt) { 
-        return PtInRect(pnt.x, pnt.y);
+    /**
+     * Determines whether the specified point lies within the Rectangle. 
+     * A point is within a rectangle if it lies on the left or top side or is within all four sides.
+     * @param point The Point.
+     * @return      {@code True} if the Point lies within the Rectangle, {@code false} otherwise.
+     */
+    public boolean PtInRect(final iPoint point) { 
+        return PtInRect(point.x, point.y);
     }
 
-    /// Resets rect variables to zero
+    /**
+     * Resets the Rectangle's metrics to zero.
+     */
     public void Reset() {
         x = y = w = h = 0;
     }
 
-    /// Validates width and height of the rect
+    /**
+     * Validates the width and the height of the Rectangle.
+     * @return {@code True} if at least one metric is equal to zero, {@code false} otherwise.
+     */
     public boolean IsEmpty() {
         return w == 0 || h == 0;
     }
-    
-    /// Equality operator
-    public boolean equals(final iRect other) {
-        return 
-                x == other.x &&
-                y == other.y &&
-                w == other.w &&
-                h == other.h;
-    }
 
-    /// operator +
+    /**
+     * Constructs the new Rectangle object: adds the Point to the Rectangle.
+     * Doesn't modify the source Rectangle and Point.
+     * Ex. operator+.
+     * @param rect  The Rectangle.
+     * @param pos   The Point.
+     * @return      The new Rectangle.
+     */
     public static iRect addToRect(final iRect rect, final iPoint pos) {
         return new iRect(rect.x + pos.x, rect.y + pos.y, rect.w, rect.h);
     }
 
-    /// operator -
+    /**
+     * Constructs the new Rectangle object: subtracts the Point from the Rectangle.
+     * Doesn't modify the source Rectangle and Point.
+     * Ex. operator-.
+     * @param rect  The Rectangle.
+     * @param pos   The Point.
+     * @return      The new Rectangle.
+     */
     public static iRect subtractFromRect(final iRect rect, final iPoint pos) {
         return new iRect(rect.x - pos.x, rect.y - pos.y, rect.w, rect.h);
     }
 
-    /// operator +
-    public static iRect addToRect(final iRect rect, final iRect other) {
-        iRect res = new iRect(rect);
-        res.add(other);
+    /**
+     * Constructs the new Rectangle object: adds two Rectangles.
+     * Doesn't modify these two Rectangles.
+     * Ex. operator+.
+     * @param first     The first Rectangle.
+     * @param second    The second Rectangle.
+     * @return          The new Rectangle.
+     */
+    public static iRect addToRect(final iRect first, final iRect second) {
+        iRect res = new iRect(first);
+        res.add(second);
         
         return  res;
     }
 
-    /// operator +=
-    public void add(final iRect rect) {
-        if (rect.IsEmpty()) {
+    /**
+     * Changes the Rectangle: adds the other Rectangle's metrics.
+     * Ex. operator+=.
+     * @param other The other Rectangle.
+     */
+    public void add(final iRect other) {
+        if (other.IsEmpty()) {
             return;
         }
         
         if (IsEmpty()) {
-            set(rect);
+            set(other);
         }
         
-        final int min_x = Math.min(rect.x, x);
-        final int min_y = Math.min(rect.y, y);
+        final int min_x = Math.min(other.x, x);
+        final int min_y = Math.min(other.y, y);
 
-        final int max_x = Math.max(rect.x2(), x2());
-        final int max_y = Math.max(rect.y2(), y2());
+        final int max_x = Math.max(other.x2(), x2());
+        final int max_y = Math.max(other.y2(), y2());
 
         x = min_x;
         y = min_y;
         w = max_x - min_x + 1;
         h = max_y - min_y + 1;
     }
-
-    /// Inflates rect
+    
+    /**
+     * Inflates the rectangle. Subtracts offset from each metric.
+     * @param left      The left offset.
+     * @param top       The top offset.
+     * @param right     The right offset.
+     * @param bottom    The bottom offset.
+     */
     public void InflateRect(
             final int left,
             final int top,
@@ -232,18 +335,31 @@ public final class iRect {
         w += left + right;
         h += top + bottom;
     }
-
-    /// Inflates rect
+    
+    /**
+     * Inflates the rectangle. Subtracts offset from each metric.
+     * @param x_offs The horizontal offset.
+     * @param y_offs The vertical offset.
+     */
     public void InflateRect(final int x_offs, final int y_offs) {
         InflateRect(x_offs, y_offs, x_offs, y_offs);
     }
-
-    /// Inflates rect
+    
+    /**
+     * Inflates the rectangle. Subtracts offset from each metric.
+     * @param offs The offset.
+     */
     public void InflateRect(final int offs) {
-        InflateRect(offs, offs, offs, offs);
+        InflateRect(offs, offs);
     }
 
-    /// Deflates rect
+    /**
+     * Deflates the rectangle. Subtracts offset from each metric.
+     * @param left      The left offset.
+     * @param top       The top offset.
+     * @param right     The right offset.
+     * @param bottom    The bottom offset.
+     */
     public void DeflateRect(
             final int left,
             final int top,
@@ -256,23 +372,76 @@ public final class iRect {
 //        w -= (left+right);
 //        h -= (top+bottom);
     }
-
-    /// Deflates rect
+    
+    /**
+     * Deflates the rectangle. Subtracts offset from each metric.
+     * @param x_offs The horizontal offset.
+     * @param y_offs The vertical offset.
+     */
     public void DeflateRect(final int x_offs, final int y_offs) {
         DeflateRect(x_offs, y_offs, x_offs, y_offs);
     }
 
-    /// Deflates rect
+    /**
+     * Deflates the rectangle. Subtracts offset from each metric.
+     * @param offs The offset.
+     */
     public void DeflateRect(final int offs) {
-        DeflateRect(offs, offs, offs, offs);
+        DeflateRect(offs, offs);
     }
     
+    /**
+     * Sets the metrics to the other object's metrics.
+     * @param rect The other object.
+     */
     public void set(final iRect rect) {
         x = rect.x;
         y = rect.y;
         
         w = rect.w;
         h = rect.h;
+    }
+
+    @Override
+    public int hashCode() {
+        Hash hash = Hash.std();
+        hash.insert(x);
+        hash.insert(y);
+        hash.insert(w);
+        hash.insert(h);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iRect other = (iRect) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        if (this.w != other.w) {
+            return false;
+        }
+        if (this.h != other.h) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "iRect{" + "x=" + x + ", y=" + y + ", w=" + w + ", h=" + h + '}';
     }
     
 }

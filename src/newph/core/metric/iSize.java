@@ -24,6 +24,8 @@
 
 package newph.core.metric;
 
+import newph.core.type.Hash;
+
 /**
  * Size class. Contains width "w" and height "h" metrics.
  * @author SerVB
@@ -162,7 +164,64 @@ public class iSize {
         return (double) w / (double) h;
     }
 
+    /**
+     * The width.
+     */
     public int w;
+    
+    /**
+     * The height.
+     */
     public int h;
+
+    @Override
+    public int hashCode() {
+        Hash hash = Hash.std();
+        hash.insert(w);
+        hash.insert(h);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iSize other = (iSize) obj;
+        if (this.w != other.w) {
+            return false;
+        }
+        if (this.h != other.h) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "iSize{" + "w=" + w + ", h=" + h + '}';
+    }
+
+    /**
+     * Resets the metrics.
+     */
+    public void toZero() {
+        this.w = 0;
+        this.h = 0;
+    }
+
+    /**
+     * Checks if each metric is equal to zero.
+     * @return {@code True} if all metrics are zero, {@code false} otherwise.
+     */
+    public boolean isZero() {
+        return w == 0 && h == 0;
+    }
     
 }

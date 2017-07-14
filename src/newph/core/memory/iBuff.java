@@ -26,10 +26,12 @@ package newph.core.memory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
+import newph.core.type.Hash;
 
 /**
- *
- * @param <T>
+ * Buffer class. Contains elements.
+ * @param <T> The Type of elements.
  * @author SerVB
  * @since "GitHub new sources"
  */
@@ -122,5 +124,35 @@ public abstract class iBuff<T> {
     public abstract T[] getAr();
 
     private ArrayList<T> m_pBuff;
+
+    @Override
+    public int hashCode() {
+        final Hash hash = Hash.std();
+        hash.insert(this.m_pBuff);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iBuff<?> other = (iBuff<?>) obj;
+        if (!Objects.equals(this.m_pBuff, other.m_pBuff)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "iBuff{" + "m_pBuff=" + m_pBuff + '}';
+    }
     
 }

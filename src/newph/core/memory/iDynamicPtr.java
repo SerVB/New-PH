@@ -25,9 +25,11 @@
 package newph.core.memory;
 
 import java.util.ArrayList;
+import java.util.Objects;
+import newph.core.type.Hash;
 
 /**
- * Storages an array.
+ * Contains an array.
  * @param <T> Elements type in the array.
  * @author SerVB
  * @since "GitHub new sources"
@@ -140,4 +142,39 @@ public class iDynamicPtr<T> {
      * Position.
      */
     protected int           m_Pos;
+
+    @Override
+    public int hashCode() {
+        final Hash hash = Hash.std();
+        hash.insert(this.m_Data);
+        hash.insert(this.m_Pos);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iDynamicPtr<?> other = (iDynamicPtr<?>) obj;
+        if (this.m_Pos != other.m_Pos) {
+            return false;
+        }
+        if (!Objects.equals(this.m_Data, other.m_Data)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "iDynamicPtr{" + "m_Pos=" + m_Pos + ", m_Data=" + m_Data + '}';
+    }
+    
 }

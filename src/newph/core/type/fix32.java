@@ -43,6 +43,8 @@ public final class fix32 {
 
     /**
      * Constant equals zero.
+     * @deprecated  Don't use this constant until the class become immutable.
+     *              Now anyone has an ability to change this constant!
      */
     public final static fix32 ZERO = new fix32(0);
     
@@ -304,7 +306,7 @@ public final class fix32 {
      * @param secondValue Second fix32 value.
      * @return Calculated value.
      */
-    private long getValueByMulShift(final long firstValue, final long secondValue) {
+    private static long getValueByMulShift(final long firstValue, final long secondValue) {
         return (firstValue * secondValue) >> FRAC_BITS;
     }
     
@@ -314,17 +316,8 @@ public final class fix32 {
      * @param secondValue Second fix32 value.
      * @return Calculated value.
      */
-    private long getValueByShiftDiv(final long firstValue, final long secondValue) {
+    private static long getValueByShiftDiv(final long firstValue, final long secondValue) {
         return (firstValue << FRAC_BITS) / secondValue;
-    }
-    
-    /**
-     * Checks if the object equals the other object.
-     * @param other Other object.
-     * @return True if equals, false if not.
-     */
-    public final boolean equals(final fix32 other) {
-        return this.val == other.val;
     }
     
     /**
@@ -367,6 +360,36 @@ public final class fix32 {
      * Value storage.
      */
     private long val;
+
+    @Override
+    public int hashCode() {
+        Hash hash = Hash.std();
+        hash.insert(val);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final fix32 other = (fix32) obj;
+        if (this.val != other.val) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "fix32{" + toDouble() + '}';
+    }
 
 }
 

@@ -24,6 +24,9 @@
 
 package newph.core.metric;
 
+import java.util.Objects;
+import newph.core.type.Hash;
+
 /**
  * Line class.
  * @author SerVB
@@ -120,11 +123,45 @@ public class iLine {
     /**
      * The first point.
      */
-    private iPoint m_Point1;
+    private final iPoint m_Point1;
     
     /**
      * The second point.
      */
-    private iPoint m_Point2;
+    private final iPoint m_Point2;
+
+    @Override
+    public int hashCode() {
+        Hash hash = Hash.std();
+        hash.insert(m_Point1);
+        hash.insert(m_Point2);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iLine other = (iLine) obj;
+        if (!Objects.equals(this.m_Point1, other.m_Point1)) {
+            return false;
+        }
+        if (!Objects.equals(this.m_Point2, other.m_Point2)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "iLine{" + m_Point1 + ", " + m_Point2 + '}';
+    }
     
 }

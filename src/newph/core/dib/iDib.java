@@ -25,16 +25,18 @@
 package newph.core.dib;
 
 import newph.core.staticFunction.MathOperations;
-import newph.core.constant.dib.COLOR;
 import newph.core.constant.dib.COLOR_MASK;
 import newph.core.constant.dib.COLOR_STANDARD;
 import newph.core.enumeration.ColorType;
 import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;
+import newph.core.metric.iRect;
+import newph.core.metric.iSize;
 import newph.core.type.Changeable;
 import newph.core.staticFunction.Logger;
 import newph.core.staticFunction.RGB;
 import newph.core.staticFunction.Tracer;
+import newph.core.staticFunction.iClipper;
 
 /**
  * Contains BMP image.
@@ -87,7 +89,7 @@ public class iDib {
      * @param siz   Size.
      * @param dType Pixel type.
      */
-    public iDib(final iSize siz, final int dType) {
+    public iDib(final iSize siz, final ColorType dType) {
         Init(siz, dType);
     }
     
@@ -106,7 +108,7 @@ public class iDib {
      * @param rect  The rectangle.
      */
     public final void Init(final iDib dib, final iRect rect) {
-        Allocate(rect.getSize());
+        Allocate(rect.size());
         
         m_dibType = dib.m_dibType;
         int src_ptr = dib.m_Siz.w*rect.y + rect.x;
@@ -183,7 +185,7 @@ public class iDib {
     
     /**
      * Resizes the image.
-     * @param siz 
+     * @param siz New size.
      */
     public void Resize(final iSize siz) {
         Cleanup();
@@ -400,7 +402,7 @@ public class iDib {
      */
     public void FillRect(final iRect rc, final int color, final int alpha) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) {
             return;
         }
         int dstPtr = drect.y*m_Siz.w+drect.x;
@@ -421,7 +423,7 @@ public class iDib {
      */
     public void DarkenBWRect(final iRect rc) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) {
             return;
         }
         int dstPtr = drect.y*m_Siz.w+drect.x;
@@ -444,7 +446,7 @@ public class iDib {
      */
     public void Darken50Rect(final iRect rc) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) {
             return;
         }
         int dstPtr = drect.y*m_Siz.w+drect.x;
@@ -465,7 +467,7 @@ public class iDib {
      */
     public void Darken25Rect(final iRect rc) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect, iRect.sizeToRect(m_Siz))) return;
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) return;
         int dstPtr = drect.y*m_Siz.w+drect.x;
         int h = drect.h;
         while (h-- > 0) {
@@ -486,7 +488,7 @@ public class iDib {
      */
     public void HGradientRect(final iRect rc, final int c1, final int c2) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect,iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) {
             return;
         }
         int dstPtr = drect.y*m_Siz.w+drect.x;
@@ -533,7 +535,7 @@ public class iDib {
      */
     public void VGradientRect(final iRect rc, final int c1, final int c2) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) {
             return;
         }
         int dstPtr = drect.y*m_Siz.w + drect.x;
@@ -574,14 +576,14 @@ public class iDib {
      */
     public void FrameRect(final iRect rc, final int clr, final int a) {
         iRect drect = new iRect(rc);
-        if (!iClipper.clipRect(drect, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipRect(drect, new iRect(m_Siz))) {
             return;
         }
 
-        HLine(rc.getTopLeft(),    rc.x2(), clr, a);
-        HLine(rc.getBottomLeft(), rc.x2(), clr, a);
-        VLine(rc.getTopLeft(),    rc.y2(), clr, a);
-        VLine(rc.getTopRight(),   rc.y2(), clr, a);
+        HLine(rc.TopLeft(),    rc.x2(), clr, a);
+        HLine(rc.BottomLeft(), rc.x2(), clr, a);
+        VLine(rc.TopLeft(),    rc.y2(), clr, a);
+        VLine(rc.TopRight(),   rc.y2(), clr, a);
     }
     
     /**
@@ -604,7 +606,7 @@ public class iDib {
     public void HLine(final iPoint pos, final int x2, final int clr, final int a) {
         iPoint dpos1 = new iPoint(Math.min(pos.x, x2), pos.y);
         Changeable<Integer> dx2 = new Changeable(Math.max(pos.x,x2));
-        if (!iClipper.clipHLine(dpos1, dx2, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipHLine(dpos1, dx2, new iRect(m_Siz))) {
             return;
         }
         int len = dx2.value - dpos1.x + 1;
@@ -636,7 +638,7 @@ public class iDib {
     public void VLine(final iPoint pos, final int y2, final int clr, final int a) {
         iPoint dpos1 = new iPoint(pos.x, Math.min(pos.y,y2));
         Changeable<Integer> dy2 = new Changeable(Math.max(pos.y, y2));
-        if (!iClipper.clipVLine(dpos1, dy2, iRect.sizeToRect(m_Siz))) {
+        if (!iClipper.clipVLine(dpos1, dy2, new iRect(m_Siz))) {
             return;
         }
         int len = dy2.value - dpos1.y + 1;
@@ -855,9 +857,9 @@ public class iDib {
         iRect dst_rect = new iRect(pos, siz);
         if (!iClipper.iClipRectRect(
                 dst_rect,
-                iRect.sizeToRect(dib.GetSize()),
+                new iRect(dib.GetSize()),
                 src_rect,
-                iRect.sizeToRect(GetSize())
+                new iRect(GetSize())
         )) {
             return;
         }
@@ -946,7 +948,7 @@ public class iDib {
                         dib.GetHeight()
                 ),
                 src_rect,
-                iRect.sizeToRect(GetSize())
+                new iRect(GetSize())
         )) {
             return;
         }

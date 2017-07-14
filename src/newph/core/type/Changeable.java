@@ -24,6 +24,8 @@
 
 package newph.core.type;
 
+import java.util.Objects;
+
 /**
  * Changeable object to be passed to functions
  * and to be changed in them.
@@ -44,6 +46,56 @@ public class Changeable<T> {
      */
     public Changeable(final T value) {
         this.value = value;
+    }
+
+//    /**
+//     * Returns the hash code of the object.
+//     * @return The hash code.
+//     */
+    // Inherited Javadoc
+    @Override
+    public int hashCode() {
+        final Hash hash = Hash.std();
+        hash.insert(value);
+        return hash.getResult();
+    }
+
+//    /**
+//     * Checks if the other object is equal to this object.
+//     * @param obj   The other object.
+//     * @return      {@code True} if the objects are equal, {@code false} otherwise.
+//     */
+    // Inherited Javadoc
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Changeable<?> other = (Changeable<?>) obj;
+        if (!Objects.equals(this.value, other.value)) {
+            return false;
+        }
+        return true;
+    }
+
+//    /**
+//     * Returns the String representation of the object.
+//     * @return The String representation.
+//     */
+    // Inherited Javadoc
+    @Override
+    public String toString() {
+        return String.format(
+                "Changeable<%s>{value=%s}", 
+                value.getClass().getName(), 
+                value.toString()
+        );
     }
 
 }

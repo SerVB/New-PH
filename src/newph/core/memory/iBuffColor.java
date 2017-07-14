@@ -27,7 +27,7 @@ package newph.core.memory;
 import java.util.ArrayList;
 
 /**
- * Replaces {@code iBuff<color>}
+ * Replaces {@code iBuff<color>}. Contains buffer of pixels.
  * @author SerVB
  * @since "GitHub new sources"
  */

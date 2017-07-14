@@ -26,6 +26,7 @@ package newph.core.metric;
 
 import newph.core.staticFunction.MathOperations;
 import newph.core.staticFunction.Logger;
+import newph.core.type.Hash;
 
 /**
  * Point class. Contains coordinates "x" and "y".
@@ -356,5 +357,41 @@ public final class iPoint {
      * "y" coordinate (Vertical).
      */
     public int y;
+
+    @Override
+    public int hashCode() {
+        Hash hash = Hash.std();
+        hash.insert(x);
+        hash.insert(y);
+        return hash.getResult();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iPoint other = (iPoint) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Point(" + x + ", " + y + ')';
+    }
+    
+    
 
 }
