@@ -56,6 +56,25 @@ public final class Logger {
     }
     
     /**
+     * Contains the name of the last tested method.
+     */
+    private static String lastUnitTest = null;
+    
+    /**
+     * Prints unit tests log.
+     */
+    public final static void printLogUnitTest() {
+        final int NEEDED_TRACE_EL_INDEX = 2;
+        StackTraceElement ste = Thread
+                        .currentThread()
+                        .getStackTrace()[NEEDED_TRACE_EL_INDEX];
+        
+        String state = !ste.getMethodName().equals(lastUnitTest) ? "\r\nBegin" : "End  ";
+        lastUnitTest = ste.getMethodName();
+        System.out.println(state + " " + ste);
+    }
+    
+    /**
      * Prints log into console.
      * @param level Log Level.
      * @param in Place of logging (class and method names).

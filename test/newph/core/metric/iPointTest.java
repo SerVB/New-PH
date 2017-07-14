@@ -39,7 +39,7 @@ public final class iPointTest {
      */
     @Test
     public void testAdd_iPoint() {
-        Logger.printLog(Logger.LogLevel.TEST, "add(Point)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint pos      = null;
@@ -62,7 +62,7 @@ public final class iPointTest {
             assertTrue(instance.equals(new iPoint(900, 40)));
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "add(Point)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -70,7 +70,7 @@ public final class iPointTest {
      */
     @Test
     public void testSubtract_iPoint() {
-        Logger.printLog(Logger.LogLevel.TEST, "subtract(Point)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint pos      = null;
@@ -93,7 +93,7 @@ public final class iPointTest {
             assertTrue(instance.equals(new iPoint(-11, 10)));
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "subtract(Point)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -101,7 +101,7 @@ public final class iPointTest {
      */
     @Test
     public void testAdd_iSize() {
-        Logger.printLog(Logger.LogLevel.TEST, "add(Size)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iSize size      = null;
@@ -124,7 +124,7 @@ public final class iPointTest {
             assertTrue(instance.equals(new iPoint(900, 40)));
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "add(Size)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -132,7 +132,7 @@ public final class iPointTest {
      */
     @Test
     public void testSubtract_iSize() {
-        Logger.printLog(Logger.LogLevel.TEST, "subtract(Size)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iSize size      = null;
@@ -155,7 +155,7 @@ public final class iPointTest {
             assertTrue(instance.equals(new iPoint(-11, 10)));
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "subtract(Size)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -163,7 +163,7 @@ public final class iPointTest {
      */
     @Test
     public void testAdd_int() {
-        Logger.printLog(Logger.LogLevel.TEST, "add(int)", "begin");
+        Logger.printLogUnitTest();
         
         {
             int offs        = 0;
@@ -186,7 +186,7 @@ public final class iPointTest {
             assertTrue(instance.equals(new iPoint(900, -70)));
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "add(int)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -194,7 +194,7 @@ public final class iPointTest {
      */
     @Test
     public void testSubtract_int() {
-        Logger.printLog(Logger.LogLevel.TEST, "subtract(int)", "begin");
+        Logger.printLogUnitTest();
         
         {
             int offs        = 0;
@@ -217,7 +217,7 @@ public final class iPointTest {
             assertTrue(instance.equals(new iPoint(-11, 20)));
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "subtract(int)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -225,7 +225,7 @@ public final class iPointTest {
      */
     @Test
     public void testEquals() {
-        Logger.printLog(Logger.LogLevel.TEST, "equals(Point)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint other    = null;
@@ -259,7 +259,7 @@ public final class iPointTest {
             assertEquals(expectedResult, result);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "equals(Point)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -282,7 +282,7 @@ public final class iPointTest {
      */
     @Test
     public void testGetDelta() {
-        Logger.printLog(Logger.LogLevel.TEST, "getDelta(Point)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint other    = null;
@@ -316,7 +316,7 @@ public final class iPointTest {
             assertEquals(expResult, result);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "getDelta(Point)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -324,7 +324,7 @@ public final class iPointTest {
      */
     @Test
     public void testMoveX() {
-        Logger.printLog(Logger.LogLevel.TEST, "moveX(int)", "begin");
+        Logger.printLogUnitTest();
         
         {
             int offset_x    = 0;
@@ -347,7 +347,7 @@ public final class iPointTest {
             assertEquals(-9, instance.x);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "moveX(int)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -355,7 +355,7 @@ public final class iPointTest {
      */
     @Test
     public void testMoveY() {
-        Logger.printLog(Logger.LogLevel.TEST, "moveY(int)", "begin");
+        Logger.printLogUnitTest();
         
         {
             int offset_y    = 0;
@@ -378,7 +378,7 @@ public final class iPointTest {
             assertEquals(-9, instance.y);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "moveY(int)", "end");
+        Logger.printLogUnitTest();
     }
 
     /**
@@ -386,7 +386,7 @@ public final class iPointTest {
      */
     @Test
     public void testMove() {
-        Logger.printLog(Logger.LogLevel.TEST, "move(int)", "begin");
+        Logger.printLogUnitTest();
         
         {
             int offset_x = 0;
@@ -412,7 +412,7 @@ public final class iPointTest {
             assertTrue(90 == instance.x && 180 == instance.y);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "move(int)", "end");
+        Logger.printLogUnitTest();
     }
     
     /**
@@ -420,7 +420,7 @@ public final class iPointTest {
      */
     @Test
     public void testConstructorDefault() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point()", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint pnt = new iPoint();
@@ -428,7 +428,7 @@ public final class iPointTest {
             assertEquals(0, pnt.y);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "Point()", "end");
+        Logger.printLogUnitTest();
     }
     
     /**
@@ -436,7 +436,7 @@ public final class iPointTest {
      */
     @Test
     public void testConstructorCopy() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint pnt = new iPoint(new iPoint(1, -10));
@@ -450,7 +450,7 @@ public final class iPointTest {
             assertEquals(100, pnt.y);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point)", "end");
+        Logger.printLogUnitTest();
     }
     
     /**
@@ -458,7 +458,7 @@ public final class iPointTest {
      */
     @Test
     public void testConstructorSize() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Size)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint pnt = new iPoint(new iSize(4, 7));
@@ -472,7 +472,7 @@ public final class iPointTest {
             assertEquals(-77, pnt.y);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Size)", "end");
+        Logger.printLogUnitTest();
     }
     
     /**
@@ -480,7 +480,7 @@ public final class iPointTest {
      */
     @Test
     public void testConstructorCoordinates() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point(int, int)", "begin");
+        Logger.printLogUnitTest();
         
         {
             iPoint pnt = new iPoint(1, 2);
@@ -494,109 +494,7 @@ public final class iPointTest {
             assertEquals(26, pnt.y);
         }
         
-        Logger.printLog(Logger.LogLevel.TEST, "Point(int, int)", "end");
-    }
-    
-    /**
-     * Test operation points constructor.
-     */
-    @Test
-    public void testConstructorOperPoint() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point, char, Point)", "begin");
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(0, 0), '+', new iPoint(1, 2));
-            assertEquals(1, pnt.x);
-            assertEquals(2, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(20, 30), '+', new iPoint(11, 22));
-            assertEquals(31, pnt.x);
-            assertEquals(52, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(0, 0), '-', new iPoint(1, 2));
-            assertEquals(-1, pnt.x);
-            assertEquals(-2, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(20, 30), '-', new iPoint(11, 22));
-            assertEquals(9, pnt.x);
-            assertEquals(8, pnt.y);
-        }
-        
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point, char, Point)", "end");
-    }
-    
-    /**
-     * Test operation point and size constructor.
-     */
-    @Test
-    public void testConstructorOperSize() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point, char, Size)", "begin");
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(0, 0), '+', new iSize(1, 2));
-            assertEquals(1, pnt.x);
-            assertEquals(2, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(20, 30), '+', new iSize(11, 22));
-            assertEquals(31, pnt.x);
-            assertEquals(52, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(0, 0), '-', new iSize(1, 2));
-            assertEquals(-1, pnt.x);
-            assertEquals(-2, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(20, 30), '-', new iSize(11, 22));
-            assertEquals(9, pnt.x);
-            assertEquals(8, pnt.y);
-        }
-        
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point, char, Size)", "end");
-    }
-    
-    /**
-     * Test operation point and int constructor.
-     */
-    @Test
-    public void testConstructorOperInt() {
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point, char, int)", "begin");
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(0, 0), '+', 1);
-            assertEquals(1, pnt.x);
-            assertEquals(1, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(20, 30), '+', 11);
-            assertEquals(31, pnt.x);
-            assertEquals(41, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(0, 0), '-', 1);
-            assertEquals(-1, pnt.x);
-            assertEquals(-1, pnt.y);
-        }
-        
-        {
-            iPoint pnt = new iPoint(new iPoint(20, 30), '-', 11);
-            assertEquals(9, pnt.x);
-            assertEquals(19, pnt.y);
-        }
-        
-        Logger.printLog(Logger.LogLevel.TEST, "Point(Point, char, int)", "end");
+        Logger.printLogUnitTest();
     }
     
 }
