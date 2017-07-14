@@ -24,6 +24,12 @@
 
 package newph.core.staticFunction;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import newph.core.constant.dib.COLOR;
 import newph.core.constant.dib.COLOR_MASK;
 import newph.core.enumeration.ColorType;
@@ -323,123 +329,26 @@ public final class RGB {
     }
     }
     
-    /*
-     * Save bitmap
+    /**
+     * Saves not bitmap but png.
+     * @param dib   Dib to save.
+     * @param fname Path to the resulting file.
+     * @return      {@code True} if the saving was successful, {@code false} if not.
      */
-    public final static boolean SaveDibBitmap32(
+    public final static boolean SaveDibBitmap(
             final iDib dib,
             final String fname
     ) {
-        // Check this:
-        // http://www.javaworld.com/article/2077561/learn-java/java-tip-60--saving-bitmap-files-in-java.html
-        throw new UnsupportedOperationException("Can't make a bmp file");
+        BufferedImage bi = ImageInOut.imageFromDib(dib);
         
-        /*
-        File pFile = new File(fname);
-        if (pFile.canWrite()) {
-            return false;
+        try {
+            ImageIO.write(bi, "png",new File(fname));
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(RGB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        int pix_siz = dib.GetWidth() * dib.GetHeight();
-        Tracer.check(pix_siz);
-        final int[] buff = dib.GetPtr().getAr();
-
-        // Prepare BITMAPFILEHEADER
-        BITMAPFILEHEADER    bmfHeader;
-        bmfHeader.bfType = ((WORD) ('M' << 8) | 'B');
-        bmfHeader.bfReserved1 = 0;
-        bmfHeader.bfReserved2 = 0;
-        bmfHeader.bfSize = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + (dib.GetWidth() * dib.GetHeight() * 4);
-        bmfHeader.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-
-        // Prepare BITMAPINFOHEADER
-        BITMAPINFOHEADER bmihdr;
-        bmihdr.biSize = sizeof(BITMAPINFOHEADER);
-        bmihdr.biWidth = dib.GetWidth();
-        bmihdr.biHeight = -((sint32)dib.GetHeight());
-        bmihdr.biPlanes = 1;
-        bmihdr.biBitCount = 32;
-        bmihdr.biCompression = BI_RGB;
-        bmihdr.biSizeImage = 0;
-        bmihdr.biXPelsPerMeter = 600;
-        bmihdr.biYPelsPerMeter = 600;
-        bmihdr.biClrUsed = 0;
-        bmihdr.biClrImportant = 0;
-
-        pFile.Write(&bmfHeader,sizeof(BITMAPFILEHEADER));
-        pFile.Write(&bmihdr,sizeof(BITMAPINFOHEADER));
-
-        for (uint32 yy=0; yy<dib.GetHeight(); ++yy) {
-            for (uint32 xx=0; xx<dib.GetWidth(); ++xx) {
-                uint32 clr = ((*buff)>>11)<<19 | (((*buff)>>5) & 0x3f)<<10 | ((*buff)&0x1f)<<3;
-                pFile.Write(&clr,sizeof(clr));
-                buff++;
-            }
-        }
-
-        return true;
-        */
+        
+        return false;
     }
     
-    public final static boolean SaveDibBitmap16(
-            final iDib dib,
-            final String fname
-    ) {
-        // Check this:
-        // http://www.javaworld.com/article/2077561/learn-java/java-tip-60--saving-bitmap-files-in-java.html
-        throw new UnsupportedOperationException("Can't make a bmp file");
-        /*
-        iFilePtr pFile = CreateWin32File(fname);
-        if (!pFile) return false;
-
-        uint32 pix_siz = dib.GetWidth()*dib.GetHeight();
-        check(pix_siz);
-        const iDib.pixel* buff = dib.GetPtr();
-
-        // Prepare BITMAPFILEHEADER
-        BITMAPFILEHEADER    bmfHeader;
-        bmfHeader.bfType = ((WORD) ('M' << 8) | 'B');
-        bmfHeader.bfReserved1 = 0;
-        bmfHeader.bfReserved2 = 0;
-        bmfHeader.bfSize = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + (dib.GetWidth() * dib.GetHeight() * 2);
-        bmfHeader.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-
-        // Prepare BITMAPINFOHEADER
-        BITMAPINFOHEADER bmihdr;
-        bmihdr.biSize = sizeof(BITMAPINFOHEADER);
-        bmihdr.biWidth = dib.GetWidth();
-        bmihdr.biHeight = -((sint32)dib.GetHeight());
-        bmihdr.biPlanes = 1;
-        bmihdr.biBitCount = 16;
-        bmihdr.biCompression = BI_RGB;
-        bmihdr.biSizeImage = 0;
-        bmihdr.biXPelsPerMeter = 600;
-        bmihdr.biYPelsPerMeter = 600;
-        bmihdr.biClrUsed = 0;
-        bmihdr.biClrImportant = 0;
-
-        pFile.Write(&bmfHeader,sizeof(BITMAPFILEHEADER));
-        pFile.Write(&bmihdr,sizeof(BITMAPINFOHEADER));
-
-        uint16* obuff = new uint16[dib.GetWidth()];
-
-        for (uint32 yy=0; yy<dib.GetHeight(); ++yy) {
-            for (uint32 xx=0; xx<dib.GetWidth(); ++xx) {
-                obuff[xx] = (*buff & 0x1F) | ((*buff & 0xFFC0)>>1);
-                buff++;
-            }
-            pFile.Write(obuff,dib.GetWidth() * sizeof(uint16));
-        }
-
-        delete[] obuff;
-        return true;
-    }
-
-    public final static int TintedShadow(final int pixel) { 
-        //static uint8 rpt = 31;
-        int chnl = (pixel >> 6) & 0x1f;
-        return ((MASK_COLOR.BWPAL[chnl] & 0xf7de) >> 1) + ((0x39e7 & 0xf7de) >> 1);
-    
-    */
-    } 
 }

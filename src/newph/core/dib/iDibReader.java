@@ -25,13 +25,11 @@
 package newph.core.dib;
 
 /**
- *
+ * Dib Reader.
  * @author SerVB
  * @since "GitHub new sources"
  */
 public class iDibReader {
-
-    private iSmartPtr<iDibReaderImpl> pimpl;
 
     public iDibReader();
     public ~iDibReader();
@@ -41,5 +39,5 @@ public class iDibReader {
     public bool FromStream(iDib& dib, iFileI* pFile, IMG_TYPE it) const;
     public bool FromFile(iPaletteDib& dib, const iStringT& fname) const;
     public bool FromStream(iPaletteDib& dib, iFileI* pFile, IMG_TYPE it) const;
-    
+
 }

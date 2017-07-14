@@ -273,6 +273,18 @@ public class iDib {
     public final int GetPixel(final iPoint pos) {
         return GetPixel(pos.x, pos.y);
     }
+    
+    /**
+     * Returns the copied array of pixels.
+     * @return The copied array of pixels.
+     */
+    public final int[] getCopiedPixels() {
+        int[] res = new int[m_RGB.getAr().length];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = m_RGB.getAr()[i];
+        }
+        return res;
+    }
 
     /**
      * Returns buffer length in bytes.
