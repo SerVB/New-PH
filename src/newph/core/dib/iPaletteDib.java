@@ -26,7 +26,11 @@ package newph.core.dib;
 
 import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;
+import newph.core.metric.iRect;
+import newph.core.metric.iSize;
+import newph.core.staticFunction.RGB;
 import newph.core.staticFunction.Tracer;
+import newph.core.staticFunction.iClipper;
 
 /**
  * iPalette Dib i.e. 8bit dib with palette.
@@ -79,7 +83,7 @@ public final class iPaletteDib {
                                 dib.GetHeight()
                         ),
                         src_rect,
-                        iRect.sizeToRect(GetSize())
+                        new iRect(GetSize())
                 )
         ) {
             return;
@@ -90,9 +94,9 @@ public final class iPaletteDib {
             for (int xx = 0; xx < dst_rect.w; ++xx) {
                 if (this.m_RGB.at(src_clr + xx) != 0) {
                     if (alpha == 255) {
-                        dib.GetPtr().set(dst_clr + xx, pal.GetPtr()[src_clr + xx]);
+                        dib.setPixelAt(dst_clr + xx, pal.GetPtr()[src_clr + xx]);
                     } else {
-                        SetDibPixelAlpha(dst_clr[xx], pal[src_clr[xx]],alpha);
+                        RGB.SetDibPixelAlpha(dib, dst_clr + xx, pal.GetPtr()[src_clr + xx], alpha);
                     }
                 }
             }
@@ -123,25 +127,38 @@ public final class iPaletteDib {
         if (
                 !iClipper.iClipRectRect(
                         dst_rect,
-                        iRect.sizeToRect(dib.GetSize()),
+                        new iRect(dib.GetSize()),
                         src_rect,
-                        iRect.sizeToRect(GetSize())
+                        new iRect(GetSize())
                 )
         ) {
             return;
         }
-        const uint8* src_clr = m_RGB+src_rect.y*m_Siz.w+src_rect.x;
-        uint16* dst_clr=dib.GetPtr()+dst_rect.y*dib.GetWidth()+dst_rect.x;
+//        const uint8* src_clr = m_RGB+src_rect.y*m_Siz.w+src_rect.x;
+        int src_clr = src_rect.y * m_Siz.w + src_rect.x;
+//        uint16* dst_clr=dib.GetPtr()+dst_rect.y*dib.GetWidth()+dst_rect.x;
+        int dst_clr = dst_rect.y * dib.GetWidth() + dst_rect.x;
 
-        for (uint32 yy=0; yy<dst_rect.h; yy++) {
-            for (uint32 xx=0; xx<dst_rect.w; ++xx) {
-                if (src_clr[xx] && pal[src_clr[xx]] != RGB16(0xF0,0,0xF0)) {
-                    if (alpha == 255) dst_clr[xx] = pal[src_clr[xx]];
-                    else SetDibPixelAlpha(&dst_clr[xx], pal[src_clr[xx]],alpha);
+        for (int yy = 0; yy < dst_rect.h; yy++) {
+            for (int xx = 0; xx < dst_rect.w; ++xx) {
+                if (m_RGB.at(src_clr + xx) != 0 && pal.get(src_clr + xx) != RGB.RGB16(0xF0, 0, 0xF0)) {
+                    if (alpha == 255) {
+                        dib.setPixelAt(
+                                dst_clr + xx,
+                                pal.get(src_clr + xx)
+                        );
+                    } else {
+                        RGB.SetDibPixelAlpha(
+                                dib,
+                                dst_clr + xx,
+                                pal.get(src_clr + xx),
+                                alpha
+                        );
+                    }
                 }
             }
-            src_clr+=m_Siz.w;
-            dst_clr+=dib.GetWidth();
+            src_clr += m_Siz.w;
+            dst_clr += dib.GetWidth();
         }
     }
 

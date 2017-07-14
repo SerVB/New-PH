@@ -198,12 +198,12 @@ public final class RGB {
     }
     
     public final static void SetDibPixelAlpha(
-            final iBuffColor buff,
+            final iDib dib,
             final int index,
             final int color,
             final int a
     ) {
-        final int oldColor = buff.at(index);
+        final int oldColor = dib.getPixelAt(index);
          
         final int inv_a = 255 - a;
         
@@ -215,7 +215,7 @@ public final class RGB {
         final int dg = inv_a * ((oldColor & COLOR_MASK.GREEN[ColorType.RGB.getValue()]) >> 5);
         final int db = inv_a * ((oldColor & COLOR_MASK.BLUE [ColorType.RGB.getValue()]));
         
-        buff.set(
+        dib.setPixelAt(
                 index,
                 (((sr+dr)>>8) << 11) | (((sg+dg)>>8) << 5) | ((sb+db)>>8)
         );

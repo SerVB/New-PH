@@ -285,15 +285,12 @@ public class iDib {
     }
 
     /**
-     * Returns pointer to the pixel at the specified position.
-     * @deprecated Pointers are not available in Java!
-     * TODO: Remove the method, create "setPixel" method.
+     * Returns index of the pixel at the specified position.
      * @param pos Position.
-     * @return    Nothing.
+     * @return    The pixel's index.
      */
     public final int GetPtr(final iPoint pos) {
-        throw new UnsupportedOperationException("Pointers are not available in Java!");
-//        return m_RGB + (pos.y*m_Siz.w)+pos.x;
+        return pos.y * m_Siz.w + pos.x;
     }
 
     /**
@@ -648,7 +645,7 @@ public class iDib {
             if (a==255) {
                 m_RGB.set(dstPtr, clr);
             } else {
-                RGB.SetDibPixelAlpha(m_RGB, dstPtr, clr, a);
+                RGB.SetDibPixelAlpha(this, dstPtr, clr, a);
             }
             dstPtr += m_Siz.w;
         }
