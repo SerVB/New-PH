@@ -263,21 +263,6 @@ public final class iPointTest {
     }
 
     /**
-     * Test of GetSqDelta method, of class iPoint.
-     */
-//    @Test
-//    public void testGetSqDelta() {
-//        System.out.println("test " + "GetSqDelta");
-//        iPoint pnt = null;
-//        iPoint instance = new iPoint();
-//        int expResult = 0;
-//        int result = instance.GetSqDelta(pnt);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-
-    /**
      * Test of GetDelta method, of class iPoint.
      */
     @Test
@@ -308,9 +293,9 @@ public final class iPointTest {
             assertEquals(expResult, result);
         }
         
-        {
-            iPoint other    = new iPoint(0+1, 0+2);
-            iPoint instance = new iPoint(3+1, 4+2);
+        { /* Triangle 3-4-5: */
+            iPoint other    = new iPoint(1+0, 2+0);
+            iPoint instance = new iPoint(1+3, 2+4);
             int expResult = 5;
             int result = instance.GetDelta(other);
             assertEquals(expResult, result);
@@ -419,7 +404,7 @@ public final class iPointTest {
      * Test default constructor.
      */
     @Test
-    public void testConstructorDefault() {
+    public void test_ConstructorDefault() {
         Logger.printLogUnitTest();
         
         {
@@ -435,7 +420,7 @@ public final class iPointTest {
      * Test copy constructor.
      */
     @Test
-    public void testConstructorCopy() {
+    public void test_ConstructorCopy() {
         Logger.printLogUnitTest();
         
         {
@@ -457,7 +442,7 @@ public final class iPointTest {
      * Test Size constructor.
      */
     @Test
-    public void testConstructorSize() {
+    public void test_ConstructorSize() {
         Logger.printLogUnitTest();
         
         {
@@ -479,7 +464,7 @@ public final class iPointTest {
      * Test coordinates constructor.
      */
     @Test
-    public void testConstructorCoordinates() {
+    public void test_ConstructorCoordinates() {
         Logger.printLogUnitTest();
         
         {
@@ -492,6 +477,226 @@ public final class iPointTest {
             iPoint pnt = new iPoint(-100, 26);
             assertEquals(-100, pnt.x);
             assertEquals(26, pnt.y);
+        }
+        
+        Logger.printLogUnitTest();
+    }
+
+    /**
+     * Test of addToPoint method, of class iPoint.
+     */
+    @Test
+    public void testAddToPoint_iPoint_iPoint() {
+        Logger.printLogUnitTest();
+        
+        {
+            iPoint first        = new iPoint(0, 0);
+            iPoint second       = new iPoint(0, 0);
+            iPoint expResult    = new iPoint(0, 0);
+            
+            iPoint result       = iPoint.addToPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            iPoint second       = new iPoint(1, 1);
+            iPoint expResult    = new iPoint(2, 1);
+            
+            iPoint result       = iPoint.addToPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        Logger.printLogUnitTest();
+    }
+
+    /**
+     * Test of subtractFromPoint method, of class iPoint.
+     */
+    @Test
+    public void testSubtractFromPoint_iPoint_iPoint() {
+        Logger.printLogUnitTest();
+        
+        {
+            iPoint first        = new iPoint(0, 0);
+            iPoint second       = new iPoint(0, 0);
+            iPoint expResult    = new iPoint(0, 0);
+            
+            iPoint result       = iPoint.subtractFromPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            iPoint second       = new iPoint(-1, -1);
+            iPoint expResult    = new iPoint(2, 1);
+            
+            iPoint result       = iPoint.subtractFromPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        Logger.printLogUnitTest();
+    }
+
+    /**
+     * Test of addToPoint method, of class iPoint.
+     */
+    @Test
+    public void testAddToPoint_iPoint_int() {
+        Logger.printLogUnitTest();
+        
+        {
+            iPoint first        = new iPoint(0, 0);
+            int second          = 0;
+            iPoint expResult    = new iPoint(0, 0);
+            
+            iPoint result       = iPoint.addToPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            int second          = 1;
+            iPoint expResult    = new iPoint(2, 1);
+            
+            iPoint result       = iPoint.addToPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        Logger.printLogUnitTest();
+    }
+
+    /**
+     * Test of subtractFromPoint method, of class iPoint.
+     */
+    @Test
+    public void testSubtractFromPoint_iPoint_int() {
+        Logger.printLogUnitTest();
+        
+        {
+            iPoint first        = new iPoint(0, 0);
+            int second          = 0;
+            iPoint expResult    = new iPoint(0, 0);
+            
+            iPoint result       = iPoint.subtractFromPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            int second          = -1;
+            iPoint expResult    = new iPoint(2, 1);
+            
+            iPoint result       = iPoint.subtractFromPoint(first, second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        Logger.printLogUnitTest();
+    }
+
+    /**
+     * Test of equals method, of class iPoint.
+     */
+    @Test
+    public void testEquals_Object() {
+        Logger.printLogUnitTest();
+        
+        {
+            iPoint first        = new iPoint(0, 0);
+            iPoint second       = new iPoint(0, 0);
+            
+            boolean result      = first.equals(second);
+            boolean expResult   = true;
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(0, 0);
+            iPoint second       = new iPoint(0, 3);
+            
+            boolean result      = first.equals(second);
+            boolean expResult   = false;
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            iPoint second       = new iPoint(4, 0);
+            
+            boolean result      = first.equals(second);
+            boolean expResult   = false;
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            iPoint second       = null;
+            
+            boolean result      = first.equals(second);
+            boolean expResult   = false;
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first        = new iPoint(1, 0);
+            Object second       = new Object();
+            
+            boolean result      = first.equals(second);
+            boolean expResult   = false;
+            
+            assertEquals(expResult, result);
+        }
+        
+        Logger.printLogUnitTest();
+    }
+
+    /**
+     * Test of GetSqDelta method, of class iPoint.
+     */
+    @Test
+    public void testGetSqDelta() {
+        Logger.printLogUnitTest();
+        
+        {
+            iPoint first    = new iPoint(0, 0);
+            iPoint second   = new iPoint(0, 0);
+            int expResult   = 0;
+            
+            int result      = first.GetSqDelta(second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first    = new iPoint(5, 4);
+            iPoint second   = new iPoint(0, 0);
+            int expResult   = 5;
+            
+            int result      = first.GetSqDelta(second);
+            
+            assertEquals(expResult, result);
+        }
+        
+        {
+            iPoint first    = new iPoint(5, 4);
+            iPoint second   = new iPoint(-100, 1000);
+            int expResult   = 1000-4;
+            
+            int result      = first.GetSqDelta(second);
+            
+            assertEquals(expResult, result);
         }
         
         Logger.printLogUnitTest();

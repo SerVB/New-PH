@@ -234,24 +234,6 @@ public final class iPoint {
     }
 
     /**
-     * Checks if the object is equal to the other object.
-     * @param other Other object. If null then not equals to any object.
-     * @return True if objects are equal, false if not.
-     */
-    public final boolean equals(final iPoint other) {
-        if (other == null) {
-            Logger.printLog(
-                    Logger.LogLevel.DEBUG,
-                    "Point.equals(Point other)",
-                    "other is null, so not equals!"
-            );
-            return false;
-        } else {
-            return (this.x == other.x) && (this.y == other.y);
-        }
-    }
-
-    /**
      * TODO: Write documentation.
      * TODO: Write test.
      * TODO: Rename (refactor) to "getSqDelta" (after full source move).
@@ -270,8 +252,8 @@ public final class iPoint {
         }
         
         return Math.max(
-                MathOperations.dif(other.x, x),
-                MathOperations.dif(other.y, y)
+                MathOperations.dif(other.x, this.x),
+                MathOperations.dif(other.y, this.y)
         );
     }
 
