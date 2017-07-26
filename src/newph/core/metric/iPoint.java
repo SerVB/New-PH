@@ -24,7 +24,7 @@
 
 package newph.core.metric;
 
-import newph.core.staticFunction.MathOperations;
+import newph.core.staticFunction.Operations;
 import newph.core.staticFunction.Logger;
 import newph.core.type.Hash;
 
@@ -251,9 +251,8 @@ public final class iPoint {
             return 0;
         }
         
-        return Math.max(
-                MathOperations.dif(other.x, this.x),
-                MathOperations.dif(other.y, this.y)
+        return Math.max(Operations.dif(other.x, this.x),
+                Operations.dif(other.y, this.y)
         );
     }
 

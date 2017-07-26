@@ -29,15 +29,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Changeable Test. 
+ * Changeable Test.
  * @author SerVB
  */
 public final class ChangeableTest {
 
     @Test
     public void testConstructor() {
-        Logger.printLog(Logger.LogLevel.TEST, "Changeable(T)", "begin");
-        
+        Logger.printLogUnitTest();
+
         {
             Integer a = 1;
             Changeable<Integer> b = new Changeable<>(a);
@@ -45,14 +45,34 @@ public final class ChangeableTest {
 
             assertNotEquals(a + 1, b.value + 0);
         }
-        
+
         {
             Integer a = 10;
             Changeable<Integer> b = new Changeable<>(a);
             assertEquals(a, b.value);
         }
-        
-        Logger.printLog(Logger.LogLevel.TEST, "Changeable(T)", "end");
+
+        Logger.printLogUnitTest();
     }
-    
+
+    /**
+     * Test of setObject method, of class Changeable.
+     */
+    @Test
+    public void testSetObject() {
+        Logger.printLogUnitTest();
+
+        {
+            Integer a = 10;
+            Changeable<Integer> b = new Changeable<>(a);
+
+            a = 4;
+            b.setObject(a);
+
+            assertEquals(a, b.value);
+        }
+
+        Logger.printLogUnitTest();
+    }
+
 }

@@ -34,23 +34,26 @@ import newph.core.metric.iSize;
  * @since "GitHub new sources"
  */
 public final class METRIC {
-    
+
     /**
      * Predefined invalid Point value.
+     * Don't modify!
      */
     public final static iPoint cInvalidPoint =
             new iPoint(0x7fffffff, 0x7fffffff);
-    
+
     /**
      * Predefined invalid Size value.
+     * Don't modify!
      */
     public final static iSize cInvalidSize =
             new iSize(0xffffffff, 0xffffffff);
-    
+
     /**
      * Predefined invalid Rect value.
+     * Don't modify!
      */
     public final static iRect cInvalidRect =
             new iRect(0x7fffffff, 0x7fffffff, 0xffffffff, 0xffffffff);
-    
+
 }

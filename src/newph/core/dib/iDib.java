@@ -24,7 +24,7 @@
 
 package newph.core.dib;
 
-import newph.core.staticFunction.MathOperations;
+import newph.core.staticFunction.Operations;
 import newph.core.constant.dib.COLOR_MASK;
 import newph.core.constant.dib.COLOR_STANDARD;
 import newph.core.enumeration.ColorType;
@@ -513,11 +513,11 @@ public class iDib {
         int w = cnt;
         while (w-- > 0) {
             int dr = ((c2&0xF800)>>11) - ((c1&0xF800)>>11);
-            int nr = MathOperations.clamp(0,0x1F,  ((c1&0xF800)>>11) + ((dr*tp)/tw));
+            int nr = Operations.clamp(0,0x1F,  ((c1&0xF800)>>11) + ((dr*tp)/tw));
             int dg = ((c2&0x7E0)>>5) - ((c1&0x7E0)>>5);
-            int ng = MathOperations.clamp(0,0x3F,  ((c1&0x7E0)>>5) + ((dg*tp)/tw));
+            int ng = Operations.clamp(0,0x3F,  ((c1&0x7E0)>>5) + ((dg*tp)/tw));
             int db = (c2&0x1F) - (c1&0x1F);
-            int nb = MathOperations.clamp(0,0x1F,  (c1&0x1F) + ((db*tp)/tw));
+            int nb = Operations.clamp(0,0x1F,  (c1&0x1F) + ((db*tp)/tw));
             gr[pgr] = (nr<<11)|(ng<<5)|nb;
             pgr++;
             tp++;
@@ -557,11 +557,11 @@ public class iDib {
         int h = drect.h;
         while (h-- > 0) {
             int dr = ((c2&0xF800)>>11) - ((c1&0xF800)>>11);
-            int nr  = MathOperations.clamp(0,0x1F,  ((c1&0xF800)>>11) + ((dr*tp)/th));
+            int nr  = Operations.clamp(0,0x1F,  ((c1&0xF800)>>11) + ((dr*tp)/th));
             int dg = ((c2&0x7E0)>>5) - ((c1&0x7E0)>>5);
-            int ng  = MathOperations.clamp(0,0x3F,  ((c1&0x7E0)>>5) + ((dg*tp)/th));
+            int ng  = Operations.clamp(0,0x3F,  ((c1&0x7E0)>>5) + ((dg*tp)/th));
             int db = (c2&0x1F) - (c1&0x1F);
-            int nb  = MathOperations.clamp(0,0x1F,  (c1&0x1F) + ((db*tp)/th));
+            int nb  = Operations.clamp(0,0x1F,  (c1&0x1F) + ((db*tp)/th));
             RGB.FillDibBlock(m_RGB, (nr << 11) | (ng << 5) | nb, dstPtr, drect.w);
             dstPtr += m_Siz.w;
             tp++;
@@ -687,8 +687,8 @@ public class iDib {
                 Math.abs(p2.y - p1.y)
         );
         iPoint s = new iPoint(
-                MathOperations.sign(p2.x - p1.x ),
-                MathOperations.sign(p2.y - p1.y)
+                Operations.sign(p2.x - p1.x ),
+                Operations.sign(p2.y - p1.y)
         );
         int d_, d1, d2;
         if ( d.y <= d.x ) {

@@ -29,9 +29,10 @@ import java.util.Objects;
 /**
  * Changeable object to be passed to functions
  * and to be changed in them.
- * @param <T> Object's Type.
- * @author SerVB
- * @since PPH 0
+ *
+ * @param <T>   Object's Type.
+ * @author      SerVB
+ * @since       PPH 0
  */
 public class Changeable<T> {
 
@@ -42,16 +43,22 @@ public class Changeable<T> {
 
     /**
      * Constructs the changeable object.
+     *
      * @param value The initial value of the object.
      */
     public Changeable(final T value) {
         this.value = value;
     }
 
-//    /**
-//     * Returns the hash code of the object.
-//     * @return The hash code.
-//     */
+    /**
+     * Sets the value to the object's value.
+     *
+     * @param newValue The object's value.
+     */
+    public void setObject(final Object newValue) {
+        this.value = (T) newValue;
+    }
+
     // Inherited Javadoc
     @Override
     public int hashCode() {
@@ -60,12 +67,6 @@ public class Changeable<T> {
         return hash.getResult();
     }
 
-//    /**
-//     * Checks if the other object is equal to this object.
-//     * @param obj   The other object.
-//     * @return      {@code True} if the objects are equal, {@code false} otherwise.
-//     */
-    // Inherited Javadoc
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -84,16 +85,11 @@ public class Changeable<T> {
         return true;
     }
 
-//    /**
-//     * Returns the String representation of the object.
-//     * @return The String representation.
-//     */
-    // Inherited Javadoc
     @Override
     public String toString() {
         return String.format(
-                "Changeable<%s>{value=%s}", 
-                value.getClass().getName(), 
+                "Changeable<%s>{value=%s}",
+                value.getClass().getName(),
                 value.toString()
         );
     }

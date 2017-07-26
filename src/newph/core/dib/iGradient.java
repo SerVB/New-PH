@@ -24,7 +24,7 @@
 
 package newph.core.dib;
 
-import newph.core.staticFunction.MathOperations;
+import newph.core.staticFunction.Operations;
 
 /**
  * Contains gradient pixel codes.
@@ -51,7 +51,7 @@ public class iGradient {
         if (!IsValid()) {
             return 0;
         } else {
-            return m_pGrad[MathOperations.clamp(0, m_cnt-1, pos)];
+            return m_pGrad[Operations.clamp(0, m_cnt-1, pos)];
         }
     }
     

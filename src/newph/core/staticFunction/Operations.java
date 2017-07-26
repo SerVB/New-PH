@@ -24,15 +24,36 @@
 
 package newph.core.staticFunction;
 
+import newph.core.type.Changeable;
+
 /**
- * Math Operations.
- * @author SerVB
- * @since "GitHub new sources"
+ * Operations.
+ *
+ * @author  SerVB
+ * @since   "GitHub new sources"
  */
-public final class MathOperations {
+public final class Operations {
+
+    /**
+     * Prevents from creating an instance of the class.
+     */
+    private Operations() {}
+
+    /**
+     * Swaps content of two objects.
+     *
+     * @param a The first object.
+     * @param b The second object.
+     */
+    public final static void iSwap(final Changeable<?> a, final Changeable<?> b) {
+        Object tmp = a.value;
+        a.setObject(b.value);
+        b.setObject(tmp);
+    }
 
     /**
      * Restricts the value between min and max values.
+     *
      * @param min   Min value.
      * @param max   Max value.
      * @param value Value.
@@ -51,7 +72,8 @@ public final class MathOperations {
     }
 
     /**
-     * Returns absolute value of difference between two values.
+     * Returns the absolute difference between two values.
+     *
      * @param x First value.
      * @param y Second value.
      * @return  Absolute value of difference.
@@ -62,6 +84,7 @@ public final class MathOperations {
 
     /**
      * Sign function.
+     *
      * @param x Value.
      * @return  1 if the value is greater than 0, 0 if the value is 0, - 1 if the value is smaller than 0.
      */
@@ -75,8 +98,15 @@ public final class MathOperations {
         }
     }
 
-    public final static int align(int val, int al) {
-        return ((val+(al-1)) / al) * al;
+    /**
+     * Aligns the given value according to the alignment step.
+     *
+     * @param value     The value.
+     * @param step      The alignment step.
+     * @return          The aligned value.
+     */
+    public final static int align(final int value, final int step) {
+        return ((value + step - 1) / step) * step;
     }
 
     public final static int wrap(int val, int minv, int wrap) {
@@ -92,7 +122,8 @@ public final class MathOperations {
     }
 
     /**
-     * Rounds negative and positive double correctly.
+     * Rounds negative and positive double mathematically.
+     *
      * @param d Double to round.
      * @return  Rounded correctly double.
      */

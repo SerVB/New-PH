@@ -78,8 +78,8 @@ public class iClipper {
      * @return 
      */
     public static boolean clipPoint(final iPoint pnt, final iRect rect) {
-        pnt.x = MathOperations.clamp(rect.x, rect.x2(), pnt.x);
-        pnt.y = MathOperations.clamp(rect.y, rect.y2(), pnt.y);
+        pnt.x = Operations.clamp(rect.x, rect.x2(), pnt.x);
+        pnt.y = Operations.clamp(rect.y, rect.y2(), pnt.y);
         return true;
     }
 
@@ -96,9 +96,9 @@ public class iClipper {
             return false;
         }
 
-        pnt1.x   = MathOperations.clamp(rect.x, rect.x2(), pnt1.x);
+        pnt1.x   = Operations.clamp(rect.x, rect.x2(), pnt1.x);
 
-        x2.value = MathOperations.clamp(rect.x, rect.x2(), x2.value);
+        x2.value = Operations.clamp(rect.x, rect.x2(), x2.value);
 
         return pnt1.x != x2.value;
 
@@ -117,8 +117,8 @@ public class iClipper {
             return false;
         }
 
-        pnt1.y   = MathOperations.clamp(rect.y, rect.y2(), pnt1.y);
-        y2.value = MathOperations.clamp(rect.y, rect.y2(), y2.value);
+        pnt1.y   = Operations.clamp(rect.y, rect.y2(), pnt1.y);
+        y2.value = Operations.clamp(rect.y, rect.y2(), y2.value);
 
         return pnt1.y != y2.value;
 
