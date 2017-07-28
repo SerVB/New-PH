@@ -46,7 +46,7 @@ public final class fix32 {
      * @deprecated  Don't use this constant until the class become immutable.
      *              Now anyone has an ability to change this constant!
      */
-    public final static fix32 ZERO = new fix32(0);
+    public static final fix32 ZERO = new fix32(0);
     
     /**
      * Value of fixed equals 1.

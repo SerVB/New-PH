@@ -24,38 +24,36 @@
 
 package newph.core.enumeration;
 
+import newph.core.type.EnumC;
+
 /**
  * Color Types.
  * @author SerVB
  * @since "GitHub new sources"
  */
-public enum ColorType {
-    
+public enum ColorType implements EnumC {
+
     /**
      * RGB16. (R5G6G5A0)
      */
     RGB(0),
-    
+
     /**
      * RGBA16. (R4G4B4A4)
      */
     RGBA,
-    
+
     /**
      * RGBCK16. (R5G5G5A1)
      */
     RGBCK,
-    
+
     /**
      * RGB types count.
      */
     COUNT;
 
-    //--------------------------//
-    // ***** C-like enum: ***** //
-    // (For indexing and count) //
-    //--------------------------//
-    
+    //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
     /**
      * The value of the element.
      */
@@ -81,6 +79,7 @@ public enum ColorType {
      * Returns the value of the element.
      * @return The value of the element.
      */
+    @Override
     public final int getValue() {
         return value;
     }
@@ -89,12 +88,13 @@ public enum ColorType {
      * Object that holds the next value.
      */
     private final static class NextValueHolder {
-        
+
         /**
          * The next value.
          */
         private static int nextValue = 0;
-        
+
     }
+    //</editor-fold>
 
 }

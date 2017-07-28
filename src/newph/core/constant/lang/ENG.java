@@ -34,7 +34,7 @@ public final class ENG extends Lang {
     /**
      * Language data.
      */
-    public final static String[] LANG_DATA = {
+    public static final String[] LANG_DATA = {
         "",
         "+",
         "-",

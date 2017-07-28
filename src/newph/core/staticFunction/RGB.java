@@ -50,33 +50,33 @@ public final class RGB {
      * @param b Blue color (0..255).
      * @return Color code.
      */
-    public final static int RGB16(
+    public static final int RGB16(
             final int r, final int g, final int b
     ) {
         return (r & 0xF8)<<8 | (g & 0xFC)<<3 | (b & 0xF8)>>3;
     }
     
-    public final static int Darken50(final int pixel) {
+    public static final int Darken50(final int pixel) {
         return (pixel & 0xf7de) >> 1;
     }
 
-    public final static int Darken25(int pixel) {
+    public static final int Darken25(int pixel) {
         pixel = (pixel & 0xf7de) >> 1;
         pixel += (pixel & 0xf7de) >> 1;
         return pixel;
     }
 
-    public final static int DarkenBWBlend(final int a, final int b) {
+    public static final int DarkenBWBlend(final int a, final int b) {
         return ( (a & 0xf7de) >> 1 ) + ( (b & 0xf7de) >> 1 );
     }
 
-    public final static int DarkenBW(final int pixel) { 
+    public static final int DarkenBW(final int pixel) { 
 //        static uint8 rpt = 31; // Useless line in sources???
         int chnl = (pixel >> 6) & 0x1f;
         return DarkenBWBlend(COLOR.BWPAL[chnl], 0x39e7 );
     } 
     
-    public final static int BlendPixels(
+    public static final int BlendPixels(
             final int dst, final int src, final int a
     ) {
         final int inv_a = 255 - a;
@@ -97,7 +97,7 @@ public final class RGB {
      * @param src_idx   Index of the first element to copy in src.
      * @param size      Elements to copy number.
      */
-    public final static void BlitDibBlock_RGB(
+    public static final void BlitDibBlock_RGB(
             final iBuffColor dst,
             final int dst_idx,
             final iBuffColor src,
@@ -120,7 +120,7 @@ public final class RGB {
      * @param color     Pixel color.
      * @param size      Number of pixels to fill.
      */
-    public final static void FillDibBlock(
+    public static final void FillDibBlock(
             final iBuffColor buff,
             final int color,
             final int size
@@ -135,7 +135,7 @@ public final class RGB {
      * @param beginIdx  First pixel index to fill.
      * @param size      Number of pixels to fill.
      */
-    public final static void FillDibBlock(
+    public static final void FillDibBlock(
             final iBuffColor buff,
             final int color,
             final int beginIdx,
@@ -146,7 +146,7 @@ public final class RGB {
             }
     }
     
-    public final static void FillDibBlockAlpha(
+    public static final void FillDibBlockAlpha(
             final iBuffColor buff,
             final int color,
             final int alpha,
@@ -155,7 +155,7 @@ public final class RGB {
         FillDibBlockAlpha(buff, color, alpha, 0, size);
     }
     
-    public final static void FillDibBlockAlpha(
+    public static final void FillDibBlockAlpha(
             final iBuffColor buff,
             final int color,
             final int alpha,
@@ -197,13 +197,13 @@ public final class RGB {
 //        }
     }
     
-    public final static int TintedShadow(final int color) { 
+    public static final int TintedShadow(final int color) { 
         //static uint8 rpt = 31;
         final int chnl = (color >> 6) & 0x1f;
         return ( (COLOR.BWPAL[chnl] & 0xf7de) >> 1 ) + ((0x39e7 & 0xf7de) >> 1);
     }
     
-    public final static void SetDibPixelAlpha(
+    public static final void SetDibPixelAlpha(
             final iDib dib,
             final int index,
             final int color,
@@ -227,7 +227,7 @@ public final class RGB {
         );
     }
      
-    public final static void BlitDibBlockAlpha(
+    public static final void BlitDibBlockAlpha(
             final iBuffColor dst,
             final int dst_idx,
             final iBuffColor src,
@@ -270,7 +270,7 @@ public final class RGB {
 //        }
     }
     
-    public final static void BlitDibBlock_RGBA(
+    public static final void BlitDibBlock_RGBA(
             final iBuffColor dst,
             final int dst_idx,
             final iBuffColor src,
@@ -310,7 +310,7 @@ public final class RGB {
         }
     }
     
-    public final static void BlitDibBlock_RGBCK(
+    public static final void BlitDibBlock_RGBCK(
             final iBuffColor dst,
             final int dst_idx,
             final iBuffColor src,
@@ -335,7 +335,7 @@ public final class RGB {
      * @param fname Path to the resulting file.
      * @return      {@code True} if the saving was successful, {@code false} if not.
      */
-    public final static boolean SaveDibBitmap(
+    public static final boolean SaveDibBitmap(
             final iDib dib,
             final String fname
     ) {

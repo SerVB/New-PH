@@ -22,38 +22,23 @@
  * SOFTWARE.
  */
 
-package newph.core.constant.metric;
+package newph.core.constant;
 
-import newph.core.metric.iPoint;
-import newph.core.metric.iRect;
-import newph.core.metric.iSize;
+import newph.core.enumeration.IdeologyType;
 
 /**
- * Metric constants.
- * @author SerVB
- * @since "GitHub new sources"
+ * Hero Type constants.
+ *
+ * @author  SerVB
+ * @since   "GitHub new sources"
  */
-public final class METRIC {
+public final class HERO_TYPE {
 
     /**
-     * Predefined invalid Point value.
-     * Don't modify!
+     * Prevents from creating an instance of the class.
      */
-    public final static iPoint cInvalidPoint =
-            new iPoint(0x7fffffff, 0x7fffffff);
+    private HERO_TYPE() {}
 
-    /**
-     * Predefined invalid Size value.
-     * Don't modify!
-     */
-    public final static iSize cInvalidSize =
-            new iSize(0xffffffff, 0xffffffff);
-
-    /**
-     * Predefined invalid Rect value.
-     * Don't modify!
-     */
-    public final static iRect cInvalidRect =
-            new iRect(0x7fffffff, 0x7fffffff, 0xffffffff, 0xffffffff);
+    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
 
 }

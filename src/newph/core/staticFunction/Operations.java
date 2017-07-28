@@ -45,7 +45,7 @@ public final class Operations {
      * @param a The first object.
      * @param b The second object.
      */
-    public final static void iSwap(final Changeable<?> a, final Changeable<?> b) {
+    public static final void iSwap(final Changeable<?> a, final Changeable<?> b) {
         Object tmp = a.value;
         a.setObject(b.value);
         b.setObject(tmp);
@@ -59,7 +59,7 @@ public final class Operations {
      * @param value Value.
      * @return      Restricted value.
      */
-    public final static int clamp(final int min, final int max, final int value) {
+    public static final int clamp(final int min, final int max, final int value) {
         Tracer.check(min <= max);
 
         if (min <= value && value <= max) {
@@ -78,7 +78,7 @@ public final class Operations {
      * @param y Second value.
      * @return  Absolute value of difference.
      */
-    public final static int dif(final int x, final int y) {
+    public static final int dif(final int x, final int y) {
         return (x > y) ? (x - y) : (y - x);
     }
 
@@ -88,7 +88,7 @@ public final class Operations {
      * @param x Value.
      * @return  1 if the value is greater than 0, 0 if the value is 0, - 1 if the value is smaller than 0.
      */
-    public final static int sign(final int x) {
+    public static final int sign(final int x) {
         if (0 < x) {
             return 1;
         } else if (x < 0) {
@@ -105,11 +105,11 @@ public final class Operations {
      * @param step      The alignment step.
      * @return          The aligned value.
      */
-    public final static int align(final int value, final int step) {
+    public static final int align(final int value, final int step) {
         return ((value + step - 1) / step) * step;
     }
 
-    public final static int wrap(int val, int minv, int wrap) {
+    public static final int wrap(int val, int minv, int wrap) {
         Tracer.check(minv < wrap);
 
         if (val < minv) {
@@ -127,7 +127,7 @@ public final class Operations {
      * @param d Double to round.
      * @return  Rounded correctly double.
      */
-    public final static double roundDouble(double d) {
+    public static final double roundDouble(double d) {
         if (d < 0.0) {
             return Math.ceil(d - 0.5);
         } else {

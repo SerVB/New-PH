@@ -63,7 +63,7 @@ public final class Logger {
     /**
      * Prints unit tests log.
      */
-    public final static void printLogUnitTest() {
+    public static final void printLogUnitTest() {
         final int NEEDED_TRACE_EL_INDEX = 2;
         StackTraceElement ste = Thread
                         .currentThread()
@@ -80,7 +80,7 @@ public final class Logger {
      * @param in Place of logging (class and method names).
      * @param msg Message to display.
      */
-    public final static void printLog(final LogLevel level, final String in, final String msg) {
+    public static final void printLog(final LogLevel level, final String in, final String msg) {
         final String format;
         
         switch (level) {
