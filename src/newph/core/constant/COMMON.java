@@ -24,7 +24,6 @@
 
 package newph.core.constant;
 
-import newph.core.common.iMineralSet;
 import newph.core.metric.iPoint;
 
 /**
@@ -41,18 +40,34 @@ public final class COMMON {
     private COMMON() {}
 
     /**
-     *
+     * 72 points.
      */
-    public static final iPoint[] HERO_FLAG_ANCHOR;
+    public static final iPoint[] HERO_FLAG_ANCHOR = {
+        new iPoint(4,7), new iPoint(4,5), new iPoint(4,4), new iPoint(4,5), new iPoint(4,7),
+        new iPoint(4,6), new iPoint(4,4), new iPoint(4,5), new iPoint(4,6),
 
-    /**
-     * Human and computer.
-     */
-    public static final iMineralSet[][] INITIAL_RESOURCES;
+        new iPoint(8,7), new iPoint(9,7), new iPoint(8,7), new iPoint(9,8), new iPoint(10,8),
+        new iPoint(10,7), new iPoint(9,7), new iPoint(8,7), new iPoint(7,7),
 
-    /**
-     *
-     */
-    public static final int[][][] SEKSKILL_DESC;
+        new iPoint(11,8), new iPoint(12,8), new iPoint(11,8), new iPoint(10,8), new iPoint(10,9),
+        new iPoint(9,9), new iPoint(10,8), new iPoint(11,8), new iPoint(10,8),
+
+        new iPoint(13,7), new iPoint(14,7), new iPoint(13,8), new iPoint(11,9), new iPoint(13,9),
+        new iPoint(14,10), new iPoint(14,9), new iPoint(14,8), new iPoint(12,7),
+
+        //
+        new iPoint(32,8), new iPoint(32,9), new iPoint(32,10), new iPoint(32,8), new iPoint(32,9),
+        new iPoint(32,10), new iPoint(32,11), new iPoint(32,8), new iPoint(32,9),
+
+        //
+        new iPoint(20,7), new iPoint(19,7), new iPoint(20,8), new iPoint(19,9), new iPoint(20,9),
+        new iPoint(19,10), new iPoint(19,9), new iPoint(19,8), new iPoint(22,7),
+
+        new iPoint(22,8), new iPoint(21,8), new iPoint(22,8), new iPoint(23,8), new iPoint(23,9),
+        new iPoint(24,9), new iPoint(23,8), new iPoint(22,8), new iPoint(23,8),
+
+        new iPoint(25,7), new iPoint(24,7), new iPoint(25,7), new iPoint(24,8), new iPoint(23,8),
+        new iPoint(23,7), new iPoint(24,7), new iPoint(25,7), new iPoint(26,7),
+    };
 
 }

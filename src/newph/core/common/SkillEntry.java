@@ -22,23 +22,24 @@
  * SOFTWARE.
  */
 
-package newph.core.constant;
+package newph.core.common;
+
+import newph.core.enumeration.FurtherSkill;
 
 /**
- * Player Constants.
+ * Skill Entry: (skill, value).
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since PPH 0
  */
-public final class PLAYER {
+public final class SkillEntry {
 
-    /**
-     * Prevents from creating an instance of the class.
-     */
-    private PLAYER() {}
+    public final FurtherSkill furtherSkill;
+    public final int value;
 
-    public static final int[] PLAYER_COLORS;
-    public static final String[] PLAYER_TEXT_COLORS;
-    public static final String[] PLAYER_WORD_COLORS;
+    public SkillEntry(final FurtherSkill furtherSkill, final int value) {
+        this.furtherSkill = furtherSkill;
+        this.value = value;
+    }
 
 }

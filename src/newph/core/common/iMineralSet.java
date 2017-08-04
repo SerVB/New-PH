@@ -135,4 +135,16 @@ public final class iMineralSet {
         System.arraycopy(quant, 0, this.quant, 0, quant.length);
     }
 
+    public iMineralSet(
+            final int Gold,
+            final int Ore,
+            final int Wood,
+            final int Mercury,
+            final int Gem,
+            final int Crystal,
+            final int Sulfur
+    ) {
+        quant = new int[] {Gold, Ore, Wood, Mercury, Gem, Crystal, Sulfur};
+    }
+
 }

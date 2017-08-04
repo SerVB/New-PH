@@ -23,67 +23,31 @@
  */
 package newph.core.enumeration;
 
-import newph.core.type.EnumC;
-
 /**
  * Player ID.
  *
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum PlayerId implements EnumC {
+public enum PlayerId {
 
-    PID_NEUTRAL(-1),
-    PID_RED(0),
-    PID_GREEN,
-    PID_BLUE,
-    PID_CYAN,
-    PID_MAGENTA,
-    PID_YELLOW,
-    PID_COUNT;
+    NEUTRAL(0, "", ""),
 
-    //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
-    /**
-     * The value of the element.
-     */
-    private int value;
+    RED(0x1F<<11, "#FF99", "Red"),
+    GREEN(0x30<<5, "#F8E8", "Green"),
+    BLUE(0x1F, "#F99F", "Blue"),
+    CYAN(0x30<<5 | 0x1F, "#F7EE", "Cyan"),
+    MAGENTA(0x1D<<11 | 0x1F, "#FE7E", "Magenta"),
+    YELLOW(0x1D<<11 | 0x38<<5, "#FEE7", "Yellow");
 
-    /**
-     * Constructs a new element with the next value.
-     */
-    private PlayerId() {
-        this(NextValueHolder.nextValue); // Call the constructor with the next value
+    public final int playerColor;
+    public final String playerTextColor;
+    public final String playerWordColor;
+
+    private PlayerId(final int playerColor, final String playerTextColor, final String playerWordColor) {
+        this.playerColor = playerColor;
+        this.playerTextColor = playerTextColor;
+        this.playerWordColor = playerWordColor;
     }
-
-    /**
-     * Constructs a new element with the specified value.
-     * @param value The specified value.
-     */
-    private PlayerId(final int value) {
-        this.value = value;                     // Set the specified value to this value
-        NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
-    }
-
-    /**
-     * Returns the value of the element.
-     * @return The value of the element.
-     */
-    @Override
-    public final int getValue() {
-        return value;
-    }
-
-    /**
-     * Object that holds the next value.
-     */
-    private final static class NextValueHolder {
-
-        /**
-         * The next value.
-         */
-        private static int nextValue = 0;
-
-    }
-    //</editor-fold>
 
 }

@@ -23,68 +23,29 @@
  */
 package newph.core.enumeration;
 
-import newph.core.type.EnumC;
-
 /**
  * Mineral Type.
  *
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum MineralType implements EnumC {
+public enum MineralType {
 
-    MINERAL_UNKNOWN(-1),
-    MINERAL_GOLD(0),
-    MINERAL_ORE,
-    MINERAL_WOOD,
-    MINERAL_MERCURY,
-    MINERAL_GEMS,
-    MINERAL_CRYSTAL,
-    MINERAL_SULFUR,
-    MINERAL_COUNT;
+    MINERAL_UNKNOWN(-1, -1),
+    MINERAL_GOLD(1000, 1),
+    MINERAL_ORE(2, 250),
+    MINERAL_WOOD(2, 250),
+    MINERAL_MERCURY(1, 500),
+    MINERAL_GEMS(1, 500),
+    MINERAL_CRYSTAL(1, 500),
+    MINERAL_SULFUR(1, 500);
 
-    //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
-    /**
-     * The value of the element.
-     */
-    private int value;
+    public final int divider;
+    public final int exchangeRate;
 
-    /**
-     * Constructs a new element with the next value.
-     */
-    private MineralType() {
-        this(NextValueHolder.nextValue); // Call the constructor with the next value
+    private MineralType(final int divider, final int exchangeRate) {
+        this.divider = divider;
+        this.exchangeRate = exchangeRate;
     }
-
-    /**
-     * Constructs a new element with the specified value.
-     * @param value The specified value.
-     */
-    private MineralType(final int value) {
-        this.value = value;                     // Set the specified value to this value
-        NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
-    }
-
-    /**
-     * Returns the value of the element.
-     * @return The value of the element.
-     */
-    @Override
-    public final int getValue() {
-        return value;
-    }
-
-    /**
-     * Object that holds the next value.
-     */
-    private final static class NextValueHolder {
-
-        /**
-         * The next value.
-         */
-        private static int nextValue = 0;
-
-    }
-    //</editor-fold>
 
 }

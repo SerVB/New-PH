@@ -24,6 +24,9 @@
 
 package newph.core.constant;
 
+import newph.core.enumeration.SurfaceType;
+import static newph.core.staticFunction.RGB.RGB16;
+
 /**
  * Surface constants.
  *
@@ -37,8 +40,58 @@ public final class SURFACE {
      */
     private SURFACE() {}
 
-    public static final int[] SURF_TYPE_MASK;
-    public static final int[] SURF_MOVE_COST;
-    public static final int[] SURF_COLOR;
+    /**
+     * Surface type mask [STYPE_COUNT].
+     */
+    public static final int[] SURF_TYPE_MASK = {
+        1 << SurfaceType.STYPE_WATER.getValue(),
+        1 << SurfaceType.STYPE_SAND.getValue(),
+        1 << SurfaceType.STYPE_DIRT.getValue(),
+        1 << SurfaceType.STYPE_GRASS.getValue(),
+        1 << SurfaceType.STYPE_SWAMP.getValue(),
+        1 << SurfaceType.STYPE_LAVA.getValue(),
+        1 << SurfaceType.STYPE_WASTELAND.getValue(),
+        1 << SurfaceType.STYPE_DESERT.getValue(),
+        1 << SurfaceType.STYPE_SNOW.getValue(),
+        1 << SurfaceType.STYPE_NDESERT.getValue(),
+        1 << SurfaceType.STYPE_PAVEMENT.getValue(),
+        1 << SurfaceType.STYPE_NWASTELAND.getValue()
+    };
+
+    /**
+     * Surface move cost [STYPE_COUNT].
+     */
+    public static final int[] SURF_MOVE_COST = {
+        255,    // Water
+        12,        // Sand
+        6,        // Dirt
+        6,        // Grass
+        14,        // Swamp
+        10,        // Lava
+        8,        // Wasteland
+        12,        // Desert
+        10,        // Snow
+        12,        // new desert
+        4,        // Pavement
+        9,        // new wasteland
+    };
+
+    /**
+     * Surface color [STYPE_COUNT].
+     */
+    public static final int[] SURF_COLOR = {
+        RGB16(8, 28, 128),    // Water
+        RGB16(214,182,148),    // Sand
+        RGB16(99,48,8),        // Dirt
+        RGB16(24,97,16),    // Grass
+        RGB16(0,44,0),        // Swamp
+        RGB16(48,48,48),    // Lava
+        RGB16(165,85,16),    // Wasteland
+        RGB16(181,138,24),    // Desert
+        RGB16(220,220,220),    // Snow
+        RGB16(192,160,0),    // new Desert
+        RGB16(160,160,160),    // Pavement
+        RGB16(192,192,160),    // new wasteland
+    };
 
 }

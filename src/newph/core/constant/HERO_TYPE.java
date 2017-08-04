@@ -24,8 +24,6 @@
 
 package newph.core.constant;
 
-import newph.core.enumeration.IdeologyType;
-
 /**
  * Hero Type constants.
  *
@@ -39,9 +37,53 @@ public final class HERO_TYPE {
      */
     private HERO_TYPE() {}
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
-
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    /**
+     * Secondary Skills [HERO_TYPE_COUNT][SECSK_COUNT].
+     */
+    public static final int[][] HERO_SEC_SKILL = {
+        {
+            // Knight
+            2,6,6,4,        // Estates, Leadership, Luck, Diplomacy
+            1,1,0,2,        // Air, Earth, Fire, Water
+            1,0,0,1,2,0,4,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,4,3,            // Scouting, Logistics, Pathfinding,
+            3,3,2,4            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Barbarian
+            2,4,4,3,        // Estates, Leadership, Luck, Diplomacy
+            1,1,2,0,        // Air, Earth, Fire, Water
+            1,0,0,1,1,0,2,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,3,5,            // Scouting, Logistics, Pathfinding,
+            4,3,5,3            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Wizard
+            2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,0,5,        // Air, Earth, Fire, Water
+            6,0,4,2,2,3,5,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,2,2,            // Scouting, Logistics, Pathfinding,
+            0,0,0,0            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Warlock
+            2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,5,0,        // Air, Earth, Fire, Water
+            4,1,4,3,2,5,4,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            4,2,3,            // Scouting, Logistics, Pathfinding,
+            0,0,0,0            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Sorceress
+            2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,0,5,        // Air, Earth, Fire, Water
+            6,0,4,2,2,3,5,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            3,2,2,            // Scouting, Logistics, Pathfinding,
+            1,1,0,0            // Archery, Ballistics, Offence, Armorer
+        },{
+            // Necromancer
+            2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
+            3,3,5,0,        // Air, Earth, Fire, Water
+            4,5,4,3,2,5,4,    // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+            4,2,3,            // Scouting, Logistics, Pathfinding,
+            1,1,0,0            // Archery, Ballistics, Offence, Armorer
+        }
+    };
 
 }

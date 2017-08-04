@@ -65,7 +65,6 @@ public final class Common {
         return result % maxv;
     }
 
-    private static final int[] MINERAL_EXCH_RATE = { 1, 250, 250, 500, 500, 500, 500 };
     public static FractionCoeff MineralExchRate(final MineralType from, final MineralType to, final int mlvl) {
         return new FractionCoeff (MINERAL_EXCH_RATE[from.getValue()] * (mlvl+1) , 10 * 2 * MINERAL_EXCH_RATE[to.getValue()]);
     /*    static float MINERAL_EXCH_RATE[MINERAL_COUNT] = { 0.002f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f };

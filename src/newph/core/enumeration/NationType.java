@@ -23,67 +23,26 @@
  */
 package newph.core.enumeration;
 
-import newph.core.type.EnumC;
-
 /**
  * Nation Type.
  *
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum NationType implements EnumC {
+public enum NationType {
 
-    NATION_NEUTRAL(0),
-    NATION_HIGHMEN,
-    NATION_BARBARIANS,
-    NATION_WIZARDS,
-    NATION_BEASTMEN,
-    NATION_ELVES,
-    NATION_UNDEADS,
-    NATION_COUNT;
+    NEUTRAL(IdeologyType.IDEOLOGY_NEUTRAL),
+    HIGHMEN(IdeologyType.IDEOLOGY_GOOD),
+    BARBARIANS(IdeologyType.IDEOLOGY_EVIL),
+    WIZARDS(IdeologyType.IDEOLOGY_GOOD),
+    BEASTMEN(IdeologyType.IDEOLOGY_EVIL),
+    ELVES(IdeologyType.IDEOLOGY_GOOD),
+    UNDEADS(IdeologyType.IDEOLOGY_EVIL);
 
-    //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
-    /**
-     * The value of the element.
-     */
-    private int value;
+    public final IdeologyType ideology;
 
-    /**
-     * Constructs a new element with the next value.
-     */
-    private NationType() {
-        this(NextValueHolder.nextValue); // Call the constructor with the next value
+    private NationType(final IdeologyType ideology) {
+        this.ideology = ideology;
     }
-
-    /**
-     * Constructs a new element with the specified value.
-     * @param value The specified value.
-     */
-    private NationType(final int value) {
-        this.value = value;                     // Set the specified value to this value
-        NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
-    }
-
-    /**
-     * Returns the value of the element.
-     * @return The value of the element.
-     */
-    @Override
-    public final int getValue() {
-        return value;
-    }
-
-    /**
-     * Object that holds the next value.
-     */
-    private final static class NextValueHolder {
-
-        /**
-         * The next value.
-         */
-        private static int nextValue = 0;
-
-    }
-    //</editor-fold>
 
 }

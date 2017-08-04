@@ -23,7 +23,7 @@
  */
 package newph.core.enumeration;
 
-import newph.core.type.EnumC;
+import newph.core.common.iMineralSet;
 
 /**
  * Difficulty Level.
@@ -31,58 +31,44 @@ import newph.core.type.EnumC;
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum DifficultyLevel implements EnumC {
+public enum DifficultyLevel {
 
-    DFC_UNDEFINED(-1),
-    DFC_EASY(0),
-    DFC_NORMAL,
-    DFC_HARD,
-    DFC_EXPERT,
-    DFC_IMPOSSIBLE,
-    DFC_COUNT;
+    UNDEFINED(
+            new iMineralSet(),
+            new iMineralSet()
+    ),
 
-    //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
-    /**
-     * The value of the element.
-     */
-    private int value;
+    EASY(
+            new iMineralSet(15000, 30, 30, 15, 15, 15, 15),
+            new iMineralSet( 2500,  5,  5,  2,  2,  2,  2)
+    ),
 
-    /**
-     * Constructs a new element with the next value.
-     */
-    private DifficultyLevel() {
-        this(NextValueHolder.nextValue); // Call the constructor with the next value
+    NORMAL(
+            new iMineralSet(10000, 20, 20, 10, 10, 10, 10),
+            new iMineralSet( 5000, 10, 10,  5,  5,  5,  5)
+    ),
+
+    HARD(
+            new iMineralSet( 5000, 10, 10,  5,  5,  5,  5),
+            new iMineralSet(15000, 30, 30, 15, 15, 15, 15)
+    ),
+
+    EXPERT(
+            new iMineralSet( 2500,  5,  5,  2,  2,  2,  2),
+            new iMineralSet(25000, 50, 50, 25, 25, 25, 25)
+    ),
+
+    IMPOSSIBLE(
+            new iMineralSet(    0,  0,  0,  0,  0,  0,  0),
+            new iMineralSet(50000, 80, 80, 40, 40, 40, 40)
+    );
+
+    public final iMineralSet humanInitialResources;
+    public final iMineralSet computerInitialResources;
+
+    private DifficultyLevel(final iMineralSet humanInitialResources, final iMineralSet computerInitialResources) {
+        this.humanInitialResources = humanInitialResources;
+        this.computerInitialResources = computerInitialResources;
     }
-
-    /**
-     * Constructs a new element with the specified value.
-     * @param value The specified value.
-     */
-    private DifficultyLevel(final int value) {
-        this.value = value;                     // Set the specified value to this value
-        NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
-    }
-
-    /**
-     * Returns the value of the element.
-     * @return The value of the element.
-     */
-    @Override
-    public final int getValue() {
-        return value;
-    }
-
-    /**
-     * Object that holds the next value.
-     */
-    private final static class NextValueHolder {
-
-        /**
-         * The next value.
-         */
-        private static int nextValue = 0;
-
-    }
-    //</editor-fold>
 
 }
