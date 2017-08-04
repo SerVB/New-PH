@@ -22,26 +22,14 @@
  * SOFTWARE.
  */
 
-package newph.core.constant;
+package newph.core.common;
 
-import newph.core.enumeration.IdeologyType;
+import java.util.ArrayList;
 
 /**
- * Hero Type constants.
+ * Short Points List.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
-
-    /**
-     * Prevents from creating an instance of the class.
-     */
-    private HERO_TYPE() {}
-
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
-
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
-
-}
+public final class iShPointList extends ArrayList<shPoint> {}

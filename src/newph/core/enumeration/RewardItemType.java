@@ -27,32 +27,66 @@ package newph.core.enumeration;
 import newph.core.type.EnumC;
 
 /**
- * Color Types.
+ * Reward Item Type.
  *
  * @author SerVB
  * @since "GitHub new sources"
  */
-public enum ColorType implements EnumC {
+public enum RewardItemType implements EnumC {
+
+    RIT_INVALID(-1),
 
     /**
-     * RGB16. (R5G6G5A0)
+     * Type, Quantity.
      */
-    RGB(0),
+    RIT_MINERAL(0),
 
     /**
-     * RGBA16. (R4G4B4A4)
+     * None, Quantity.
      */
-    RGBA,
+    RIT_EXPERIENCE,
 
     /**
-     * RGBCK16. (R5G5G5A1)
+     * None, Quantity.
      */
-    RGBCK,
+    RIT_MANAPTS,
 
     /**
-     * RGB types count.
+     * None, Quantity.
      */
-    COUNT;
+    RIT_TRAVELPTS,
+
+    /**
+     * None, Modifier.
+     */
+    RIT_MORALE,
+
+    /**
+     * None, Modifier.
+     */
+    RIT_LUCK,
+
+    /**
+     * Type, Modifier (Primary skill only).
+     */
+    RIT_FURTSKILL,
+
+    /**
+     * Artifact level or idx, None (can be defined as random).
+     */
+    RIT_ARTIFACT,
+
+    /**
+     * Spell level or idx, None (can be defined as random).
+     */
+    RIT_MAGICSPELL,
+
+    /**
+     * Type, Quantity.
+     */
+    RIT_CREATGROUP,
+
+    RIT_COUNT;
 
     //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
     /**
@@ -63,21 +97,23 @@ public enum ColorType implements EnumC {
     /**
      * Constructs a new element with the next value.
      */
-    private ColorType() {
+    private RewardItemType() {
         this(NextValueHolder.nextValue); // Call the constructor with the next value
     }
 
     /**
      * Constructs a new element with the specified value.
+     *
      * @param value The specified value.
      */
-    private ColorType(final int value) {
+    private RewardItemType(final int value) {
         this.value = value;                     // Set the specified value to this value
         NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
     }
 
     /**
      * Returns the value of the element.
+     *
      * @return The value of the element.
      */
     @Override

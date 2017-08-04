@@ -30,6 +30,7 @@ import newph.core.metric.iSize;
 
 /**
  * Metric constants.
+ *
  * @author SerVB
  * @since "GitHub new sources"
  */

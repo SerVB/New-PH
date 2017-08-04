@@ -64,6 +64,6 @@ public final class iPrSkills {
         }
     }
 
-    private final int[] val = new int[PrSkillType.PRSKILL_COUNT.getValue()]; // TODO: Change to long[]
+    public final int[] val = new int[PrSkillType.PRSKILL_COUNT.getValue()]; // TODO: Change to long[]
 
 }

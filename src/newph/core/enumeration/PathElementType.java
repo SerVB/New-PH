@@ -27,32 +27,17 @@ package newph.core.enumeration;
 import newph.core.type.EnumC;
 
 /**
- * Color Types.
+ * Path Element Type.
  *
  * @author SerVB
  * @since "GitHub new sources"
  */
-public enum ColorType implements EnumC {
+public enum PathElementType implements EnumC {
 
-    /**
-     * RGB16. (R5G6G5A0)
-     */
-    RGB(0),
-
-    /**
-     * RGBA16. (R4G4B4A4)
-     */
-    RGBA,
-
-    /**
-     * RGBCK16. (R5G5G5A1)
-     */
-    RGBCK,
-
-    /**
-     * RGB types count.
-     */
-    COUNT;
+    PET_WALL(0),
+    PET_ROAD,
+    PET_RIVER,
+    PET_COUNT;
 
     //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
     /**
@@ -63,21 +48,23 @@ public enum ColorType implements EnumC {
     /**
      * Constructs a new element with the next value.
      */
-    private ColorType() {
+    private PathElementType() {
         this(NextValueHolder.nextValue); // Call the constructor with the next value
     }
 
     /**
      * Constructs a new element with the specified value.
+     *
      * @param value The specified value.
      */
-    private ColorType(final int value) {
+    private PathElementType(final int value) {
         this.value = value;                     // Set the specified value to this value
         NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
     }
 
     /**
      * Returns the value of the element.
+     *
      * @return The value of the element.
      */
     @Override

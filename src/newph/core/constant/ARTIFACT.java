@@ -24,24 +24,24 @@
 
 package newph.core.constant;
 
-import newph.core.enumeration.IdeologyType;
+import newph.core.enumeration.artifact.ArtifactAssignType;
+import newph.core.enumeration.artifact.SpecialHeroFlag;
 
 /**
- * Hero Type constants.
+ * Artifact Constants.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class ARTIFACT {
 
     /**
      * Prevents from creating an instance of the class.
      */
-    private HERO_TYPE() {}
+    private ARTIFACT() {}
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
-
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    public static final int[][][] ULTART_STDMODIF;
+    public static final SpecialHeroFlag[] ULTART_SPECFLAGS;
+    public static final ArtifactAssignType[] HERO_ART_CELL_ASSIGN;
 
 }

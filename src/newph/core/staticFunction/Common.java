@@ -24,6 +24,8 @@
 
 package newph.core.staticFunction;
 
+import newph.core.common.FractionCoeff;
+import newph.core.enumeration.MineralType;
 import newph.core.metric.iPoint;
 
 /**
@@ -46,7 +48,7 @@ public final class Common {
      * @param game If the call is from game ({@code #ifdef _HMM_GAME_}).
      * @return
      */
-    public static final int CalcCellSeq(final iPoint pnt, final int maxv, final boolean game) {
+    public static int CalcCellSeq(final iPoint pnt, final int maxv, final boolean game) {
         int result = pnt.x;
         result += ~(pnt.y << 16);
         result ^= (pnt.x >> 5);
@@ -61,6 +63,16 @@ public final class Common {
             result = iTables.crc32[(result ^ (result >> 8) ^ (result >> 16)) & 255];
         }
         return result % maxv;
+    }
+
+    private static final int[] MINERAL_EXCH_RATE = { 1, 250, 250, 500, 500, 500, 500 };
+    public static FractionCoeff MineralExchRate(final MineralType from, final MineralType to, final int mlvl) {
+        return new FractionCoeff (MINERAL_EXCH_RATE[from.getValue()] * (mlvl+1) , 10 * 2 * MINERAL_EXCH_RATE[to.getValue()]);
+    /*    static float MINERAL_EXCH_RATE[MINERAL_COUNT] = { 0.002f, 0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f };
+        float mval = 10.0f * 2 / (mlvl+1);
+        float v1 = MINERAL_EXCH_RATE[from] / mval;
+        float v2 = v1 / MINERAL_EXCH_RATE[to];
+        return  v2;*/
     }
 
 }

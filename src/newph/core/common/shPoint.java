@@ -22,26 +22,35 @@
  * SOFTWARE.
  */
 
-package newph.core.constant;
-
-import newph.core.enumeration.IdeologyType;
+package newph.core.common;
 
 /**
- * Hero Type constants.
+ * Short Point.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class shPoint {
 
-    /**
-     * Prevents from creating an instance of the class.
-     */
-    private HERO_TYPE() {}
+    public final int storage;
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
+    public shPoint(final int x, final int y) {
+        final short shortX = (short) x;
+        final short shortY = (short) y;
 
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+        storage = (int)(((shortX&0xFFFF) << 16) | (shortY&0xFFFF));
+    }
+
+    public shPoint(final int storage) {
+        this.storage = storage;
+    }
+
+    public short getX() {
+        return (short)(storage >> 16);
+    }
+
+    public short getY() {
+        return (short)(storage & 0xFFFF);
+    }
 
 }

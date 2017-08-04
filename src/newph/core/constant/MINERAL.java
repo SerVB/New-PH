@@ -24,24 +24,19 @@
 
 package newph.core.constant;
 
-import newph.core.enumeration.IdeologyType;
-
 /**
- * Hero Type constants.
+ * Mineral Constants.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class MINERAL {
 
     /**
      * Prevents from creating an instance of the class.
      */
-    private HERO_TYPE() {}
+    private MINERAL() {}
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
-
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    public static final int[] MINERALS_DIVIDER;
 
 }

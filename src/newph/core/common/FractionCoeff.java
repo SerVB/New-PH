@@ -22,26 +22,43 @@
  * SOFTWARE.
  */
 
-package newph.core.constant;
-
-import newph.core.enumeration.IdeologyType;
+package newph.core.common;
 
 /**
- * Hero Type constants.
+ * Fraction Coefficient.
  *
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class FractionCoeff {
 
-    /**
-     * Prevents from creating an instance of the class.
-     */
-    private HERO_TYPE() {}
+    public int num;
+    public int denum;
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
+    public FractionCoeff() {
+        num = -1;
+        denum = -1;
+    }
 
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    public FractionCoeff(final int n, final int d) {
+        num = n;
+        denum = d;
+    }
+
+    public boolean IsValid() {
+        return num != -1 && denum != -1;
+    }
+
+    public FractionCoeff GetNormalized() {
+        if (denum < num) {
+            return new FractionCoeff(num / denum, 1);
+        } else if (num < denum) {
+            return new FractionCoeff(1, (denum + num - 1) / num);
+        } else {
+            return new FractionCoeff(1, 1);
+        }
+    }
+
+    public sint32 operator *= ( sint32 );
 
 }

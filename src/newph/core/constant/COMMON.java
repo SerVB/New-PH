@@ -24,24 +24,35 @@
 
 package newph.core.constant;
 
-import newph.core.enumeration.IdeologyType;
+import newph.core.common.iMineralSet;
+import newph.core.metric.iPoint;
 
 /**
- * Hero Type constants.
+ * Common Constants.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class COMMON {
 
     /**
      * Prevents from creating an instance of the class.
      */
-    private HERO_TYPE() {}
+    private COMMON() {}
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
+    /**
+     *
+     */
+    public static final iPoint[] HERO_FLAG_ANCHOR;
 
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    /**
+     * Human and computer.
+     */
+    public static final iMineralSet[][] INITIAL_RESOURCES;
+
+    /**
+     *
+     */
+    public static final int[][][] SEKSKILL_DESC;
 
 }

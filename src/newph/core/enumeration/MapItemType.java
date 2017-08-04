@@ -27,32 +27,22 @@ package newph.core.enumeration;
 import newph.core.type.EnumC;
 
 /**
- * Color Types.
+ * Map Item Type.
  *
  * @author SerVB
  * @since "GitHub new sources"
  */
-public enum ColorType implements EnumC {
+public enum MapItemType implements EnumC {
 
-    /**
-     * RGB16. (R5G6G5A0)
-     */
-    RGB(0),
-
-    /**
-     * RGBA16. (R4G4B4A4)
-     */
-    RGBA,
-
-    /**
-     * RGBCK16. (R5G5G5A1)
-     */
-    RGBCK,
-
-    /**
-     * RGB types count.
-     */
-    COUNT;
+    MAPITEM_MINERAL(0),
+    MAPITEM_MANACRYSTAL,
+    MAPITEM_CAMPFIRE,
+    MAPITEM_CHEST,
+    MAPITEM_ARTIFACT,
+    MAPITEM_SPELLSCROLL,
+    MAPITEM_LAMP,
+    MAPITEM_KEYGUARD,
+    MAPITEM_COUNT;
 
     //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
     /**
@@ -63,21 +53,23 @@ public enum ColorType implements EnumC {
     /**
      * Constructs a new element with the next value.
      */
-    private ColorType() {
+    private MapItemType() {
         this(NextValueHolder.nextValue); // Call the constructor with the next value
     }
 
     /**
      * Constructs a new element with the specified value.
+     *
      * @param value The specified value.
      */
-    private ColorType(final int value) {
+    private MapItemType(final int value) {
         this.value = value;                     // Set the specified value to this value
         NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
     }
 
     /**
      * Returns the value of the element.
+     *
      * @return The value of the element.
      */
     @Override

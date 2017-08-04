@@ -22,26 +22,26 @@
  * SOFTWARE.
  */
 
-package newph.core.constant;
+package newph.core.common;
 
-import newph.core.enumeration.IdeologyType;
+import newph.core.enumeration.RewardItemType;
 
 /**
- * Hero Type constants.
+ * Reward Item.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class iRewardItem {
 
-    /**
-     * Prevents from creating an instance of the class.
-     */
-    private HERO_TYPE() {}
+    public iRewardItem(final RewardItemType type, final int fparam, final int sparam) {
+        m_type = type;
+        m_fParam = fparam;
+        m_sParam = sparam;
+    }
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
-
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    public RewardItemType m_type;
+    public int m_fParam;
+    public int m_sParam;
 
 }

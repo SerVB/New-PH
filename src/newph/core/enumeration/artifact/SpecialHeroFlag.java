@@ -22,37 +22,44 @@
  * SOFTWARE.
  */
 
-package newph.core.enumeration;
+package newph.core.enumeration.artifact;
 
 import newph.core.type.EnumC;
 
 /**
- * Color Types.
+ * Special Hero Flag.
  *
  * @author SerVB
  * @since "GitHub new sources"
  */
-public enum ColorType implements EnumC {
+public enum SpecialHeroFlag implements EnumC {
+
+    SHF_INVALID(-1),
 
     /**
-     * RGB16. (R5G6G5A0)
+     * No range attack penalty.
      */
-    RGB(0),
+    SHF_NORANGEPENALTY,
 
     /**
-     * RGBA16. (R4G4B4A4)
+     * 50% bonus for resurrection and summon spells.
      */
-    RGBA,
+    SHF_SUMRESBOUNS,
 
     /**
-     * RGBCK16. (R5G5G5A1)
+     * Mana restores each day.
      */
-    RGBCK,
+    SHF_MANARESTORE,
 
     /**
-     * RGB types count.
+     * Effect from all damage spells increased by 50%.
      */
-    COUNT;
+    SHF_DMGSPBONUS,
+
+    /**
+     * Necromancy skill restores mummies instead of skeletons.
+     */
+    SHF_NECRBONUS;
 
     //<editor-fold defaultstate="collapsed" desc="C-like enum (for indexing and count)">
     /**
@@ -63,21 +70,23 @@ public enum ColorType implements EnumC {
     /**
      * Constructs a new element with the next value.
      */
-    private ColorType() {
+    private SpecialHeroFlag() {
         this(NextValueHolder.nextValue); // Call the constructor with the next value
     }
 
     /**
      * Constructs a new element with the specified value.
+     *
      * @param value The specified value.
      */
-    private ColorType(final int value) {
+    private SpecialHeroFlag(final int value) {
         this.value = value;                     // Set the specified value to this value
         NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
     }
 
     /**
      * Returns the value of the element.
+     *
      * @return The value of the element.
      */
     @Override

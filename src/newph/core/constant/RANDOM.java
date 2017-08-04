@@ -38,5 +38,6 @@ public final class RANDOM {
     private RANDOM() {}
 
     public static final int RANDOM_QUANTITY = 0;
+    public static final int RAND_VAL = -1;
 
 }

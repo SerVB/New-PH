@@ -22,26 +22,41 @@
  * SOFTWARE.
  */
 
-package newph.core.constant;
+package newph.core.common;
 
-import newph.core.enumeration.IdeologyType;
+import java.util.ArrayList;
+import newph.core.enumeration.artifact.HeroArtifactCell;
 
 /**
- * Hero Type constants.
+ * Artifact List.
  *
- * @author  SerVB
- * @since   "GitHub new sources"
+ * @author SerVB
+ * @since "GitHub new sources"
  */
-public final class HERO_TYPE {
+public final class iArtifactList {
 
-    /**
-     * Prevents from creating an instance of the class.
-     */
-    private HERO_TYPE() {}
+    public class iItem {
+        iItem(final int _id, final HeroArtifactCell _assign) {
+            id = _id;
+            assign = _assign;
+        }
 
-    public static final IdeologyType[] HERO_TYPE_IDEOLOGY;
+        final int id;
+        final HeroArtifactCell assign;
+    }
 
-    public static final int[][] HERO_PRIM_SKILL;
-    public static final int[][] HERO_SEC_SKILL;
+    public void Add(final int _id, final HeroArtifactCell _assign) {
+        m_Items.add(new iItem(_id, _assign));
+    }
+
+    public int Count() {
+        return m_Items.size();
+    }
+
+    public iItem At(final int idx) {
+        return m_Items.get(idx);
+    }
+
+    private ArrayList<iItem> m_Items;
 
 }
