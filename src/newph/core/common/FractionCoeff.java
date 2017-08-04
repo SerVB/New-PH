@@ -32,8 +32,8 @@ package newph.core.common;
  */
 public final class FractionCoeff {
 
-    public int num;
-    public int denum;
+    public final int num;
+    public final int denum;
 
     public FractionCoeff() {
         num = -1;
@@ -58,7 +58,5 @@ public final class FractionCoeff {
             return new FractionCoeff(1, 1);
         }
     }
-
-    public sint32 operator *= ( sint32 );
 
 }

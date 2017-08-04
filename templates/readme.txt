@@ -1,2 +1,2 @@
 Put templates to this folder:
-%APPDATA%\Roaming\NetBeans\?.?\config\Templates\Classes\
+%APPDATA%\NetBeans\?.?\config\Templates\Classes\

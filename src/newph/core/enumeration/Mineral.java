@@ -29,21 +29,26 @@ package newph.core.enumeration;
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum MineralType {
+public enum Mineral {
 
-    MINERAL_UNKNOWN(-1, -1),
-    MINERAL_GOLD(1000, 1),
-    MINERAL_ORE(2, 250),
-    MINERAL_WOOD(2, 250),
-    MINERAL_MERCURY(1, 500),
-    MINERAL_GEMS(1, 500),
-    MINERAL_CRYSTAL(1, 500),
-    MINERAL_SULFUR(1, 500);
+    UNKNOWN (-1,    -1),
+    GOLD    (1000,  1),
+    ORE     (2,     250),
+    WOOD    (2,     250),
+    MERCURY (1,     500),
+    GEMS    (1,     500),
+    CRYSTALS(1,     500),
+    SULFUR  (1,     500);
 
+    /**
+     * For tavern.
+     */
     public final int divider;
+    
+    
     public final int exchangeRate;
 
-    private MineralType(final int divider, final int exchangeRate) {
+    private Mineral(final int divider, final int exchangeRate) {
         this.divider = divider;
         this.exchangeRate = exchangeRate;
     }

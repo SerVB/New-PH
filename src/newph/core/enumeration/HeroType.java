@@ -123,7 +123,7 @@ public enum HeroType {
     public final SpecialHeroFlag specialHeroFlag;
     public final iPrSkills prSkills;
 
-    // ULTART_STDMODIF:
+    // ULTART_STDMODIF (ultimate artifact standard modifiers?):
     public final SkillEntry skill0;
     public final SkillEntry skill1;
     public final SkillEntry skill2;

@@ -25,7 +25,9 @@
 package newph.core.common;
 
 import java.util.Arrays;
-import newph.core.enumeration.MineralType;
+import java.util.EnumMap;
+import java.util.Objects;
+import newph.core.enumeration.Mineral;
 
 /**
  * Mineral Set Class.
@@ -34,117 +36,153 @@ import newph.core.enumeration.MineralType;
  * @since   "GitHub new sources"
  */
 public final class iMineralSet {
+    
+    private final EnumMap<Mineral, Integer> quantity = new EnumMap<>(Mineral.class);
+    
+    public iMineralSet() {
+        for (final Mineral mineral : Mineral.values()) {
+            this.setQuantity(mineral, 0);
+        }
+    }
 
-    public final int[] quant;
+    public iMineralSet(final iMineralSet other) {
+        for (final Mineral mineral : Mineral.values()) {
+            this.setQuantity(mineral, other.getQuantity(mineral));
+        }
+    }
+
+    public iMineralSet(
+            final int gold,
+            final int ore,
+            final int wood,
+            final int mercury,
+            final int gems,
+            final int crystals,
+            final int sulfur
+    ) {
+        setQuantity(Mineral.GOLD,     gold);
+        setQuantity(Mineral.ORE,      ore);
+        setQuantity(Mineral.WOOD,     wood);
+        setQuantity(Mineral.MERCURY,  mercury);
+        setQuantity(Mineral.GEMS,     gems);
+        setQuantity(Mineral.CRYSTALS, crystals);
+        setQuantity(Mineral.SULFUR,   sulfur);
+    }
 
     public void Reset() {
-        Arrays.fill(quant, 0);
+        quantity.clear();
     }
 
-    public int Has(final iMineralSet ms)  {
+    /**
+     * Returns the integer "how many times this mineral set has the other mineral set".
+     * 
+     * @param other The other mineral other.
+     * @return      The integer result.
+     */
+    public int Has(final iMineralSet other)  {
         int cnt = 0;
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            if (quant[xx] < ms.quant[xx]) {
+        
+        for (final Mineral mineral : Mineral.values()) {
+            if (this.getQuantity(mineral) < other.getQuantity(mineral)) {
                 return 0;
-            } else if (ms.quant[xx] > 0) {
-                cnt = (cnt > 0) ? Math.min(cnt,quant[xx] / ms.quant[xx]) : quant[xx] / ms.quant[xx];
+            } else if (other.getQuantity(mineral) > 0) {
+                if (0 < cnt) {
+                    cnt = Math.min(cnt, this.getQuantity(mineral) / other.getQuantity(mineral));
+                } else {
+                    cnt = this.getQuantity(mineral) / other.getQuantity(mineral);
+                }
             }
         }
+        
         return cnt;
     }
-
-    public iMineralSet multiply(int val) {
-        final iMineralSet result = new iMineralSet();
-        result.Reset();
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            result.quant[xx] = quant[xx] * val;
-        }
-        return result;
+    
+    private void setQuantity(final Mineral mineral, final int newQuantity) {
+        quantity.put(mineral, newQuantity);
+    }
+    
+    private int getQuantity(final Mineral mineral) {
+        return quantity.get(mineral);
     }
 
+    /**
+     * Checks if the mineral set is empty.
+     * 
+     * @return {@code True} if all the mineral quantities are null, {@code false} if not.
+     */
     public boolean Empty() {
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            if (quant[xx] != 0) {
+        for (final Mineral mineral : Mineral.values()) {
+            if (this.getQuantity(mineral) != 0) {
                 return false;
             }
         }
         return true;
     }
 
-    public iMineralSet DeficientAmount(final iMineralSet other) {
+    public static iMineralSet Intersect(final iMineralSet first, final iMineralSet second) {
         final iMineralSet result = new iMineralSet();
-        result.Reset();
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            if (other.quant[xx] > quant[xx]) {
-                result.quant[xx] = other.quant[xx] - quant[xx];
-            }
+        
+        for (final Mineral mineral : Mineral.values()) {
+            result.setQuantity(mineral, Math.min(first.getQuantity(mineral), second.getQuantity(mineral)));
         }
-        return result;
-    }
-
-    public iMineralSet Intersect(final iMineralSet other) {
-        final iMineralSet result = new iMineralSet();
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            result.quant[xx] = Math.min(quant[xx], other.quant[xx]);
-        }
+        
         return result;
     }
 
     public void Normalize() {
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            if (quant[xx] < 0) {
-                quant[xx] = 0;
+        for (final Mineral mineral : Mineral.values()) {
+            if (this.getQuantity(mineral) < 0) {
+                this.setQuantity(mineral, 0);
             }
         }
     }
 
-    public boolean equals(final iMineralSet ms) {
-        for (int xx=0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            if (quant[xx] != ms.quant[xx]) {
-                return false;
-            }
+    public void add(final iMineralSet other) {
+        for (final Mineral mineral : Mineral.values()) {
+            setQuantity(mineral, this.getQuantity(mineral) + other.getQuantity(mineral));
+        }
+    }
+
+    public void subtract(final iMineralSet other) {
+        for (final Mineral mineral : Mineral.values()) {
+            setQuantity(mineral, this.getQuantity(mineral) - other.getQuantity(mineral));
+        }
+    }
+
+    public void multiply(final int value) {
+        for (final Mineral mineral : Mineral.values()) {
+            this.setQuantity(mineral, this.getQuantity(mineral) * value);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 19 * hash + Objects.hashCode(this.quantity);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final iMineralSet other = (iMineralSet) obj;
+        if (!Objects.equals(this.quantity, other.quantity)) {
+            return false;
         }
         return true;
     }
 
-    public void add(final iMineralSet ms) {
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            quant[xx] += ms.quant[xx];
-        }
-    }
-
-    public void subtract(final iMineralSet ms) {
-        for (int xx = 0; xx < MineralType.MINERAL_COUNT.getValue(); ++xx) {
-            quant[xx] -= ms.quant[xx];
-        }
-    }
-
-    public iMineralSet() {
-        quant = new int[MineralType.MINERAL_COUNT.getValue()];
-
-        Reset();
-    }
-
-    public iMineralSet(final iMineralSet other) {
-        this(other.quant);
-    }
-
-    public iMineralSet(final int[] quant) {
-        this.quant = new int[MineralType.MINERAL_COUNT.getValue()];
-
-        System.arraycopy(quant, 0, this.quant, 0, quant.length);
-    }
-
-    public iMineralSet(
-            final int Gold,
-            final int Ore,
-            final int Wood,
-            final int Mercury,
-            final int Gem,
-            final int Crystal,
-            final int Sulfur
-    ) {
-        quant = new int[] {Gold, Ore, Wood, Mercury, Gem, Crystal, Sulfur};
+    @Override
+    public String toString() {
+        return "iMineralSet{" + quantity.toString() + '}';
     }
 
 }
