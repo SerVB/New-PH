@@ -46,7 +46,15 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_POWER,     4),
             new SkillEntry(FurtherSkill.FSK_KNOWLEDGE, 4),
             new SkillEntry(FurtherSkill.FSK_LOGISTICS, 20),
-            new SkillEntry(FurtherSkill.FSK_SPEED,     2)
+            new SkillEntry(FurtherSkill.FSK_SPEED,     2),
+
+            new int[] {
+                2,6,6,4,        // Estates, Leadership, Luck, Diplomacy
+                1,1,0,2,        // Air, Earth, Fire, Water
+                1,0,0,1,2,0,4,  // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+                3,4,3,          // Scouting, Logistics, Pathfinding,
+                3,3,2,4         // Archery, Ballistics, Offence, Armorer
+            }
     ),
 
     BARBARIAN(
@@ -60,7 +68,15 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_POWER,     4),
             new SkillEntry(FurtherSkill.FSK_KNOWLEDGE, 4),
             new SkillEntry(FurtherSkill.FSK_RESIST,    30),
-            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0)
+            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
+
+            new int[] {
+                2,4,4,3,        // Estates, Leadership, Luck, Diplomacy
+                1,1,2,0,        // Air, Earth, Fire, Water
+                1,0,0,1,1,0,2,  // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+                3,3,5,          // Scouting, Logistics, Pathfinding,
+                4,3,5,3         // Archery, Ballistics, Offence, Armorer
+            }
     ),
 
     WIZARD(
@@ -74,7 +90,15 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_POWER,     6),
             new SkillEntry(FurtherSkill.FSK_KNOWLEDGE, 6),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_RESIST, 0),
-            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0)
+            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
+
+            new int[] {
+                2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
+                3,3,0,5,        // Air, Earth, Fire, Water
+                6,0,4,2,2,3,5,  // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+                3,2,2,          // Scouting, Logistics, Pathfinding,
+                0,0,0,0         // Archery, Ballistics, Offence, Armorer
+            }
     ),
 
     WARLOCK(
@@ -88,7 +112,15 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_POWER,     6),
             new SkillEntry(FurtherSkill.FSK_KNOWLEDGE, 6),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_RESIST, 0),
-            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0)
+            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
+
+            new int[] {
+                2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
+                3,3,5,0,        // Air, Earth, Fire, Water
+                4,1,4,3,2,5,4,  // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+                4,2,3,          // Scouting, Logistics, Pathfinding,
+                0,0,0,0         // Archery, Ballistics, Offence, Armorer
+            }
     ),
 
     SORCERESS(
@@ -102,7 +134,15 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_POWER,     6),
             new SkillEntry(FurtherSkill.FSK_KNOWLEDGE, 6),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_RESIST, 0),
-            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0)
+            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
+
+            new int[] {
+                2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
+                3,3,0,5,        // Air, Earth, Fire, Water
+                6,0,4,2,2,3,5,  // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+                3,2,2,          // Scouting, Logistics, Pathfinding,
+                1,1,0,0         // Archery, Ballistics, Offence, Armorer
+            }
     ),
 
     NECROMANCER(
@@ -116,7 +156,15 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_POWER,      4),
             new SkillEntry(FurtherSkill.FSK_KNOWLEDGE,  4),
             new SkillEntry(FurtherSkill.FSK_NECROMANCY, 15),
-            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0)
+            new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
+
+            new int[] {
+                2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
+                3,3,5,0,        // Air, Earth, Fire, Water
+                4,5,4,3,2,5,4,  // Wisdom, Necromancy, Mysticism, Intelligence, Resistance, Sorcery, Learning
+                4,2,3,          // Scouting, Logistics, Pathfinding,
+                1,1,0,0         // Archery, Ballistics, Offence, Armorer
+            }
     );
 
     public final IdeologyType ideology;
@@ -132,6 +180,8 @@ public enum HeroType {
     public final SkillEntry skill5;
     public final SkillEntry skill6;
 
+    public final int[] secondarySkills;
+
     private HeroType(
             final IdeologyType ideology,
             final SpecialHeroFlag specialHeroFlag,
@@ -142,7 +192,8 @@ public enum HeroType {
             final SkillEntry skill3,
             final SkillEntry skill4,
             final SkillEntry skill5,
-            final SkillEntry skill6
+            final SkillEntry skill6,
+            final int[] secondarySkills
     ) {
         this.ideology = ideology;
         this.specialHeroFlag = specialHeroFlag;
@@ -154,6 +205,7 @@ public enum HeroType {
         this.skill4 = skill4;
         this.skill5 = skill5;
         this.skill6 = skill6;
+        this.secondarySkills = secondarySkills;
     }
 
 }

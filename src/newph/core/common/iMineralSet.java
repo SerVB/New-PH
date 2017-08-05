@@ -24,7 +24,6 @@
 
 package newph.core.common;
 
-import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Objects;
 import newph.core.enumeration.Mineral;
@@ -36,9 +35,9 @@ import newph.core.enumeration.Mineral;
  * @since   "GitHub new sources"
  */
 public final class iMineralSet {
-    
+
     private final EnumMap<Mineral, Integer> quantity = new EnumMap<>(Mineral.class);
-    
+
     public iMineralSet() {
         for (final Mineral mineral : Mineral.values()) {
             this.setQuantity(mineral, 0);
@@ -75,13 +74,13 @@ public final class iMineralSet {
 
     /**
      * Returns the integer "how many times this mineral set has the other mineral set".
-     * 
+     *
      * @param other The other mineral other.
      * @return      The integer result.
      */
     public int Has(final iMineralSet other)  {
         int cnt = 0;
-        
+
         for (final Mineral mineral : Mineral.values()) {
             if (this.getQuantity(mineral) < other.getQuantity(mineral)) {
                 return 0;
@@ -93,21 +92,21 @@ public final class iMineralSet {
                 }
             }
         }
-        
+
         return cnt;
     }
-    
+
     private void setQuantity(final Mineral mineral, final int newQuantity) {
         quantity.put(mineral, newQuantity);
     }
-    
+
     private int getQuantity(final Mineral mineral) {
         return quantity.get(mineral);
     }
 
     /**
      * Checks if the mineral set is empty.
-     * 
+     *
      * @return {@code True} if all the mineral quantities are null, {@code false} if not.
      */
     public boolean Empty() {
@@ -121,11 +120,11 @@ public final class iMineralSet {
 
     public static iMineralSet Intersect(final iMineralSet first, final iMineralSet second) {
         final iMineralSet result = new iMineralSet();
-        
+
         for (final Mineral mineral : Mineral.values()) {
             result.setQuantity(mineral, Math.min(first.getQuantity(mineral), second.getQuantity(mineral)));
         }
-        
+
         return result;
     }
 
@@ -183,6 +182,59 @@ public final class iMineralSet {
     @Override
     public String toString() {
         return "iMineralSet{" + quantity.toString() + '}';
+    }
+
+    public static class Builder {
+
+        private int gold;
+        private int ore;
+        private int wood;
+        private int mercury;
+        private int gems;
+        private int crystals;
+        private int sulfur;
+
+        public Builder() {}
+
+        public Builder gold(final int value) {
+            gold = value;
+            return this;
+        }
+
+        public Builder ore(final int value) {
+            ore = value;
+            return this;
+        }
+
+        public Builder wood(final int value) {
+            wood = value;
+            return this;
+        }
+
+        public Builder mercury(final int value) {
+            mercury = value;
+            return this;
+        }
+
+        public Builder gems(final int value) {
+            gems = value;
+            return this;
+        }
+
+        public Builder crystals(final int value) {
+            crystals = value;
+            return this;
+        }
+
+        public Builder sulfur(final int value) {
+            sulfur = value;
+            return this;
+        }
+
+        public iMineralSet build() {
+            return new iMineralSet(gold, ore, wood, mercury, gems, crystals, sulfur);
+        }
+
     }
 
 }

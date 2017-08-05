@@ -67,7 +67,7 @@ public final class COMMON {
         new iPoint(24,9), new iPoint(23,8), new iPoint(22,8), new iPoint(23,8),
 
         new iPoint(25,7), new iPoint(24,7), new iPoint(25,7), new iPoint(24,8), new iPoint(23,8),
-        new iPoint(23,7), new iPoint(24,7), new iPoint(25,7), new iPoint(26,7),
+        new iPoint(23,7), new iPoint(24,7), new iPoint(25,7), new iPoint(26,7)
     };
 
 }
