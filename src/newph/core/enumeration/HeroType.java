@@ -23,9 +23,11 @@
  */
 package newph.core.enumeration;
 
+import newph.core.common.InitialArmy;
 import newph.core.common.iPrSkills;
 import newph.core.common.SkillEntry;
 import newph.core.enumeration.artifact.SpecialHeroFlag;
+import newph.core.enumeration.creature.Creature;
 
 /**
  * Hero Type.
@@ -36,7 +38,7 @@ import newph.core.enumeration.artifact.SpecialHeroFlag;
 public enum HeroType {
 
     KNIGHT(
-            IdeologyType.IDEOLOGY_GOOD,
+            Ideology.IDEOLOGY_GOOD,
             SpecialHeroFlag.SHF_INVALID,
             new iPrSkills(25, 50, 5, 20),
 
@@ -48,6 +50,9 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_LOGISTICS, 20),
             new SkillEntry(FurtherSkill.FSK_SPEED,     2),
 
+            new InitialArmy(Creature.PEASANT, 25, 50),
+            new InitialArmy(Creature.ARCHER, 0, 7),
+
             new int[] {
                 2,6,6,4,        // Estates, Leadership, Luck, Diplomacy
                 1,1,0,2,        // Air, Earth, Fire, Water
@@ -58,7 +63,7 @@ public enum HeroType {
     ),
 
     BARBARIAN(
-            IdeologyType.IDEOLOGY_EVIL,
+            Ideology.IDEOLOGY_EVIL,
             SpecialHeroFlag.SHF_NORANGEPENALTY,
             new iPrSkills(60, 25, 5, 10),
 
@@ -70,6 +75,9 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_RESIST,    30),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
 
+            new InitialArmy(Creature.GOBLIN, 15, 30),
+            new InitialArmy(Creature.ORC, 0, 8),
+
             new int[] {
                 2,4,4,3,        // Estates, Leadership, Luck, Diplomacy
                 1,1,2,0,        // Air, Earth, Fire, Water
@@ -80,7 +88,7 @@ public enum HeroType {
     ),
 
     WIZARD(
-            IdeologyType.IDEOLOGY_GOOD,
+            Ideology.IDEOLOGY_GOOD,
             SpecialHeroFlag.SHF_SUMRESBOUNS,
             new iPrSkills(10, 10, 40, 40),
 
@@ -92,6 +100,9 @@ public enum HeroType {
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_RESIST, 0),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
 
+            new InitialArmy(Creature.YOUNG_MAGE, 10, 20),
+            new InitialArmy(Creature.WHITE_WOLF, 0, 6),
+
             new int[] {
                 2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
                 3,3,0,5,        // Air, Earth, Fire, Water
@@ -102,7 +113,7 @@ public enum HeroType {
     ),
 
     WARLOCK(
-            IdeologyType.IDEOLOGY_EVIL,
+            Ideology.IDEOLOGY_EVIL,
             SpecialHeroFlag.SHF_MANARESTORE,
             new iPrSkills(15, 10, 45, 30),
 
@@ -114,6 +125,9 @@ public enum HeroType {
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_RESIST, 0),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
 
+            new InitialArmy(Creature.CENTAUR, 11, 22),
+            new InitialArmy(Creature.GARGOYLE, 0, 6),
+
             new int[] {
                 2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
                 3,3,5,0,        // Air, Earth, Fire, Water
@@ -124,7 +138,7 @@ public enum HeroType {
     ),
 
     SORCERESS(
-            IdeologyType.IDEOLOGY_GOOD,
+            Ideology.IDEOLOGY_GOOD,
             SpecialHeroFlag.SHF_DMGSPBONUS,
             new iPrSkills(15, 15, 30, 40),
 
@@ -136,6 +150,9 @@ public enum HeroType {
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_RESIST, 0),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
 
+            new InitialArmy(Creature.SPRITE, 14, 28),
+            new InitialArmy(Creature.DWARF, 0, 8),
+
             new int[] {
                 2,2,2,3,        // Estates, Leadership, Luck, Diplomacy
                 3,3,0,5,        // Air, Earth, Fire, Water
@@ -146,7 +163,7 @@ public enum HeroType {
     ),
 
     NECROMANCER(
-            IdeologyType.IDEOLOGY_EVIL,
+            Ideology.IDEOLOGY_EVIL,
             SpecialHeroFlag.SHF_NECRBONUS,
             new iPrSkills(15, 15, 40, 30),
 
@@ -158,6 +175,9 @@ public enum HeroType {
             new SkillEntry(FurtherSkill.FSK_NECROMANCY, 15),
             new SkillEntry(/* Void skill: */FurtherSkill.FSK_OFFENCE, 0),
 
+            new InitialArmy(Creature.SKELETON, 20, 40),
+            new InitialArmy(Creature.ZOMBIE, 0, 9),
+
             new int[] {
                 2,0,2,3,        // Estates, Leadership, Luck, Diplomacy
                 3,3,5,0,        // Air, Earth, Fire, Water
@@ -167,7 +187,7 @@ public enum HeroType {
             }
     );
 
-    public final IdeologyType ideology;
+    public final Ideology ideology;
     public final SpecialHeroFlag specialHeroFlag;
     public final iPrSkills prSkills;
 
@@ -180,10 +200,13 @@ public enum HeroType {
     public final SkillEntry skill5;
     public final SkillEntry skill6;
 
+    public final InitialArmy slot0;
+    public final InitialArmy slot1;
+
     public final int[] secondarySkills;
 
     private HeroType(
-            final IdeologyType ideology,
+            final Ideology ideology,
             final SpecialHeroFlag specialHeroFlag,
             final iPrSkills prSkills,
             final SkillEntry skill0,
@@ -193,6 +216,8 @@ public enum HeroType {
             final SkillEntry skill4,
             final SkillEntry skill5,
             final SkillEntry skill6,
+            final InitialArmy slot0,
+            final InitialArmy slot1,
             final int[] secondarySkills
     ) {
         this.ideology = ideology;
@@ -205,6 +230,8 @@ public enum HeroType {
         this.skill4 = skill4;
         this.skill5 = skill5;
         this.skill6 = skill6;
+        this.slot0 = slot0;
+        this.slot1 = slot1;
         this.secondarySkills = secondarySkills;
     }
 

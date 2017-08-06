@@ -31,7 +31,7 @@ import newph.core.type.EnumC;
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum IdeologyType implements EnumC {
+public enum Ideology implements EnumC {
 
     IDEOLOGY_NEUTRAL(0),
     IDEOLOGY_GOOD,
@@ -47,7 +47,7 @@ public enum IdeologyType implements EnumC {
     /**
      * Constructs a new element with the next value.
      */
-    private IdeologyType() {
+    private Ideology() {
         this(NextValueHolder.nextValue); // Call the constructor with the next value
     }
 
@@ -55,7 +55,7 @@ public enum IdeologyType implements EnumC {
      * Constructs a new element with the specified value.
      * @param value The specified value.
      */
-    private IdeologyType(final int value) {
+    private Ideology(final int value) {
         this.value = value;                     // Set the specified value to this value
         NextValueHolder.nextValue = value + 1;  // Increment the next value for a next element
     }

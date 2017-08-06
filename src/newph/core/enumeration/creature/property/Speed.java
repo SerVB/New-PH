@@ -32,38 +32,109 @@ package newph.core.enumeration.creature.property;
  */
 public enum Speed {
 
+    /**
+     * Speed of 1.
+     */
     SUPERSLOW(1),
+
+    /**
+     * Speed of 2.
+     */
     ULTRASLOW(2),
+
+    /**
+     * Speed of 3.
+     */
     VERYSLOW(3),
+
+    /**
+     * Speed of 4.
+     */
     EXTRASLOW(4),
+
+    /**
+     * Speed of 5.
+     */
     SLOW(5),
+
+    /**
+     * Speed of 6.
+     */
     SWIFT(6),
+
+    /**
+     * Speed of 7.
+     */
     EXTRASWIFT(7),
+
+    /**
+     * Speed of 8.
+     */
     VERYSWIFT(8),
 
     /**
-     * (2 to 2).
+     * Speed of 9 (2 to 2).
      */
     ULTRASWIFT(9),
 
     /**
-     * (1 to 2 or 2 to 1).
+     * Speed of 10 (1 to 2 or 2 to 1).
      */
     SUPERSWIFT(10),
 
     /**
-     * (1 to 1).
+     * Speed of 11 (1 to 1).
      */
     QUICK(11),
+
+    /**
+     * Speed of 12.
+     */
     EXTRAQUICK(12),
+
+    /**
+     * Speed of 13.
+     */
     VERYQUICK(13),
+
+    /**
+     * Speed of 14.
+     */
     ULTRAQUICK(14),
+
+    /**
+     * Speed of 15.
+     */
     SUPERQUICK(15),
+
+    /**
+     * Speed of 16.
+     */
     FAST(16),
+
+    /**
+     * Speed of 17.
+     */
     EXTRAFAST(17),
+
+    /**
+     * Speed of 18.
+     */
     VERYFAST(18),
+
+    /**
+     * Speed of 19.
+     */
     ULTRAFAST(19),
+
+    /**
+     * Speed of 20.
+     */
     SUPERFAST(20),
+
+    /**
+     * Speed of 21.
+     */
     MAX(21);
 
     public final int speed;

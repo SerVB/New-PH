@@ -29,19 +29,19 @@ package newph.core.enumeration;
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum NationType {
+public enum Nation {
 
-    NEUTRAL(IdeologyType.IDEOLOGY_NEUTRAL),
-    HIGHMEN(IdeologyType.IDEOLOGY_GOOD),
-    BARBARIANS(IdeologyType.IDEOLOGY_EVIL),
-    WIZARDS(IdeologyType.IDEOLOGY_GOOD),
-    BEASTMEN(IdeologyType.IDEOLOGY_EVIL),
-    ELVES(IdeologyType.IDEOLOGY_GOOD),
-    UNDEADS(IdeologyType.IDEOLOGY_EVIL);
+    NEUTRAL(Ideology.IDEOLOGY_NEUTRAL),
+    HIGHMEN(Ideology.IDEOLOGY_GOOD),
+    BARBARIANS(Ideology.IDEOLOGY_EVIL),
+    WIZARDS(Ideology.IDEOLOGY_GOOD),
+    BEASTMEN(Ideology.IDEOLOGY_EVIL),
+    ELVES(Ideology.IDEOLOGY_GOOD),
+    UNDEADS(Ideology.IDEOLOGY_EVIL);
 
-    public final IdeologyType ideology;
+    public final Ideology ideology;
 
-    private NationType(final IdeologyType ideology) {
+    private Nation(final Ideology ideology) {
         this.ideology = ideology;
     }
 
