@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package newph.core.enumeration.creature.property;
+package newph.core.common.creature.property;
 
 /**
  * Creature Perks Masks and Count.

@@ -21,13 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.enumeration;
+package newph.core.common.hero;
 
 import newph.core.common.InitialArmy;
 import newph.core.common.iPrSkills;
 import newph.core.common.SkillEntry;
 import newph.core.enumeration.artifact.SpecialHeroFlag;
-import newph.core.enumeration.creature.Creature;
+import newph.core.common.creature.Creature;
+import newph.core.enumeration.FurtherSkill;
+import newph.core.enumeration.Ideology;
 
 /**
  * Hero Type.

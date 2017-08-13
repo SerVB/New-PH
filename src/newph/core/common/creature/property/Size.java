@@ -21,31 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.enumeration.creature;
+package newph.core.common.creature.property;
 
 /**
- * Misc Creature.
+ * Creature size in battle cells.
  *
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum CreatureMisc implements ICreature {
+public enum Size {
 
-    CREAT_UNKNOWN(0),
+    /**
+     * One cell.
+     */
+    SINGLE,
 
-    /* Random values */
-    CREAT_RANDOM   (0x0F00),
-    CREAT_RANDOM_L1(0x0F01),
-    CREAT_RANDOM_L2(0x0F02),
-    CREAT_RANDOM_L3(0x0F03),
-    CREAT_RANDOM_L4(0x0F04),
-    CREAT_RANDOM_L5(0x0F05),
-    CREAT_RANDOM_L6(0x0F06);
-
-    public final int value;
-
-    private CreatureMisc(int value) {
-        this.value = value;
-    }
+    /**
+     * Two cells.
+     */
+    DOUBLE;
 
 }

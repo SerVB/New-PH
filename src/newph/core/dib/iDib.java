@@ -25,8 +25,6 @@
 package newph.core.dib;
 
 import newph.core.staticFunction.Operations;
-import newph.core.constant.dib.COLOR_MASK;
-import newph.core.constant.dib.COLOR_STANDARD;
 import newph.core.enumeration.ColorType;
 import newph.core.memory.iBuffColor;
 import newph.core.metric.iPoint;

@@ -21,24 +21,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.enumeration.creature.property;
+package newph.core.common.creature.property;
 
 /**
- * Creature size in battle cells.
+ * Creature level (1-6).
  *
  * @author  SerVB
  * @since   "GitHub new sources"
  */
-public enum Size {
+public enum Level {
 
-    /**
-     * One cell.
-     */
-    SINGLE,
+    FIRST(9),
+    SECOND(9),
+    THIRD(10),
+    FOURTH(10),
+    FIFTH(11),
+    SIXTH(12);
 
-    /**
-     * Two cells.
-     */
-    DOUBLE;
+    private final int growthDivider;
+
+    public int getGrowthDivider() {
+        return growthDivider;
+    }
+
+    private Level(final int growthDivider) {
+        this.growthDivider = growthDivider;
+    }
 
 }

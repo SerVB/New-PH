@@ -22,16 +22,16 @@
  * SOFTWARE.
  */
 
-package newph.core.enumeration.creature;
+package newph.core.common.creature;
 
 import java.util.EnumSet;
 import newph.core.common.iMineralSet;
 import newph.core.enumeration.Nation;
-import newph.core.enumeration.creature.property.Level;
-import newph.core.enumeration.creature.property.Perk;
-import newph.core.enumeration.creature.property.Size;
-import newph.core.enumeration.creature.property.Speed;
-import newph.core.enumeration.creature.property.Transportation;
+import newph.core.common.creature.property.Level;
+import newph.core.common.creature.property.Perk;
+import newph.core.common.creature.property.Size;
+import newph.core.common.creature.property.Speed;
+import newph.core.common.creature.property.Transportation;
 
 /**
  * Creature Type.
@@ -461,8 +461,7 @@ public enum Creature implements ICreature {
     ),
     //</editor-fold>
 
-    /* Necromant */
-
+    //<editor-fold desc="Undeads/Necromant" defaultstate="collapsed">
     /**
      * Skeleton.
      */
@@ -546,9 +545,9 @@ public enum Creature implements ICreature {
             3, 3559,
             Perk.CPERK_UNDEAD
     ),
+    //</editor-fold>
 
-    /* Neutral = 9 */
-
+    //<editor-fold desc="Neutral/Neutral = 9" defaultstate="collapsed">
     /**
      * Rogue.
      */
@@ -672,6 +671,7 @@ public enum Creature implements ICreature {
             4, 512,
             Perk.CPERK_WATERMAGICIMM, Perk.CPERK_LIFELESS
     );
+    //</editor-fold>
 
     /**
      * Unit level (1-6).
@@ -780,6 +780,86 @@ public enum Creature implements ICreature {
         this.growth = growth;
         this.pidx = pidx;
         this.perks = EnumSet.of(Perk.CPERK_VOID, perks);
+    }
+
+    @Override
+    public int getPowerIndex() {
+        return pidx;
+    }
+
+    @Override
+    public int getGrowthDivider() {
+        return level.getGrowthDivider();
+    }
+
+    @Override
+    public int getGrowth() {
+        return growth;
+    }
+
+    @Override
+    public Level getLevel() {
+        return level;
+    }
+
+    @Override
+    public Nation getNation() {
+        return nation;
+    }
+
+    @Override
+    public int getAttack() {
+        return attack;
+    }
+
+    @Override
+    public int getDefence() {
+        return defence;
+    }
+
+    @Override
+    public Speed getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public Size getSize() {
+        return size;
+    }
+
+    @Override
+    public Transportation getTransType() {
+        return transType;
+    }
+
+    @Override
+    public int getShots() {
+        return shots;
+    }
+
+    @Override
+    public int getHits() {
+        return hits;
+    }
+
+    @Override
+    public int getDamageMin() {
+        return damage_min;
+    }
+
+    @Override
+    public int getDamageMax() {
+        return damage_max;
+    }
+
+    @Override
+    public iMineralSet getCost() {
+        return cost;
+    }
+
+    @Override
+    public EnumSet<Perk> getPerks() {
+        return perks;
     }
 
 }

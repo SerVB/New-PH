@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package newph.core.constant.dib;
+package newph.core.dib;
 
 /**
  * Standard color constants. (R5G6B5 = RGB16)

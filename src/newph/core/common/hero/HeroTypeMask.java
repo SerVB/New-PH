@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package newph.core.enumeration;
+package newph.core.common.hero;
 
 import newph.core.type.EnumC;
 

@@ -24,6 +24,7 @@
 
 package newph.core.constant.dib;
 
+import newph.core.dib.COLOR_MASK;
 import newph.core.enumeration.ColorType;
 import org.junit.Test;
 import static org.junit.Assert.*;

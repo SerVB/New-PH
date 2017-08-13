@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package newph.core.constant.dib;
+package newph.core.dib;
 
 /**
  * Color constants.

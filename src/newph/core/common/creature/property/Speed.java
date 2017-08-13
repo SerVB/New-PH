@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package newph.core.enumeration.creature.property;
+package newph.core.common.creature.property;
 
 /**
  * Creature Speed.
@@ -137,10 +137,14 @@ public enum Speed {
      */
     MAX(21);
 
-    public final int speed;
+    private final int speedValue;
 
-    private Speed(final int speed) {
-        this.speed = speed;
+    public int getSpeedValue() {
+        return speedValue;
+    }
+
+    private Speed(final int speedValue) {
+        this.speedValue = speedValue;
     }
 
 }

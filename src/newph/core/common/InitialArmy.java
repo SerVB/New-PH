@@ -23,7 +23,7 @@
  */
 package newph.core.common;
 
-import newph.core.enumeration.creature.ICreature;
+import newph.core.common.creature.ICreature;
 
 /**
  * Initial Hero Army Descriptor.
